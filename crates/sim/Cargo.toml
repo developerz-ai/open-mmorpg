@@ -11,9 +11,11 @@ repository.workspace = true
 omm-ecs-core.workspace = true
 omm-protocol.workspace = true
 omm-errors.workspace = true
+serde.workspace = true
 
 [dev-dependencies]
 proptest.workspace = true
+serde_json.workspace = true
 
 [lints]
 workspace = true
