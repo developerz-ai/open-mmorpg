@@ -14819,6 +14819,82 @@
       "quality": "rare",
       "value_copper": 32,
       "max_stack": 20
+    },
+    {
+      "id": "empty-vial",
+      "name": "Empty Vial",
+      "description": "A small glass vial for holding alchemical mixtures.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 1,
+      "icon": "textures/solid-colors/white.png",
+      "max_stack": 20
+    },
+    {
+      "id": "red-thread",
+      "name": "Red Thread",
+      "description": "Spun crimson thread used in tailoring and embroidery.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 2,
+      "icon": "textures/solid-colors/red.png",
+      "max_stack": 20
+    },
+    {
+      "id": "weak-flask",
+      "name": "Weak Flask",
+      "description": "A thin glass flask, barely able to hold a potion without shattering.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 50,
+      "icon": "textures/solid-colors/white.png",
+      "max_stack": 10
+    },
+    {
+      "id": "campfire",
+      "name": "Campfire",
+      "description": "A portable fire kit for cooking and warmth while traveling.",
+      "item_type": "Misc",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 10,
+      "icon": "textures/solid-colors/orange.png",
+      "max_stack": 5
     }
   ],
   "quests": [
@@ -15050,6 +15126,17 @@
         "max_listings_per_account": 20,
         "listing_duration_hours": 48,
         "deposit_percentage": 0.05
+      },
+      {
+        "id": "emberhold-exchange",
+        "name": "The Emberhold Exchange",
+        "zone_id": "emberhold",
+        "position": [10.0, 0.0, 8.0],
+        "fee_percentage": 0.05,
+        "min_bid_increment": 0.05,
+        "max_listings_per_account": 20,
+        "listing_duration_hours": 48,
+        "deposit_percentage": 0.05
       }
     ],
     "trading_rules": [
@@ -15061,6 +15148,36 @@
       },
       {
         "item_pattern": "venomfang-*",
+        "tradable": true,
+        "auctionable": true,
+        "mailing_allowed": true
+      },
+      {
+        "item_pattern": "*-relic",
+        "tradable": false,
+        "auctionable": false,
+        "mailing_allowed": false
+      },
+      {
+        "item_pattern": "soulbound-*",
+        "tradable": false,
+        "auctionable": false,
+        "mailing_allowed": false
+      },
+      {
+        "item_pattern": "*-key",
+        "tradable": false,
+        "auctionable": false,
+        "mailing_allowed": false
+      },
+      {
+        "item_pattern": "potion-*",
+        "tradable": true,
+        "auctionable": true,
+        "mailing_allowed": true
+      },
+      {
+        "item_pattern": "crafting-material-*",
         "tradable": true,
         "auctionable": true,
         "mailing_allowed": true
