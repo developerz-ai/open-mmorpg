@@ -9,6 +9,10 @@ use omm_content_schema::load_manifest;
 
 const COMMITTED_MANIFEST: &str = include_str!("../../../content/manifest.json");
 
+/// The two canon rival factions (docs/specs/gameplay/factions).
+const CONCORD: &str = "aurelian-concord";
+const PACT: &str = "wildreach-pact";
+
 #[test]
 fn committed_manifest_loads_and_validates() {
     let manifest = load_manifest(COMMITTED_MANIFEST.as_bytes())
@@ -17,7 +21,40 @@ fn committed_manifest_loads_and_validates() {
         manifest.api_version,
         omm_content_schema::CONTENT_API_VERSION
     );
-    assert!(!manifest.id.trim().is_empty());
-    // The seed pack ships two rival factions (see docs/specs/gameplay/factions).
-    assert_eq!(manifest.factions.len(), 2);
+    assert_eq!(manifest.id, "open-mmorpg.base");
+
+    // Two canon factions, mutually hostile, each with a capital zone.
+    let faction_ids: Vec<&str> = manifest.factions.iter().map(|f| f.id.as_str()).collect();
+    assert_eq!(faction_ids, [CONCORD, PACT]);
+    let concord = manifest.factions.iter().find(|f| f.id == CONCORD).unwrap();
+    assert_eq!(concord.hostile_to, vec![PACT]);
+    assert!(concord.capital.as_deref().is_some_and(|c| !c.is_empty()));
+
+    // The slice a player actually picks from at character creation.
+    assert!(manifest.races.len() >= 2);
+    assert!(manifest.classes.len() >= 4);
+    assert!(
+        manifest
+            .races
+            .iter()
+            .all(|r| r.faction_id == CONCORD || r.faction_id == PACT),
+        "every race must belong to a canon faction"
+    );
+    assert!(
+        manifest.classes.iter().all(|c| !c.abilities.is_empty()),
+        "every class must grant at least one ability"
+    );
+
+    // A walkable, populated world: at least one zone, spawn table, dungeon, AH.
+    assert!(!manifest.zones.is_empty());
+    assert!(!manifest.spawn_tables.is_empty());
+    assert_eq!(manifest.dungeons.len(), 1);
+    assert!(!manifest.economy.auction_houses.is_empty());
+
+    // The dungeon sits inside a known zone, and its loot resolves to real items.
+    let dungeon = &manifest.dungeons[0];
+    assert!(manifest
+        .zones
+        .iter()
+        .any(|z| Some(z.id.as_str()) == dungeon.entrance_zone_id.as_deref()));
 }
