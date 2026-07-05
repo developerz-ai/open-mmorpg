@@ -1,0 +1,15 @@
+[package]
+name = "omm-scripting"
+description = "Sandboxed script host (WASM/Lua) + mod loading for untrusted operator content."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+omm-content-schema.workspace = true
+omm-errors.workspace = true
+
+[lints]
+workspace = true

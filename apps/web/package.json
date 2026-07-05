@@ -1,0 +1,26 @@
+{
+  "name": "@omm/web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@omm/i18n": "workspace:*",
+    "@omm/ui": "workspace:*",
+    "@solidjs/router": "^0.15.0",
+    "@tanstack/solid-query": "^5.62.0",
+    "solid-js": "^1.9.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0",
+    "vite-plugin-solid": "^2.11.0"
+  }
+}

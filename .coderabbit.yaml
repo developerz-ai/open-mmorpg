@@ -1,0 +1,50 @@
+# CodeRabbit — AI reviewer on every PR, taught our conventions so it enforces
+# them before a human looks. → docs/../developer-experience/linting-ci.md
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: en-US
+reviews:
+  profile: chill
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+  review_status: true
+  auto_review:
+    enabled: true
+    drafts: false
+  path_instructions:
+    - path: 'crates/ecs-core/**'
+      instructions: >-
+        Pure crate: types + logic only. Flag ANY I/O (fs, network, db, env,
+        clock) or nondeterminism. Systems must be deterministic.
+    - path: 'crates/content-schema/**'
+      instructions: >-
+        Pure crate: parse + validate only, no I/O. Flag any filesystem/network access.
+    - path: 'crates/sim/**'
+      instructions: >-
+        Simulation must be deterministic — no wall-clock, no RNG, no I/O. Same
+        inputs must yield same state. Flag anything that breaks replay.
+    - path: 'crates/persistence/**'
+      instructions: >-
+        The ONLY crate that writes ownership. Ownership mutations must be a single
+        transaction — never read-modify-write. This is the #1 anti-dupe rule.
+    - path: 'crates/cache/**'
+      instructions: >-
+        Ephemeral/broadcast state only. Flag any API that writes durable
+        ownership — that belongs in persistence, transactionally.
+    - path: 'crates/**'
+      instructions: >-
+        Rust: no unwrap/expect outside main/tests (a hot-path panic drops the
+        shard). Typed errors (thiserror). Newtypes over primitives. Files ≤300
+        LOC, one crate = one reason to change. Never leak secrets in errors/logs.
+    - path: 'apps/web/**'
+      instructions: >-
+        TS strict, no `any`. Zod-validate every API boundary. All user-facing
+        strings via t() (i18n) — no bare literals. Dark theme only, semantic
+        tokens by role, never raw hex. Server state only via TanStack Query.
+        Thin routes, files ≤300 LOC.
+    - path: 'scripts/**'
+      instructions: >-
+        Bun TS. One verb per file. Reusable logic in scripts/lib (≤200 LOC, pure
+        where possible). No inline HTTP/SSH — wrap in a lib helper.
+chat:
+  auto_reply: true

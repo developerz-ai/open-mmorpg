@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions & discussion
+    url: https://github.com/developerz-ai/open-mmorpg/discussions
+    about: Ask questions, share ideas, and talk with the community here — not in issues.
+  - name: Report a security vulnerability
+    url: https://github.com/developerz-ai/open-mmorpg/security/policy
+    about: Do not open a public issue for security problems. Report privately — see SECURITY.md.

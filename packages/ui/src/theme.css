@@ -1,0 +1,46 @@
+/*
+ * Dark theme ONLY — no light theme, no toggle. Tokens are named by ROLE, not
+ * value, and stored as space-separated RGB channels so alpha compositing works:
+ *   color: rgb(var(--color-fg) / 0.8);
+ * Components reference tokens (or the bg-bg / text-fg utilities), never raw hex.
+ * → docs/architecture/09-operator-web.md
+ */
+:root {
+  --color-bg: 18 18 20;
+  --color-bg-soft: 28 28 32;
+  --color-surface: 34 34 39;
+  --color-fg: 228 226 222;
+  --color-fg-strong: 248 247 245;
+  --color-fg-muted: 150 146 140;
+  --color-line: 54 54 60;
+  --color-accent: 96 170 240;
+  --color-accent-strong: 130 190 248;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: rgb(var(--color-bg));
+  color: rgb(var(--color-fg));
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+.bg-bg {
+  background: rgb(var(--color-bg));
+}
+.bg-surface {
+  background: rgb(var(--color-surface));
+}
+.text-fg {
+  color: rgb(var(--color-fg));
+}
+.text-fg-strong {
+  color: rgb(var(--color-fg-strong));
+}
+.text-fg-muted {
+  color: rgb(var(--color-fg-muted));
+}

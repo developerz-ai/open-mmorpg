@@ -1,0 +1,21 @@
+[package]
+name = "omm-mcp"
+description = "Per-account companion MCP server. Bounded companion — never the main char."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[[bin]]
+name = "omm-mcp"
+path = "src/main.rs"
+
+[dependencies]
+tokio.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+omm-protocol.workspace = true
+
+[lints]
+workspace = true

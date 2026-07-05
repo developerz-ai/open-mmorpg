@@ -1,0 +1,67 @@
+# Open-MMORPG — Cargo workspace root.
+# Rust everywhere: shared libs in crates/, deployable binaries in apps/.
+# One crate = one reason to change. See docs/architecture/01-monorepo-layout.md.
+[workspace]
+resolver = "2"
+members = [
+  "crates/protocol",
+  "crates/ecs-core",
+  "crates/sim",
+  "crates/netcode",
+  "crates/persistence",
+  "crates/cache",
+  "crates/scripting",
+  "crates/content-schema",
+  "crates/errors",
+  "apps/gateway",
+  "apps/shard",
+  "apps/client",
+  "apps/mcp",
+  "apps/worldsvc",
+]
+
+[workspace.package]
+version = "0.0.0"
+edition = "2021"
+rust-version = "1.85"
+license = "MIT"
+repository = "https://github.com/developerz-ai/open-mmorpg"
+authors = ["developerz-ai"]
+
+# Single source of truth for external versions — every member borrows from here.
+[workspace.dependencies]
+# internal
+omm-protocol = { path = "crates/protocol" }
+omm-ecs-core = { path = "crates/ecs-core" }
+omm-sim = { path = "crates/sim" }
+omm-netcode = { path = "crates/netcode" }
+omm-persistence = { path = "crates/persistence" }
+omm-cache = { path = "crates/cache" }
+omm-scripting = { path = "crates/scripting" }
+omm-content-schema = { path = "crates/content-schema" }
+omm-errors = { path = "crates/errors" }
+# external
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "net", "time", "signal", "sync"] }
+axum = "0.8"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+proptest = "1"
+
+# Lints applied workspace-wide. CI additionally runs `clippy -D warnings`.
+# The hard rule (no unwrap/expect on the hot path) is a warn here and denied in CI,
+# so tests/main can still use them where honest. See CLAUDE.md "Rust conventions".
+[workspace.lints.clippy]
+unwrap_used = "warn"
+expect_used = "warn"
+todo = "warn"
+
+[workspace.lints.rust]
+unsafe_code = "deny"
+
+# Faster local builds; CI overrides profile as needed.
+[profile.dev]
+opt-level = 0
+debug = 1

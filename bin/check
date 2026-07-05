@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Thin shim → the real automation is Bun TS in scripts/check.ts
+set -euo pipefail
+cd "$(dirname "$0")/.."
+exec bun scripts/check.ts "$@"

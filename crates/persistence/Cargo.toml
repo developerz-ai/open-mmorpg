@@ -1,0 +1,15 @@
+[package]
+name = "omm-persistence"
+description = "The ONLY crate that writes ownership — YugabyteDB, transactional."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+omm-protocol.workspace = true
+omm-errors.workspace = true
+
+[lints]
+workspace = true

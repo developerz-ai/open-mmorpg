@@ -1,0 +1,37 @@
+# Local data stores for development. Durable ownership lives in YugabyteDB
+# (Postgres-wire), ephemeral/broadcast state in Dragonfly (Redis-wire).
+# Boot with: bin/setup  (or) docker compose -f docker/docker-compose.yml up -d
+services:
+  db:
+    image: yugabytedb/yugabyte:2.21.1.0-b271
+    container_name: omm-yugabyte
+    command: bin/yugabyted start --background=false --ui=false
+    ports:
+      - '5433:5433' # YSQL (Postgres wire)
+      - '7000:7000' # master admin UI
+    volumes:
+      - yugabyte-data:/root/var
+    healthcheck:
+      test: ['CMD-SHELL', 'postgres/bin/pg_isready -h localhost -p 5433 || exit 1']
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  cache:
+    image: docker.dragonflydb.io/dragonflydb/dragonfly:v1.21.2
+    container_name: omm-dragonfly
+    ulimits:
+      memlock: -1
+    ports:
+      - '6379:6379' # Redis wire
+    volumes:
+      - dragonfly-data:/data
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+volumes:
+  yugabyte-data:
+  dragonfly-data:

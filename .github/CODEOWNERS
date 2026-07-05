@@ -1,0 +1,14 @@
+# Code owners — reviewers auto-requested on matching paths.
+# Last match wins. See https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owner for everything.
+*                       @developerz-ai
+
+# The only crate that writes ownership — the #1 anti-dupe surface. Extra scrutiny.
+/crates/persistence/    @developerz-ai
+
+# Operator website.
+/apps/web/              @developerz-ai
+
+# CI, templates, and community-health config.
+/.github/               @developerz-ai

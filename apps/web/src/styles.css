@@ -1,0 +1,61 @@
+@import "@omm/ui/theme.css";
+
+.shell {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 3rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hero h1 {
+  margin: 0 0 0.25rem;
+  font-size: 2rem;
+}
+
+.card {
+  background: rgb(var(--color-surface));
+  border: 1px solid rgb(var(--color-line));
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+
+.card h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+
+.badge {
+  display: inline-block;
+  margin: 0 0 0.5rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background: rgb(var(--color-accent) / 0.15);
+  color: rgb(var(--color-accent-strong));
+  font-size: 0.85rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.omm-btn {
+  padding: 0.55rem 1.1rem;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+.omm-btn--primary {
+  background: rgb(var(--color-accent));
+  color: rgb(var(--color-bg));
+}
+
+.omm-btn--ghost {
+  background: transparent;
+  border-color: rgb(var(--color-line));
+  color: rgb(var(--color-fg));
+}

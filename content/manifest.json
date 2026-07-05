@@ -1,0 +1,9 @@
+{
+  "id": "open-mmorpg.base",
+  "version": "0.0.0",
+  "api_version": 1,
+  "factions": [
+    { "id": "dawnward", "name": "The Dawnward Pact", "hostile_to": ["nightfen"] },
+    { "id": "nightfen", "name": "Nightfen Covenant", "hostile_to": ["dawnward"] }
+  ]
+}

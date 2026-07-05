@@ -1,0 +1,24 @@
+[package]
+name = "omm-shard"
+description = "Headless zone server: tokio tick loop over ecs-core + sim + netcode."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[[bin]]
+name = "omm-shard"
+path = "src/main.rs"
+
+[dependencies]
+tokio.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+omm-ecs-core.workspace = true
+omm-sim.workspace = true
+omm-netcode.workspace = true
+omm-protocol.workspace = true
+
+[lints]
+workspace = true

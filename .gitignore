@@ -1,0 +1,29 @@
+# Scratch — disposable by definition, never commit
+/tmp/
+
+# Rust
+/target/
+**/*.rs.bk
+# Cargo.lock IS committed — this workspace ships binaries (reproducible CI/deploys).
+
+# Bun / Node (apps/web, packages/*, scripts/)
+node_modules/
+dist/
+.vite/
+.solid/
+*.tsbuildinfo
+
+# Env / secrets
+.env
+.env.*.local
+
+# Assets (large binaries live in object storage / content-addressing, not git)
+/assets/**/*.glb
+/assets/**/*.gltf
+/assets/**/*.exr
+/assets/**/*.png
+/assets/**/*.ogg
+
+# OS / editor
+.DS_Store
+*.swp

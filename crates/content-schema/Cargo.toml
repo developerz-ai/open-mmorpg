@@ -1,0 +1,16 @@
+[package]
+name = "omm-content-schema"
+description = "Typed schema for data-driven content (factions/classes/quests) + validation."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+omm-errors.workspace = true
+
+[lints]
+workspace = true

@@ -1,0 +1,71 @@
+name: Bug report
+description: Something is broken or behaves incorrectly.
+title: "bug: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. Please base it on the latest `main`.
+        For security vulnerabilities (dupe, cheat, sandbox escape) do **not** file here — see [SECURITY.md](../blob/main/SECURITY.md).
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: Describe the bug clearly and concisely.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: The exact steps to trigger it.
+      placeholder: |
+        1. Run `bin/dev ...`
+        2. Do ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What you expected to happen instead.
+    validations:
+      required: true
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Which part of the system?
+      options:
+        - gateway
+        - shard
+        - client
+        - worldsvc
+        - mcp
+        - web
+        - crates/* (Rust libs)
+        - content (data)
+        - docs
+        - other / not sure
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / errors
+      description: Relevant log output or error messages. Automatically formatted as code — no backticks needed.
+      render: shell
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, `rustc`/`cargo` version, Bun version, commit SHA, and how you're running it.
+      placeholder: |
+        OS:
+        rustc:
+        bun:
+        commit:
+    validations:
+      required: true

@@ -1,0 +1,22 @@
+[package]
+name = "omm-client"
+description = "Game client (Linux-first). Headless prediction core now; Bevy renderer next."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[[bin]]
+name = "omm-client"
+path = "src/main.rs"
+
+[dependencies]
+omm-protocol.workspace = true
+omm-ecs-core.workspace = true
+omm-sim.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+
+[lints]
+workspace = true

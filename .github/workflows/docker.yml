@@ -1,0 +1,52 @@
+# Image builder — the base for deployment CI/CD (not yet wired to a cluster).
+# Manual for now (workflow_dispatch) so `main` stays green until deploy is set up;
+# flip on `push: main` when the cluster + ArgoCD image updater are ready.
+# CI holds zero cluster credentials — the handoff is image-only (push to GHCR).
+name: docker
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: docker-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  REGISTRY: ghcr.io
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { image: omm-gateway, dockerfile: docker/rust.Dockerfile, bin: omm-gateway }
+          - { image: omm-shard, dockerfile: docker/rust.Dockerfile, bin: omm-shard }
+          - { image: omm-worldsvc, dockerfile: docker/rust.Dockerfile, bin: omm-worldsvc }
+          - { image: omm-mcp, dockerfile: docker/rust.Dockerfile, bin: omm-mcp }
+          - { image: omm-web, dockerfile: docker/web.Dockerfile, bin: '' }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ${{ matrix.dockerfile }}
+          build-args: ${{ matrix.bin && format('BIN={0}', matrix.bin) || '' }}
+          push: ${{ github.ref == 'refs/heads/main' }}
+          tags: |
+            ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ matrix.image }}:latest
+            ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ matrix.image }}:${{ github.sha }}
+          cache-from: type=gha,scope=${{ matrix.image }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.image }}

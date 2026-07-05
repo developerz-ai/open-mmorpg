@@ -1,0 +1,4 @@
+# The "no unwrap/expect outside main/tests" rule is enforced by clippy::unwrap_used
+# (workspace lint). Tests are allowed to unwrap freely — they SHOULD fail loudly.
+allow-unwrap-in-tests = true
+allow-expect-in-tests = true
