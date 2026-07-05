@@ -1,0 +1,6 @@
+# Ignore compiled artifacts and temporary files
+*.compiled
+*.tmp
+*.bak
+*~
+.cache/
