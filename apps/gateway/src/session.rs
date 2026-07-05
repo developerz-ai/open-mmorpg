@@ -221,13 +221,16 @@ mod tests {
     fn tampered_payload_is_rejected() {
         let s = signer();
         let token = s.issue(AccountId::new(7), UnixSeconds(0), 60).unwrap();
-        // Flip a character in the payload segment.
+        // Decode the payload, flip a byte, then re-encode: a well-formed,
+        // correct-length payload whose contents differ — so it fails the HMAC
+        // check (BadSignature) rather than base64 decoding (Malformed). Flipping
+        // a raw base64 char instead would be flaky: mangling the final char can
+        // set non-canonical trailing bits and be rejected as Malformed.
         let raw = token.into_string();
-        let (payload, mac) = raw.split_once('.').unwrap();
-        let mut bad = payload.to_string();
-        let last = bad.pop().unwrap();
-        bad.push(if last == 'A' { 'B' } else { 'A' });
-        let forged = Token::new(format!("{bad}.{mac}"));
+        let (payload_b64, mac) = raw.split_once('.').unwrap();
+        let mut payload = URL_SAFE_NO_PAD.decode(payload_b64).unwrap();
+        payload[0] ^= 0x01;
+        let forged = Token::new(format!("{}.{mac}", URL_SAFE_NO_PAD.encode(&payload)));
         assert_eq!(
             s.verify(&forged, UnixSeconds(1)),
             Err(AuthError::BadSignature)
