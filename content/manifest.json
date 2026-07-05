@@ -356,6 +356,23 @@
       },
       "hp_per_level": 11,
       "resource_per_level": 9
+    },
+    {
+      "id": "occultist",
+      "name": "Occultist",
+      "description": "Pact-caster who bargains with Deep entities, wielding Rift, Hollow, and Deep forces through soul shards and summoned minions.",
+      "role": "dps",
+      "abilities": ["soul-shard", "pact-bolt", "summon-hollow-servant", "drain-life", "dark-pact"],
+      "stat_growth": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 1,
+        "wisdom": 3,
+        "charisma": 0
+      },
+      "hp_per_level": 8,
+      "resource_per_level": 11
     }
   ],
   "abilities": [
@@ -846,6 +863,67 @@
       "effects": [
         { "effect": "Heal", "magnitude": 28.0, "scaling": 0.9, "target": "aoe_ally" },
         { "effect": "Damage", "magnitude": 24.0, "scaling": 0.8, "target": "aoe_enemy" }
+      ]
+    },
+    {
+      "id": "soul-shard",
+      "name": "Soul Shard",
+      "description": "Extract a fragment of soul essence from a defeated foe, storing it as a shard for pact magic.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 0,
+      "cast_time_sec": 1.5,
+      "range_yards": 5.0,
+      "effects": [{ "effect": "Buff", "magnitude": 1.0, "scaling": 0.0, "target": "self" }]
+    },
+    {
+      "id": "pact-bolt",
+      "name": "Pact Bolt",
+      "description": "Hurl a bolt of crackling pact energy, dealing Rift-touched damage to your target.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 8,
+      "cast_time_sec": 1.3,
+      "range_yards": 35.0,
+      "effects": [{ "effect": "Damage", "magnitude": 14.0, "scaling": 0.95, "target": "enemy" }]
+    },
+    {
+      "id": "summon-hollow-servant",
+      "name": "Summon Hollow Servant",
+      "description": "Consume soul shards to summon a hollow servant from the Deep to fight at your side.",
+      "max_rank": 1,
+      "cooldown_sec": 45.0,
+      "resource_cost": 3,
+      "cast_time_sec": 2.5,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Summon", "magnitude": 0.0, "scaling": 0.0, "target": "self" }]
+    },
+    {
+      "id": "drain-life",
+      "name": "Drain Life",
+      "description": "Channel dark pact energy, draining life from your foe and mending your own wounds.",
+      "max_rank": 1,
+      "cooldown_sec": 12.0,
+      "resource_cost": 20,
+      "cast_time_sec": 2.8,
+      "range_yards": 25.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 22.0, "scaling": 0.9, "target": "enemy" },
+        { "effect": "Heal", "magnitude": 18.0, "scaling": 0.7, "target": "self" }
+      ]
+    },
+    {
+      "id": "dark-pact",
+      "name": "Dark Pact",
+      "description": "Consume soul shards to unleash devastating Deep force damage, sacrificing some of your own life force.",
+      "max_rank": 1,
+      "cooldown_sec": 18.0,
+      "resource_cost": 5,
+      "cast_time_sec": 2.0,
+      "range_yards": 30.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 38.0, "scaling": 1.3, "target": "enemy" },
+        { "effect": "Damage", "magnitude": 10.0, "scaling": 0.0, "target": "self" }
       ]
     }
   ],
