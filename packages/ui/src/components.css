@@ -1,0 +1,180 @@
+/*
+ * Component styles for `packages/ui`. Class-based, token-only (no raw hex),
+ * SRP: one block per presentational component. Motion uses the --dur / --ease
+ * tokens and animates transform/opacity only. Import once at the app root
+ * alongside `theme.css`.
+ */
+
+/* Button ------------------------------------------------------------------ */
+.omm-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    transform var(--dur-instant) var(--ease-out),
+    background var(--dur-fast) var(--ease-out),
+    opacity var(--dur-fast) var(--ease-out);
+}
+.omm-btn:active {
+  transform: scale(0.97);
+}
+.omm-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.omm-btn--primary {
+  background: rgb(var(--color-accent));
+  color: rgb(var(--color-bg));
+}
+.omm-btn--primary:hover:not(:disabled) {
+  background: rgb(var(--color-accent-strong));
+}
+.omm-btn--ghost {
+  background: transparent;
+  border-color: rgb(var(--color-line));
+  color: rgb(var(--color-fg));
+}
+.omm-btn--ghost:hover:not(:disabled) {
+  background: rgb(var(--color-surface-hover));
+}
+.omm-btn--danger {
+  background: rgb(var(--color-danger));
+  color: rgb(var(--color-bg));
+}
+
+/* Card -------------------------------------------------------------------- */
+.card {
+  background: rgb(var(--color-surface));
+  border: 1px solid rgb(var(--color-line));
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+.card__title {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  color: rgb(var(--color-fg-strong));
+}
+
+/* Badge ------------------------------------------------------------------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  background: rgb(var(--color-accent) / 0.15);
+  color: rgb(var(--color-accent-strong));
+}
+.badge--neutral {
+  background: rgb(var(--color-fg-muted) / 0.15);
+  color: rgb(var(--color-fg));
+}
+.badge--success {
+  background: rgb(var(--color-success) / 0.15);
+  color: rgb(var(--color-success));
+}
+.badge--danger {
+  background: rgb(var(--color-danger) / 0.15);
+  color: rgb(var(--color-danger));
+}
+.badge--warning {
+  background: rgb(var(--color-warning) / 0.15);
+  color: rgb(var(--color-warning));
+}
+
+/* Alert ------------------------------------------------------------------- */
+.alert {
+  border: 1px solid rgb(var(--color-line));
+  border-left-width: 3px;
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  background: rgb(var(--color-bg-soft));
+}
+.alert--error {
+  border-left-color: rgb(var(--color-danger));
+}
+.alert--info {
+  border-left-color: rgb(var(--color-accent));
+}
+.alert--success {
+  border-left-color: rgb(var(--color-success));
+}
+
+/* Field + input ----------------------------------------------------------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.field__label {
+  font-size: 0.85rem;
+  color: rgb(var(--color-fg-muted));
+}
+.field__error {
+  font-size: 0.8rem;
+  color: rgb(var(--color-danger));
+}
+.input {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgb(var(--color-line));
+  background: rgb(var(--color-bg-soft));
+  color: rgb(var(--color-fg));
+  font: inherit;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+.input:focus {
+  border-color: rgb(var(--color-accent));
+}
+.input[aria-invalid="true"] {
+  border-color: rgb(var(--color-danger));
+}
+
+/* Table ------------------------------------------------------------------- */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+.table th,
+.table td {
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid rgb(var(--color-line));
+}
+.table th {
+  color: rgb(var(--color-fg-muted));
+  font-weight: 500;
+}
+.table tbody tr {
+  transition: background var(--dur-fast) var(--ease-out);
+}
+.table tbody tr:hover {
+  background: rgb(var(--color-surface-hover));
+}
+
+/* Spinner ----------------------------------------------------------------- */
+.spinner {
+  display: inline-block;
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 2px solid rgb(var(--color-fg-muted) / 0.4);
+  border-top-color: rgb(var(--color-accent));
+  border-radius: 50%;
+  animation: omm-spin 0.7s linear infinite;
+}
+@keyframes omm-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

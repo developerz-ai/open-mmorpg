@@ -8,6 +8,24 @@
 //! The scaffold ships an in-memory [`MemoryOwnership`] reference implementation
 //! so the invariant is testable now; the sqlx/Yugabyte implementation lands
 //! behind the same [`OwnershipStore`] trait without changing callers.
+//!
+//! The durable half — connection pool, migrations, and the newtype-keyed
+//! account/character repositories — lives in the sibling modules and is
+//! re-exported below. Queries use the runtime `sqlx` API (not the compile-time
+//! `query!` macro) so the crate builds with no database present; the live SQL
+//! is exercised by the `rust-integration` CI job against a real Postgres.
+
+mod accounts;
+mod characters;
+mod config;
+mod error;
+mod pool;
+
+pub use accounts::{Account, AccountRepo};
+pub use characters::{Character, CharacterRepo, NewCharacter};
+pub use config::DbConfig;
+pub use pool::{connect, health_check, run_migrations};
+pub use sqlx::PgPool;
 
 use omm_errors::{CoreError, CoreResult};
 use omm_protocol::{CharacterId, ItemId};

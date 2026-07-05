@@ -1,0 +1,4 @@
+# Bun config. The test preload forces the web app into mock mode so tests run
+# against the in-memory backend (deterministic, no live network).
+[test]
+preload = ["./scripts/test-setup.ts"]

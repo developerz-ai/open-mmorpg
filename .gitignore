@@ -13,6 +13,13 @@ dist/
 .solid/
 *.tsbuildinfo
 
+# Playwright E2E artifacts (regenerated per run)
+test-results/
+playwright-report/
+.playwright-mcp/
+blob-report/
+playwright/.cache/
+
 # Env / secrets
 .env
 .env.*.local

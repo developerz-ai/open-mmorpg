@@ -9,7 +9,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "test": "bun test"
+    "test": "bun test",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@omm/i18n": "workspace:*",

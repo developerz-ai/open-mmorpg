@@ -72,7 +72,7 @@ id_newtype!(
     QuestId
 );
 id_newtype!(
-    /// A zone definition (template).
+    /// A logical world zone — the unit of spatial partitioning and streaming.
     ZoneId
 );
 
