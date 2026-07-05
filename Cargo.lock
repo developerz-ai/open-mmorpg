@@ -2039,6 +2039,8 @@ dependencies = [
  "omm-errors",
  "omm-protocol",
  "proptest",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]

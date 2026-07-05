@@ -8,11 +8,13 @@
 pub mod combat;
 pub mod hash;
 pub mod movement;
+pub mod replay;
 pub mod schedule;
 pub mod world;
 
 pub use hash::WorldHash;
 pub use movement::{apply_move, integrate_all};
+pub use replay::{replay, InputLog};
 pub use schedule::System;
 pub use world::{InputBatch, World};
 
