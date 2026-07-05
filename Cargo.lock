@@ -1233,6 +1233,8 @@ name = "omm-worldsvc"
 version = "0.0.0"
 dependencies = [
  "axum",
+ "omm-errors",
+ "omm-protocol",
  "serde",
  "tokio",
  "tracing",
