@@ -15441,6 +15441,66 @@
       "value_copper": 0,
       "icon": "textures/solid-colors/green.png",
       "max_stack": 10
+    },
+    {
+      "id": "brinebeard-cutlass",
+      "name": "Brinebeard's Cutlass",
+      "description": "Captain Brinebeard's rusted but deadly blade.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 15,
+      "stats": {
+        "strength": 3,
+        "dexterity": 8,
+        "constitution": 2,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 1500,
+      "icon": "textures/solid-colors/blue.png",
+      "mesh": "meshes/placeholder-cube.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "zulra-voodoo-doll",
+      "name": "Zulra's Voodoo Doll",
+      "description": "A crude doll infused with First Mate Zulra's hex magic.",
+      "item_type": "Trinket",
+      "slot": "trinket",
+      "required_level": 15,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 3,
+        "intelligence": 0,
+        "wisdom": 6,
+        "charisma": 2
+      },
+      "quality": "uncommon",
+      "value_copper": 800,
+      "icon": "textures/solid-colors/purple.png",
+      "mesh": "meshes/placeholder-sphere.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "polly-perch",
+      "name": "Polly's Perch",
+      "description": "A favored feathered roost belonging to Parrot Polly.",
+      "item_type": "Quest",
+      "required_level": 15,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 0,
+      "max_stack": 1
     }
   ],
   "quests": [
@@ -16587,6 +16647,20 @@
       "lockout_hours": 24,
       "entrance_zone_id": "hollowveil-barrows",
       "entrance_position": [120.0, 0.0, 90.0]
+    },
+    {
+      "id": "smugglers-cove",
+      "name": "Smuggler's Cove",
+      "min_level": 15,
+      "recommended_level": 18,
+      "max_players": 5,
+      "boss_ids": ["captain-brinebeard", "first-mate-zulra", "parrot-polly"],
+      "trash_spawn_tables": ["smuggler-cove-pirates", "smuggler-cove-lookouts"],
+      "loot_tables": ["brinebeard-cutlass", "zulra-voodoo-doll", "polly-perch"],
+      "time_limit_minutes": 90,
+      "lockout_hours": 24,
+      "entrance_zone_id": "smuggler-cove",
+      "entrance_position": [95.0, 0.0, 135.0]
     }
   ],
   "economy": {
