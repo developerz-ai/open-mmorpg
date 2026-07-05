@@ -10,13 +10,13 @@
 //! Any economic side effect (loot/consume) is *not* done here — that goes
 //! through an `omm-persistence` transaction on the host side.
 
+use crate::World;
 use omm_ecs_core::{
     AbilityDef, Auras, Cooldowns, EffectKind, EntityId, Health, Periodic, Position, Power,
     TargetKind, TargetShape, Team, Threat, Velocity,
 };
 use omm_errors::ClientCode;
 use omm_protocol::{Tick, Vec3};
-use std::collections::BTreeMap;
 
 /// One combat participant. A superset of the toy [`crate::EntityState`] with the
 /// live combat components attached.
@@ -76,14 +76,7 @@ impl RejectReason {
     }
 }
 
-/// The authoritative combat world: entities keyed by server-issued id. A
-/// [`BTreeMap`] keeps every traversal deterministic.
-#[derive(Debug, Clone, Default)]
-pub struct World {
-    actors: BTreeMap<EntityId, Actor>,
-}
-
-/// Squared XZ-plane distance — squared to avoid a platform-variant `sqrt` on the
+/// Squared distance — squared to avoid a platform-variant `sqrt` on the
 /// authoritative path.
 #[must_use]
 fn dist_sq(a: Vec3, b: Vec3) -> f32 {
@@ -91,36 +84,10 @@ fn dist_sq(a: Vec3, b: Vec3) -> f32 {
     dx * dx + dy * dy + dz * dz
 }
 
+/// Combat resolution hung off the authoritative [`World`]: casts, effects, and
+/// aura ticking. Kept in its own module so the entity store and the combat
+/// rules each stay under one reason to change.
 impl World {
-    /// An empty world.
-    #[must_use]
-    pub fn new() -> Self {
-        Self::default()
-    }
-
-    /// Insert or replace an actor, returning its id.
-    pub fn insert(&mut self, id: EntityId, actor: Actor) {
-        self.actors.insert(id, actor);
-    }
-
-    /// Borrow an actor.
-    #[must_use]
-    pub fn get(&self, id: EntityId) -> Option<&Actor> {
-        self.actors.get(&id)
-    }
-
-    /// Number of actors in the world.
-    #[must_use]
-    pub fn len(&self) -> usize {
-        self.actors.len()
-    }
-
-    /// Whether the world holds no actors.
-    #[must_use]
-    pub fn is_empty(&self) -> bool {
-        self.actors.is_empty()
-    }
-
     /// Validate whether `caster` may legally target `target` with `def` right
     /// now — the guard the tick loop runs before mutating anything.
     fn validate(
