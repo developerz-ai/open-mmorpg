@@ -7,10 +7,12 @@
 
 pub mod combat;
 pub mod movement;
+pub mod schedule;
 pub mod world;
 
 pub use movement::{apply_move, integrate_all};
-pub use world::World;
+pub use schedule::System;
+pub use world::{InputBatch, World};
 
 use omm_ecs_core::{integrate, Health, Position, Velocity};
 use omm_protocol::{Intent, Vec3};
