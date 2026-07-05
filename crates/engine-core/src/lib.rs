@@ -113,6 +113,39 @@ mod tests {
         assert_eq!(app.world().resource::<FixedTick>().0, 0);
     }
 
+    /// Primary gate: proves the engine core has **no GPU/window dependency**.
+    ///
+    /// If `bevy_render` or `bevy_winit` were accidentally added, their plugins
+    /// would attempt GPU device or display initialisation on this path and
+    /// panic (CI has no display). A clean return — `FixedTick` counting up
+    /// to exactly `N`, function returns without unwinding — is the assertion.
+    #[test]
+    fn headless_runs_fixed_ticks_and_exits_clean() {
+        let app = headless_run(30);
+        assert_eq!(
+            app.world().resource::<FixedTick>().0,
+            30,
+            "FixedTick must advance exactly once per fixed step (no render/winit skew)"
+        );
+        // Drops cleanly: `App` dtor runs without panic — the "exits clean" half.
+    }
+
+    /// Compile-time guard: the engine-core manifest must never list render,
+    /// winit, window, or audio as direct dependencies. Embedding the file via
+    /// `include_str!` makes this a compile-time constant and a fast-running
+    /// runtime assertion — no subprocess, no network, no flakiness.
+    #[test]
+    fn no_render_winit_audio_in_dep_manifest() {
+        let manifest = include_str!("../Cargo.toml");
+        for forbidden in &["bevy_render", "bevy_winit", "bevy_window", "bevy_audio"] {
+            assert!(
+                !manifest.contains(forbidden),
+                "engine-core Cargo.toml must not depend on `{forbidden}` \
+                 (headless-first invariant violated)"
+            );
+        }
+    }
+
     #[test]
     fn fixed_timestep_is_pinned_to_tick_hz() {
         let app = headless_app();
