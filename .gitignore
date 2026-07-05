@@ -32,3 +32,5 @@ dist/
 # .gitignore has no inline comments: a mid-line '#' is part of the pattern, so keep these bare.
 .codegraph/
 .claude-task-master/
+.claude/scheduled_tasks.lock
+.claude/settings.local.json
