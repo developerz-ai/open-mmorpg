@@ -31,7 +31,7 @@ fn committed_manifest_loads_and_validates() {
     assert!(concord.capital.as_deref().is_some_and(|c| !c.is_empty()));
 
     // The slice a player actually picks from at character creation.
-    assert!(manifest.races.len() >= 2);
+    assert_eq!(manifest.races.len(), 12, "complete racial slate");
     assert!(manifest.classes.len() >= 4);
     assert!(
         manifest
@@ -43,6 +43,13 @@ fn committed_manifest_loads_and_validates() {
     assert!(
         manifest.classes.iter().all(|c| !c.abilities.is_empty()),
         "every class must grant at least one ability"
+    );
+    assert!(
+        manifest.races.iter().all(|r| r
+            .traits
+            .iter()
+            .all(|t| manifest.abilities.iter().any(|a| a.id == *t))),
+        "every racial trait must resolve to an ability"
     );
 
     // A walkable, populated world: at least one zone, spawn table, dungeon, AH.
