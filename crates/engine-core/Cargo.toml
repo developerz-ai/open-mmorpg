@@ -1,0 +1,23 @@
+[package]
+name = "omm-engine-core"
+description = "Reusable Bevy-based engine core: headless-first App/Plugin bootstrap, reflection registry, fixed-timestep schedule."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+bevy_app.workspace = true
+bevy_ecs.workspace = true
+bevy_reflect.workspace = true
+bevy_time.workspace = true
+
+[dev-dependencies]
+# Test-only: prove the engine's TICK_DT stays aligned with the shared sim's.
+# Kept out of [dependencies] so engine-core carries no runtime dependency on
+# game code — the leanness invariant (engine knows nothing about the MMORPG).
+omm-ecs-core.workspace = true
+
+[lints]
+workspace = true

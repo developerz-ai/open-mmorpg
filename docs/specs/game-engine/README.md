@@ -10,8 +10,12 @@ Three properties, non-negotiable:
 2. **Not bloated, fast, reusable** — engine-as-**crates**, not a monolith. A game depends on `bevy_*` + our plugins and gets *only* what it uses. Runs **headless from the same core** ([core](core/README.md), [ai-native-dx](ai-native-dx/README.md)).
 3. **Best-in-class agent DX** — reflection, determinism, hot reload, declarative data-driven APIs, MCP-drivable editor. An LLM agent authors content and fails at compile time, not at runtime ([ai-native-dx](ai-native-dx/README.md), [editor](editor/README.md)).
 
-## Foundation: Bevy + wgpu (and why)
-Bevy is a Cargo workspace of 80+ crates with a `bevy_ecs` core usable **standalone**, a `bevy_reflect` runtime type system, a RON scene format, and a hot-reloading asset server — exactly the introspectable, modular, headless-capable substrate an agent-first engine needs. It's the most-adopted Rust engine and the only one whose ECS ships as a reusable library. → [Bevy architecture](https://bevy.org/learn/), [`bevy_ecs`](https://docs.rs/bevy_ecs/latest/bevy_ecs/), [why Bevy over Fyrox/Flax](https://gamefromscratch.com/rust-game-engines-in-2025/). We **build on Bevy, contribute upstream, and fill the AAA gaps** it hasn't reached yet.
+## Foundation: Bevy 0.19 + wgpu (and why)
+**Pinned version: Bevy 0.19** (workspace-wide, see `[workspace.dependencies]`). We depend on individual Bevy sub-crates — not the umbrella `bevy` crate — so headless targets compile with zero GPU/windowing dependencies. Rendering is a plugin added on top; the same ECS core runs the server sim, the CI harness, and the rendered desktop client. → [ADR-0001: Engine Crate Family and Feature Strategy](../../architecture/decisions/0001-engine-crate-family-and-features.md).
+
+Bevy is a Cargo workspace of 80+ crates with a `bevy_ecs` core usable **standalone**, a `bevy_reflect` runtime type system, a RON/BSN scene format, and a hot-reloading asset server — exactly the introspectable, modular, headless-capable substrate an agent-first engine needs. It's the most-adopted Rust engine and the only one whose ECS ships as a reusable library. → [Bevy architecture](https://bevy.org/learn/), [`bevy_ecs`](https://docs.rs/bevy_ecs/latest/bevy_ecs/), [why Bevy over Fyrox/Flax](https://gamefromscratch.com/rust-game-engines-in-2025/). We **build on Bevy, contribute upstream, and fill the AAA gaps** it hasn't reached yet.
+
+**Next-gen scenes — BSN:** Bevy Scene Notation (BSN) is Bevy's next-generation declarative scene format, designed to replace the current `.scn.ron` reflection-based approach. BSN uses a macro-first, type-safe authoring surface with first-class support for prefab composition and entity inheritance. Our [scene spec](scene/README.md) targets the 0.19 RON format now and tracks BSN for adoption as it stabilizes upstream. Any BSN-specific API we add is behind a `bsn` Cargo feature so consumers can opt in without forcing a migration.
 
 ## Index
 | Spec | Subsystem | Distilled from |
