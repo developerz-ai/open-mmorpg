@@ -3,6 +3,8 @@
 > **Big idea.** ~700 PRs, dozens of agents, one green `main`. This works only if agents **don't collide** and **don't block**. The mechanism: the [crate/app split](../../architecture/01-monorepo-layout.md) gives every track its own files; **published interfaces** let tracks integrate without reading each other's internals; and small, tested, auto-merged PRs keep `main` always shippable. → [master plan](README.md)
 
 ## The parallelization model
+Execution is an **AI army** — a fleet of Claude agents run in parallel via **[claude-and-conquer](https://github.com/developerz-ai/claude-and-conquer)**. The model below is what keeps that army collision-free.
+
 | Level | Unit | Owner | Isolation |
 |---|---|---|---|
 | **Track** | one big idea, ~100 fat PRs | one [subagent](../../../.claude/agents) | its own crates/apps |

@@ -51,6 +51,9 @@ Wave 4  ── Integration & Release (70) ── vertical slice · E2E · v1.0.0
 
 → **Working rules, parallelization, and PR conventions: [01-workflow-and-parallelization.md](01-workflow-and-parallelization.md).**
 
+## The AI army
+This plan is built to be executed by an **AI army** — a fleet of Claude agents running in parallel, orchestrated with **[claude-and-conquer](https://github.com/developerz-ai/claude-and-conquer)**. The [six domain subagents](../../../.claude/agents) are the divisions; each [track](#the-seven-tracks) is a front; the [wave DAG](#wave-sequencing--how-700-prs-land-without-gridlock) is the campaign order. Agents claim batches, ship [fat green PRs](01-workflow-and-parallelization.md#pr-conventions), and land them through the [`/merge-pr`](../../../.claude/skills/merge-pr/SKILL.md) loop — dozens in flight, one green `main`. The [crate/app split](../../architecture/01-monorepo-layout.md) is what lets them advance without colliding.
+
 ## Non-negotiables (inherited — do not re-litigate → [CLAUDE.md](../../../CLAUDE.md))
 1. **Rust everywhere** except [`apps/web`](50-web-client.md) (Bun+SolidJS).
 2. **Server-authoritative, always** — client sends [`Intent`](../../../crates/protocol/src/lib.rs), never state.
