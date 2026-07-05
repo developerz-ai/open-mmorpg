@@ -305,6 +305,23 @@
       },
       "hp_per_level": 8,
       "resource_per_level": 7
+    },
+    {
+      "id": "revenant",
+      "name": "Revenant",
+      "description": "Plate-clad tank/DPS hybrid wielding runic power and the Hollow force.",
+      "role": "tank",
+      "abilities": ["runic-surge", "hollow-strike", "runic-shield"],
+      "stat_growth": {
+        "strength": 2,
+        "dexterity": 1,
+        "constitution": 1,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "hp_per_level": 13,
+      "resource_per_level": 6
     }
   ],
   "abilities": [
@@ -574,6 +591,42 @@
       "cast_time_sec": 0.8,
       "range_yards": 12.0,
       "effects": [{ "effect": "Damage", "magnitude": 22.0, "scaling": 0.8, "target": "enemy" }]
+    },
+    {
+      "id": "runic-surge",
+      "name": "Runic Surge",
+      "description": "Channel runic power into a devastating melee strike.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 14,
+      "cast_time_sec": 0.0,
+      "range_yards": 5.0,
+      "effects": [{ "effect": "Damage", "magnitude": 16.0, "scaling": 1.2, "target": "enemy" }]
+    },
+    {
+      "id": "hollow-strike",
+      "name": "Hollow Strike",
+      "description": "A chilling blow fueled by the Hollow force, sapping enemy strength.",
+      "max_rank": 1,
+      "cooldown_sec": 8.0,
+      "resource_cost": 18,
+      "cast_time_sec": 0.0,
+      "range_yards": 5.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 14.0, "scaling": 1.0, "target": "enemy" },
+        { "effect": "Debuff", "magnitude": 10.0, "scaling": 0.5, "target": "enemy" }
+      ]
+    },
+    {
+      "id": "runic-shield",
+      "name": "Runic Shield",
+      "description": "Carve runes into the air, forming a protective barrier that absorbs harm.",
+      "max_rank": 1,
+      "cooldown_sec": 12.0,
+      "resource_cost": 22,
+      "cast_time_sec": 0.5,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Buff", "magnitude": 35.0, "scaling": 1.0, "target": "self" }]
     }
   ],
   "items": [
