@@ -384,6 +384,31 @@
       },
       "hp_per_level": 8,
       "resource_per_level": 11
+    },
+    {
+      "id": "ascetic",
+      "name": "Ascetic",
+      "description": "Inner-force martial artist who channels Ki through martial arts. Can tank, heal, or deal damage depending on stance.",
+      "role": "tank",
+      "abilities": [
+        "ki-strike",
+        "iron-skin",
+        "healing-palm",
+        "stance-of-the-stone",
+        "stance-of-the-mending-stream",
+        "stance-of-the-fist",
+        "inner-fire-burst"
+      ],
+      "stat_growth": {
+        "strength": 1,
+        "dexterity": 1,
+        "constitution": 2,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "hp_per_level": 10,
+      "resource_per_level": 8
     }
   ],
   "abilities": [
@@ -1027,6 +1052,92 @@
       "cast_time_sec": 5.0,
       "range_yards": 0.0,
       "effects": [{ "effect": "Summon", "magnitude": 0.0, "scaling": 0.0, "target": "group" }]
+    },
+    {
+      "id": "ki-strike",
+      "name": "Ki Strike",
+      "description": "A focused martial arts strike that channels inner force to damage the target.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 8,
+      "cast_time_sec": 0.0,
+      "range_yards": 5.0,
+      "effects": [{ "effect": "Damage", "magnitude": 12.0, "scaling": 1.0, "target": "enemy" }]
+    },
+    {
+      "id": "iron-skin",
+      "name": "Iron Skin",
+      "description": "Harden your body through inner force, reducing incoming damage for a time.",
+      "max_rank": 1,
+      "cooldown_sec": 15.0,
+      "resource_cost": 16,
+      "cast_time_sec": 0.0,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Buff", "magnitude": 30.0, "scaling": 1.0, "target": "self" }]
+    },
+    {
+      "id": "healing-palm",
+      "name": "Healing Palm",
+      "description": "Channel Ki through your palm to mend an ally's wounds.",
+      "max_rank": 1,
+      "cooldown_sec": 10.0,
+      "resource_cost": 20,
+      "cast_time_sec": 1.8,
+      "range_yards": 10.0,
+      "effects": [{ "effect": "Heal", "magnitude": 42.0, "scaling": 1.1, "target": "ally" }]
+    },
+    {
+      "id": "stance-of-the-stone",
+      "name": "Stance of the Stone",
+      "description": "Root yourself like stone, gaining increased threat generation and damage reduction.",
+      "max_rank": 1,
+      "cooldown_sec": 2.0,
+      "resource_cost": 18,
+      "cast_time_sec": 1.5,
+      "range_yards": 0.0,
+      "effects": [
+        { "effect": "Buff", "magnitude": 25.0, "scaling": 0.8, "target": "self" },
+        { "effect": "Buff", "magnitude": 15.0, "scaling": 0.5, "target": "self" }
+      ]
+    },
+    {
+      "id": "stance-of-the-mending-stream",
+      "name": "Stance of the Mending Stream",
+      "description": "Flow like water, increasing healing done and reducing casting time for healing abilities.",
+      "max_rank": 1,
+      "cooldown_sec": 2.0,
+      "resource_cost": 15,
+      "cast_time_sec": 1.5,
+      "range_yards": 0.0,
+      "effects": [
+        { "effect": "Buff", "magnitude": 22.0, "scaling": 0.9, "target": "self" },
+        { "effect": "Buff", "magnitude": 18.0, "scaling": 0.4, "target": "self" }
+      ]
+    },
+    {
+      "id": "stance-of-the-fist",
+      "name": "Stance of the Fist",
+      "description": "Strike like fire, increasing attack damage and speed.",
+      "max_rank": 1,
+      "cooldown_sec": 2.0,
+      "resource_cost": 12,
+      "cast_time_sec": 1.5,
+      "range_yards": 0.0,
+      "effects": [
+        { "effect": "Buff", "magnitude": 20.0, "scaling": 0.7, "target": "self" },
+        { "effect": "Buff", "magnitude": 18.0, "scaling": 0.5, "target": "self" }
+      ]
+    },
+    {
+      "id": "inner-fire-burst",
+      "name": "Inner Fire Burst",
+      "description": "Release your accumulated Ki in a powerful burst, dealing damage to nearby enemies.",
+      "max_rank": 1,
+      "cooldown_sec": 14.0,
+      "resource_cost": 28,
+      "cast_time_sec": 0.0,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Damage", "magnitude": 30.0, "scaling": 1.3, "target": "aoe_enemy" }]
     }
   ],
   "items": [
