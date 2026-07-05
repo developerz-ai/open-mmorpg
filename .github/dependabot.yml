@@ -1,4 +1,7 @@
 version: 2
+# Grouped weekly minor/patch updates. Major bumps are ignored — they land via a
+# deliberate, human-reviewed PR, not an automated one (a major can break the
+# build or ship semantics changes, e.g. zod 3→4). Bump majors by hand.
 updates:
   # Rust workspace (root Cargo.toml + all crates).
   - package-ecosystem: cargo
@@ -11,9 +14,13 @@ updates:
         update-types:
           - minor
           - patch
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
 
   # One Bun workspace rooted at "/" (root + apps/web + packages/*). Bun uses the
   # npm ecosystem; Dependabot reads bun.lock and resolves all workspace members.
+  # Note: after merging an npm PR, run `bun install` if the lockfile drifts.
   - package-ecosystem: npm
     directory: "/"
     schedule:
@@ -24,6 +31,9 @@ updates:
         update-types:
           - minor
           - patch
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
 
   # GitHub Actions workflows.
   - package-ecosystem: github-actions
