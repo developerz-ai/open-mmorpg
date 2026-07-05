@@ -10,6 +10,9 @@ repository.workspace = true
 [dependencies]
 omm-protocol.workspace = true
 omm-errors.workspace = true
+sqlx.workspace = true
+tokio.workspace = true
+tracing.workspace = true
 
 [lints]
 workspace = true

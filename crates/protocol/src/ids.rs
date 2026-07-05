@@ -51,6 +51,10 @@ id_newtype!(
     /// A zone shard process in the topology.
     ShardId
 );
+id_newtype!(
+    /// A logical world zone — the unit of spatial partitioning and streaming.
+    ZoneId
+);
 
 #[cfg(test)]
 mod tests {
