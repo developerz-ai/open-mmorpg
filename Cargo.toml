@@ -15,6 +15,7 @@ members = [
   "crates/errors",
   "crates/world",
   "crates/engine-core",
+  "crates/engine-scene",
   "apps/gateway",
   "apps/shard",
   "apps/client",
@@ -44,6 +45,7 @@ omm-content-schema = { path = "crates/content-schema" }
 omm-errors = { path = "crates/errors" }
 omm-world = { path = "crates/world" }
 omm-engine-core = { path = "crates/engine-core" }
+omm-engine-scene = { path = "crates/engine-scene" }
 # external
 # Bevy — consumed as individual sub-crates (not the umbrella `bevy`) so the
 # engine ships only what it uses and boots headless with no GPU/windowing.

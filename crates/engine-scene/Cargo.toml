@@ -1,0 +1,19 @@
+[package]
+name = "omm-engine-scene"
+description = "Bevy scene graph, asset loading, and hierarchy management for the game engine."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+bevy_app.workspace = true
+bevy_ecs.workspace = true
+bevy_reflect.workspace = true
+bevy_transform.workspace = true
+omm-engine-core.workspace = true
+thiserror.workspace = true
+
+[lints]
+workspace = true
