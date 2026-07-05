@@ -16812,7 +16812,7 @@
         "cove-murlocs",
         "parrot-minions"
       ],
-      "loot_tables": ["brinebeard-cutlass", "zulra-voodoo-doll", "polly-perch"],
+      "loot_tables": ["brinebeards-pistol", "captains-coat", "pollys-perch"],
       "time_limit_minutes": 90,
       "lockout_hours": 24,
       "entrance_zone_id": "smuggler-cove",
