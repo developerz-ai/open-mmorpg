@@ -8,7 +8,10 @@
       "id": "aurelian-concord",
       "name": "The Aurelian Concord",
       "description": "Those who build. A pluralist coalition bound by charter, the arcane academy, and the dawn-faith.",
-      "colors": { "primary": "#d4af37", "secondary": "#1f6fb2" },
+      "colors": {
+        "primary": "#d4af37",
+        "secondary": "#1f6fb2"
+      },
       "capital": "solhaven",
       "hostile_to": ["wildreach-pact"]
     },
@@ -16,7 +19,10 @@
       "id": "wildreach-pact",
       "name": "The Wildreach Pact",
       "description": "Those who endure. A sworn confederation of the exiled and untamed, bound by survival and honor.",
-      "colors": { "primary": "#9e1b32", "secondary": "#8c6a3e" },
+      "colors": {
+        "primary": "#9e1b32",
+        "secondary": "#8c6a3e"
+      },
       "capital": "emberhold",
       "hostile_to": ["aurelian-concord"]
     }
@@ -462,7 +468,14 @@
       "resource_cost": 0,
       "cast_time_sec": 0.0,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Buff", "magnitude": 0.0, "scaling": 0.0, "target": "self" }]
+      "effects": [
+        {
+          "effect": "Buff",
+          "magnitude": 0.0,
+          "scaling": 0.0,
+          "target": "self"
+        }
+      ]
     },
     {
       "id": "savage-fury",
@@ -473,7 +486,14 @@
       "resource_cost": 0,
       "cast_time_sec": 0.0,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Buff", "magnitude": 5.0, "scaling": 0.0, "target": "self" }]
+      "effects": [
+        {
+          "effect": "Buff",
+          "magnitude": 5.0,
+          "scaling": 0.0,
+          "target": "self"
+        }
+      ]
     },
     {
       "id": "cleave",
@@ -484,7 +504,14 @@
       "resource_cost": 10,
       "cast_time_sec": 0.0,
       "range_yards": 5.0,
-      "effects": [{ "effect": "Damage", "magnitude": 12.0, "scaling": 1.0, "target": "enemy" }]
+      "effects": [
+        {
+          "effect": "Damage",
+          "magnitude": 12.0,
+          "scaling": 1.0,
+          "target": "enemy"
+        }
+      ]
     },
     {
       "id": "shield-bash",
@@ -495,7 +522,14 @@
       "resource_cost": 5,
       "cast_time_sec": 0.0,
       "range_yards": 5.0,
-      "effects": [{ "effect": "Debuff", "magnitude": 0.0, "scaling": 0.0, "target": "enemy" }]
+      "effects": [
+        {
+          "effect": "Debuff",
+          "magnitude": 0.0,
+          "scaling": 0.0,
+          "target": "enemy"
+        }
+      ]
     },
     {
       "id": "guardian-strike",
@@ -507,8 +541,18 @@
       "cast_time_sec": 0.0,
       "range_yards": 5.0,
       "effects": [
-        { "effect": "Damage", "magnitude": 10.0, "scaling": 0.8, "target": "enemy" },
-        { "effect": "Buff", "magnitude": 8.0, "scaling": 0.5, "target": "self" }
+        {
+          "effect": "Damage",
+          "magnitude": 10.0,
+          "scaling": 0.8,
+          "target": "enemy"
+        },
+        {
+          "effect": "Buff",
+          "magnitude": 8.0,
+          "scaling": 0.5,
+          "target": "self"
+        }
       ]
     },
     {
@@ -520,7 +564,14 @@
       "resource_cost": 12,
       "cast_time_sec": 1.5,
       "range_yards": 8.0,
-      "effects": [{ "effect": "Damage", "magnitude": 14.0, "scaling": 0.9, "target": "enemy" }]
+      "effects": [
+        {
+          "effect": "Damage",
+          "magnitude": 14.0,
+          "scaling": 0.9,
+          "target": "enemy"
+        }
+      ]
     },
     {
       "id": "divine-aegis",
@@ -531,7 +582,14 @@
       "resource_cost": 18,
       "cast_time_sec": 0.0,
       "range_yards": 30.0,
-      "effects": [{ "effect": "Buff", "magnitude": 30.0, "scaling": 1.0, "target": "ally" }]
+      "effects": [
+        {
+          "effect": "Buff",
+          "magnitude": 30.0,
+          "scaling": 1.0,
+          "target": "ally"
+        }
+      ]
     },
     {
       "id": "lay-on-hands",
@@ -542,7 +600,14 @@
       "resource_cost": 25,
       "cast_time_sec": 2.0,
       "range_yards": 30.0,
-      "effects": [{ "effect": "Heal", "magnitude": 45.0, "scaling": 1.2, "target": "ally" }]
+      "effects": [
+        {
+          "effect": "Heal",
+          "magnitude": 45.0,
+          "scaling": 1.2,
+          "target": "ally"
+        }
+      ]
     },
     {
       "id": "healing-surge",
@@ -553,7 +618,14 @@
       "resource_cost": 14,
       "cast_time_sec": 1.8,
       "range_yards": 30.0,
-      "effects": [{ "effect": "Heal", "magnitude": 32.0, "scaling": 1.0, "target": "ally" }]
+      "effects": [
+        {
+          "effect": "Heal",
+          "magnitude": 32.0,
+          "scaling": 1.0,
+          "target": "ally"
+        }
+      ]
     },
     {
       "id": "totemic-ward",
@@ -564,7 +636,14 @@
       "resource_cost": 20,
       "cast_time_sec": 0.0,
       "range_yards": 20.0,
-      "effects": [{ "effect": "Buff", "magnitude": 10.0, "scaling": 0.5, "target": "ally" }]
+      "effects": [
+        {
+          "effect": "Buff",
+          "magnitude": 10.0,
+          "scaling": 0.5,
+          "target": "ally"
+        }
+      ]
     },
     {
       "id": "quick-shot",
@@ -575,7 +654,14 @@
       "resource_cost": 8,
       "cast_time_sec": 0.0,
       "range_yards": 35.0,
-      "effects": [{ "effect": "Damage", "magnitude": 11.0, "scaling": 1.0, "target": "enemy" }]
+      "effects": [
+        {
+          "effect": "Damage",
+          "magnitude": 11.0,
+          "scaling": 1.0,
+          "target": "enemy"
+        }
+      ]
     },
     {
       "id": "hunters-mark",
@@ -586,7 +672,14 @@
       "resource_cost": 6,
       "cast_time_sec": 0.0,
       "range_yards": 40.0,
-      "effects": [{ "effect": "Debuff", "magnitude": 0.0, "scaling": 0.0, "target": "enemy" }]
+      "effects": [
+        {
+          "effect": "Debuff",
+          "magnitude": 0.0,
+          "scaling": 0.0,
+          "target": "enemy"
+        }
+      ]
     },
     {
       "id": "arcane-bolt",
@@ -597,7 +690,14 @@
       "resource_cost": 10,
       "cast_time_sec": 1.2,
       "range_yards": 35.0,
-      "effects": [{ "effect": "Damage", "magnitude": 13.0, "scaling": 0.9, "target": "enemy" }]
+      "effects": [
+        {
+          "effect": "Damage",
+          "magnitude": 13.0,
+          "scaling": 0.9,
+          "target": "enemy"
+        }
+      ]
     },
     {
       "id": "fireball",
@@ -608,7 +708,14 @@
       "resource_cost": 30,
       "cast_time_sec": 2.0,
       "range_yards": 30.0,
-      "effects": [{ "effect": "Damage", "magnitude": 26.0, "scaling": 0.8, "target": "enemy" }]
+      "effects": [
+        {
+          "effect": "Damage",
+          "magnitude": 26.0,
+          "scaling": 0.8,
+          "target": "enemy"
+        }
+      ]
     },
     {
       "id": "frostbolt",
@@ -620,8 +727,18 @@
       "cast_time_sec": 1.5,
       "range_yards": 30.0,
       "effects": [
-        { "effect": "Damage", "magnitude": 20.0, "scaling": 0.7, "target": "enemy" },
-        { "effect": "Debuff", "magnitude": 20.0, "scaling": 0.0, "target": "enemy" }
+        {
+          "effect": "Damage",
+          "magnitude": 20.0,
+          "scaling": 0.7,
+          "target": "enemy"
+        },
+        {
+          "effect": "Debuff",
+          "magnitude": 20.0,
+          "scaling": 0.0,
+          "target": "enemy"
+        }
       ]
     },
     {
@@ -633,7 +750,14 @@
       "resource_cost": 15,
       "cast_time_sec": 0.0,
       "range_yards": 4.0,
-      "effects": [{ "effect": "Damage", "magnitude": 22.0, "scaling": 1.5, "target": "enemy" }]
+      "effects": [
+        {
+          "effect": "Damage",
+          "magnitude": 22.0,
+          "scaling": 1.5,
+          "target": "enemy"
+        }
+      ]
     },
     {
       "id": "venom-blade",
@@ -645,8 +769,18 @@
       "cast_time_sec": 0.0,
       "range_yards": 4.0,
       "effects": [
-        { "effect": "Damage", "magnitude": 14.0, "scaling": 0.6, "target": "enemy" },
-        { "effect": "Damage", "magnitude": 6.0, "scaling": 0.3, "target": "enemy" }
+        {
+          "effect": "Damage",
+          "magnitude": 14.0,
+          "scaling": 0.6,
+          "target": "enemy"
+        },
+        {
+          "effect": "Damage",
+          "magnitude": 6.0,
+          "scaling": 0.3,
+          "target": "enemy"
+        }
       ]
     },
     {
@@ -658,7 +792,14 @@
       "resource_cost": 12,
       "cast_time_sec": 0.0,
       "range_yards": 25.0,
-      "effects": [{ "effect": "Teleport", "magnitude": 0.0, "scaling": 0.0, "target": "enemy" }]
+      "effects": [
+        {
+          "effect": "Teleport",
+          "magnitude": 0.0,
+          "scaling": 0.0,
+          "target": "enemy"
+        }
+      ]
     },
     {
       "id": "runic-resilience",
@@ -669,7 +810,14 @@
       "resource_cost": 0,
       "cast_time_sec": 0.0,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Buff", "magnitude": 15.0, "scaling": 0.5, "target": "self" }]
+      "effects": [
+        {
+          "effect": "Buff",
+          "magnitude": 15.0,
+          "scaling": 0.5,
+          "target": "self"
+        }
+      ]
     },
     {
       "id": "quick-repair",
@@ -680,7 +828,14 @@
       "resource_cost": 0,
       "cast_time_sec": 1.5,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Heal", "magnitude": 25.0, "scaling": 0.8, "target": "self" }]
+      "effects": [
+        {
+          "effect": "Heal",
+          "magnitude": 25.0,
+          "scaling": 0.8,
+          "target": "self"
+        }
+      ]
     },
     {
       "id": "dawnfire-blessing",
@@ -691,7 +846,14 @@
       "resource_cost": 0,
       "cast_time_sec": 0.0,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Buff", "magnitude": 8.0, "scaling": 0.3, "target": "self" }]
+      "effects": [
+        {
+          "effect": "Buff",
+          "magnitude": 8.0,
+          "scaling": 0.3,
+          "target": "self"
+        }
+      ]
     },
     {
       "id": "earth-shock",
@@ -703,8 +865,18 @@
       "cast_time_sec": 1.0,
       "range_yards": 20.0,
       "effects": [
-        { "effect": "Damage", "magnitude": 18.0, "scaling": 0.7, "target": "enemy" },
-        { "effect": "Debuff", "magnitude": 30.0, "scaling": 0.0, "target": "enemy" }
+        {
+          "effect": "Damage",
+          "magnitude": 18.0,
+          "scaling": 0.7,
+          "target": "enemy"
+        },
+        {
+          "effect": "Debuff",
+          "magnitude": 30.0,
+          "scaling": 0.0,
+          "target": "enemy"
+        }
       ]
     },
     {
@@ -716,7 +888,14 @@
       "resource_cost": 0,
       "cast_time_sec": 0.0,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Buff", "magnitude": 20.0, "scaling": 0.6, "target": "self" }]
+      "effects": [
+        {
+          "effect": "Buff",
+          "magnitude": 20.0,
+          "scaling": 0.6,
+          "target": "self"
+        }
+      ]
     },
     {
       "id": "will-endurance",
@@ -727,7 +906,14 @@
       "resource_cost": 0,
       "cast_time_sec": 0.0,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Buff", "magnitude": 0.0, "scaling": 0.0, "target": "self" }]
+      "effects": [
+        {
+          "effect": "Buff",
+          "magnitude": 0.0,
+          "scaling": 0.0,
+          "target": "self"
+        }
+      ]
     },
     {
       "id": "ancestral-guidance",
@@ -738,7 +924,14 @@
       "resource_cost": 0,
       "cast_time_sec": 0.0,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Buff", "magnitude": 10.0, "scaling": 0.4, "target": "self" }]
+      "effects": [
+        {
+          "effect": "Buff",
+          "magnitude": 10.0,
+          "scaling": 0.4,
+          "target": "self"
+        }
+      ]
     },
     {
       "id": "explosive-tricks",
@@ -749,7 +942,14 @@
       "resource_cost": 0,
       "cast_time_sec": 0.5,
       "range_yards": 10.0,
-      "effects": [{ "effect": "Damage", "magnitude": 18.0, "scaling": 0.7, "target": "enemy" }]
+      "effects": [
+        {
+          "effect": "Damage",
+          "magnitude": 18.0,
+          "scaling": 0.7,
+          "target": "enemy"
+        }
+      ]
     },
     {
       "id": "dragon-breath",
@@ -760,7 +960,14 @@
       "resource_cost": 0,
       "cast_time_sec": 0.8,
       "range_yards": 12.0,
-      "effects": [{ "effect": "Damage", "magnitude": 22.0, "scaling": 0.8, "target": "enemy" }]
+      "effects": [
+        {
+          "effect": "Damage",
+          "magnitude": 22.0,
+          "scaling": 0.8,
+          "target": "enemy"
+        }
+      ]
     },
     {
       "id": "runic-surge",
@@ -771,7 +978,14 @@
       "resource_cost": 14,
       "cast_time_sec": 0.0,
       "range_yards": 5.0,
-      "effects": [{ "effect": "Damage", "magnitude": 16.0, "scaling": 1.2, "target": "enemy" }]
+      "effects": [
+        {
+          "effect": "Damage",
+          "magnitude": 16.0,
+          "scaling": 1.2,
+          "target": "enemy"
+        }
+      ]
     },
     {
       "id": "hollow-strike",
@@ -783,8 +997,18 @@
       "cast_time_sec": 0.0,
       "range_yards": 5.0,
       "effects": [
-        { "effect": "Damage", "magnitude": 14.0, "scaling": 1.0, "target": "enemy" },
-        { "effect": "Debuff", "magnitude": 10.0, "scaling": 0.5, "target": "enemy" }
+        {
+          "effect": "Damage",
+          "magnitude": 14.0,
+          "scaling": 1.0,
+          "target": "enemy"
+        },
+        {
+          "effect": "Debuff",
+          "magnitude": 10.0,
+          "scaling": 0.5,
+          "target": "enemy"
+        }
       ]
     },
     {
@@ -796,7 +1020,14 @@
       "resource_cost": 22,
       "cast_time_sec": 0.5,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Buff", "magnitude": 35.0, "scaling": 1.0, "target": "self" }]
+      "effects": [
+        {
+          "effect": "Buff",
+          "magnitude": 35.0,
+          "scaling": 1.0,
+          "target": "self"
+        }
+      ]
     },
     {
       "id": "rift-strike",
@@ -807,7 +1038,14 @@
       "resource_cost": 12,
       "cast_time_sec": 0.0,
       "range_yards": 5.0,
-      "effects": [{ "effect": "Damage", "magnitude": 15.0, "scaling": 1.1, "target": "enemy" }]
+      "effects": [
+        {
+          "effect": "Damage",
+          "magnitude": 15.0,
+          "scaling": 1.1,
+          "target": "enemy"
+        }
+      ]
     },
     {
       "id": "havoc-surge",
@@ -819,8 +1057,18 @@
       "cast_time_sec": 0.0,
       "range_yards": 5.0,
       "effects": [
-        { "effect": "Damage", "magnitude": 18.0, "scaling": 1.3, "target": "enemy" },
-        { "effect": "Debuff", "magnitude": 12.0, "scaling": 0.5, "target": "enemy" }
+        {
+          "effect": "Damage",
+          "magnitude": 18.0,
+          "scaling": 1.3,
+          "target": "enemy"
+        },
+        {
+          "effect": "Debuff",
+          "magnitude": 12.0,
+          "scaling": 0.5,
+          "target": "enemy"
+        }
       ]
     },
     {
@@ -832,7 +1080,14 @@
       "resource_cost": 24,
       "cast_time_sec": 0.5,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Buff", "magnitude": 32.0, "scaling": 1.0, "target": "self" }]
+      "effects": [
+        {
+          "effect": "Buff",
+          "magnitude": 32.0,
+          "scaling": 1.0,
+          "target": "self"
+        }
+      ]
     },
     {
       "id": "rune-strike",
@@ -844,8 +1099,18 @@
       "cast_time_sec": 0.0,
       "range_yards": 5.0,
       "effects": [
-        { "effect": "Damage", "magnitude": 14.0, "scaling": 1.1, "target": "enemy" },
-        { "effect": "Debuff", "magnitude": 8.0, "scaling": 0.4, "target": "enemy" }
+        {
+          "effect": "Damage",
+          "magnitude": 14.0,
+          "scaling": 1.1,
+          "target": "enemy"
+        },
+        {
+          "effect": "Debuff",
+          "magnitude": 8.0,
+          "scaling": 0.4,
+          "target": "enemy"
+        }
       ]
     },
     {
@@ -857,7 +1122,14 @@
       "resource_cost": 20,
       "cast_time_sec": 1.5,
       "range_yards": 40.0,
-      "effects": [{ "effect": "Teleport", "magnitude": 0.0, "scaling": 0.0, "target": "self" }]
+      "effects": [
+        {
+          "effect": "Teleport",
+          "magnitude": 0.0,
+          "scaling": 0.0,
+          "target": "self"
+        }
+      ]
     },
     {
       "id": "soul-reaper",
@@ -869,8 +1141,18 @@
       "cast_time_sec": 0.0,
       "range_yards": 5.0,
       "effects": [
-        { "effect": "Damage", "magnitude": 18.0, "scaling": 1.2, "target": "enemy" },
-        { "effect": "Heal", "magnitude": 12.0, "scaling": 0.6, "target": "self" }
+        {
+          "effect": "Damage",
+          "magnitude": 18.0,
+          "scaling": 1.2,
+          "target": "enemy"
+        },
+        {
+          "effect": "Heal",
+          "magnitude": 12.0,
+          "scaling": 0.6,
+          "target": "self"
+        }
       ]
     },
     {
@@ -882,7 +1164,14 @@
       "resource_cost": 50,
       "cast_time_sec": 2.5,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Summon", "magnitude": 0.0, "scaling": 0.0, "target": "self" }]
+      "effects": [
+        {
+          "effect": "Summon",
+          "magnitude": 0.0,
+          "scaling": 0.0,
+          "target": "self"
+        }
+      ]
     },
     {
       "id": "chaotic-surge",
@@ -893,7 +1182,14 @@
       "resource_cost": 25,
       "cast_time_sec": 0.0,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Damage", "magnitude": 32.0, "scaling": 1.4, "target": "aoe_enemy" }]
+      "effects": [
+        {
+          "effect": "Damage",
+          "magnitude": 32.0,
+          "scaling": 1.4,
+          "target": "aoe_enemy"
+        }
+      ]
     },
     {
       "id": "dimensional-tear",
@@ -905,8 +1201,18 @@
       "cast_time_sec": 0.5,
       "range_yards": 35.0,
       "effects": [
-        { "effect": "Teleport", "magnitude": 0.0, "scaling": 0.0, "target": "self" },
-        { "effect": "Damage", "magnitude": 14.0, "scaling": 0.8, "target": "aoe_enemy" }
+        {
+          "effect": "Teleport",
+          "magnitude": 0.0,
+          "scaling": 0.0,
+          "target": "self"
+        },
+        {
+          "effect": "Damage",
+          "magnitude": 14.0,
+          "scaling": 0.8,
+          "target": "aoe_enemy"
+        }
       ]
     },
     {
@@ -918,7 +1224,14 @@
       "resource_cost": 8,
       "cast_time_sec": 3.0,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Damage", "magnitude": 8.0, "scaling": 0.6, "target": "aoe_enemy" }]
+      "effects": [
+        {
+          "effect": "Damage",
+          "magnitude": 8.0,
+          "scaling": 0.6,
+          "target": "aoe_enemy"
+        }
+      ]
     },
     {
       "id": "primal-strike",
@@ -929,7 +1242,14 @@
       "resource_cost": 10,
       "cast_time_sec": 0.0,
       "range_yards": 5.0,
-      "effects": [{ "effect": "Damage", "magnitude": 13.0, "scaling": 1.0, "target": "enemy" }]
+      "effects": [
+        {
+          "effect": "Damage",
+          "magnitude": 13.0,
+          "scaling": 1.0,
+          "target": "enemy"
+        }
+      ]
     },
     {
       "id": "bear-form",
@@ -941,8 +1261,18 @@
       "cast_time_sec": 1.5,
       "range_yards": 0.0,
       "effects": [
-        { "effect": "Buff", "magnitude": 25.0, "scaling": 0.8, "target": "self" },
-        { "effect": "Buff", "magnitude": 15.0, "scaling": 0.5, "target": "self" }
+        {
+          "effect": "Buff",
+          "magnitude": 25.0,
+          "scaling": 0.8,
+          "target": "self"
+        },
+        {
+          "effect": "Buff",
+          "magnitude": 15.0,
+          "scaling": 0.5,
+          "target": "self"
+        }
       ]
     },
     {
@@ -955,8 +1285,18 @@
       "cast_time_sec": 1.5,
       "range_yards": 0.0,
       "effects": [
-        { "effect": "Buff", "magnitude": 18.0, "scaling": 0.6, "target": "self" },
-        { "effect": "Buff", "magnitude": 20.0, "scaling": 0.5, "target": "self" }
+        {
+          "effect": "Buff",
+          "magnitude": 18.0,
+          "scaling": 0.6,
+          "target": "self"
+        },
+        {
+          "effect": "Buff",
+          "magnitude": 20.0,
+          "scaling": 0.5,
+          "target": "self"
+        }
       ]
     },
     {
@@ -968,7 +1308,14 @@
       "resource_cost": 16,
       "cast_time_sec": 2.0,
       "range_yards": 30.0,
-      "effects": [{ "effect": "Heal", "magnitude": 38.0, "scaling": 1.1, "target": "ally" }]
+      "effects": [
+        {
+          "effect": "Heal",
+          "magnitude": 38.0,
+          "scaling": 1.1,
+          "target": "ally"
+        }
+      ]
     },
     {
       "id": "bloom-burst",
@@ -980,8 +1327,18 @@
       "cast_time_sec": 0.0,
       "range_yards": 0.0,
       "effects": [
-        { "effect": "Heal", "magnitude": 28.0, "scaling": 0.9, "target": "aoe_ally" },
-        { "effect": "Damage", "magnitude": 24.0, "scaling": 0.8, "target": "aoe_enemy" }
+        {
+          "effect": "Heal",
+          "magnitude": 28.0,
+          "scaling": 0.9,
+          "target": "aoe_ally"
+        },
+        {
+          "effect": "Damage",
+          "magnitude": 24.0,
+          "scaling": 0.8,
+          "target": "aoe_enemy"
+        }
       ]
     },
     {
@@ -993,7 +1350,14 @@
       "resource_cost": 10,
       "cast_time_sec": 1.5,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Buff", "magnitude": 40.0, "scaling": 0.6, "target": "self" }]
+      "effects": [
+        {
+          "effect": "Buff",
+          "magnitude": 40.0,
+          "scaling": 0.6,
+          "target": "self"
+        }
+      ]
     },
     {
       "id": "healing-touch",
@@ -1004,7 +1368,14 @@
       "resource_cost": 18,
       "cast_time_sec": 0.0,
       "range_yards": 30.0,
-      "effects": [{ "effect": "Heal", "magnitude": 35.0, "scaling": 1.0, "target": "ally" }]
+      "effects": [
+        {
+          "effect": "Heal",
+          "magnitude": 35.0,
+          "scaling": 1.0,
+          "target": "ally"
+        }
+      ]
     },
     {
       "id": "natures-swiftness",
@@ -1015,7 +1386,14 @@
       "resource_cost": 12,
       "cast_time_sec": 0.0,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Buff", "magnitude": 10.0, "scaling": 0.0, "target": "self" }]
+      "effects": [
+        {
+          "effect": "Buff",
+          "magnitude": 10.0,
+          "scaling": 0.0,
+          "target": "self"
+        }
+      ]
     },
     {
       "id": "soul-shard",
@@ -1026,7 +1404,14 @@
       "resource_cost": 0,
       "cast_time_sec": 1.5,
       "range_yards": 5.0,
-      "effects": [{ "effect": "Buff", "magnitude": 1.0, "scaling": 0.0, "target": "self" }]
+      "effects": [
+        {
+          "effect": "Buff",
+          "magnitude": 1.0,
+          "scaling": 0.0,
+          "target": "self"
+        }
+      ]
     },
     {
       "id": "pact-bolt",
@@ -1037,7 +1422,14 @@
       "resource_cost": 8,
       "cast_time_sec": 1.3,
       "range_yards": 35.0,
-      "effects": [{ "effect": "Damage", "magnitude": 14.0, "scaling": 0.95, "target": "enemy" }]
+      "effects": [
+        {
+          "effect": "Damage",
+          "magnitude": 14.0,
+          "scaling": 0.95,
+          "target": "enemy"
+        }
+      ]
     },
     {
       "id": "summon-hollow-servant",
@@ -1048,7 +1440,14 @@
       "resource_cost": 3,
       "cast_time_sec": 2.5,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Summon", "magnitude": 0.0, "scaling": 0.0, "target": "self" }]
+      "effects": [
+        {
+          "effect": "Summon",
+          "magnitude": 0.0,
+          "scaling": 0.0,
+          "target": "self"
+        }
+      ]
     },
     {
       "id": "drain-life",
@@ -1060,8 +1459,18 @@
       "cast_time_sec": 2.8,
       "range_yards": 25.0,
       "effects": [
-        { "effect": "Damage", "magnitude": 22.0, "scaling": 0.9, "target": "enemy" },
-        { "effect": "Heal", "magnitude": 18.0, "scaling": 0.7, "target": "self" }
+        {
+          "effect": "Damage",
+          "magnitude": 22.0,
+          "scaling": 0.9,
+          "target": "enemy"
+        },
+        {
+          "effect": "Heal",
+          "magnitude": 18.0,
+          "scaling": 0.7,
+          "target": "self"
+        }
       ]
     },
     {
@@ -1074,8 +1483,18 @@
       "cast_time_sec": 2.0,
       "range_yards": 30.0,
       "effects": [
-        { "effect": "Damage", "magnitude": 38.0, "scaling": 1.3, "target": "enemy" },
-        { "effect": "Damage", "magnitude": 10.0, "scaling": 0.0, "target": "self" }
+        {
+          "effect": "Damage",
+          "magnitude": 38.0,
+          "scaling": 1.3,
+          "target": "enemy"
+        },
+        {
+          "effect": "Damage",
+          "magnitude": 10.0,
+          "scaling": 0.0,
+          "target": "self"
+        }
       ]
     },
     {
@@ -1087,7 +1506,14 @@
       "resource_cost": 3,
       "cast_time_sec": 3.0,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Summon", "magnitude": 0.0, "scaling": 0.0, "target": "self" }]
+      "effects": [
+        {
+          "effect": "Summon",
+          "magnitude": 0.0,
+          "scaling": 0.0,
+          "target": "self"
+        }
+      ]
     },
     {
       "id": "drain-soul",
@@ -1099,8 +1525,18 @@
       "cast_time_sec": 3.0,
       "range_yards": 25.0,
       "effects": [
-        { "effect": "Damage", "magnitude": 28.0, "scaling": 0.85, "target": "enemy" },
-        { "effect": "Buff", "magnitude": 1.0, "scaling": 0.0, "target": "self" }
+        {
+          "effect": "Damage",
+          "magnitude": 28.0,
+          "scaling": 0.85,
+          "target": "enemy"
+        },
+        {
+          "effect": "Buff",
+          "magnitude": 1.0,
+          "scaling": 0.0,
+          "target": "self"
+        }
       ]
     },
     {
@@ -1112,7 +1548,14 @@
       "resource_cost": 4,
       "cast_time_sec": 1.8,
       "range_yards": 35.0,
-      "effects": [{ "effect": "Damage", "magnitude": 32.0, "scaling": 1.2, "target": "enemy" }]
+      "effects": [
+        {
+          "effect": "Damage",
+          "magnitude": 32.0,
+          "scaling": 1.2,
+          "target": "enemy"
+        }
+      ]
     },
     {
       "id": "demon-armor",
@@ -1123,7 +1566,14 @@
       "resource_cost": 2,
       "cast_time_sec": 1.5,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Buff", "magnitude": 35.0, "scaling": 0.9, "target": "self" }]
+      "effects": [
+        {
+          "effect": "Buff",
+          "magnitude": 35.0,
+          "scaling": 0.9,
+          "target": "self"
+        }
+      ]
     },
     {
       "id": "ritual-of-summoning",
@@ -1134,7 +1584,14 @@
       "resource_cost": 5,
       "cast_time_sec": 5.0,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Summon", "magnitude": 0.0, "scaling": 0.0, "target": "group" }]
+      "effects": [
+        {
+          "effect": "Summon",
+          "magnitude": 0.0,
+          "scaling": 0.0,
+          "target": "group"
+        }
+      ]
     },
     {
       "id": "ki-strike",
@@ -1145,7 +1602,14 @@
       "resource_cost": 8,
       "cast_time_sec": 0.0,
       "range_yards": 5.0,
-      "effects": [{ "effect": "Damage", "magnitude": 12.0, "scaling": 1.0, "target": "enemy" }]
+      "effects": [
+        {
+          "effect": "Damage",
+          "magnitude": 12.0,
+          "scaling": 1.0,
+          "target": "enemy"
+        }
+      ]
     },
     {
       "id": "iron-skin",
@@ -1156,7 +1620,14 @@
       "resource_cost": 16,
       "cast_time_sec": 0.0,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Buff", "magnitude": 30.0, "scaling": 1.0, "target": "self" }]
+      "effects": [
+        {
+          "effect": "Buff",
+          "magnitude": 30.0,
+          "scaling": 1.0,
+          "target": "self"
+        }
+      ]
     },
     {
       "id": "healing-palm",
@@ -1167,7 +1638,14 @@
       "resource_cost": 20,
       "cast_time_sec": 1.8,
       "range_yards": 10.0,
-      "effects": [{ "effect": "Heal", "magnitude": 42.0, "scaling": 1.1, "target": "ally" }]
+      "effects": [
+        {
+          "effect": "Heal",
+          "magnitude": 42.0,
+          "scaling": 1.1,
+          "target": "ally"
+        }
+      ]
     },
     {
       "id": "stance-of-the-stone",
@@ -1179,8 +1657,18 @@
       "cast_time_sec": 1.5,
       "range_yards": 0.0,
       "effects": [
-        { "effect": "Buff", "magnitude": 25.0, "scaling": 0.8, "target": "self" },
-        { "effect": "Buff", "magnitude": 15.0, "scaling": 0.5, "target": "self" }
+        {
+          "effect": "Buff",
+          "magnitude": 25.0,
+          "scaling": 0.8,
+          "target": "self"
+        },
+        {
+          "effect": "Buff",
+          "magnitude": 15.0,
+          "scaling": 0.5,
+          "target": "self"
+        }
       ]
     },
     {
@@ -1193,8 +1681,18 @@
       "cast_time_sec": 1.5,
       "range_yards": 0.0,
       "effects": [
-        { "effect": "Buff", "magnitude": 22.0, "scaling": 0.9, "target": "self" },
-        { "effect": "Buff", "magnitude": 18.0, "scaling": 0.4, "target": "self" }
+        {
+          "effect": "Buff",
+          "magnitude": 22.0,
+          "scaling": 0.9,
+          "target": "self"
+        },
+        {
+          "effect": "Buff",
+          "magnitude": 18.0,
+          "scaling": 0.4,
+          "target": "self"
+        }
       ]
     },
     {
@@ -1207,8 +1705,18 @@
       "cast_time_sec": 1.5,
       "range_yards": 0.0,
       "effects": [
-        { "effect": "Buff", "magnitude": 20.0, "scaling": 0.7, "target": "self" },
-        { "effect": "Buff", "magnitude": 18.0, "scaling": 0.5, "target": "self" }
+        {
+          "effect": "Buff",
+          "magnitude": 20.0,
+          "scaling": 0.7,
+          "target": "self"
+        },
+        {
+          "effect": "Buff",
+          "magnitude": 18.0,
+          "scaling": 0.5,
+          "target": "self"
+        }
       ]
     },
     {
@@ -1220,7 +1728,14 @@
       "resource_cost": 28,
       "cast_time_sec": 0.0,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Damage", "magnitude": 30.0, "scaling": 1.3, "target": "aoe_enemy" }]
+      "effects": [
+        {
+          "effect": "Damage",
+          "magnitude": 30.0,
+          "scaling": 1.3,
+          "target": "aoe_enemy"
+        }
+      ]
     },
     {
       "id": "radiance",
@@ -1231,7 +1746,14 @@
       "resource_cost": 24,
       "cast_time_sec": 2.2,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Heal", "magnitude": 32.0, "scaling": 1.0, "target": "aoe_ally" }]
+      "effects": [
+        {
+          "effect": "Heal",
+          "magnitude": 32.0,
+          "scaling": 1.0,
+          "target": "aoe_ally"
+        }
+      ]
     },
     {
       "id": "void-bolt",
@@ -1242,7 +1764,14 @@
       "resource_cost": 12,
       "cast_time_sec": 1.4,
       "range_yards": 35.0,
-      "effects": [{ "effect": "Damage", "magnitude": 18.0, "scaling": 1.0, "target": "enemy" }]
+      "effects": [
+        {
+          "effect": "Damage",
+          "magnitude": 18.0,
+          "scaling": 1.0,
+          "target": "enemy"
+        }
+      ]
     },
     {
       "id": "shadow-word",
@@ -1254,8 +1783,18 @@
       "cast_time_sec": 1.2,
       "range_yards": 30.0,
       "effects": [
-        { "effect": "Damage", "magnitude": 8.0, "scaling": 0.6, "target": "enemy" },
-        { "effect": "Debuff", "magnitude": 10.0, "scaling": 0.4, "target": "enemy" }
+        {
+          "effect": "Damage",
+          "magnitude": 8.0,
+          "scaling": 0.6,
+          "target": "enemy"
+        },
+        {
+          "effect": "Debuff",
+          "magnitude": 10.0,
+          "scaling": 0.4,
+          "target": "enemy"
+        }
       ]
     },
     {
@@ -1268,8 +1807,18 @@
       "cast_time_sec": 0.0,
       "range_yards": 25.0,
       "effects": [
-        { "effect": "Damage", "magnitude": 6.0, "scaling": 0.4, "target": "enemy" },
-        { "effect": "Damage", "magnitude": 4.0, "scaling": 0.3, "target": "enemy" }
+        {
+          "effect": "Damage",
+          "magnitude": 6.0,
+          "scaling": 0.4,
+          "target": "enemy"
+        },
+        {
+          "effect": "Damage",
+          "magnitude": 4.0,
+          "scaling": 0.3,
+          "target": "enemy"
+        }
       ]
     },
     {
@@ -1281,7 +1830,14 @@
       "resource_cost": 22,
       "cast_time_sec": 0.0,
       "range_yards": 30.0,
-      "effects": [{ "effect": "Buff", "magnitude": 38.0, "scaling": 1.0, "target": "ally" }]
+      "effects": [
+        {
+          "effect": "Buff",
+          "magnitude": 38.0,
+          "scaling": 1.0,
+          "target": "ally"
+        }
+      ]
     },
     {
       "id": "essence-channel",
@@ -1293,8 +1849,18 @@
       "cast_time_sec": 1.5,
       "range_yards": 30.0,
       "effects": [
-        { "effect": "Heal", "magnitude": 28.0, "scaling": 1.0, "target": "ally" },
-        { "effect": "Damage", "magnitude": 22.0, "scaling": 0.85, "target": "enemy" }
+        {
+          "effect": "Heal",
+          "magnitude": 28.0,
+          "scaling": 1.0,
+          "target": "ally"
+        },
+        {
+          "effect": "Damage",
+          "magnitude": 22.0,
+          "scaling": 0.85,
+          "target": "enemy"
+        }
       ]
     },
     {
@@ -1307,8 +1873,18 @@
       "cast_time_sec": 0.0,
       "range_yards": 25.0,
       "effects": [
-        { "effect": "Buff", "magnitude": 18.0, "scaling": 0.6, "target": "ally" },
-        { "effect": "Buff", "magnitude": 12.0, "scaling": 0.4, "target": "ally" }
+        {
+          "effect": "Buff",
+          "magnitude": 18.0,
+          "scaling": 0.6,
+          "target": "ally"
+        },
+        {
+          "effect": "Buff",
+          "magnitude": 12.0,
+          "scaling": 0.4,
+          "target": "ally"
+        }
       ]
     },
     {
@@ -1321,8 +1897,18 @@
       "cast_time_sec": 0.0,
       "range_yards": 0.0,
       "effects": [
-        { "effect": "Heal", "magnitude": 24.0, "scaling": 0.8, "target": "aoe_ally" },
-        { "effect": "Damage", "magnitude": 20.0, "scaling": 0.7, "target": "aoe_enemy" }
+        {
+          "effect": "Heal",
+          "magnitude": 24.0,
+          "scaling": 0.8,
+          "target": "aoe_ally"
+        },
+        {
+          "effect": "Damage",
+          "magnitude": 20.0,
+          "scaling": 0.7,
+          "target": "aoe_enemy"
+        }
       ]
     },
     {
@@ -1335,8 +1921,18 @@
       "cast_time_sec": 0.5,
       "range_yards": 30.0,
       "effects": [
-        { "effect": "Heal", "magnitude": 8.0, "scaling": 0.4, "target": "ally" },
-        { "effect": "Buff", "magnitude": 6.0, "scaling": 0.3, "target": "ally" }
+        {
+          "effect": "Heal",
+          "magnitude": 8.0,
+          "scaling": 0.4,
+          "target": "ally"
+        },
+        {
+          "effect": "Buff",
+          "magnitude": 6.0,
+          "scaling": 0.3,
+          "target": "ally"
+        }
       ]
     },
     {
@@ -1348,7 +1944,14 @@
       "resource_cost": 28,
       "cast_time_sec": 0.0,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Heal", "magnitude": 32.0, "scaling": 1.2, "target": "aoe_ally" }]
+      "effects": [
+        {
+          "effect": "Heal",
+          "magnitude": 32.0,
+          "scaling": 1.2,
+          "target": "aoe_ally"
+        }
+      ]
     },
     {
       "id": "mana-shield",
@@ -1359,7 +1962,14 @@
       "resource_cost": 25,
       "cast_time_sec": 0.0,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Buff", "magnitude": 40.0, "scaling": 1.0, "target": "self" }]
+      "effects": [
+        {
+          "effect": "Buff",
+          "magnitude": 40.0,
+          "scaling": 1.0,
+          "target": "self"
+        }
+      ]
     },
     {
       "id": "jab",
@@ -1371,8 +1981,18 @@
       "cast_time_sec": 0.0,
       "range_yards": 5.0,
       "effects": [
-        { "effect": "Damage", "magnitude": 10.0, "scaling": 0.9, "target": "enemy" },
-        { "effect": "Buff", "magnitude": 3.0, "scaling": 0.1, "target": "self" }
+        {
+          "effect": "Damage",
+          "magnitude": 10.0,
+          "scaling": 0.9,
+          "target": "enemy"
+        },
+        {
+          "effect": "Buff",
+          "magnitude": 3.0,
+          "scaling": 0.1,
+          "target": "self"
+        }
       ]
     },
     {
@@ -1384,7 +2004,14 @@
       "resource_cost": 18,
       "cast_time_sec": 0.5,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Damage", "magnitude": 24.0, "scaling": 1.1, "target": "aoe_enemy" }]
+      "effects": [
+        {
+          "effect": "Damage",
+          "magnitude": 24.0,
+          "scaling": 1.1,
+          "target": "aoe_enemy"
+        }
+      ]
     },
     {
       "id": "meditative-heal",
@@ -1395,7 +2022,14 @@
       "resource_cost": 8,
       "cast_time_sec": 2.5,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Heal", "magnitude": 18.0, "scaling": 0.8, "target": "self" }]
+      "effects": [
+        {
+          "effect": "Heal",
+          "magnitude": 18.0,
+          "scaling": 0.8,
+          "target": "self"
+        }
+      ]
     },
     {
       "id": "transcendence",
@@ -1407,8 +2041,18 @@
       "cast_time_sec": 0.0,
       "range_yards": 0.0,
       "effects": [
-        { "effect": "Buff", "magnitude": 28.0, "scaling": 0.9, "target": "self" },
-        { "effect": "Debuff", "magnitude": 0.0, "scaling": 0.0, "target": "self" }
+        {
+          "effect": "Buff",
+          "magnitude": 28.0,
+          "scaling": 0.9,
+          "target": "self"
+        },
+        {
+          "effect": "Debuff",
+          "magnitude": 0.0,
+          "scaling": 0.0,
+          "target": "self"
+        }
       ]
     },
     {
@@ -1420,7 +2064,14 @@
       "resource_cost": 15,
       "cast_time_sec": 2.5,
       "range_yards": 25.0,
-      "effects": [{ "effect": "Damage", "magnitude": 18.0, "scaling": 1.1, "target": "enemy" }]
+      "effects": [
+        {
+          "effect": "Damage",
+          "magnitude": 18.0,
+          "scaling": 1.1,
+          "target": "enemy"
+        }
+      ]
     },
     {
       "id": "leylines",
@@ -1432,8 +2083,18 @@
       "cast_time_sec": 0.0,
       "range_yards": 0.0,
       "effects": [
-        { "effect": "Buff", "magnitude": 15.0, "scaling": 0.5, "target": "party" },
-        { "effect": "Buff", "magnitude": 10.0, "scaling": 0.3, "target": "party" }
+        {
+          "effect": "Buff",
+          "magnitude": 15.0,
+          "scaling": 0.5,
+          "target": "party"
+        },
+        {
+          "effect": "Buff",
+          "magnitude": 10.0,
+          "scaling": 0.3,
+          "target": "party"
+        }
       ]
     },
     {
@@ -1445,7 +2106,14 @@
       "resource_cost": 30,
       "cast_time_sec": 0.5,
       "range_yards": 30.0,
-      "effects": [{ "effect": "Buff", "magnitude": 50.0, "scaling": 1.2, "target": "ally" }]
+      "effects": [
+        {
+          "effect": "Buff",
+          "magnitude": 50.0,
+          "scaling": 1.2,
+          "target": "ally"
+        }
+      ]
     }
   ],
   "items": [
@@ -1608,6 +2276,279 @@
       "quality": "rare",
       "value_copper": 0,
       "max_stack": 1
+    },
+    {
+      "id": "vanguard-training-sword",
+      "name": "Vanguard Training Sword",
+      "description": "A balanced blade issued to Vanguard recruits.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 1,
+      "stats": {
+        "strength": 2,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 20,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-cube.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "templar-mace",
+      "name": "Templar Mace",
+      "description": "A weighted mace blessed with protective wards.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 1,
+      "stats": {
+        "strength": 2,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 1,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 25,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-cube.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "revenant-runeblade",
+      "name": "Revenant Runeblade",
+      "description": "A blade etched with power-absorbing runes.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 1,
+      "stats": {
+        "strength": 2,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 1,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 30,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-cube.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "ranger-shortbow",
+      "name": "Ranger Shortbow",
+      "description": "A reliable bow for forest patrols.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 1,
+      "stats": {
+        "strength": 0,
+        "dexterity": 3,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 22,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-cube.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "warden-totem",
+      "name": "Warden Totem",
+      "description": "A carved totem anchoring natural balance.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 1,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 1,
+        "wisdom": 2,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 24,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-cube.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "shade-dirk",
+      "name": "Shade Dirk",
+      "description": "A lightweight dirk for striking from shadow.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 1,
+      "stats": {
+        "strength": 1,
+        "dexterity": 3,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 23,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-cube.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "wilder-claws",
+      "name": "Wilder Claws",
+      "description": "Bone-claw gauntlets for primal combat.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 1,
+      "stats": {
+        "strength": 2,
+        "dexterity": 1,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 21,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-cube.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "occultist-dagger",
+      "name": "Occultist Dagger",
+      "description": "A ritual dagger for channeling dark arts.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 1,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 2,
+        "wisdom": 1,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 26,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-cube.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "ascetic-staff",
+      "name": "Ascetic Staff",
+      "description": "A polished staff for channeling inner Ki.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 1,
+      "stats": {
+        "strength": 1,
+        "dexterity": 2,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 22,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-cube.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "riftblade-blade",
+      "name": "Riftblade Blade",
+      "description": "A planar-infused blade that crackles with void energy.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 1,
+      "stats": {
+        "strength": 0,
+        "dexterity": 2,
+        "constitution": 0,
+        "intelligence": 1,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 28,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-cube.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "arcanist-staff",
+      "name": "Arcanist Staff",
+      "description": "A staff crowned with a focusing crystal.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 1,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 3,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 27,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-cube.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "oracle-scepter",
+      "name": "Oracle Scepter",
+      "description": "A divine scepter for channeling prophetic visions.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 1,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 1,
+        "wisdom": 3,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 27,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-cube.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "channeler-wand",
+      "name": "Channeler Wand",
+      "description": "A wand for weaving raw arcane energy.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 1,
+      "stats": {
+        "strength": 0,
+        "dexterity": 1,
+        "constitution": 0,
+        "intelligence": 2,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 25,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-cube.gltf",
+      "max_stack": 1
     }
   ],
   "quests": [
@@ -1679,7 +2620,12 @@
           "description": "Discover the Hollowveil barrows"
         }
       ],
-      "rewards": { "experience": 400, "gold_copper": 150, "choice_items": [], "items": [] },
+      "rewards": {
+        "experience": 400,
+        "gold_copper": 150,
+        "choice_items": [],
+        "items": []
+      },
       "giver_id": "warden-surann",
       "turn_in_id": "warden-surann",
       "next_quest_id": "relic-of-the-hollow"
@@ -1720,7 +2666,13 @@
       "name": "Solhaven",
       "min_level": 1,
       "max_level": 50,
-      "safe_locations": [{ "id": "emberdawn-square", "position": [0.0, 0.0, 0.0], "yaw": 0.0 }],
+      "safe_locations": [
+        {
+          "id": "emberdawn-square",
+          "position": [0.0, 0.0, 0.0],
+          "yaw": 0.0
+        }
+      ],
       "controlling_factions": ["aurelian-concord"],
       "spawn_tables": [],
       "navmesh": "nav/solhaven.nav"
@@ -1730,7 +2682,13 @@
       "name": "Emberhold",
       "min_level": 1,
       "max_level": 50,
-      "safe_locations": [{ "id": "chieftains-fire", "position": [0.0, 0.0, 0.0], "yaw": 0.0 }],
+      "safe_locations": [
+        {
+          "id": "chieftains-fire",
+          "position": [0.0, 0.0, 0.0],
+          "yaw": 0.0
+        }
+      ],
       "controlling_factions": ["wildreach-pact"],
       "spawn_tables": [],
       "navmesh": "nav/emberhold.nav"
@@ -1741,8 +2699,16 @@
       "min_level": 1,
       "max_level": 10,
       "safe_locations": [
-        { "id": "pale-gate", "position": [0.0, 0.0, 0.0], "yaw": 0.0 },
-        { "id": "dawnshore-inn", "position": [40.0, 0.0, 12.0], "yaw": 90.0 }
+        {
+          "id": "pale-gate",
+          "position": [0.0, 0.0, 0.0],
+          "yaw": 0.0
+        },
+        {
+          "id": "dawnshore-inn",
+          "position": [40.0, 0.0, 12.0],
+          "yaw": 90.0
+        }
       ],
       "controlling_factions": ["aurelian-concord", "wildreach-pact"],
       "spawn_tables": ["dawnshore-wolves"],
@@ -1753,7 +2719,13 @@
       "name": "Hollowveil Barrows",
       "min_level": 6,
       "max_level": 12,
-      "safe_locations": [{ "id": "barrows-approach", "position": [110.0, 0.0, 80.0], "yaw": 0.0 }],
+      "safe_locations": [
+        {
+          "id": "barrows-approach",
+          "position": [110.0, 0.0, 80.0],
+          "yaw": 0.0
+        }
+      ],
       "controlling_factions": [],
       "spawn_tables": [],
       "parent_zone_id": "dawnshore",
