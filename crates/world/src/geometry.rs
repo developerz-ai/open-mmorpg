@@ -70,8 +70,10 @@ impl Aabb {
     /// Whether the circle `(cx, cz, radius)` overlaps this box.
     ///
     /// Uses the closest-point-on-box test: clamp the centre into the box, then
-    /// compare the squared gap against `radius²`. A non-negative `radius` is
-    /// assumed; a negative radius simply never intersects.
+    /// compare the squared gap against `radius²`. `radius` is assumed
+    /// non-negative; since the sign is squared away, a negative radius would
+    /// behave like its magnitude — callers screen out non-positive radii first
+    /// (see [`crate::Quadtree::query_radius`]).
     #[must_use]
     pub fn intersects_circle(&self, cx: f32, cz: f32, radius: f32) -> bool {
         let nearest_x = cx.clamp(self.min_x, self.max_x);
