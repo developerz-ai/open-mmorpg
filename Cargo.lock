@@ -977,6 +977,11 @@ dependencies = [
 [[package]]
 name = "omm-netcode"
 version = "0.0.0"
+dependencies = [
+ "omm-protocol",
+ "proptest",
+ "serde",
+]
 
 [[package]]
 name = "omm-persistence"
