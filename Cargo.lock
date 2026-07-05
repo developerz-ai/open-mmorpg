@@ -1029,6 +1029,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "omm-world"
+version = "0.0.0"
+dependencies = [
+ "omm-protocol",
+ "proptest",
+]
+
+[[package]]
 name = "omm-worldsvc"
 version = "0.0.0"
 dependencies = [
