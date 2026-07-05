@@ -311,7 +311,7 @@
       "name": "Revenant",
       "description": "Plate-clad tank/DPS hybrid wielding runic power and the Hollow force.",
       "role": "tank",
-      "abilities": ["runic-surge", "hollow-strike", "runic-shield"],
+      "abilities": ["rune-strike", "death-gate", "soul-reaper", "army-of-the-dead"],
       "stat_growth": {
         "strength": 2,
         "dexterity": 1,
@@ -680,6 +680,56 @@
       "cast_time_sec": 0.5,
       "range_yards": 0.0,
       "effects": [{ "effect": "Buff", "magnitude": 32.0, "scaling": 1.0, "target": "self" }]
+    },
+    {
+      "id": "rune-strike",
+      "name": "Rune Strike",
+      "description": "A devastating melee blow that carves weakening runes into the target, reducing their defense.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 12,
+      "cast_time_sec": 0.0,
+      "range_yards": 5.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 14.0, "scaling": 1.1, "target": "enemy" },
+        { "effect": "Debuff", "magnitude": 8.0, "scaling": 0.4, "target": "enemy" }
+      ]
+    },
+    {
+      "id": "death-gate",
+      "name": "Death Gate",
+      "description": "Summon a spectral gate that teleports you to a target location, leaving behind a trail of chill.",
+      "max_rank": 1,
+      "cooldown_sec": 25.0,
+      "resource_cost": 20,
+      "cast_time_sec": 1.5,
+      "range_yards": 40.0,
+      "effects": [{ "effect": "Teleport", "magnitude": 0.0, "scaling": 0.0, "target": "self" }]
+    },
+    {
+      "id": "soul-reaper",
+      "name": "Soul Reaper",
+      "description": "A vicious strike that saps the target's essence, mending your own wounds.",
+      "max_rank": 1,
+      "cooldown_sec": 12.0,
+      "resource_cost": 22,
+      "cast_time_sec": 0.0,
+      "range_yards": 5.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 18.0, "scaling": 1.2, "target": "enemy" },
+        { "effect": "Heal", "magnitude": 12.0, "scaling": 0.6, "target": "self" }
+      ]
+    },
+    {
+      "id": "army-of-the-dead",
+      "name": "Army of the Dead",
+      "description": "Raise spectral skeletal minions from the earth to fight at your side for a short time.",
+      "max_rank": 1,
+      "cooldown_sec": 180.0,
+      "resource_cost": 50,
+      "cast_time_sec": 2.5,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Summon", "magnitude": 0.0, "scaling": 0.0, "target": "self" }]
     }
   ],
   "items": [
