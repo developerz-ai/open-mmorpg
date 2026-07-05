@@ -1142,10 +1142,19 @@ name = "omm-gateway"
 version = "0.0.0"
 dependencies = [
  "axum",
+ "base64",
+ "hmac",
+ "http-body-util",
  "omm-errors",
  "omm-protocol",
+ "rand 0.9.4",
  "serde",
+ "serde_json",
+ "sha2",
+ "subtle",
+ "thiserror",
  "tokio",
+ "tower",
  "tracing",
  "tracing-subscriber",
 ]
