@@ -16315,6 +16315,27 @@
       "spawn_tables": [],
       "parent_zone_id": "dawnshore",
       "navmesh": "nav/hollowveil-barrows.nav"
+    },
+    {
+      "id": "veridian-coast",
+      "name": "Veridian Coast",
+      "min_level": 10,
+      "max_level": 20,
+      "safe_locations": [
+        {
+          "id": "coast-waystation",
+          "position": [0.0, 0.0, 0.0],
+          "yaw": 0.0
+        },
+        {
+          "id": "fisher-haven",
+          "position": [50.0, 0.0, 30.0],
+          "yaw": 90.0
+        }
+      ],
+      "controlling_factions": ["aurelian-concord", "wildreach-pact"],
+      "spawn_tables": [],
+      "navmesh": "nav/veridian-coast.nav"
     }
   ],
   "spawn_tables": [
