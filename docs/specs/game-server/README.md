@@ -1,6 +1,6 @@
 # 🎮 Game-Server Specs
 
-> **Scope:** the authoritative runtime — everything between a client packet and durable state. The [architecture](../../architecture/README.md) folder says *how the system is shaped*; this folder says *how each server subsystem behaves*, tight enough to implement against. Content/renderer/web live elsewhere.
+> **Scope:** the authoritative runtime — everything between a client packet and durable state. The [architecture](../../architecture/README.md) folder says *how the system is shaped*; this folder says *how each server subsystem behaves*, tight enough to implement against. The renderer/client lives in [game-engine/](../game-engine/README.md) + [client/](../client/README.md); web lives elsewhere.
 
 Every spec here distills three proven references — **AzerothCore/TrinityCore** (what a full WoW-scale server actually needs, and where the 2004 design breaks), **GTA Online** (seamless single-world population without loading), **retail WoW ≥ Dragonflight** (sharding/layering/CRZ done at scale) — plus canonical real-time netcode theory. We take the *concept*, implement it *server-authoritative in Rust*, original IP only ([legal](../../initial-idea/01-legal-and-licensing.md)).
 

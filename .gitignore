@@ -27,3 +27,8 @@ dist/
 # OS / editor
 .DS_Store
 *.swp
+
+# Agent tooling — local, per-developer, regenerated on demand (see AGENTS.md → Clone setup)
+# .gitignore has no inline comments: a mid-line '#' is part of the pattern, so keep these bare.
+.codegraph/
+.claude-task-master/
