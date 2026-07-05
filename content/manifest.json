@@ -2549,6 +2549,69 @@
       "icon": "textures/checker-512.png",
       "mesh": "meshes/placeholder-cube.gltf",
       "max_stack": 1
+    },
+    {
+      "id": "trainee-shield",
+      "name": "Trainee Shield",
+      "description": "A reinforced wooden shield issued to recruits.",
+      "item_type": "Armor",
+      "slot": "offhand",
+      "required_level": 1,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 2,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 15,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-cube.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "arcane-tome",
+      "name": "Arcane Tome",
+      "description": "A primer of foundational arcane theory.",
+      "item_type": "Armor",
+      "slot": "offhand",
+      "required_level": 1,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 3,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 18,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-plane.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "ritual-orb",
+      "name": "Ritual Orb",
+      "description": "A crystal orb attuned to natural energies.",
+      "item_type": "Armor",
+      "slot": "offhand",
+      "required_level": 1,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 1,
+        "wisdom": 2,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 20,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-sphere.gltf",
+      "max_stack": 1
     }
   ],
   "quests": [
