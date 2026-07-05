@@ -70,6 +70,15 @@ sqlx = { version = "0.8", default-features = false, features = [
   "macros",
   "migrate",
 ] }
+# Sandbox VM for untrusted operator content scripts. Minimal features: a
+# Cranelift-compiled runtime with fuel metering — no WASI, no networking.
+wasmtime = { version = "46", default-features = false, features = [
+  "cranelift",
+  "runtime",
+  "std",
+] }
+# WebAssembly Text -> bytes, used only to build tiny test fixtures.
+wat = "1"
 
 # Lints applied workspace-wide. CI additionally runs `clippy -D warnings`.
 # The hard rule (no unwrap/expect on the hot path) is a warn here and denied in CI,
