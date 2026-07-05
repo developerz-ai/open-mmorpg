@@ -6,8 +6,10 @@
 //! re-simulation of a suspicious client. No wall-clock, no RNG, no I/O here.
 
 pub mod combat;
+pub mod movement;
 pub mod world;
 
+pub use movement::{apply_move, integrate_all};
 pub use world::World;
 
 use omm_ecs_core::{integrate, Health, Position, Velocity};
