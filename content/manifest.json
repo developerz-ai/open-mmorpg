@@ -16336,6 +16336,24 @@
       "controlling_factions": ["aurelian-concord", "wildreach-pact"],
       "spawn_tables": ["veridian-murlocs", "coast-harpies", "smuggler-bandits"],
       "navmesh": "nav/veridian-coast.nav"
+    },
+    {
+      "id": "smuggler-cove",
+      "name": "Smuggler's Cove",
+      "min_level": 15,
+      "max_level": 20,
+      "safe_locations": [
+        {
+          "id": "cove-entrance",
+          "position": [0.0, 0.0, 0.0],
+          "yaw": 0.0
+        }
+      ],
+      "controlling_factions": [],
+      "spawn_tables": ["smuggler-cove-pirates", "smuggler-cove-lookouts", "smuggler-cove-bosses"],
+      "parent_zone_id": "veridian-coast",
+      "entrance_position": [85.0, 0.0, 120.0],
+      "navmesh": "nav/smuggler-cove.nav"
     }
   ],
   "spawn_tables": [
@@ -16499,6 +16517,60 @@
         }
       ],
       "respawn_sec": 180
+    },
+    {
+      "id": "smuggler-cove-pirates",
+      "entries": [
+        {
+          "entity_id": "smuggler-cutthroat",
+          "weight": 100,
+          "max_count": 10,
+          "positions": [
+            [15.0, 0.0, 25.0],
+            [25.0, 0.0, 20.0],
+            [20.0, 0.0, 35.0],
+            [30.0, 0.0, 30.0],
+            [35.0, 0.0, 25.0]
+          ]
+        },
+        {
+          "entity_id": "smuggler-gunner",
+          "weight": 60,
+          "max_count": 6,
+          "positions": [[18.0, 0.0, 28.0], [28.0, 0.0, 22.0], [33.0, 0.0, 27.0]]
+        }
+      ],
+      "respawn_sec": 120
+    },
+    {
+      "id": "smuggler-cove-lookouts",
+      "entries": [
+        {
+          "entity_id": "smuggler-scout",
+          "weight": 80,
+          "max_count": 5,
+          "positions": [[10.0, 0.0, 15.0], [40.0, 0.0, 10.0], [45.0, 0.0, 40.0], [5.0, 0.0, 45.0]]
+        }
+      ],
+      "respawn_sec": 150
+    },
+    {
+      "id": "smuggler-cove-bosses",
+      "entries": [
+        {
+          "entity_id": "captain-brineblood",
+          "weight": 30,
+          "max_count": 1,
+          "positions": [[50.0, 0.0, 50.0]]
+        },
+        {
+          "entity_id": "first-mate-zarrah",
+          "weight": 50,
+          "max_count": 1,
+          "positions": [[48.0, 0.0, 52.0]]
+        }
+      ],
+      "respawn_sec": 600
     }
   ],
   "dungeons": [
