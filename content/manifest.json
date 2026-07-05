@@ -1286,13 +1286,13 @@
     {
       "id": "essence-burst",
       "name": "Essence Burst",
-      "description": "Release accumulated Essence in a powerful burst, dealing damage to all nearby enemies.",
+      "description": "Release accumulated Essence in a powerful burst, healing all nearby allies.",
       "max_rank": 1,
       "cooldown_sec": 14.0,
       "resource_cost": 28,
       "cast_time_sec": 0.0,
       "range_yards": 0.0,
-      "effects": [{ "effect": "Damage", "magnitude": 32.0, "scaling": 1.2, "target": "aoe_enemy" }]
+      "effects": [{ "effect": "Heal", "magnitude": 32.0, "scaling": 1.2, "target": "aoe_ally" }]
     },
     {
       "id": "mana-shield",
@@ -1354,6 +1354,42 @@
         { "effect": "Buff", "magnitude": 28.0, "scaling": 0.9, "target": "self" },
         { "effect": "Debuff", "magnitude": 0.0, "scaling": 0.0, "target": "self" }
       ]
+    },
+    {
+      "id": "arcane-channel",
+      "name": "Arcane Channel",
+      "description": "Channel raw arcane energy into a target, dealing continuous damage while the channel is maintained.",
+      "max_rank": 1,
+      "cooldown_sec": 12.0,
+      "resource_cost": 15,
+      "cast_time_sec": 2.5,
+      "range_yards": 25.0,
+      "effects": [{ "effect": "Damage", "magnitude": 18.0, "scaling": 1.1, "target": "enemy" }]
+    },
+    {
+      "id": "leylines",
+      "name": "Leylines",
+      "description": "Tap into the ambient leyline network, granting your party increased casting and movement speed for a time.",
+      "max_rank": 1,
+      "cooldown_sec": 30.0,
+      "resource_cost": 35,
+      "cast_time_sec": 0.0,
+      "range_yards": 0.0,
+      "effects": [
+        { "effect": "Buff", "magnitude": 15.0, "scaling": 0.5, "target": "party" },
+        { "effect": "Buff", "magnitude": 10.0, "scaling": 0.3, "target": "party" }
+      ]
+    },
+    {
+      "id": "weave-shield",
+      "name": "Weave Shield",
+      "description": "Weave a protective barrier around an ally that absorbs a fixed amount of incoming damage.",
+      "max_rank": 1,
+      "cooldown_sec": 25.0,
+      "resource_cost": 30,
+      "cast_time_sec": 0.5,
+      "range_yards": 30.0,
+      "effects": [{ "effect": "Buff", "magnitude": 50.0, "scaling": 1.2, "target": "ally" }]
     }
   ],
   "items": [
