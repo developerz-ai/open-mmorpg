@@ -409,6 +409,30 @@
       },
       "hp_per_level": 10,
       "resource_per_level": 8
+    },
+    {
+      "id": "oracle",
+      "name": "Oracle",
+      "description": "Radiance-healer and void-caller who wields both Dawn and Deep (Umbra) forces through prophecy and divine vision.",
+      "role": "healer",
+      "abilities": [
+        "radiance-bolt",
+        "void-mend",
+        "dawn-shield",
+        "void-corruption",
+        "prophecy-of-revelation",
+        "divine-void"
+      ],
+      "stat_growth": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 1,
+        "wisdom": 2,
+        "charisma": 1
+      },
+      "hp_per_level": 8,
+      "resource_per_level": 12
     }
   ],
   "abilities": [
@@ -1138,6 +1162,81 @@
       "cast_time_sec": 0.0,
       "range_yards": 0.0,
       "effects": [{ "effect": "Damage", "magnitude": 30.0, "scaling": 1.3, "target": "aoe_enemy" }]
+    },
+    {
+      "id": "radiance-bolt",
+      "name": "Radiance Bolt",
+      "description": "Hurl a bolt of searing Dawn radiance that burns the unworthy.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 10,
+      "cast_time_sec": 1.3,
+      "range_yards": 35.0,
+      "effects": [{ "effect": "Damage", "magnitude": 16.0, "scaling": 0.9, "target": "enemy" }]
+    },
+    {
+      "id": "void-mend",
+      "name": "Void Mend",
+      "description": "Channel the Deep force to stitch together an ally's wounds with shadow-knitted essence.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 16,
+      "cast_time_sec": 2.0,
+      "range_yards": 30.0,
+      "effects": [{ "effect": "Heal", "magnitude": 38.0, "scaling": 1.1, "target": "ally" }]
+    },
+    {
+      "id": "dawn-shield",
+      "name": "Dawn Shield",
+      "description": "Encase an ally in radiant light that absorbs incoming harm.",
+      "max_rank": 1,
+      "cooldown_sec": 12.0,
+      "resource_cost": 22,
+      "cast_time_sec": 0.0,
+      "range_yards": 30.0,
+      "effects": [{ "effect": "Buff", "magnitude": 38.0, "scaling": 1.0, "target": "ally" }]
+    },
+    {
+      "id": "void-corruption",
+      "name": "Void Corruption",
+      "description": "Corrupt the target's essence with Deep energy, dealing damage over time and reducing their defenses.",
+      "max_rank": 1,
+      "cooldown_sec": 10.0,
+      "resource_cost": 18,
+      "cast_time_sec": 1.5,
+      "range_yards": 30.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 20.0, "scaling": 0.8, "target": "enemy" },
+        { "effect": "Debuff", "magnitude": 12.0, "scaling": 0.4, "target": "enemy" }
+      ]
+    },
+    {
+      "id": "prophecy-of-revelation",
+      "name": "Prophecy of Revelation",
+      "description": "Grant a vision of the future to an ally, increasing their critical strike chance and hastening their casting.",
+      "max_rank": 1,
+      "cooldown_sec": 25.0,
+      "resource_cost": 28,
+      "cast_time_sec": 0.0,
+      "range_yards": 30.0,
+      "effects": [
+        { "effect": "Buff", "magnitude": 18.0, "scaling": 0.5, "target": "ally" },
+        { "effect": "Buff", "magnitude": 15.0, "scaling": 0.4, "target": "ally" }
+      ]
+    },
+    {
+      "id": "divine-void",
+      "name": "Divine Void",
+      "description": "Unleash the fusion of Dawn and Deep forces, dealing devastating damage to enemies while mending nearby allies.",
+      "max_rank": 1,
+      "cooldown_sec": 30.0,
+      "resource_cost": 45,
+      "cast_time_sec": 2.5,
+      "range_yards": 0.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 42.0, "scaling": 1.2, "target": "aoe_enemy" },
+        { "effect": "Heal", "magnitude": 35.0, "scaling": 1.0, "target": "aoe_ally" }
+      ]
     }
   ],
   "items": [
