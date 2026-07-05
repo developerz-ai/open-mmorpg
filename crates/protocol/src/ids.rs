@@ -51,6 +51,30 @@ id_newtype!(
     /// A zone shard process in the topology.
     ShardId
 );
+id_newtype!(
+    /// A race definition (template).
+    RaceId
+);
+id_newtype!(
+    /// A class definition (template).
+    ClassId
+);
+id_newtype!(
+    /// An ability definition (template).
+    AbilityId
+);
+id_newtype!(
+    /// An item definition (template).
+    ItemDefId
+);
+id_newtype!(
+    /// A quest definition (template).
+    QuestId
+);
+id_newtype!(
+    /// A zone definition (template).
+    ZoneId
+);
 
 #[cfg(test)]
 mod tests {

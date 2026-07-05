@@ -5,5 +5,18 @@
   "factions": [
     { "id": "dawnward", "name": "The Dawnward Pact", "hostile_to": ["nightfen"] },
     { "id": "nightfen", "name": "Nightfen Covenant", "hostile_to": ["dawnward"] }
-  ]
+  ],
+  "races": [],
+  "classes": [],
+  "abilities": [],
+  "items": [],
+  "quests": [],
+  "zones": [],
+  "spawn_tables": [],
+  "dungeons": [],
+  "economy": {
+    "auction_houses": [],
+    "trading_rules": [],
+    "starting_gold_copper": 0
+  }
 }

@@ -1,0 +1,17 @@
+{
+  "id": "open-mmorpg.assets",
+  "version": "0.0.0",
+  "api_version": 1,
+  "meshes": [
+    "placeholder-cube.gltf",
+    "placeholder-sphere.gltf",
+    "placeholder-plane.gltf"
+  ],
+  "textures": [
+    "checker-512.png",
+    "checker-1024.png"
+  ],
+  "audio": [
+    "silent-1s.ogg"
+  ]
+}
