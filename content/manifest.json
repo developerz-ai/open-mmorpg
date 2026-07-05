@@ -14962,6 +14962,90 @@
       "name": "Reinforcement Request",
       "rarity": "common",
       "item_type": "Quest"
+    },
+    {
+      "id": "iron-broadblade",
+      "name": "Iron Broadblade",
+      "description": "A sturdy broadsword for the seasoned warrior.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 5,
+      "stats": {
+        "strength": 4,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 150,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-cube.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "arcane-focus",
+      "name": "Arcane Focus",
+      "description": "A crystal focus that hums with latent power.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 10,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 6,
+        "wisdom": 2,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 500,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-plane.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "shadow-blade",
+      "name": "Shadow Blade",
+      "description": "A dagger that seems to absorb light.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 10,
+      "stats": {
+        "strength": 0,
+        "dexterity": 5,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 2
+      },
+      "quality": "rare",
+      "value_copper": 450,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-cube.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "venom-coated-dagger",
+      "name": "Venom-Coated Dagger",
+      "description": "A small dagger coated in toxic residue.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 10,
+      "stats": {
+        "strength": 0,
+        "dexterity": 3,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 200,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-cube.gltf",
+      "max_stack": 1
     }
   ],
   "quests": [
@@ -15257,6 +15341,117 @@
       "giver_id": "gate-captain-theron",
       "turn_in_id": "solhaven-commander",
       "next_quest_id": null
+    },
+    {
+      "id": "vanguards-path",
+      "name": "The Vanguard's Path",
+      "description": "Prove your strength as a Vanguard. Master the cleave technique under Bron's tutelage.",
+      "level": 5,
+      "prerequisites": [],
+      "objectives": [
+        {
+          "objective_type": "Speak",
+          "target_id": "vanguard-trainer-bron",
+          "count": 1,
+          "description": "Speak with Vanguard Trainer Bron"
+        },
+        {
+          "objective_type": "Kill",
+          "target_id": "dawnshore-wolf",
+          "count": 8,
+          "description": "Slay 8 dawnshore wolves using basic attacks"
+        },
+        {
+          "objective_type": "Kill",
+          "target_id": "dawnshore-boar",
+          "count": 3,
+          "description": "Slay 3 boars with heavy strikes"
+        }
+      ],
+      "rewards": {
+        "experience": 600,
+        "gold_copper": 200,
+        "choice_items": ["iron-broadblade"],
+        "items": ["healing-potion"],
+        "abilities": ["cleave"]
+      },
+      "giver_id": "vanguard-trainer-bron",
+      "turn_in_id": "vanguard-trainer-bron",
+      "next_quest_id": null
+    },
+    {
+      "id": "arcane-awakening",
+      "name": "Arcane Awakening",
+      "description": "The Lattice calls to you. Learn to weave fire under Elara's guidance.",
+      "level": 10,
+      "prerequisites": [],
+      "objectives": [
+        {
+          "objective_type": "Speak",
+          "target_id": "arcanist-trainer-elara",
+          "count": 1,
+          "description": "Speak with Arcanist Trainer Elara"
+        },
+        {
+          "objective_type": "Explore",
+          "target_id": "hollowveil-barrows",
+          "count": 1,
+          "description": "Channel arcane energy at the Hollowveil Barrows"
+        },
+        {
+          "objective_type": "Kill",
+          "target_id": "pact-scout",
+          "count": 5,
+          "description": "Destroy 5 Pact scouts with arcane bolts"
+        }
+      ],
+      "rewards": {
+        "experience": 1500,
+        "gold_copper": 500,
+        "choice_items": ["arcane-focus"],
+        "items": ["mana-potion", "mana-potion"],
+        "abilities": ["fireball"]
+      },
+      "giver_id": "arcanist-trainer-elara",
+      "turn_in_id": "arcanist-trainer-elara",
+      "next_quest_id": null
+    },
+    {
+      "id": "shadows-embrace",
+      "name": "Shadow's Embrace",
+      "description": "The darkness is your ally. Sylas will teach you to step through shadow.",
+      "level": 10,
+      "prerequisites": [],
+      "objectives": [
+        {
+          "objective_type": "Speak",
+          "target_id": "shade-trainer-sylas",
+          "count": 1,
+          "description": "Speak with Shade Trainer Sylas"
+        },
+        {
+          "objective_type": "Kill",
+          "target_id": "pact-scout",
+          "count": 3,
+          "description": "Assassinate 3 Pact scouts from behind"
+        },
+        {
+          "objective_type": "Gather",
+          "target_id": "scout-intel",
+          "count": 1,
+          "description": "Acquire Pact intelligence unnoticed"
+        }
+      ],
+      "rewards": {
+        "experience": 1500,
+        "gold_copper": 500,
+        "choice_items": ["shadow-blade"],
+        "items": ["minor-mana-potion", "venom-coated-dagger"],
+        "abilities": ["shadowstep"]
+      },
+      "giver_id": "shade-trainer-sylas",
+      "turn_in_id": "shade-trainer-sylas",
+      "next_quest_id": null
     }
   ],
   "zones": [
@@ -15310,7 +15505,7 @@
         }
       ],
       "controlling_factions": ["aurelian-concord", "wildreach-pact"],
-      "spawn_tables": ["dawnshore-wolves"],
+      "spawn_tables": ["dawnshore-wolves", "dawnshore-inn-npcs", "pale-gate-npcs"],
       "navmesh": "nav/dawnshore.nav"
     },
     {
@@ -15364,6 +15559,36 @@
           "weight": 100,
           "max_count": 1,
           "positions": [[12.0, 0.0, 28.0]]
+        },
+        {
+          "entity_id": "arcanist-trainer-elara",
+          "weight": 100,
+          "max_count": 1,
+          "positions": [[18.0, 0.0, 30.0]]
+        },
+        {
+          "entity_id": "shade-trainer-sylas",
+          "weight": 100,
+          "max_count": 1,
+          "positions": [[10.0, 0.0, 32.0]]
+        }
+      ],
+      "respawn_sec": 300
+    },
+    {
+      "id": "pale-gate-npcs",
+      "entries": [
+        {
+          "entity_id": "gate-captain-theron",
+          "weight": 100,
+          "max_count": 1,
+          "positions": [[5.0, 0.0, 5.0]]
+        },
+        {
+          "entity_id": "vanguard-trainer-bron",
+          "weight": 100,
+          "max_count": 1,
+          "positions": [[8.0, 0.0, 8.0]]
         }
       ],
       "respawn_sec": 300
