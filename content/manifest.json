@@ -141,6 +141,66 @@
         "wisdom": 1,
         "charisma": 0
       }
+    },
+    {
+      "id": "voss",
+      "name": "Voss",
+      "description": "Hollow-folk reclaimed from the crypt's chill; bearing the scar of their return with quiet purpose.",
+      "faction_id": "wildreach-pact",
+      "traits": [],
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 1,
+        "wisdom": 1,
+        "charisma": 0
+      }
+    },
+    {
+      "id": "tzari",
+      "name": "Tza'ri",
+      "description": "Desert walkers bound in honor to ancestor-spirits; guidance and insight flow through every bloodline.",
+      "faction_id": "wildreach-pact",
+      "traits": [],
+      "stats": {
+        "strength": 0,
+        "dexterity": 1,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 1,
+        "charisma": 1
+      }
+    },
+    {
+      "id": "ashkin",
+      "name": "Ashkin",
+      "description": "Trickster engineers of the deep wastes; every gear turns twice, and nothing is ever what it seems.",
+      "faction_id": "wildreach-pact",
+      "traits": [],
+      "stats": {
+        "strength": 0,
+        "dexterity": 2,
+        "constitution": 0,
+        "intelligence": 1,
+        "wisdom": 0,
+        "charisma": 0
+      }
+    },
+    {
+      "id": "sarn",
+      "name": "Sarn",
+      "description": "Dragon-touched warrior-folk; scales and fiery breath mark the ancient pact that still burns.",
+      "faction_id": "wildreach-pact",
+      "traits": [],
+      "stats": {
+        "strength": 2,
+        "dexterity": 0,
+        "constitution": 1,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      }
     }
   ],
   "classes": [
