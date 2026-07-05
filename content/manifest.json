@@ -305,6 +305,40 @@
       },
       "hp_per_level": 8,
       "resource_per_level": 7
+    },
+    {
+      "id": "revenant",
+      "name": "Revenant",
+      "description": "Plate-clad tank/DPS hybrid wielding runic power and the Hollow force.",
+      "role": "tank",
+      "abilities": ["rune-strike", "death-gate", "soul-reaper", "army-of-the-dead"],
+      "stat_growth": {
+        "strength": 2,
+        "dexterity": 1,
+        "constitution": 1,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "hp_per_level": 13,
+      "resource_per_level": 6
+    },
+    {
+      "id": "riftblade",
+      "name": "Riftblade",
+      "description": "Leather-clad tank/DPS hybrid wielding Havoc and the Rift force.",
+      "role": "tank",
+      "abilities": ["rift-strike", "chaotic-surge", "dimensional-tear", "chaos-storm"],
+      "stat_growth": {
+        "strength": 1,
+        "dexterity": 2,
+        "constitution": 0,
+        "intelligence": 1,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "hp_per_level": 10,
+      "resource_per_level": 7
     }
   ],
   "abilities": [
@@ -574,6 +608,164 @@
       "cast_time_sec": 0.8,
       "range_yards": 12.0,
       "effects": [{ "effect": "Damage", "magnitude": 22.0, "scaling": 0.8, "target": "enemy" }]
+    },
+    {
+      "id": "runic-surge",
+      "name": "Runic Surge",
+      "description": "Channel runic power into a devastating melee strike.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 14,
+      "cast_time_sec": 0.0,
+      "range_yards": 5.0,
+      "effects": [{ "effect": "Damage", "magnitude": 16.0, "scaling": 1.2, "target": "enemy" }]
+    },
+    {
+      "id": "hollow-strike",
+      "name": "Hollow Strike",
+      "description": "A chilling blow fueled by the Hollow force, sapping enemy strength.",
+      "max_rank": 1,
+      "cooldown_sec": 8.0,
+      "resource_cost": 18,
+      "cast_time_sec": 0.0,
+      "range_yards": 5.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 14.0, "scaling": 1.0, "target": "enemy" },
+        { "effect": "Debuff", "magnitude": 10.0, "scaling": 0.5, "target": "enemy" }
+      ]
+    },
+    {
+      "id": "runic-shield",
+      "name": "Runic Shield",
+      "description": "Carve runes into the air, forming a protective barrier that absorbs harm.",
+      "max_rank": 1,
+      "cooldown_sec": 12.0,
+      "resource_cost": 22,
+      "cast_time_sec": 0.5,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Buff", "magnitude": 35.0, "scaling": 1.0, "target": "self" }]
+    },
+    {
+      "id": "rift-strike",
+      "name": "Rift Strike",
+      "description": "A quick strike empowered by the Rift, tearing at the fabric of reality.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 12,
+      "cast_time_sec": 0.0,
+      "range_yards": 5.0,
+      "effects": [{ "effect": "Damage", "magnitude": 15.0, "scaling": 1.1, "target": "enemy" }]
+    },
+    {
+      "id": "havoc-surge",
+      "name": "Havoc Surge",
+      "description": "Channel chaotic Havoc into a devastating attack that fractures enemy defenses.",
+      "max_rank": 1,
+      "cooldown_sec": 10.0,
+      "resource_cost": 20,
+      "cast_time_sec": 0.0,
+      "range_yards": 5.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 18.0, "scaling": 1.3, "target": "enemy" },
+        { "effect": "Debuff", "magnitude": 12.0, "scaling": 0.5, "target": "enemy" }
+      ]
+    },
+    {
+      "id": "rift-shield",
+      "name": "Rift Shield",
+      "description": "Bend reality to form a protective barrier that deflects incoming harm.",
+      "max_rank": 1,
+      "cooldown_sec": 14.0,
+      "resource_cost": 24,
+      "cast_time_sec": 0.5,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Buff", "magnitude": 32.0, "scaling": 1.0, "target": "self" }]
+    },
+    {
+      "id": "rune-strike",
+      "name": "Rune Strike",
+      "description": "A devastating melee blow that carves weakening runes into the target, reducing their defense.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 12,
+      "cast_time_sec": 0.0,
+      "range_yards": 5.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 14.0, "scaling": 1.1, "target": "enemy" },
+        { "effect": "Debuff", "magnitude": 8.0, "scaling": 0.4, "target": "enemy" }
+      ]
+    },
+    {
+      "id": "death-gate",
+      "name": "Death Gate",
+      "description": "Summon a spectral gate that teleports you to a target location, leaving behind a trail of chill.",
+      "max_rank": 1,
+      "cooldown_sec": 25.0,
+      "resource_cost": 20,
+      "cast_time_sec": 1.5,
+      "range_yards": 40.0,
+      "effects": [{ "effect": "Teleport", "magnitude": 0.0, "scaling": 0.0, "target": "self" }]
+    },
+    {
+      "id": "soul-reaper",
+      "name": "Soul Reaper",
+      "description": "A vicious strike that saps the target's essence, mending your own wounds.",
+      "max_rank": 1,
+      "cooldown_sec": 12.0,
+      "resource_cost": 22,
+      "cast_time_sec": 0.0,
+      "range_yards": 5.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 18.0, "scaling": 1.2, "target": "enemy" },
+        { "effect": "Heal", "magnitude": 12.0, "scaling": 0.6, "target": "self" }
+      ]
+    },
+    {
+      "id": "army-of-the-dead",
+      "name": "Army of the Dead",
+      "description": "Raise spectral skeletal minions from the earth to fight at your side for a short time.",
+      "max_rank": 1,
+      "cooldown_sec": 180.0,
+      "resource_cost": 50,
+      "cast_time_sec": 2.5,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Summon", "magnitude": 0.0, "scaling": 0.0, "target": "self" }]
+    },
+    {
+      "id": "chaotic-surge",
+      "name": "Chaotic Surge",
+      "description": "Release accumulated Havoc in a violent explosion, dealing devastating damage to all nearby enemies.",
+      "max_rank": 1,
+      "cooldown_sec": 12.0,
+      "resource_cost": 25,
+      "cast_time_sec": 0.0,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Damage", "magnitude": 32.0, "scaling": 1.4, "target": "aoe_enemy" }]
+    },
+    {
+      "id": "dimensional-tear",
+      "name": "Dimensional Tear",
+      "description": "Tear through reality to teleport to your target location, leaving rift damage in your wake.",
+      "max_rank": 1,
+      "cooldown_sec": 20.0,
+      "resource_cost": 18,
+      "cast_time_sec": 0.5,
+      "range_yards": 35.0,
+      "effects": [
+        { "effect": "Teleport", "magnitude": 0.0, "scaling": 0.0, "target": "self" },
+        { "effect": "Damage", "magnitude": 14.0, "scaling": 0.8, "target": "aoe_enemy" }
+      ]
+    },
+    {
+      "id": "chaos-storm",
+      "name": "Chaos Storm",
+      "description": "Channel a vortex of chaotic energy that continuously damages all enemies within range.",
+      "max_rank": 1,
+      "cooldown_sec": 18.0,
+      "resource_cost": 8,
+      "cast_time_sec": 3.0,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Damage", "magnitude": 8.0, "scaling": 0.6, "target": "aoe_enemy" }]
     }
   ],
   "items": [
