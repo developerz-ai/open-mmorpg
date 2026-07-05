@@ -436,7 +436,7 @@
     {
       "id": "channeler",
       "name": "Channeler",
-      "description": "Mid-range empowerment mage who channels Essence and mana through Lattice\u00b7Bloom forces, weaving healing and damage in a flow of arcane energy.",
+      "description": "Mid-range empowerment mage who channels Essence and mana through Lattice·Bloom forces, weaving healing and damage in a flow of arcane energy.",
       "role": "healer",
       "abilities": [
         "essence-channel",
@@ -2197,6 +2197,196 @@
       "quality": "common",
       "value_copper": 5,
       "icon": "textures/solid-colors/white.png",
+      "max_stack": 10
+    },
+    {
+      "id": "healing-potion",
+      "name": "Healing Potion",
+      "description": "A standard mending draught that knits wounds.",
+      "item_type": "Consumable",
+      "required_level": 10,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 25,
+      "icon": "textures/solid-colors/white.png",
+      "max_stack": 10
+    },
+    {
+      "id": "greater-healing-potion",
+      "name": "Greater Healing Potion",
+      "description": "A potent draught that rapidly restores vitality.",
+      "item_type": "Consumable",
+      "required_level": 20,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 100,
+      "icon": "textures/solid-colors/green.png",
+      "max_stack": 10
+    },
+    {
+      "id": "supreme-healing-potion",
+      "name": "Supreme Healing Potion",
+      "description": "An extraordinary elixir that mends even grievous injuries.",
+      "item_type": "Consumable",
+      "required_level": 30,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 400,
+      "icon": "textures/solid-colors/blue.png",
+      "max_stack": 10
+    },
+    {
+      "id": "minor-mana-potion",
+      "name": "Minor Mana Potion",
+      "description": "A faintly glowing draft that restores a touch of arcane energy.",
+      "item_type": "Consumable",
+      "required_level": 5,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 15,
+      "icon": "textures/solid-colors/white.png",
+      "max_stack": 10
+    },
+    {
+      "id": "mana-potion",
+      "name": "Mana Potion",
+      "description": "A standard arcane draught that restores magical energy.",
+      "item_type": "Consumable",
+      "required_level": 15,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 40,
+      "icon": "textures/solid-colors/white.png",
+      "max_stack": 10
+    },
+    {
+      "id": "greater-mana-potion",
+      "name": "Greater Mana Potion",
+      "description": "A potent elixir that quickly replenishes arcane reserves.",
+      "item_type": "Consumable",
+      "required_level": 25,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 150,
+      "icon": "textures/solid-colors/green.png",
+      "max_stack": 10
+    },
+    {
+      "id": "rage-potion",
+      "name": "Rage Potion",
+      "description": "A fiery brew that temporarily strengthens the arm and fuels aggression.",
+      "item_type": "Consumable",
+      "required_level": 10,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 60,
+      "icon": "textures/solid-colors/red.png",
+      "max_stack": 10
+    },
+    {
+      "id": "greater-rage-potion",
+      "name": "Greater Rage Potion",
+      "description": "A volatile draft that surges through the body, granting immense physical power.",
+      "item_type": "Consumable",
+      "required_level": 20,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 250,
+      "icon": "textures/solid-colors/blue.png",
+      "max_stack": 10
+    },
+    {
+      "id": "clarity-potion",
+      "name": "Clarity Potion",
+      "description": "A crystalline infusion that sharpens the mind and quickens spellcasting.",
+      "item_type": "Consumable",
+      "required_level": 15,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 75,
+      "icon": "textures/solid-colors/green.png",
+      "max_stack": 10
+    },
+    {
+      "id": "greater-clarity-potion",
+      "name": "Greater Clarity Potion",
+      "description": "A transcendent brew that elevates consciousness to near-perfect clarity.",
+      "item_type": "Consumable",
+      "required_level": 25,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 300,
+      "icon": "textures/solid-colors/blue.png",
       "max_stack": 10
     },
     {
@@ -14267,6 +14457,368 @@
       "icon": "textures/solid-colors/orange.png",
       "mesh": "meshes/placeholder-plane.gltf",
       "max_stack": 1
+    },
+    {
+      "id": "traveler-ration",
+      "name": "Traveler Ration",
+      "description": "Durable journey bread. Hard as stone, keeps you going.",
+      "item_type": "Consumable",
+      "consumable_type": null,
+      "required_level": 1,
+      "effects": null,
+      "quality": "common",
+      "value_copper": 3,
+      "icon": "textures/solid-colors/gray.png",
+      "mesh": null,
+      "max_stack": 20
+    },
+    {
+      "id": "hearty-stew",
+      "name": "Hearty Stew",
+      "description": "A thick, warming stew that fortifies the body.",
+      "item_type": "Consumable",
+      "consumable_type": null,
+      "required_level": 10,
+      "effects": null,
+      "quality": "uncommon",
+      "value_copper": 50,
+      "icon": "textures/solid-colors/green.png",
+      "mesh": null,
+      "max_stack": 10
+    },
+    {
+      "id": "mana-bread",
+      "name": "Mana Bread",
+      "description": "Infused with arcane essence, it crackles when bitten.",
+      "item_type": "Consumable",
+      "consumable_type": null,
+      "required_level": 10,
+      "effects": null,
+      "quality": "uncommon",
+      "value_copper": 55,
+      "icon": "textures/solid-colors/blue.png",
+      "mesh": null,
+      "max_stack": 10
+    },
+    {
+      "id": "feast-of-plenty",
+      "name": "Feast of Plenty",
+      "description": "A grand spread enough for many. All who partake are strengthened.",
+      "item_type": "Consumable",
+      "consumable_type": null,
+      "required_level": 20,
+      "effects": null,
+      "quality": "rare",
+      "value_copper": 200,
+      "icon": "textures/solid-colors/purple.png",
+      "mesh": null,
+      "max_stack": 5
+    },
+    {
+      "id": "copper-ore",
+      "name": "Copper Ore",
+      "description": "A raw nugget of copper, soft and malleable.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 2,
+      "max_stack": 20
+    },
+    {
+      "id": "tin-ore",
+      "name": "Tin Ore",
+      "description": "A dull grey ore used in alloys.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 3,
+      "max_stack": 20
+    },
+    {
+      "id": "iron-ore",
+      "name": "Iron Ore",
+      "description": "A heavy stone ringed with veins of iron.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 10,
+      "max_stack": 20
+    },
+    {
+      "id": "mithril-ore",
+      "name": "Mithril Ore",
+      "description": "A feather-light vein of shimmering mithril.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 35,
+      "max_stack": 20
+    },
+    {
+      "id": "peacebloom",
+      "name": "Peacebloom",
+      "description": "A small white flower with healing properties.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 2,
+      "max_stack": 20
+    },
+    {
+      "id": "silverleaf",
+      "name": "Silverleaf",
+      "description": "Silvery leaves that glimmer in the light.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 2,
+      "max_stack": 20
+    },
+    {
+      "id": "earthroot",
+      "name": "Earthroot",
+      "description": "A gnarled root with a rich, earthen scent.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 8,
+      "max_stack": 20
+    },
+    {
+      "id": "kingsblood",
+      "name": "Kingsblood",
+      "description": "A regal red flower with potent magical properties.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 30,
+      "max_stack": 20
+    },
+    {
+      "id": "light-leather",
+      "name": "Light Leather",
+      "description": "A patch of soft, flexible leather.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 3,
+      "max_stack": 20
+    },
+    {
+      "id": "medium-leather",
+      "name": "Medium Leather",
+      "description": "A sturdy piece of medium-grade leather.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 12,
+      "max_stack": 20
+    },
+    {
+      "id": "heavy-leather",
+      "name": "Heavy Leather",
+      "description": "A thick, durable hide for armor crafting.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 28,
+      "max_stack": 20
+    },
+    {
+      "id": "malachite",
+      "name": "Malachite",
+      "description": "A vibrant green stone with swirling patterns.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 5,
+      "max_stack": 20
+    },
+    {
+      "id": "tiger-eye",
+      "name": "Tiger Eye",
+      "description": "A golden gemstone with chatoyant bands.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 15,
+      "max_stack": 20
+    },
+    {
+      "id": "moss-agate",
+      "name": "Moss Agate",
+      "description": "A translucent stone with moss-like inclusions.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 40,
+      "max_stack": 20
+    },
+    {
+      "id": "linen-wool",
+      "name": "Linen Wool",
+      "description": "Coarse woven cloth suitable for basic tailoring.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 2,
+      "max_stack": 20
+    },
+    {
+      "id": "silk-wool",
+      "name": "Silk Wool",
+      "description": "Fine silky fabric for advanced garments.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 11,
+      "max_stack": 20
+    },
+    {
+      "id": "mageweave",
+      "name": "Mageweave",
+      "description": "Enchanted cloth that hums with arcane energy.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 32,
+      "max_stack": 20
     }
   ],
   "quests": [
