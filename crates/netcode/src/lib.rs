@@ -1,119 +1,30 @@
-//! Reliability primitives for the UDP transport.
+//! Netcode: move authoritative state to many nearby clients at the tick rate,
+//! within a bandwidth budget, over a lossy link, without ever trusting the client.
 //!
-//! UDP gives us speed but no ordering or delivery guarantees, so we build a thin
-//! reliability layer on top: wrapping 16-bit sequence numbers and a 32-entry ack
-//! bitfield. This module is **pure math** — no sockets — so every edge case
-//! (wrap-around, gaps, duplicates) is unit-tested deterministically. The socket
-//! wiring lives in `apps/shard` / `apps/gateway`.
+//! This crate is **pure** — no sockets. The socket/transport wiring lives in
+//! `apps/shard` / `apps/gateway`; here we keep the algorithms that must be
+//! exhaustively, deterministically tested (docs/specs/game-server/netcode).
+//!
+//! The pipeline, in the order a shard applies it each tick:
+//! 1. [`aoi`] — filter the world to a client's area of interest, so bandwidth is
+//!    `O(nearby)`, not `O(world)`.
+//! 2. [`priority`] — fill a per-client byte budget by priority
+//!    (self > combat > near > far); low-priority entities skip ticks when over.
+//! 3. [`delta`] — send only what changed versus the last snapshot that client
+//!    acked; a dropped snapshot just deltas against an older baseline (Quake3).
+//! 4. [`quantize`] — mm-quantize positions and pack angles before send.
+//! 5. [`reliability`] — sequence/ack math so reliable channels survive loss.
 
-/// Half the sequence space; the threshold for "newer than" comparisons.
-const HALF: u16 = 1 << 15;
+pub mod aoi;
+pub mod delta;
+pub mod priority;
+pub mod quantize;
+pub mod reliability;
+pub mod snapshot;
 
-/// RFC 1982-style comparison: is `a` newer than `b` in a wrapping sequence?
-///
-/// Handles the wrap boundary correctly: `1` is newer than `65535`.
-#[must_use]
-pub fn seq_greater_than(a: u16, b: u16) -> bool {
-    ((a > b) && (a - b <= HALF)) || ((b > a) && (b - a > HALF))
-}
-
-/// Tracks which recent packets have been received, for building acks.
-///
-/// `latest` is the highest sequence seen; `bits` records the 32 sequences before
-/// it (bit `n` set == `latest - 1 - n` was received).
-#[derive(Debug, Clone, Copy, Default)]
-pub struct AckTracker {
-    latest: u16,
-    bits: u32,
-    seen_any: bool,
-}
-
-impl AckTracker {
-    /// A fresh tracker that has seen nothing.
-    #[must_use]
-    pub const fn new() -> Self {
-        Self {
-            latest: 0,
-            bits: 0,
-            seen_any: false,
-        }
-    }
-
-    /// Record a received sequence number, updating the ack window.
-    pub fn record(&mut self, seq: u16) {
-        if !self.seen_any {
-            self.latest = seq;
-            self.seen_any = true;
-            return;
-        }
-        if seq_greater_than(seq, self.latest) {
-            let shift = seq.wrapping_sub(self.latest);
-            // Old latest becomes a set bit; shift the window forward.
-            self.bits = self.bits.checked_shl(u32::from(shift)).unwrap_or(0)
-                | 1u32.checked_shl(u32::from(shift) - 1).unwrap_or(0);
-            self.latest = seq;
-        } else {
-            let diff = self.latest.wrapping_sub(seq);
-            if (1..=32).contains(&diff) {
-                self.bits |= 1 << (diff - 1);
-            }
-        }
-    }
-
-    /// The highest sequence acknowledged so far.
-    #[must_use]
-    pub const fn latest(&self) -> u16 {
-        self.latest
-    }
-
-    /// Whether `seq` is within the window and has been received.
-    #[must_use]
-    pub fn is_acked(&self, seq: u16) -> bool {
-        if !self.seen_any {
-            return false;
-        }
-        if seq == self.latest {
-            return true;
-        }
-        let diff = self.latest.wrapping_sub(seq);
-        (1..=32).contains(&diff) && (self.bits & (1 << (diff - 1))) != 0
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn newer_across_wrap_boundary() {
-        assert!(seq_greater_than(1, 65535));
-        assert!(!seq_greater_than(65535, 1));
-        assert!(seq_greater_than(100, 99));
-        assert!(!seq_greater_than(99, 100));
-    }
-
-    #[test]
-    fn tracker_acks_in_order() {
-        let mut t = AckTracker::new();
-        t.record(1);
-        t.record(2);
-        t.record(3);
-        assert_eq!(t.latest(), 3);
-        assert!(t.is_acked(3));
-        assert!(t.is_acked(2));
-        assert!(t.is_acked(1));
-        assert!(!t.is_acked(4));
-    }
-
-    #[test]
-    fn tracker_handles_gaps_and_late_arrivals() {
-        let mut t = AckTracker::new();
-        t.record(1);
-        t.record(3); // 2 missing
-        assert!(t.is_acked(3));
-        assert!(t.is_acked(1));
-        assert!(!t.is_acked(2));
-        t.record(2); // arrives late
-        assert!(t.is_acked(2));
-    }
-}
+pub use aoi::filter_by_interest;
+pub use delta::{apply_delta, diff, DeltaFrame};
+pub use priority::{fill_budget, Candidate, Priority};
+pub use quantize::{dequantize_angle, dequantize_pos, quantize_angle, quantize_pos};
+pub use reliability::{seq_greater_than, AckTracker};
+pub use snapshot::{EntitySnapshot, SnapshotFrame};

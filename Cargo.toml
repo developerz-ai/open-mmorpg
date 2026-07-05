@@ -13,6 +13,7 @@ members = [
   "crates/scripting",
   "crates/content-schema",
   "crates/errors",
+  "crates/world",
   "apps/gateway",
   "apps/shard",
   "apps/client",
@@ -40,12 +41,23 @@ omm-cache = { path = "crates/cache" }
 omm-scripting = { path = "crates/scripting" }
 omm-content-schema = { path = "crates/content-schema" }
 omm-errors = { path = "crates/errors" }
+omm-world = { path = "crates/world" }
 # external
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 thiserror = "2"
 tokio = { version = "1", features = ["rt-multi-thread", "macros", "net", "time", "signal", "sync"] }
 axum = "0.8"
+# Gateway edge crypto/util: signed session tokens (HMAC-SHA256), constant-time
+# MAC comparison, base64url token encoding, random nonces. Light, well-known.
+hmac = "0.12"
+sha2 = "0.10"
+subtle = "2.6"
+base64 = "0.22"
+rand = "0.9"
+# Tower utilities (ServiceExt::oneshot) for handler tests without a live socket.
+tower = "0.5"
+http-body-util = "0.1"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 proptest = "1"

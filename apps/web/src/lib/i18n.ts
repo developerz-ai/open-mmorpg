@@ -1,24 +1,14 @@
-import { type Catalog, createTranslator } from '@omm/i18n';
+import { createFormatters, createTranslator } from '@omm/i18n';
+import { config } from '../config.ts';
+import { en } from './catalog.ts';
 
 /**
- * The English catalog, authored nested by feature. Every user-facing string in
- * the app lives here; components call `t('...')`, never a bare literal. A missing
- * key renders as ⟦key⟧ so gaps are impossible to miss.
+ * The app's translator and `Intl` formatters, bound to the operator's locale.
+ * Copy comes from the catalog via `t()`; dates/numbers/money come from `fmt`
+ * (never a hand-written format string in the catalog).
+ * → docs/specs/web-client/i18n
  */
-const en: Catalog = {
-  realm: {
-    title: '{name}',
-    tagline: 'A realm running on the Open-MMORPG engine.',
-    status: {
-      heading: 'Realm status',
-      online: 'Online',
-      offline: 'Offline',
-      population: '{count} / {capacity} adventurers online',
-      loading: 'Checking realm…',
-      error: 'Realm status unavailable',
-    },
-  },
-  nav: { play: 'Play', armory: 'Armory', register: 'Create account' },
-};
-
 export const t = createTranslator(en);
+
+/** Locale-aware `Intl` formatters (integer, gold, date, relative time, …). */
+export const fmt = createFormatters(config.locale);

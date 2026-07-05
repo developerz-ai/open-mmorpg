@@ -11,6 +11,13 @@
 //! adopt Bevy ECS storage (docs/architecture/05-ecs-and-scripting.md); the
 //! component *shapes* below are chosen to port cleanly.
 
+pub mod combat;
+
+pub use combat::{
+    AbilityDef, AbilityId, ActiveAura, AuraSpec, Auras, Cooldowns, EffectKind, EntityId, Periodic,
+    Power, TargetKind, TargetShape, Team, Threat,
+};
+
 use omm_protocol::Vec3;
 
 /// Fixed simulation timestep in seconds. Fixed, not wall-clock, so the sim is

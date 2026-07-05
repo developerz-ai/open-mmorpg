@@ -1,61 +1,175 @@
+/*
+ * App-level layout only. Design-system tokens + component classes come from
+ * `packages/ui` (theme.css = tokens/base/utilities, components.css = the shared
+ * component library). This file holds page scaffolding (shell, header, grids) —
+ * never component styling, never raw hex.
+ */
 @import "@omm/ui/theme.css";
+@import "@omm/ui/components.css";
 
-.shell {
-  max-width: 48rem;
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+  width: 100%;
+  max-width: 64rem;
   margin: 0 auto;
-  padding: 3rem 1.25rem;
+  padding: 2.5rem 1.25rem;
+}
+
+.stack {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
+/* Skip link — visible on keyboard focus, off-screen otherwise (a11y). */
+.skip-link {
+  position: absolute;
+  left: 0.5rem;
+  top: -3rem;
+  padding: 0.5rem 0.9rem;
+  background: rgb(var(--color-surface));
+  border-radius: var(--radius-sm);
+  transition: top var(--dur-fast) var(--ease-out);
+  z-index: 10;
+}
+.skip-link:focus {
+  top: 0.5rem;
+}
+
+/* Header + nav */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgb(var(--color-line));
+  background: rgb(var(--color-bg-soft));
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+}
+.brand__name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: rgb(var(--color-fg-strong));
+}
+.brand__logo {
+  height: 1.75rem;
+  width: auto;
+}
+.site-nav {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Footer */
+.site-footer {
+  padding: 1.5rem 1.25rem;
+  border-top: 1px solid rgb(var(--color-line));
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Hero + feature grid */
 .hero h1 {
   margin: 0 0 0.25rem;
-  font-size: 2rem;
+  font-size: 2.25rem;
 }
-
-.card {
-  background: rgb(var(--color-surface));
-  border: 1px solid rgb(var(--color-line));
-  border-radius: 0.75rem;
-  padding: 1.25rem;
+.hero__tagline {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
 }
-
-.card h2 {
-  margin: 0 0 0.75rem;
-  font-size: 1rem;
-}
-
-.badge {
-  display: inline-block;
-  margin: 0 0 0.5rem;
-  padding: 0.15rem 0.6rem;
-  border-radius: 999px;
-  background: rgb(var(--color-accent) / 0.15);
-  color: rgb(var(--color-accent-strong));
-  font-size: 0.85rem;
-}
-
 .actions {
   display: flex;
   gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.feature-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
 }
 
-.omm-btn {
-  padding: 0.55rem 1.1rem;
-  border-radius: 0.5rem;
-  border: 1px solid transparent;
+/* Toolbar — search/filter rows above tables */
+.toolbar {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+.toolbar .field {
+  min-width: 12rem;
+}
+
+/* Feed */
+.feed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.feed-item {
+  display: flex;
+  gap: 0.75rem;
+  align-items: baseline;
+}
+.feed-item__time {
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+/* A button that reads as a link (for in-table drill-downs). */
+.link-button {
+  background: none;
+  border: none;
+  padding: 0;
   font: inherit;
   cursor: pointer;
 }
 
-.omm-btn--primary {
+/* Price-history bar chart */
+.chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  height: 8rem;
+  padding-top: 0.5rem;
+}
+.chart__col {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  height: 100%;
+}
+.chart__bar {
+  width: 100%;
+  min-height: 2px;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
   background: rgb(var(--color-accent));
-  color: rgb(var(--color-bg));
+  transition: height var(--dur-base) var(--ease-out);
+}
+.chart__label {
+  font-size: 0.75rem;
 }
 
-.omm-btn--ghost {
-  background: transparent;
-  border-color: rgb(var(--color-line));
-  color: rgb(var(--color-fg));
+/* Auth forms */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 24rem;
 }

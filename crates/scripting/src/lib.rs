@@ -54,6 +54,16 @@ mod tests {
             version: "0.0.0".into(),
             api_version: omm_content_schema::CONTENT_API_VERSION,
             factions: vec![],
+            races: vec![],
+            classes: vec![],
+            abilities: vec![],
+            items: vec![],
+            quests: vec![],
+            zones: vec![],
+            spawn_tables: vec![],
+            dungeons: vec![],
+            economy: Default::default(),
+            asset_manifest_ref: None,
         };
         assert_eq!(load_datapack(&m).unwrap(), 0);
     }

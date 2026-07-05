@@ -13,6 +13,13 @@ dist/
 .solid/
 *.tsbuildinfo
 
+# Playwright E2E artifacts (regenerated per run)
+test-results/
+playwright-report/
+.playwright-mcp/
+blob-report/
+playwright/.cache/
+
 # Env / secrets
 .env
 .env.*.local
@@ -34,3 +41,4 @@ dist/
 .claude-task-master/
 .claude/scheduled_tasks.lock
 .claude/settings.local.json
+.claude/worktrees/
