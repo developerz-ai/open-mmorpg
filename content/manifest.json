@@ -13,9 +13,7 @@
         "secondary": "#1f6fb2"
       },
       "capital": "solhaven",
-      "hostile_to": [
-        "wildreach-pact"
-      ]
+      "hostile_to": ["wildreach-pact"]
     },
     {
       "id": "wildreach-pact",
@@ -26,9 +24,7 @@
         "secondary": "#8c6a3e"
       },
       "capital": "emberhold",
-      "hostile_to": [
-        "aurelian-concord"
-      ]
+      "hostile_to": ["aurelian-concord"]
     }
   ],
   "races": [
@@ -37,9 +33,7 @@
       "name": "Aurin",
       "description": "Adaptable dawn-faith builders; the Concord's founders and its conscience.",
       "faction_id": "aurelian-concord",
-      "traits": [
-        "indomitable-spirit"
-      ],
+      "traits": ["indomitable-spirit"],
       "stats": {
         "strength": 0,
         "dexterity": 0,
@@ -69,9 +63,7 @@
       "name": "Karnat",
       "description": "Runecrafting forge-folk; veins etched with arcane lines that pulse with lattice-work.",
       "faction_id": "aurelian-concord",
-      "traits": [
-        "runic-resilience"
-      ],
+      "traits": ["runic-resilience"],
       "stats": {
         "strength": 1,
         "dexterity": 0,
@@ -86,9 +78,7 @@
       "name": "Cogwright",
       "description": "Clockwork engineers whose hands move with mechanical precision and arcane insight.",
       "faction_id": "aurelian-concord",
-      "traits": [
-        "quick-repair"
-      ],
+      "traits": ["quick-repair"],
       "stats": {
         "strength": 0,
         "dexterity": 1,
@@ -103,9 +93,7 @@
       "name": "Lucen",
       "description": "Dawn-touched seers bearing the radiant scar of their first sunrise, attuned to faith and prophecy.",
       "faction_id": "aurelian-concord",
-      "traits": [
-        "dawnfire-blessing"
-      ],
+      "traits": ["dawnfire-blessing"],
       "stats": {
         "strength": 0,
         "dexterity": 0,
@@ -120,9 +108,7 @@
       "name": "Brael",
       "description": "Honor-bound guardians who swear the Oath of the Last Watch; the Concord's first and last line of defense.",
       "faction_id": "aurelian-concord",
-      "traits": [
-        "guardian-strength"
-      ],
+      "traits": ["guardian-strength"],
       "stats": {
         "strength": 2,
         "dexterity": 0,
@@ -137,9 +123,7 @@
       "name": "Ordan",
       "description": "Green-skinned honorbound warriors; the Pact's martial core.",
       "faction_id": "wildreach-pact",
-      "traits": [
-        "savage-fury"
-      ],
+      "traits": ["savage-fury"],
       "stats": {
         "strength": 2,
         "dexterity": 0,
@@ -169,9 +153,7 @@
       "name": "Voss",
       "description": "Hollow-folk reclaimed from the crypt's chill; bearing the scar of their return with quiet purpose.",
       "faction_id": "wildreach-pact",
-      "traits": [
-        "will-endurance"
-      ],
+      "traits": ["will-endurance"],
       "stats": {
         "strength": 0,
         "dexterity": 0,
@@ -186,9 +168,7 @@
       "name": "Tza'ri",
       "description": "Desert walkers bound in honor to ancestor-spirits; guidance and insight flow through every bloodline.",
       "faction_id": "wildreach-pact",
-      "traits": [
-        "ancestral-guidance"
-      ],
+      "traits": ["ancestral-guidance"],
       "stats": {
         "strength": 0,
         "dexterity": 1,
@@ -203,9 +183,7 @@
       "name": "Ashkin",
       "description": "Trickster engineers of the deep wastes; every gear turns twice, and nothing is ever what it seems.",
       "faction_id": "wildreach-pact",
-      "traits": [
-        "explosive-tricks"
-      ],
+      "traits": ["explosive-tricks"],
       "stats": {
         "strength": 0,
         "dexterity": 2,
@@ -220,9 +198,7 @@
       "name": "Sarn",
       "description": "Dragon-touched warrior-folk; scales and fiery breath mark the ancient pact that still burns.",
       "faction_id": "wildreach-pact",
-      "traits": [
-        "dragon-breath"
-      ],
+      "traits": ["dragon-breath"],
       "stats": {
         "strength": 2,
         "dexterity": 0,
@@ -239,11 +215,7 @@
       "name": "Vanguard",
       "description": "Frontline martial soldier; a wall of steel and fury.",
       "role": "tank",
-      "abilities": [
-        "cleave",
-        "shield-bash",
-        "guardian-strike"
-      ],
+      "abilities": ["cleave", "shield-bash", "guardian-strike"],
       "stat_growth": {
         "strength": 2,
         "dexterity": 1,
@@ -260,11 +232,7 @@
       "name": "Templar",
       "description": "Armored holy warrior who mends allies and smites the unworthy.",
       "role": "healer",
-      "abilities": [
-        "smite",
-        "divine-aegis",
-        "lay-on-hands"
-      ],
+      "abilities": ["smite", "divine-aegis", "lay-on-hands"],
       "stat_growth": {
         "strength": 1,
         "dexterity": 0,
@@ -281,11 +249,7 @@
       "name": "Warden",
       "description": "Totemic elementalist who channels the forces through earthen wards.",
       "role": "healer",
-      "abilities": [
-        "healing-surge",
-        "totemic-ward",
-        "earth-shock"
-      ],
+      "abilities": ["healing-surge", "totemic-ward", "earth-shock"],
       "stat_growth": {
         "strength": 0,
         "dexterity": 0,
@@ -302,11 +266,7 @@
       "name": "Ranger",
       "description": "Marksman and beast-companion, master of the untamed reach.",
       "role": "dps",
-      "abilities": [
-        "quick-shot",
-        "hunters-mark",
-        "serpent-sting"
-      ],
+      "abilities": ["quick-shot", "hunters-mark", "serpent-sting"],
       "stat_growth": {
         "strength": 0,
         "dexterity": 3,
@@ -323,11 +283,7 @@
       "name": "Arcanist",
       "description": "Scholar of raw arcane; Lattice woven into bolts and flame.",
       "role": "dps",
-      "abilities": [
-        "arcane-bolt",
-        "fireball",
-        "frostbolt"
-      ],
+      "abilities": ["arcane-bolt", "fireball", "frostbolt"],
       "stat_growth": {
         "strength": 0,
         "dexterity": 0,
@@ -344,11 +300,7 @@
       "name": "Shade",
       "description": "Stealthed assassin striking from shadow with precise lethality.",
       "role": "dps",
-      "abilities": [
-        "backstab",
-        "shadowstep",
-        "venom-blade"
-      ],
+      "abilities": ["backstab", "shadowstep", "venom-blade"],
       "stat_growth": {
         "strength": 1,
         "dexterity": 3,
@@ -365,12 +317,7 @@
       "name": "Revenant",
       "description": "Plate-clad tank/DPS hybrid wielding runic power and the Hollow force.",
       "role": "tank",
-      "abilities": [
-        "rune-strike",
-        "death-gate",
-        "soul-reaper",
-        "army-of-the-dead"
-      ],
+      "abilities": ["rune-strike", "death-gate", "soul-reaper", "army-of-the-dead"],
       "stat_growth": {
         "strength": 2,
         "dexterity": 1,
@@ -387,12 +334,7 @@
       "name": "Riftblade",
       "description": "Leather-clad tank/DPS hybrid wielding Havoc and the Rift force.",
       "role": "tank",
-      "abilities": [
-        "rift-strike",
-        "chaotic-surge",
-        "dimensional-tear",
-        "chaos-storm"
-      ],
+      "abilities": ["rift-strike", "chaotic-surge", "dimensional-tear", "chaos-storm"],
       "stat_growth": {
         "strength": 1,
         "dexterity": 2,
@@ -409,13 +351,7 @@
       "name": "Wilder",
       "description": "Shapeshifting primal who draws power from the Bloom force, shifting between bear, cat, and eagle forms to tank, DPS, or travel.",
       "role": "tank",
-      "abilities": [
-        "bear-form",
-        "cat-form",
-        "eagle-form",
-        "healing-touch",
-        "natures-swiftness"
-      ],
+      "abilities": ["bear-form", "cat-form", "eagle-form", "healing-touch", "natures-swiftness"],
       "stat_growth": {
         "strength": 1,
         "dexterity": 1,
@@ -485,12 +421,7 @@
       "name": "Oracle",
       "description": "Radiance-healer and void-caller who wields both Dawn and Deep (Umbra) forces through prophecy and divine vision.",
       "role": "healer",
-      "abilities": [
-        "radiance",
-        "void-bolt",
-        "dawn-shield",
-        "shadow-word"
-      ],
+      "abilities": ["radiance", "void-bolt", "dawn-shield", "shadow-word"],
       "stat_growth": {
         "strength": 0,
         "dexterity": 0,
@@ -505,7 +436,7 @@
     {
       "id": "channeler",
       "name": "Channeler",
-      "description": "Mid-range empowerment mage who channels Essence and mana through Lattice·Bloom forces, weaving healing and damage in a flow of arcane energy.",
+      "description": "Mid-range empowerment mage who channels Essence and mana through Lattice\u00b7Bloom forces, weaving healing and damage in a flow of arcane energy.",
       "role": "healer",
       "abilities": [
         "essence-channel",
@@ -15019,6 +14950,18 @@
       "value_copper": 2,
       "icon": "textures/solid-colors/brown.png",
       "max_stack": 20
+    },
+    {
+      "id": "scout-intel",
+      "name": "Scout Intelligence",
+      "rarity": "common",
+      "item_type": "Quest"
+    },
+    {
+      "id": "reinforcement-request",
+      "name": "Reinforcement Request",
+      "rarity": "common",
+      "item_type": "Quest"
     }
   ],
   "quests": [
@@ -15040,9 +14983,7 @@
         "experience": 100,
         "gold_copper": 50,
         "choice_items": [],
-        "items": [
-          "minor-healing-potion"
-        ]
+        "items": ["minor-healing-potion"]
       },
       "giver_id": "env-emberheart",
       "turn_in_id": "warden-surann",
@@ -15053,9 +14994,7 @@
       "name": "Wolf Trouble at the Pale Gates",
       "description": "Wolves harry the outlying steadings. Thin their pack and bring proof.",
       "level": 2,
-      "prerequisites": [
-        "awakening-in-dawnshore"
-      ],
+      "prerequisites": ["awakening-in-dawnshore"],
       "objectives": [
         {
           "objective_type": "Kill",
@@ -15073,10 +15012,7 @@
       "rewards": {
         "experience": 250,
         "gold_copper": 100,
-        "choice_items": [
-          "rusty-shortsword",
-          "apprentice-rod"
-        ],
+        "choice_items": ["rusty-shortsword", "apprentice-rod"],
         "items": []
       },
       "giver_id": "warden-surann",
@@ -15088,9 +15024,7 @@
       "name": "The Path to the Crypt",
       "description": "A hollow wind blows from the old barrow. Find the Hollowveil entrance.",
       "level": 6,
-      "prerequisites": [
-        "wolf-trouble"
-      ],
+      "prerequisites": ["wolf-trouble"],
       "objectives": [
         {
           "objective_type": "Explore",
@@ -15114,9 +15048,7 @@
       "name": "Relic of the Hollow",
       "description": "Descend into the Hollowveil, take the relic, and bring it to light.",
       "level": 8,
-      "prerequisites": [
-        "path-to-the-crypt"
-      ],
+      "prerequisites": ["path-to-the-crypt"],
       "objectives": [
         {
           "objective_type": "Kill",
@@ -15134,10 +15066,7 @@
       "rewards": {
         "experience": 800,
         "gold_copper": 400,
-        "choice_items": [
-          "venomfang-dagger",
-          "hollowveil-mantle"
-        ],
+        "choice_items": ["venomfang-dagger", "hollowveil-mantle"],
         "items": []
       },
       "giver_id": "warden-surann",
@@ -15166,14 +15095,8 @@
       "rewards": {
         "experience": 150,
         "gold_copper": 75,
-        "choice_items": [
-          "rusty-shortsword",
-          "apprentice-rod"
-        ],
-        "items": [
-          "minor-healing-potion",
-          "travelers-ration"
-        ]
+        "choice_items": ["rusty-shortsword", "apprentice-rod"],
+        "items": ["minor-healing-potion", "travelers-ration"]
       },
       "giver_id": "innkeeper-mara",
       "turn_in_id": "innkeeper-mara",
@@ -15184,9 +15107,7 @@
       "name": "Strange Brew",
       "description": "A courier dropped a peculiar flask near the old bridge. Retrieve it for the innkeeper before something else finds it.",
       "level": 5,
-      "prerequisites": [
-        "a-warm-meal"
-      ],
+      "prerequisites": ["a-warm-meal"],
       "objectives": [
         {
           "objective_type": "Gather",
@@ -15204,13 +15125,8 @@
       "rewards": {
         "experience": 300,
         "gold_copper": 150,
-        "choice_items": [
-          "guardsman-tunic",
-          "rusty-shortsword"
-        ],
-        "items": [
-          "healing-potion"
-        ]
+        "choice_items": ["guardsman-tunic", "rusty-shortsword"],
+        "items": ["healing-potion"]
       },
       "giver_id": "innkeeper-mara",
       "turn_in_id": "innkeeper-mara",
@@ -15221,9 +15137,7 @@
       "name": "The Traveling Merchant",
       "description": "Merchant Gildas needs an escort to the Dawnshore market. The road has grown dangerous.",
       "level": 8,
-      "prerequisites": [
-        "strange-brew"
-      ],
+      "prerequisites": ["strange-brew"],
       "objectives": [
         {
           "objective_type": "Speak",
@@ -15242,13 +15156,106 @@
         "experience": 500,
         "gold_copper": 300,
         "choice_items": [],
-        "items": [
-          "travelers-ration",
-          "travelers-ration"
-        ]
+        "items": ["travelers-ration", "travelers-ration"]
       },
       "giver_id": "merchant-gildas",
       "turn_in_id": "merchant-gildas",
+      "next_quest_id": null
+    },
+    {
+      "id": "gates-under-siege",
+      "name": "Gates Under Siege",
+      "description": "The Pale Gate comes under attack by Pact forces. Hold the line against waves of enemies.",
+      "level": 10,
+      "prerequisites": [],
+      "objectives": [
+        {
+          "objective_type": "Kill",
+          "target_id": "pact-assault-wave",
+          "count": 5,
+          "description": "Defeat 5 waves of Pact assault forces"
+        },
+        {
+          "objective_type": "Speak",
+          "target_id": "gate-captain-theron",
+          "count": 1,
+          "description": "Report to Gate Captain Theron"
+        }
+      ],
+      "rewards": {
+        "experience": 1200,
+        "gold_copper": 500,
+        "choice_items": ["vanguard-training-sword", "templar-mace"],
+        "items": ["healing-potion", "healing-potion"]
+      },
+      "giver_id": "gate-captain-theron",
+      "turn_in_id": "gate-captain-theron",
+      "next_quest_id": "the-pact-skirmishers"
+    },
+    {
+      "id": "the-pact-skirmishers",
+      "name": "The Pact Skirmishers",
+      "description": "Pact scouts have been spotted near the Pale Gate. Eliminate them before they report our defenses.",
+      "level": 12,
+      "prerequisites": ["gates-under-siege"],
+      "objectives": [
+        {
+          "objective_type": "Kill",
+          "target_id": "pact-scout",
+          "count": 10,
+          "description": "Slay 10 Pact skirmishers"
+        },
+        {
+          "objective_type": "Gather",
+          "target_id": "scout-intel",
+          "count": 1,
+          "description": "Recover Pact intelligence"
+        },
+        {
+          "objective_type": "Speak",
+          "target_id": "gate-captain-theron",
+          "count": 1,
+          "description": "Deliver intelligence to Gate Captain Theron"
+        }
+      ],
+      "rewards": {
+        "experience": 1500,
+        "gold_copper": 750,
+        "choice_items": ["venomfang-dagger", "vanguard-training-sword"],
+        "items": ["greater-healing-potion", "minor-mana-potion"]
+      },
+      "giver_id": "gate-captain-theron",
+      "turn_in_id": "gate-captain-theron",
+      "next_quest_id": "reinforcement-request"
+    },
+    {
+      "id": "reinforcement-request",
+      "name": "Reinforcement Request",
+      "description": "The Pact threat is growing. Deliver Captain Theron's request for reinforcements to the Solhaven garrison.",
+      "level": 15,
+      "prerequisites": ["the-pact-skirmishers"],
+      "objectives": [
+        {
+          "objective_type": "Deliver",
+          "target_id": "reinforcement-request",
+          "count": 1,
+          "description": "Deliver reinforcement request to Solhaven"
+        },
+        {
+          "objective_type": "Speak",
+          "target_id": "solhaven-commander",
+          "count": 1,
+          "description": "Speak with Solhaven Commander"
+        }
+      ],
+      "rewards": {
+        "experience": 2000,
+        "gold_copper": 1000,
+        "choice_items": ["templar-mace", "hollowveil-mantle"],
+        "items": ["greater-healing-potion", "mana-potion", "travelers-ration"]
+      },
+      "giver_id": "gate-captain-theron",
+      "turn_in_id": "solhaven-commander",
       "next_quest_id": null
     }
   ],
@@ -15261,17 +15268,11 @@
       "safe_locations": [
         {
           "id": "emberdawn-square",
-          "position": [
-            0.0,
-            0.0,
-            0.0
-          ],
+          "position": [0.0, 0.0, 0.0],
           "yaw": 0.0
         }
       ],
-      "controlling_factions": [
-        "aurelian-concord"
-      ],
+      "controlling_factions": ["aurelian-concord"],
       "spawn_tables": [],
       "navmesh": "nav/solhaven.nav"
     },
@@ -15283,17 +15284,11 @@
       "safe_locations": [
         {
           "id": "chieftains-fire",
-          "position": [
-            0.0,
-            0.0,
-            0.0
-          ],
+          "position": [0.0, 0.0, 0.0],
           "yaw": 0.0
         }
       ],
-      "controlling_factions": [
-        "wildreach-pact"
-      ],
+      "controlling_factions": ["wildreach-pact"],
       "spawn_tables": [],
       "navmesh": "nav/emberhold.nav"
     },
@@ -15305,30 +15300,17 @@
       "safe_locations": [
         {
           "id": "pale-gate",
-          "position": [
-            0.0,
-            0.0,
-            0.0
-          ],
+          "position": [0.0, 0.0, 0.0],
           "yaw": 0.0
         },
         {
           "id": "dawnshore-inn",
-          "position": [
-            40.0,
-            0.0,
-            12.0
-          ],
+          "position": [40.0, 0.0, 12.0],
           "yaw": 90.0
         }
       ],
-      "controlling_factions": [
-        "aurelian-concord",
-        "wildreach-pact"
-      ],
-      "spawn_tables": [
-        "dawnshore-wolves"
-      ],
+      "controlling_factions": ["aurelian-concord", "wildreach-pact"],
+      "spawn_tables": ["dawnshore-wolves"],
       "navmesh": "nav/dawnshore.nav"
     },
     {
@@ -15339,11 +15321,7 @@
       "safe_locations": [
         {
           "id": "barrows-approach",
-          "position": [
-            110.0,
-            0.0,
-            80.0
-          ],
+          "position": [110.0, 0.0, 80.0],
           "yaw": 0.0
         }
       ],
@@ -15361,35 +15339,13 @@
           "entity_id": "dawnshore-wolf",
           "weight": 100,
           "max_count": 10,
-          "positions": [
-            [
-              28.0,
-              0.0,
-              40.0
-            ],
-            [
-              60.0,
-              0.0,
-              30.0
-            ],
-            [
-              45.0,
-              0.0,
-              70.0
-            ]
-          ]
+          "positions": [[28.0, 0.0, 40.0], [60.0, 0.0, 30.0], [45.0, 0.0, 70.0]]
         },
         {
           "entity_id": "dawnshore-boar",
           "weight": 40,
           "max_count": 5,
-          "positions": [
-            [
-              70.0,
-              0.0,
-              60.0
-            ]
-          ]
+          "positions": [[70.0, 0.0, 60.0]]
         }
       ],
       "respawn_sec": 60
@@ -15401,25 +15357,13 @@
           "entity_id": "innkeeper-mara",
           "weight": 100,
           "max_count": 1,
-          "positions": [
-            [
-              15.0,
-              0.0,
-              25.0
-            ]
-          ]
+          "positions": [[15.0, 0.0, 25.0]]
         },
         {
           "entity_id": "merchant-gildas",
           "weight": 100,
           "max_count": 1,
-          "positions": [
-            [
-              12.0,
-              0.0,
-              28.0
-            ]
-          ]
+          "positions": [[12.0, 0.0, 28.0]]
         }
       ],
       "respawn_sec": 300
@@ -15432,23 +15376,13 @@
       "min_level": 6,
       "recommended_level": 8,
       "max_players": 5,
-      "boss_ids": [
-        "hollowveil-warden"
-      ],
+      "boss_ids": ["hollowveil-warden"],
       "trash_spawn_tables": [],
-      "loot_tables": [
-        "venomfang-dagger",
-        "hollowveil-mantle",
-        "crypt-relic"
-      ],
+      "loot_tables": ["venomfang-dagger", "hollowveil-mantle", "crypt-relic"],
       "time_limit_minutes": 60,
       "lockout_hours": 24,
       "entrance_zone_id": "hollowveil-barrows",
-      "entrance_position": [
-        120.0,
-        0.0,
-        90.0
-      ]
+      "entrance_position": [120.0, 0.0, 90.0]
     }
   ],
   "economy": {
@@ -15457,11 +15391,7 @@
         "id": "solhaven-exchange",
         "name": "The Solhaven Exchange",
         "zone_id": "solhaven",
-        "position": [
-          8.0,
-          0.0,
-          6.0
-        ],
+        "position": [8.0, 0.0, 6.0],
         "fee_percentage": 0.05,
         "min_bid_increment": 0.05,
         "max_listings_per_account": 20,
@@ -15472,11 +15402,7 @@
         "id": "emberhold-exchange",
         "name": "The Emberhold Exchange",
         "zone_id": "emberhold",
-        "position": [
-          10.0,
-          0.0,
-          8.0
-        ],
+        "position": [10.0, 0.0, 8.0],
         "fee_percentage": 0.05,
         "min_bid_increment": 0.05,
         "max_listings_per_account": 20,
