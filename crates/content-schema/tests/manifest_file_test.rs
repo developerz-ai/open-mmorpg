@@ -32,7 +32,7 @@ fn committed_manifest_loads_and_validates() {
 
     // The slice a player actually picks from at character creation.
     assert_eq!(manifest.races.len(), 12, "complete racial slate");
-    assert_eq!(manifest.classes.len(), 8, "complete hero class set");
+    assert_eq!(manifest.classes.len(), 9, "complete hero class set");
     assert!(
         manifest
             .races
