@@ -10,6 +10,13 @@ repository.workspace = true
 [dependencies]
 omm-content-schema.workspace = true
 omm-errors.workspace = true
+omm-protocol.workspace = true
+thiserror.workspace = true
+wasmtime.workspace = true
+
+[dev-dependencies]
+omm-protocol.workspace = true
+wat.workspace = true
 
 [lints]
 workspace = true
