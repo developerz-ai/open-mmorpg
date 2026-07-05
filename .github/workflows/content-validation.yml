@@ -22,36 +22,29 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Bun
-        uses: oven-sh/setup-bun@v1
+        uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
 
       - name: Install Rust toolchain
-        uses: actions-rust-lang/setup-rust-toolchain@v1
+        uses: dtolnay/rust-toolchain@stable
 
       - name: Cache Cargo
-        uses: actions/cache@v3
+        uses: Swatinem/rust-cache@v2
+
+      - name: Install cargo-nextest
+        uses: taiki-e/install-action@v2.81.6
         with:
-          path: |
-            ~/.cargo/bin/
-            ~/.cargo/registry/index/
-            ~/.cargo/registry/cache/
-            ~/.cargo/git/db/
-            target/
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-cargo-
+          tool: nextest
 
       - name: Validate content manifest
         run: bun scripts/validate-content.ts
 
       - name: Run content-schema tests
-        run: cargo nextest run --package content-schema
+        run: cargo nextest run --package omm-content-schema
 
-      - name: Run content-schema benchmarks
-        run: |
-          cargo install critcmp || true
-          cargo bench --package content-schema
+      - name: Compile content-schema benchmarks
+        run: cargo bench --package omm-content-schema --no-run
 
   content-lint:
     name: Content JSON linting
@@ -62,10 +55,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Bun
-        uses: oven-sh/setup-bun@v1
+        uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
 
       - name: Check JSON syntax
-        run: |
-          find content -name '*.json' -exec bun -e 'import("fs").readFileSync(process.argv[1], "utf8")' {} \;
+        run: >
+          find content -name '*.json' -exec
+          bun -e 'try { JSON.parse(require("node:fs").readFileSync(process.argv[1], "utf8")); } catch (e) { console.error(process.argv[1] + ": " + e.message); process.exit(1); }'
+          {} \;

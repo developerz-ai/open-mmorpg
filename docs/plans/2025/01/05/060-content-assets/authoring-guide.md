@@ -339,8 +339,8 @@ content/
 bin/check
 
 # Run content-schema tests
-cargo nextest run --package content-schema
+cargo nextest run --package omm-content-schema
 
 # Run benchmarks
-cargo bench --package content-schema
+cargo bench --package omm-content-schema
 ```

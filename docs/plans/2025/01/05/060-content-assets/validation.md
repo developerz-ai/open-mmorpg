@@ -329,10 +329,10 @@ All content is validated on load via `omm-content-schema::load_manifest()`. Vali
 
 ```bash
 # Run content-schema tests
-cargo nextest run --package content-schema
+cargo nextest run --package omm-content-schema
 
 # Manual validation
-cargo test --package content-schema validation_errors
+cargo test --package omm-content-schema validation_errors
 
 # Validate manifest
 bun scripts/validate-content.ts
