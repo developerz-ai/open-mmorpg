@@ -8,7 +8,8 @@
   "module": "src/index.ts",
   "exports": {
     ".": "./src/index.ts",
-    "./theme.css": "./src/theme.css"
+    "./theme.css": "./src/theme.css",
+    "./components.css": "./src/components.css"
   },
   "scripts": {
     "typecheck": "tsc --noEmit -p tsconfig.json",

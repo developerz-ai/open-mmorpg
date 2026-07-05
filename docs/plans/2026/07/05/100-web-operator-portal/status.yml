@@ -1,0 +1,23 @@
+plan: web-operator-portal
+updated: 2026-07-05
+branch: feat/web-operator-portal
+status: complete
+# One coherent fat PR for the web-client track — machine-reviewed (CodeRabbit + CI).
+# Split into slices proved artificial (nav ↔ surfaces ↔ catalog ↔ mock all couple).
+surfaces:
+  design-system: done      # packages/ui: tokens, motion, a11y, Card/Badge/Alert/Table/TextField/Spinner
+  i18n: done               # packages/i18n: t() + Intl formatters; full app catalog
+  data-layer: done         # typed api client, Zod boundaries, typed errors, mock backend
+  operator-brand: done     # Zod-validated config, brand tokens, feature-flag gating
+  app-shell: done          # router, layout (header/nav/footer), thin lazy routes
+  account-auth: done       # register/login/session/account via gateway
+  armory: done             # character + guild projections
+  auction-house: done      # browse/search + price history + idempotent buy intent
+  world-feed: done         # discriminated union, graceful unknown-variant degradation
+  testing-dx: done         # 54 unit/integration (bun) + 8 Playwright E2E; CI wired
+deviations:
+  ssr: "v1 ships single Vite SPA (scaffold is SPA); marketing/app route split + SSR-ready thin routes. No DoD item depends on SSR."
+verify:
+  bin_check_web: green
+  playwright_e2e: 8/8 green
+  live_smoke: "home/armory/auction-buy/feed/login driven via browser — all pass"

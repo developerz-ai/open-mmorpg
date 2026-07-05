@@ -1,20 +1,23 @@
+import { Badge, Card, Spinner } from '@omm/ui';
 import type { JSX } from 'solid-js';
 import { Match, Switch } from 'solid-js';
-import { t } from '../lib/i18n.ts';
+import { fmt, t } from '../lib/i18n.ts';
 import { useRealmStatus } from '../queries/useRealmStatus.ts';
 
 /**
  * Live realm status. SRP: this component only renders the query's three states
- * (loading / error / data). The fetch and validation live behind the hook.
+ * (loading / error / data). The fetch and validation live behind the hook;
+ * counts format via `Intl` (`fmt`), never a hand-written string.
  */
 export function RealmStatusCard(): JSX.Element {
   const status = useRealmStatus();
   return (
-    <section class="card">
-      <h2 class="text-fg-strong">{t('realm.status.heading')}</h2>
+    <Card title={t('realm.status.heading')}>
       <Switch>
         <Match when={status.isPending}>
-          <p class="text-fg-muted">{t('realm.status.loading')}</p>
+          <p class="text-fg-muted">
+            <Spinner label={t('realm.status.loading')} /> {t('realm.status.loading')}
+          </p>
         </Match>
         <Match when={status.isError}>
           <p class="text-fg-muted">{t('realm.status.error')}</p>
@@ -22,19 +25,21 @@ export function RealmStatusCard(): JSX.Element {
         <Match when={status.data}>
           {(data) => (
             <>
-              <p class="badge">
-                {data().online ? t('realm.status.online') : t('realm.status.offline')}
+              <p>
+                <Badge tone={data().online ? 'success' : 'neutral'}>
+                  {data().online ? t('realm.status.online') : t('realm.status.offline')}
+                </Badge>
               </p>
               <p class="text-fg-muted">
                 {t('realm.status.population', {
-                  count: data().population,
-                  capacity: data().capacity,
+                  count: fmt.integer(data().population),
+                  capacity: fmt.integer(data().capacity),
                 })}
               </p>
             </>
           )}
         </Match>
       </Switch>
-    </section>
+    </Card>
   );
 }
