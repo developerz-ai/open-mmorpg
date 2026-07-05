@@ -322,6 +322,23 @@
       },
       "hp_per_level": 13,
       "resource_per_level": 6
+    },
+    {
+      "id": "riftblade",
+      "name": "Riftblade",
+      "description": "Leather-clad tank/DPS hybrid wielding Havoc and the Rift force.",
+      "role": "tank",
+      "abilities": ["rift-strike", "havoc-surge", "rift-shield"],
+      "stat_growth": {
+        "strength": 1,
+        "dexterity": 2,
+        "constitution": 0,
+        "intelligence": 1,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "hp_per_level": 10,
+      "resource_per_level": 7
     }
   ],
   "abilities": [
@@ -627,6 +644,42 @@
       "cast_time_sec": 0.5,
       "range_yards": 0.0,
       "effects": [{ "effect": "Buff", "magnitude": 35.0, "scaling": 1.0, "target": "self" }]
+    },
+    {
+      "id": "rift-strike",
+      "name": "Rift Strike",
+      "description": "A quick strike empowered by the Rift, tearing at the fabric of reality.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 12,
+      "cast_time_sec": 0.0,
+      "range_yards": 5.0,
+      "effects": [{ "effect": "Damage", "magnitude": 15.0, "scaling": 1.1, "target": "enemy" }]
+    },
+    {
+      "id": "havoc-surge",
+      "name": "Havoc Surge",
+      "description": "Channel chaotic Havoc into a devastating attack that fractures enemy defenses.",
+      "max_rank": 1,
+      "cooldown_sec": 10.0,
+      "resource_cost": 20,
+      "cast_time_sec": 0.0,
+      "range_yards": 5.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 18.0, "scaling": 1.3, "target": "enemy" },
+        { "effect": "Debuff", "magnitude": 12.0, "scaling": 0.5, "target": "enemy" }
+      ]
+    },
+    {
+      "id": "rift-shield",
+      "name": "Rift Shield",
+      "description": "Bend reality to form a protective barrier that deflects incoming harm.",
+      "max_rank": 1,
+      "cooldown_sec": 14.0,
+      "resource_cost": 24,
+      "cast_time_sec": 0.5,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Buff", "magnitude": 32.0, "scaling": 1.0, "target": "self" }]
     }
   ],
   "items": [
