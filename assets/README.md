@@ -34,7 +34,7 @@ Assets support hot-swapping during development:
 
 ## Directory Structure
 
-```
+```text
 assets/
 ├── manifest.json           # Asset manifest (tracks versions)
 ├── meshes/                 # 3D models (glTF)

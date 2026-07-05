@@ -52,9 +52,17 @@ assets/
 ### Cross-References
 - All references are validated by `load_manifest()`
 - Faction `hostile_to` arrays must reference valid faction IDs
+- Faction `capital` must reference a valid zone ID
 - Race `faction_id` must reference a valid faction
+- Race `traits` arrays must reference valid ability IDs
 - Class `abilities` arrays must reference valid ability IDs
 - Quest `prerequisites` must reference valid quest IDs
+- Quest objective `target_id` must reference valid item IDs (for Gather/Deliver) or zone IDs (for Explore)
+- Quest reward items must reference valid item IDs
+- Zone `spawn_tables` arrays must reference valid spawn table IDs
+- Zone `parent_zone_id` must reference a valid zone ID
+- Dungeon `entrance_zone_id` must reference a valid zone ID
+- Dungeon `loot_tables` must reference valid item IDs
 
 ## Validation Checklist
 
@@ -99,7 +107,21 @@ Before committing content changes, verify:
 {
   "races": [
     ...existing,
-    {"$ref": "races/my-race.json"}
+    {
+      "id": "my-race",
+      "name": "My Race",
+      "description": "A playable race",
+      "faction_id": "some-faction",
+      "traits": ["racial-trait-ability"],
+      "stats": {
+        "strength": 2,
+        "dexterity": 0,
+        "constitution": 1,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      }
+    }
   ]
 }
 ```
