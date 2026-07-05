@@ -15075,6 +15075,36 @@
         "tradable": true,
         "auctionable": true,
         "mailing_allowed": true
+      },
+      {
+        "item_pattern": "*-relic",
+        "tradable": false,
+        "auctionable": false,
+        "mailing_allowed": false
+      },
+      {
+        "item_pattern": "soulbound-*",
+        "tradable": false,
+        "auctionable": false,
+        "mailing_allowed": false
+      },
+      {
+        "item_pattern": "*-key",
+        "tradable": false,
+        "auctionable": false,
+        "mailing_allowed": false
+      },
+      {
+        "item_pattern": "potion-*",
+        "tradable": true,
+        "auctionable": true,
+        "mailing_allowed": true
+      },
+      {
+        "item_pattern": "crafting-material-*",
+        "tradable": true,
+        "auctionable": true,
+        "mailing_allowed": true
       }
     ],
     "starting_gold_copper": 100
