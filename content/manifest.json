@@ -15046,6 +15046,401 @@
       "icon": "textures/checker-512.png",
       "mesh": "meshes/placeholder-cube.gltf",
       "max_stack": 1
+    },
+    {
+      "id": "concord-medallion",
+      "name": "Concord Medallion",
+      "description": "A silver medallion bearing the crest of the Aurelian Concord.",
+      "item_type": "Trinket",
+      "slot": "trinket",
+      "required_level": 15,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 3,
+        "intelligence": 3,
+        "wisdom": 0,
+        "charisma": 5
+      },
+      "quality": "uncommon",
+      "value_copper": 500,
+      "icon": "textures/solid-colors/yellow.png",
+      "mesh": "meshes/placeholder-sphere.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "concord-emblem",
+      "name": "Concord Emblem",
+      "description": "An emblem of office within the Aurelian Concord hierarchy.",
+      "item_type": "Trinket",
+      "slot": "trinket",
+      "required_level": 17,
+      "stats": {
+        "strength": 0,
+        "dexterity": 2,
+        "constitution": 4,
+        "intelligence": 2,
+        "wisdom": 0,
+        "charisma": 6
+      },
+      "quality": "uncommon",
+      "value_copper": 750,
+      "icon": "textures/solid-colors/yellow.png",
+      "mesh": "meshes/placeholder-sphere.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "guardsman-shield",
+      "name": "Guardsman Shield",
+      "description": "A sturdy shield bearing the Concord's crest.",
+      "item_type": "Armor",
+      "slot": "offhand",
+      "required_level": 16,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 8,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 600,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-cube.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "arcane-tome",
+      "name": "Arcane Tome",
+      "description": "A tome of ancient knowledge, preserved by the Concord.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 17,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 12,
+        "wisdom": 8,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 800,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-book.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "templar-greatsword",
+      "name": "Templar Greatsword",
+      "description": "A blessed greatsword wielded by the Concord's templars.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 18,
+      "stats": {
+        "strength": 14,
+        "dexterity": 4,
+        "constitution": 6,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 1500,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-sword.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "concord-cloak",
+      "name": "Concord Cloak",
+      "description": "A fine cloak bearing the Concord's colors.",
+      "item_type": "Armor",
+      "slot": "back",
+      "required_level": 18,
+      "stats": {
+        "strength": 0,
+        "dexterity": 6,
+        "constitution": 4,
+        "intelligence": 4,
+        "wisdom": 0,
+        "charisma": 4
+      },
+      "quality": "uncommon",
+      "value_copper": 900,
+      "icon": "textures/solid-colors/blue.png",
+      "mesh": "meshes/placeholder-plane.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "concord-champion-blade",
+      "name": "Concord Champion Blade",
+      "description": "The blade of a Concord Champion, forged in dawnfire.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 20,
+      "stats": {
+        "strength": 18,
+        "dexterity": 8,
+        "constitution": 8,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "epic",
+      "value_copper": 3000,
+      "icon": "textures/solid-colors/gold.png",
+      "mesh": "meshes/placeholder-sword.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "concord-champion-staff",
+      "name": "Concord Champion Staff",
+      "description": "A staff of office for the Concord's arcane champions.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 20,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 6,
+        "intelligence": 20,
+        "wisdom": 12,
+        "charisma": 0
+      },
+      "quality": "epic",
+      "value_copper": 3000,
+      "icon": "textures/solid-colors/gold.png",
+      "mesh": "meshes/placeholder-staff.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "pact-blood-totem",
+      "name": "Pact Blood Totem",
+      "description": "A toem carved from bloodwood, sacred to the Pact.",
+      "item_type": "Trinket",
+      "slot": "trinket",
+      "required_level": 15,
+      "stats": {
+        "strength": 4,
+        "dexterity": 0,
+        "constitution": 6,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 2
+      },
+      "quality": "uncommon",
+      "value_copper": 500,
+      "icon": "textures/solid-colors/red.png",
+      "mesh": "meshes/placeholder-totem.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "pact-honor-blade",
+      "name": "Pact Honor Blade",
+      "description": "A curved blade forged in Pact tradition.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 16,
+      "stats": {
+        "strength": 10,
+        "dexterity": 8,
+        "constitution": 4,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 750,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-curveblade.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "hunter-vest",
+      "name": "Hunter Vest",
+      "description": "A leather vest worn by Pact hunters.",
+      "item_type": "Armor",
+      "slot": "chest",
+      "required_level": 16,
+      "stats": {
+        "strength": 0,
+        "dexterity": 8,
+        "constitution": 6,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 600,
+      "icon": "textures/solid-colors/brown.png",
+      "mesh": "meshes/placeholder-vest.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "stormsinger-kilt",
+      "name": "Stormsinger Kilt",
+      "description": "A ceremonial kilt woven by the Matriarch's hands.",
+      "item_type": "Armor",
+      "slot": "legs",
+      "required_level": 17,
+      "stats": {
+        "strength": 0,
+        "dexterity": 4,
+        "constitution": 4,
+        "intelligence": 6,
+        "wisdom": 8,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 800,
+      "icon": "textures/solid-colors/purple.png",
+      "mesh": "meshes/placeholder-kilt.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "pact-honor-totem",
+      "name": "Pact Honor Totem",
+      "description": "A totem of honor, granted to those who prove their worth.",
+      "item_type": "Trinket",
+      "slot": "trinket",
+      "required_level": 17,
+      "stats": {
+        "strength": 6,
+        "dexterity": 0,
+        "constitution": 8,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 4
+      },
+      "quality": "uncommon",
+      "value_copper": 900,
+      "icon": "textures/solid-colors/red.png",
+      "mesh": "meshes/placeholder-totem.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "pact-waraxe",
+      "name": "Pact Waraxe",
+      "description": "A brutal waraxe favored by Pact warriors.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 18,
+      "stats": {
+        "strength": 16,
+        "dexterity": 2,
+        "constitution": 10,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 1500,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-axe.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "thornfang-vambraces",
+      "name": "Thornfang Vambraces",
+      "description": "Armguards forged by Chieftain Thornfang himself.",
+      "item_type": "Armor",
+      "slot": "wrist",
+      "required_level": 18,
+      "stats": {
+        "strength": 6,
+        "dexterity": 0,
+        "constitution": 10,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 1200,
+      "icon": "textures/solid-colors/red.png",
+      "mesh": "meshes/placeholder-vambraces.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "pact-champion-greataxe",
+      "name": "Pact Champion Greataxe",
+      "description": "The legendary greataxe of a Pact Champion.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 20,
+      "stats": {
+        "strength": 22,
+        "dexterity": 4,
+        "constitution": 12,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "epic",
+      "value_copper": 3000,
+      "icon": "textures/solid-colors/gold.png",
+      "mesh": "meshes/placeholder-greataxe.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "pact-champion-claws",
+      "name": "Pact Champion Claws",
+      "description": "Brutal claws that strike with the fury of the wild.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 20,
+      "stats": {
+        "strength": 12,
+        "dexterity": 20,
+        "constitution": 8,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "epic",
+      "value_copper": 3000,
+      "icon": "textures/solid-colors/gold.png",
+      "mesh": "meshes/placeholder-claws.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "ancient-texts",
+      "name": "Ancient Texts",
+      "description": "Dusty tomes of forgotten knowledge.",
+      "item_type": "Quest",
+      "required_level": 1,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 0,
+      "icon": "textures/solid-colors/white.png",
+      "max_stack": 1
+    },
+    {
+      "id": "sacred-herbs",
+      "name": "Sacred Herbs",
+      "description": "Herbs gathered for ritual purposes.",
+      "item_type": "Quest",
+      "required_level": 1,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 0,
+      "icon": "textures/solid-colors/green.png",
+      "max_stack": 10
     }
   ],
   "quests": [
@@ -15452,6 +15847,402 @@
       "giver_id": "shade-trainer-sylas",
       "turn_in_id": "shade-trainer-sylas",
       "next_quest_id": null
+    },
+    {
+      "id": "concord-call",
+      "name": "The Concord's Call",
+      "description": "High Chancellor Valerius summons you to Solhaven. The Concord requires your service.",
+      "level": 15,
+      "prerequisites": [],
+      "objectives": [
+        {
+          "objective_type": "Speak",
+          "target_id": "high-chancellor-valerius",
+          "count": 1,
+          "description": "Speak with High Chancellor Valerius in Solhaven"
+        }
+      ],
+      "rewards": {
+        "experience": 2500,
+        "gold_copper": 1200,
+        "choice_items": ["concord-medallion"],
+        "items": ["healing-potion", "healing-potion"]
+      },
+      "giver_id": "high-chancellor-valerius",
+      "turn_in_id": "high-chancellor-valerius",
+      "next_quest_id": "diplomatic-mission"
+    },
+    {
+      "id": "diplomatic-mission",
+      "name": "A Diplomatic Mission",
+      "description": "Travel to the Dawnshore frontier and gather intelligence on Pact movements. The Concord must know its enemy.",
+      "level": 16,
+      "prerequisites": ["concord-call"],
+      "objectives": [
+        {
+          "objective_type": "Speak",
+          "target_id": "gate-captain-theron",
+          "count": 1,
+          "description": "Speak with Gate Captain Theron at Pale Gate"
+        },
+        {
+          "objective_type": "Kill",
+          "target_id": "pact-scout",
+          "count": 8,
+          "description": "Eliminate 8 Pact scouts"
+        },
+        {
+          "objective_type": "Gather",
+          "target_id": "scout-intel",
+          "count": 2,
+          "description": "Recover 2 sets of Pact intelligence"
+        },
+        {
+          "objective_type": "Speak",
+          "target_id": "high-chancellor-valerius",
+          "count": 1,
+          "description": "Report to High Chancellor Valerius"
+        }
+      ],
+      "rewards": {
+        "experience": 3000,
+        "gold_copper": 1500,
+        "choice_items": ["concord-emblem", "guardsman-shield"],
+        "items": ["mana-potion", "travelers-ration"]
+      },
+      "giver_id": "high-chancellor-valerius",
+      "turn_in_id": "high-chancellor-valerius",
+      "next_quest_id": "academys-request"
+    },
+    {
+      "id": "academys-request",
+      "name": "The Academy's Request",
+      "description": "Arcanist Elara requires ancient texts from the Hollowveil Barrows. Knowledge must be preserved.",
+      "level": 17,
+      "prerequisites": ["diplomatic-mission"],
+      "objectives": [
+        {
+          "objective_type": "Speak",
+          "target_id": "arcanist-trainer-elara",
+          "count": 1,
+          "description": "Speak with Arcanist Elara"
+        },
+        {
+          "objective_type": "Explore",
+          "target_id": "hollowveil-barrows",
+          "count": 1,
+          "description": "Enter the Hollowveil Barrows"
+        },
+        {
+          "objective_type": "Kill",
+          "target_id": "hollowveil-warden",
+          "count": 1,
+          "description": "Defeat the Hollowveil Warden"
+        },
+        {
+          "objective_type": "Gather",
+          "target_id": "ancient-texts",
+          "count": 1,
+          "description": "Recover the ancient texts"
+        },
+        {
+          "objective_type": "Deliver",
+          "target_id": "ancient-texts",
+          "count": 1,
+          "description": "Deliver the texts to Elara"
+        }
+      ],
+      "rewards": {
+        "experience": 3500,
+        "gold_copper": 1800,
+        "choice_items": ["arcane-tome", "concord-emblem"],
+        "items": ["greater-healing-potion", "mana-potion", "mana-potion"]
+      },
+      "giver_id": "arcanist-trainer-elara",
+      "turn_in_id": "arcanist-trainer-elara",
+      "next_quest_id": "threats-to-order"
+    },
+    {
+      "id": "threats-to-order",
+      "name": "Threats to the Order",
+      "description": "Pact forces have been spotted near Solhaven. Eliminate their raiders before they strike the city.",
+      "level": 18,
+      "prerequisites": ["academys-request"],
+      "objectives": [
+        {
+          "objective_type": "Speak",
+          "target_id": "high-chancellor-valerius",
+          "count": 1,
+          "description": "Speak with High Chancellor Valerius"
+        },
+        {
+          "objective_type": "Kill",
+          "target_id": "pact-scout",
+          "count": 15,
+          "description": "Slay 15 Pact raiders"
+        },
+        {
+          "objective_type": "Kill",
+          "target_id": "pact-assault-wave",
+          "count": 3,
+          "description": "Defeat 3 Pact assault waves"
+        },
+        {
+          "objective_type": "Speak",
+          "target_id": "high-chancellor-valerius",
+          "count": 1,
+          "description": "Report your success"
+        }
+      ],
+      "rewards": {
+        "experience": 4000,
+        "gold_copper": 2000,
+        "choice_items": ["templar-greatsword", "concord-cloak"],
+        "items": ["greater-healing-potion", "greater-healing-potion", "mana-potion"]
+      },
+      "giver_id": "high-chancellor-valerius",
+      "turn_in_id": "high-chancellor-valerius",
+      "next_quest_id": "accords-final-test"
+    },
+    {
+      "id": "accords-final-test",
+      "name": "The Accord's Final Test",
+      "description": "Prove your worthiness to join the Concord's elite. Face a champion of the Pact in single combat.",
+      "level": 20,
+      "prerequisites": ["threats-to-order"],
+      "objectives": [
+        {
+          "objective_type": "Speak",
+          "target_id": "high-chancellor-valerius",
+          "count": 1,
+          "description": "Begin your final test"
+        },
+        {
+          "objective_type": "Kill",
+          "target_id": "pact-champion",
+          "count": 1,
+          "description": "Defeat the Pact Champion"
+        },
+        {
+          "objective_type": "Speak",
+          "target_id": "high-chancellor-valerius",
+          "count": 1,
+          "description": "Claim your place among the Concord's finest"
+        }
+      ],
+      "rewards": {
+        "experience": 5000,
+        "gold_copper": 3000,
+        "choice_items": ["concord-champion-blade", "concord-champion-staff"],
+        "items": ["supreme-healing-potion", "mana-potion", "mana-potion", "travelers-ration"]
+      },
+      "giver_id": "high-chancellor-valerius",
+      "turn_in_id": "high-chancellor-valerius",
+      "next_quest_id": null
+    },
+    {
+      "id": "pacts-blood-oath",
+      "name": "The Pact's Blood Oath",
+      "description": "Chieftain Thornfang calls you to Emberhold. The Pact requires your strength.",
+      "level": 15,
+      "prerequisites": [],
+      "objectives": [
+        {
+          "objective_type": "Speak",
+          "target_id": "chieftain-thornfang",
+          "count": 1,
+          "description": "Speak with Chieftain Thornfang in Emberhold"
+        }
+      ],
+      "rewards": {
+        "experience": 2500,
+        "gold_copper": 1200,
+        "choice_items": ["pact-blood-totem"],
+        "items": ["healing-potion", "healing-potion"]
+      },
+      "giver_id": "chieftain-thornfang",
+      "turn_in_id": "chieftain-thornfang",
+      "next_quest_id": "survival-of-fittest"
+    },
+    {
+      "id": "survival-of-fittest",
+      "name": "Survival of the Fittest",
+      "description": "The wilds are unforgiving. Hunt dangerous beasts and prove your strength to the Pact.",
+      "level": 16,
+      "prerequisites": ["pacts-blood-oath"],
+      "objectives": [
+        {
+          "objective_type": "Speak",
+          "target_id": "chieftain-thornfang",
+          "count": 1,
+          "description": "Receive the hunting challenge"
+        },
+        {
+          "objective_type": "Kill",
+          "target_id": "dawnshore-wolf",
+          "count": 20,
+          "description": "Slay 20 dawnshore wolves"
+        },
+        {
+          "objective_type": "Kill",
+          "target_id": "dawnshore-boar",
+          "count": 10,
+          "description": "Slay 10 boars"
+        },
+        {
+          "objective_type": "Gather",
+          "target_id": "wolf-pelt",
+          "count": 10,
+          "description": "Collect 10 wolf pelts"
+        },
+        {
+          "objective_type": "Speak",
+          "target_id": "chieftain-thornfang",
+          "count": 1,
+          "description": "Return to Chieftain Thornfang"
+        }
+      ],
+      "rewards": {
+        "experience": 3000,
+        "gold_copper": 1500,
+        "choice_items": ["pact-honor-blade", "hunter-vest"],
+        "items": ["healing-potion", "healing-potion", "travelers-ration"]
+      },
+      "giver_id": "chieftain-thornfang",
+      "turn_in_id": "chieftain-thornfang",
+      "next_quest_id": "honored-traditions"
+    },
+    {
+      "id": "honored-traditions",
+      "name": "Honored Traditions",
+      "description": "Elder Matriarch Stormsinger teaches you the ways of the Pact. Honor must be earned.",
+      "level": 17,
+      "prerequisites": ["survival-of-fittest"],
+      "objectives": [
+        {
+          "objective_type": "Speak",
+          "target_id": "elder-matriarch-stormsinger",
+          "count": 1,
+          "description": "Speak with Elder Matriarch Stormsinger"
+        },
+        {
+          "objective_type": "Explore",
+          "target_id": "emberhold",
+          "count": 1,
+          "description": "Visit the sacred fire in Emberhold"
+        },
+        {
+          "objective_type": "Gather",
+          "target_id": "sacred-herbs",
+          "count": 5,
+          "description": "Gather 5 sacred herbs"
+        },
+        {
+          "objective_type": "Deliver",
+          "target_id": "sacred-herbs",
+          "count": 1,
+          "description": "Offer the herbs at the sacred fire"
+        },
+        {
+          "objective_type": "Speak",
+          "target_id": "elder-matriarch-stormsinger",
+          "count": 1,
+          "description": "Receive the Elder's blessing"
+        }
+      ],
+      "rewards": {
+        "experience": 3500,
+        "gold_copper": 1800,
+        "choice_items": ["stormsinger-kilt", "pact-honor-totem"],
+        "items": ["mana-potion", "greater-healing-potion", "travelers-ration"]
+      },
+      "giver_id": "elder-matriarch-stormsinger",
+      "turn_in_id": "elder-matriarch-stormsinger",
+      "next_quest_id": "enemies-at-gates"
+    },
+    {
+      "id": "enemies-at-gates",
+      "name": "Enemies at the Gates",
+      "description": "Concord forces encroach near the Pact's borders. Drive them back.",
+      "level": 18,
+      "prerequisites": ["honored-traditions"],
+      "objectives": [
+        {
+          "objective_type": "Speak",
+          "target_id": "chieftain-thornfang",
+          "count": 1,
+          "description": "Speak with Chieftain Thornfang"
+        },
+        {
+          "objective_type": "Kill",
+          "target_id": "pact-scout",
+          "count": 15,
+          "description": "Slay 15 Concord soldiers"
+        },
+        {
+          "objective_type": "Kill",
+          "target_id": "pact-assault-wave",
+          "count": 3,
+          "description": "Defeat 3 Concord assault waves"
+        },
+        {
+          "objective_type": "Gather",
+          "target_id": "scout-intel",
+          "count": 2,
+          "description": "Recover 2 sets of Concord intelligence"
+        },
+        {
+          "objective_type": "Speak",
+          "target_id": "chieftain-thornfang",
+          "count": 1,
+          "description": "Report your victory"
+        }
+      ],
+      "rewards": {
+        "experience": 4000,
+        "gold_copper": 2000,
+        "choice_items": ["pact-waraxe", "thornfang-vambraces"],
+        "items": ["greater-healing-potion", "greater-healing-potion", "minor-mana-potion"]
+      },
+      "giver_id": "chieftain-thornfang",
+      "turn_in_id": "chieftain-thornfang",
+      "next_quest_id": "pacts-champion"
+    },
+    {
+      "id": "pacts-champion",
+      "name": "The Pact's Champion",
+      "description": "Face the Concord's elite champion in ritual combat. Prove the Pact's superiority.",
+      "level": 20,
+      "prerequisites": ["enemies-at-gates"],
+      "objectives": [
+        {
+          "objective_type": "Speak",
+          "target_id": "chieftain-thornfang",
+          "count": 1,
+          "description": "Begin the ritual combat"
+        },
+        {
+          "objective_type": "Kill",
+          "target_id": "concord-champion",
+          "count": 1,
+          "description": "Defeat the Concord Champion"
+        },
+        {
+          "objective_type": "Speak",
+          "target_id": "chieftain-thornfang",
+          "count": 1,
+          "description": "Claim your title as Pact Champion"
+        }
+      ],
+      "rewards": {
+        "experience": 5000,
+        "gold_copper": 3000,
+        "choice_items": ["pact-champion-greataxe", "pact-champion-claws"],
+        "items": ["supreme-healing-potion", "mana-potion", "mana-potion", "travelers-ration"]
+      },
+      "giver_id": "chieftain-thornfang",
+      "turn_in_id": "chieftain-thornfang",
+      "next_quest_id": null
     }
   ],
   "zones": [
@@ -15468,7 +16259,7 @@
         }
       ],
       "controlling_factions": ["aurelian-concord"],
-      "spawn_tables": [],
+      "spawn_tables": ["solhaven-faction-npcs"],
       "navmesh": "nav/solhaven.nav"
     },
     {
@@ -15484,7 +16275,7 @@
         }
       ],
       "controlling_factions": ["wildreach-pact"],
-      "spawn_tables": [],
+      "spawn_tables": ["emberhold-faction-npcs"],
       "navmesh": "nav/emberhold.nav"
     },
     {
@@ -15589,6 +16380,36 @@
           "weight": 100,
           "max_count": 1,
           "positions": [[8.0, 0.0, 8.0]]
+        }
+      ],
+      "respawn_sec": 300
+    },
+    {
+      "id": "solhaven-faction-npcs",
+      "entries": [
+        {
+          "entity_id": "high-chancellor-valerius",
+          "weight": 100,
+          "max_count": 1,
+          "positions": [[0.0, 0.0, 10.0]]
+        }
+      ],
+      "respawn_sec": 300
+    },
+    {
+      "id": "emberhold-faction-npcs",
+      "entries": [
+        {
+          "entity_id": "chieftain-thornfang",
+          "weight": 100,
+          "max_count": 1,
+          "positions": [[5.0, 0.0, 8.0]]
+        },
+        {
+          "entity_id": "elder-matriarch-stormsinger",
+          "weight": 100,
+          "max_count": 1,
+          "positions": [[8.0, 0.0, 5.0]]
         }
       ],
       "respawn_sec": 300
