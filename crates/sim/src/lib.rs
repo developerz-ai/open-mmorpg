@@ -5,6 +5,8 @@
 //! three things at once: server-side replay, lockstep validation, and anti-cheat
 //! re-simulation of a suspicious client. No wall-clock, no RNG, no I/O here.
 
+pub mod combat;
+
 use omm_ecs_core::{integrate, Health, Position, Velocity};
 use omm_protocol::{Intent, Vec3};
 
