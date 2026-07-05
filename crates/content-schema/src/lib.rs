@@ -19,7 +19,8 @@ use serde::{Deserialize, Serialize};
 pub const CONTENT_API_VERSION: u32 = 1;
 
 /// A datapack manifest — the root of a content bundle (`content/manifest.json`).
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+// No `Eq`: zones/dungeons/abilities carry `f32` positions, and `f32` is not `Eq`.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Manifest {
     /// Human-facing datapack id, e.g. `"open-mmorpg.base"`.
     pub id: String,
@@ -63,7 +64,8 @@ pub struct Manifest {
 }
 
 /// Economy data definitions.
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+// No `Eq`: holds `AuctionHouseDef`, whose fee fields are `f32`.
+#[derive(Debug, Clone, PartialEq, Default, Serialize, Deserialize)]
 pub struct EconomyData {
     /// Auction houses.
     #[serde(default)]
@@ -74,16 +76,6 @@ pub struct EconomyData {
     /// Starting gold for new characters (in copper).
     #[serde(default)]
     pub starting_gold_copper: u32,
-}
-
-impl Default for EconomyData {
-    fn default() -> Self {
-        Self {
-            auction_houses: Vec::new(),
-            trading_rules: Vec::new(),
-            starting_gold_copper: 0,
-        }
-    }
 }
 
 /// A faction players can belong to. Pure data — no behavior compiled in.
@@ -148,7 +140,7 @@ pub struct RaceDef {
 }
 
 /// Stat modifiers for race/class definitions.
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Default, Serialize, Deserialize)]
 pub struct StatModifiers {
     #[serde(default)]
     pub strength: i8,
@@ -162,19 +154,6 @@ pub struct StatModifiers {
     pub wisdom: i8,
     #[serde(default)]
     pub charisma: i8,
-}
-
-impl Default for StatModifiers {
-    fn default() -> Self {
-        Self {
-            strength: 0,
-            dexterity: 0,
-            constitution: 0,
-            intelligence: 0,
-            wisdom: 0,
-            charisma: 0,
-        }
-    }
 }
 
 /// A playable class. Pure data — defines abilities and role.
@@ -205,7 +184,8 @@ pub struct ClassDef {
 }
 
 /// An ability (skill, spell, attack). Pure data — effects are data-driven.
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+// No `Eq`: cooldown/cast/range are `f32`.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct AbilityDef {
     /// Stable machine id.
     pub id: String,
@@ -242,7 +222,8 @@ fn default_max_rank() -> u8 {
 }
 
 /// A single effect an ability can apply.
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+// No `Eq`: magnitude/scaling are `f32`.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct AbilityEffect {
     /// Effect type.
     pub effect: AbilityEffectType,
@@ -257,8 +238,9 @@ pub struct AbilityEffect {
 }
 
 /// The type of effect an ability applies.
+// Variants serialize by their PascalCase names (`"Damage"`, `"Heal"` …), matching
+// the content authoring guide (docs/plans/.../060-content-assets/authoring-guide.md).
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(rename_all = "snake_case")]
 pub enum AbilityEffectType {
     Damage,
     Heal,
@@ -314,8 +296,9 @@ fn default_stack_size() -> u16 {
 }
 
 /// Item category.
+// Variants serialize by their PascalCase names (`"Weapon"`, `"CraftingMaterial"` …),
+// matching the content authoring guide (docs/plans/.../060-content-assets/authoring-guide.md).
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(rename_all = "snake_case")]
 pub enum ItemType {
     Weapon,
     Armor,
@@ -374,8 +357,9 @@ pub struct QuestObjective {
 }
 
 /// Objective type.
+// Variants serialize by their PascalCase names (`"Kill"`, `"Speak"` …), matching
+// the content authoring guide (docs/plans/.../060-content-assets/authoring-guide.md).
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(rename_all = "snake_case")]
 pub enum QuestObjectiveType {
     Kill,
     Gather,
@@ -385,7 +369,7 @@ pub enum QuestObjectiveType {
 }
 
 /// Quest rewards.
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Default, Serialize, Deserialize)]
 pub struct QuestRewards {
     /// Experience reward.
     #[serde(default)]
@@ -401,19 +385,9 @@ pub struct QuestRewards {
     pub items: Vec<String>,
 }
 
-impl Default for QuestRewards {
-    fn default() -> Self {
-        Self {
-            experience: 0,
-            gold_copper: 0,
-            choice_items: Vec::new(),
-            items: Vec::new(),
-        }
-    }
-}
-
 /// A zone. Pure data — defines level range, safe locations, and spawns.
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+// No `Eq`: holds `SafeLocation` (`f32` positions).
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct ZoneDef {
     /// Stable machine id.
     pub id: String,
@@ -443,7 +417,8 @@ pub struct ZoneDef {
 }
 
 /// A safe respawn location.
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+// No `Eq`: position/yaw are `f32`.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct SafeLocation {
     /// Location id.
     pub id: String,
@@ -455,7 +430,8 @@ pub struct SafeLocation {
 }
 
 /// A spawn table. Pure data — defines what spawns where.
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+// No `Eq`: holds `SpawnEntry` (`f32` positions).
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct SpawnTable {
     /// Stable machine id.
     pub id: String,
@@ -468,7 +444,8 @@ pub struct SpawnTable {
 }
 
 /// A single spawn entry.
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+// No `Eq`: positions are `[f32; 3]`.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct SpawnEntry {
     /// Entity id to spawn.
     pub entity_id: String,
@@ -484,7 +461,8 @@ pub struct SpawnEntry {
 }
 
 /// A dungeon. Pure data — instanced content definition.
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+// No `Eq`: entrance_position is `Option<[f32; 3]>`.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct DungeonDef {
     /// Stable machine id.
     pub id: String,
@@ -523,7 +501,8 @@ pub struct DungeonDef {
 }
 
 /// Auction house definition.
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+// No `Eq`: fee/min-bid/deposit percentages are `f32`.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct AuctionHouseDef {
     /// Stable machine id.
     pub id: String,
@@ -591,13 +570,11 @@ pub fn validate(manifest: &Manifest) -> CoreResult<()> {
         return Err(CoreError::BadRequest("manifest id is empty".into()));
     }
 
-    // Collect all known IDs for validation
-    let mut known_factions: std::collections::HashSet<&str> =
+    // Collect the IDs validation actually cross-references. Races, classes and
+    // dungeons aren't referenced by id from other content today, so their id
+    // sets aren't needed here — adding such checks would re-introduce them.
+    let known_factions: std::collections::HashSet<&str> =
         manifest.factions.iter().map(|f| f.id.as_str()).collect();
-    let known_races: std::collections::HashSet<&str> =
-        manifest.races.iter().map(|r| r.id.as_str()).collect();
-    let known_classes: std::collections::HashSet<&str> =
-        manifest.classes.iter().map(|c| c.id.as_str()).collect();
     let known_abilities: std::collections::HashSet<&str> =
         manifest.abilities.iter().map(|a| a.id.as_str()).collect();
     let known_items: std::collections::HashSet<&str> =
@@ -606,10 +583,11 @@ pub fn validate(manifest: &Manifest) -> CoreResult<()> {
         manifest.quests.iter().map(|q| q.id.as_str()).collect();
     let known_zones: std::collections::HashSet<&str> =
         manifest.zones.iter().map(|z| z.id.as_str()).collect();
-    let known_spawn_tables: std::collections::HashSet<&str> =
-        manifest.spawn_tables.iter().map(|s| s.id.as_str()).collect();
-    let known_dungeons: std::collections::HashSet<&str> =
-        manifest.dungeons.iter().map(|d| d.id.as_str()).collect();
+    let known_spawn_tables: std::collections::HashSet<&str> = manifest
+        .spawn_tables
+        .iter()
+        .map(|s| s.id.as_str())
+        .collect();
 
     // Validate factions
     for faction in &manifest.factions {

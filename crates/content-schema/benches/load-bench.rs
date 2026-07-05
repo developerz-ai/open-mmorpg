@@ -1,10 +1,15 @@
 // Criterion benchmarks for content-schema loading and validation.
+// Benches aren't `#[test]`s, so clippy's `allow-unwrap-in-tests` doesn't cover
+// them — but a load failure in a bench SHOULD panic loudly, exactly like a test.
+#![allow(clippy::unwrap_used)]
 
-use criterion::{black_box, criterion_group, criterion_main, Criterion, BenchmarkId};
+use criterion::{black_box, criterion_group, criterion_main, Criterion};
 use omm_content_schema::{load_manifest, validate};
 
-/// A minimal manifest for baseline testing.
-const MINIMAL_MANIFEST: &str = r#"{
+/// A minimal manifest for baseline testing. Uses `r##"…"`## so the hex colors
+/// (`"#4a90e2"`) inside the realistic manifest can't prematurely close the raw
+/// string — the `"#` sequence is exactly the `r#"…"`# closer.
+const MINIMAL_MANIFEST: &str = r##"{
     "id": "test",
     "version": "0.0.0",
     "api_version": 1,
@@ -18,10 +23,10 @@ const MINIMAL_MANIFEST: &str = r#"{
     "spawn_tables": [],
     "dungeons": [],
     "economy": { "auction_houses": [], "trading_rules": [], "starting_gold_copper": 0 }
-}"#;
+}"##;
 
 /// A manifest with a realistic amount of content.
-const REALISTIC_MANIFEST: &str = r#"{
+const REALISTIC_MANIFEST: &str = r##"{
     "id": "open-mmorpg.base",
     "version": "0.0.0",
     "api_version": 1,
@@ -64,7 +69,7 @@ const REALISTIC_MANIFEST: &str = r#"{
         "trading_rules": [{ "item_pattern": "soulbound", "tradable": false, "auctionable": false, "mailing_allowed": false }],
         "starting_gold_copper": 100
     }
-}"#;
+}"##;
 
 fn bench_manifest_parsing(c: &mut Criterion) {
     let mut group = c.benchmark_group("manifest_parsing");
@@ -86,13 +91,9 @@ fn bench_manifest_validation(c: &mut Criterion) {
     let minimal = load_manifest(MINIMAL_MANIFEST.as_bytes()).unwrap();
     let realistic = load_manifest(REALISTIC_MANIFEST.as_bytes()).unwrap();
 
-    group.bench_function("minimal", |b| {
-        b.iter(|| validate(black_box(&minimal)))
-    });
+    group.bench_function("minimal", |b| b.iter(|| validate(black_box(&minimal))));
 
-    group.bench_function("realistic", |b| {
-        b.iter(|| validate(black_box(&realistic)))
-    });
+    group.bench_function("realistic", |b| b.iter(|| validate(black_box(&realistic))));
 
     group.finish();
 }

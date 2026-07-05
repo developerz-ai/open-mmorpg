@@ -1,20 +1,10 @@
 //! Integration tests for content-schema.
 //!
 //! These tests verify that the full datapack loads correctly and that
-//! cross-references resolve.
+//! cross-references resolve. `load_manifest` is pure (bytes in, no I/O), so the
+//! tests feed it JSON bytes directly.
 
-use std::io::Write;
-use tempfile::NamedTempFile;
-
-use omm_content_schema::{load_manifest, Manifest};
-
-/// Helper to create a temporary manifest file for testing.
-fn create_temp_manifest(content: &str) -> NamedTempFile {
-    let mut file = NamedTempFile::new().unwrap();
-    file.write_all(content.as_bytes()).unwrap();
-    file.flush().unwrap();
-    file
-}
+use omm_content_schema::load_manifest;
 
 #[test]
 fn load_base_datapack() {
@@ -108,8 +98,7 @@ fn load_base_datapack() {
         }
     }"#;
 
-    let file = create_temp_manifest(manifest_json);
-    let manifest = load_manifest(file.path()).unwrap();
+    let manifest = load_manifest(manifest_json.as_bytes()).unwrap();
 
     assert_eq!(manifest.id, "open-mmorpg.base");
     assert_eq!(manifest.factions.len(), 2);
@@ -150,8 +139,7 @@ fn validate_cross_references() {
         "economy": { "auction_houses": [], "trading_rules": [], "starting_gold_copper": 0 }
     }"#;
 
-    let file = create_temp_manifest(manifest_json);
-    let result = load_manifest(file.path());
+    let result = load_manifest(manifest_json.as_bytes());
 
     assert!(result.is_ok());
 }
@@ -177,8 +165,7 @@ fn faction_hostility_symmetry() {
         "economy": { "auction_houses": [], "trading_rules": [], "starting_gold_copper": 0 }
     }"#;
 
-    let file = create_temp_manifest(manifest_json);
-    let result = load_manifest(file.path());
+    let result = load_manifest(manifest_json.as_bytes());
 
     // f1 is hostile to f2, but f2 is not hostile to f1 - this is allowed
     assert!(result.is_ok());
@@ -208,8 +195,7 @@ fn class_race_compatibility() {
         "economy": { "auction_houses": [], "trading_rules": [], "starting_gold_copper": 0 }
     }"#;
 
-    let file = create_temp_manifest(manifest_json);
-    let result = load_manifest(file.path());
+    let result = load_manifest(manifest_json.as_bytes());
 
     // Classes and races are independent - no cross-validation needed
     assert!(result.is_ok());
@@ -235,8 +221,7 @@ fn item_stat_bounds() {
         "economy": { "auction_houses": [], "trading_rules": [], "starting_gold_copper": 0 }
     }"#;
 
-    let file = create_temp_manifest(manifest_json);
-    let result = load_manifest(file.path());
+    let result = load_manifest(manifest_json.as_bytes());
 
     // High stats are allowed - no bounds validation in schema
     assert!(result.is_ok());
@@ -266,8 +251,7 @@ fn quest_prereq_chain() {
         "economy": { "auction_houses": [], "trading_rules": [], "starting_gold_copper": 0 }
     }"#;
 
-    let file = create_temp_manifest(manifest_json);
-    let result = load_manifest(file.path());
+    let result = load_manifest(manifest_json.as_bytes());
 
     // Circular reference (q3 -> q1) is allowed by current validation
     assert!(result.is_ok());
@@ -292,13 +276,15 @@ fn asset_manifest_loading() {
         "asset_manifest_ref": "assets/manifest.json"
     }"#;
 
-    let file = create_temp_manifest(manifest_json);
-    let result = load_manifest(file.path());
+    let result = load_manifest(manifest_json.as_bytes());
 
     // Asset manifest ref is just a string reference - no validation of the file itself
     assert!(result.is_ok());
     let manifest = result.unwrap();
-    assert_eq!(manifest.asset_manifest_ref, Some("assets/manifest.json".to_string()));
+    assert_eq!(
+        manifest.asset_manifest_ref,
+        Some("assets/manifest.json".to_string())
+    );
 }
 
 #[test]
@@ -321,8 +307,7 @@ fn rejects_invalid_faction_reference() {
         "economy": { "auction_houses": [], "trading_rules": [], "starting_gold_copper": 0 }
     }"#;
 
-    let file = create_temp_manifest(manifest_json);
-    let result = load_manifest(file.path());
+    let result = load_manifest(manifest_json.as_bytes());
 
     assert!(result.is_err());
 }
@@ -347,8 +332,7 @@ fn rejects_invalid_ability_reference() {
         "economy": { "auction_houses": [], "trading_rules": [], "starting_gold_copper": 0 }
     }"#;
 
-    let file = create_temp_manifest(manifest_json);
-    let result = load_manifest(file.path());
+    let result = load_manifest(manifest_json.as_bytes());
 
     assert!(result.is_err());
 }
@@ -373,8 +357,7 @@ fn rejects_invalid_quest_prerequisite() {
         "economy": { "auction_houses": [], "trading_rules": [], "starting_gold_copper": 0 }
     }"#;
 
-    let file = create_temp_manifest(manifest_json);
-    let result = load_manifest(file.path());
+    let result = load_manifest(manifest_json.as_bytes());
 
     assert!(result.is_err());
 }
@@ -399,8 +382,7 @@ fn rejects_invalid_item_reward() {
         "economy": { "auction_houses": [], "trading_rules": [], "starting_gold_copper": 0 }
     }"#;
 
-    let file = create_temp_manifest(manifest_json);
-    let result = load_manifest(file.path());
+    let result = load_manifest(manifest_json.as_bytes());
 
     assert!(result.is_err());
 }

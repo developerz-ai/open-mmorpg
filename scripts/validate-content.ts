@@ -1,4 +1,5 @@
 #!/usr/bin/env bun
+
 /**
  * Content validation script.
  *
@@ -8,9 +9,9 @@
  * 3. The Rust content-schema library validates the manifest
  */
 
-import { readFileSync, existsSync } from "fs";
-import { execSync } from "child_process";
-import { exit } from "process";
+import { execSync } from 'node:child_process';
+import { existsSync, readFileSync } from 'node:fs';
+import { exit } from 'node:process';
 
 interface ValidationResult {
   valid: boolean;
@@ -22,15 +23,15 @@ function validateManifestJson(): ValidationResult {
   const result: ValidationResult = { valid: true, errors: [], warnings: [] };
 
   // Check manifest exists
-  if (!existsSync("content/manifest.json")) {
+  if (!existsSync('content/manifest.json')) {
     result.valid = false;
-    result.errors.push("content/manifest.json does not exist");
+    result.errors.push('content/manifest.json does not exist');
     return result;
   }
 
   // Try to parse manifest
   try {
-    const manifestContent = readFileSync("content/manifest.json", "utf8");
+    const manifestContent = readFileSync('content/manifest.json', 'utf8');
     JSON.parse(manifestContent);
   } catch (e) {
     result.valid = false;
@@ -44,13 +45,13 @@ function validateAllJsonFiles(): ValidationResult {
   const result: ValidationResult = { valid: true, errors: [], warnings: [] };
 
   try {
-    const files = execSync("find content -name '*.json'", { encoding: "utf8" })
-      .split("\n")
+    const files = execSync("find content -name '*.json'", { encoding: 'utf8' })
+      .split('\n')
       .filter((f) => f.length > 0);
 
     for (const file of files) {
       try {
-        const content = readFileSync(file, "utf8");
+        const content = readFileSync(file, 'utf8');
         JSON.parse(content);
       } catch (e) {
         result.valid = false;
@@ -70,15 +71,15 @@ function validateViaRustSchema(): ValidationResult {
 
   // Check if cargo is available
   try {
-    execSync("which cargo", { stdio: "pipe" });
+    execSync('which cargo', { stdio: 'pipe' });
   } catch {
-    result.warnings.push("cargo not found - skipping Rust tests");
+    result.warnings.push('cargo not found - skipping Rust tests');
     return result;
   }
 
   try {
-    execSync("cargo test --package omm-content-schema --lib", {
-      stdio: "pipe",
+    execSync('cargo test --package omm-content-schema --lib', {
+      stdio: 'pipe',
     });
   } catch (e) {
     result.valid = false;
@@ -89,26 +90,18 @@ function validateViaRustSchema(): ValidationResult {
 }
 
 function main() {
-  console.log("🔍 Validating content...");
+  console.log('🔍 Validating content...');
 
   const manifestResult = validateManifestJson();
   const jsonResult = validateAllJsonFiles();
   const rustResult = validateViaRustSchema();
 
-  const allErrors = [
-    ...manifestResult.errors,
-    ...jsonResult.errors,
-    ...rustResult.errors,
-  ];
+  const allErrors = [...manifestResult.errors, ...jsonResult.errors, ...rustResult.errors];
 
-  const allWarnings = [
-    ...manifestResult.warnings,
-    ...jsonResult.warnings,
-    ...rustResult.warnings,
-  ];
+  const allWarnings = [...manifestResult.warnings, ...jsonResult.warnings, ...rustResult.warnings];
 
   if (allErrors.length > 0) {
-    console.error("❌ Content validation FAILED:");
+    console.error('❌ Content validation FAILED:');
     for (const error of allErrors) {
       console.error(`  - ${error}`);
     }
@@ -116,13 +109,13 @@ function main() {
   }
 
   if (allWarnings.length > 0) {
-    console.warn("⚠️  Content validation warnings:");
+    console.warn('⚠️  Content validation warnings:');
     for (const warning of allWarnings) {
       console.warn(`  - ${warning}`);
     }
   }
 
-  console.log("✅ Content validation PASSED");
+  console.log('✅ Content validation PASSED');
   exit(0);
 }
 

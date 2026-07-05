@@ -15,9 +15,9 @@ export function paint(color: keyof typeof COLORS, text: string): string {
 }
 
 export const log = {
-  step: (msg: string) => console.log(paint('blue', '▸') + ` ${msg}`),
-  ok: (msg: string) => console.log(paint('green', '✔') + ` ${msg}`),
-  warn: (msg: string) => console.warn(paint('yellow', '!') + ` ${msg}`),
-  fail: (msg: string) => console.error(paint('red', '✘') + ` ${msg}`),
+  step: (msg: string) => console.log(`${paint('blue', '▸')} ${msg}`),
+  ok: (msg: string) => console.log(`${paint('green', '✔')} ${msg}`),
+  warn: (msg: string) => console.warn(`${paint('yellow', '!')} ${msg}`),
+  fail: (msg: string) => console.error(`${paint('red', '✘')} ${msg}`),
   dim: (msg: string) => console.log(paint('dim', msg)),
 };
