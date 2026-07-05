@@ -436,7 +436,7 @@
     {
       "id": "channeler",
       "name": "Channeler",
-      "description": "Mid-range empowerment mage who channels Essence and mana through Lattice\u00b7Bloom forces, weaving healing and damage in a flow of arcane energy.",
+      "description": "Mid-range empowerment mage who channels Essence and mana through Lattice·Bloom forces, weaving healing and damage in a flow of arcane energy.",
       "role": "healer",
       "abilities": [
         "essence-channel",
@@ -14457,6 +14457,62 @@
       "icon": "textures/solid-colors/orange.png",
       "mesh": "meshes/placeholder-plane.gltf",
       "max_stack": 1
+    },
+    {
+      "id": "traveler-ration",
+      "name": "Traveler Ration",
+      "description": "Durable journey bread. Hard as stone, keeps you going.",
+      "item_type": "Consumable",
+      "consumable_type": null,
+      "required_level": 1,
+      "effects": null,
+      "quality": "common",
+      "value_copper": 3,
+      "icon": "textures/solid-colors/gray.png",
+      "mesh": null,
+      "max_stack": 20
+    },
+    {
+      "id": "hearty-stew",
+      "name": "Hearty Stew",
+      "description": "A thick, warming stew that fortifies the body.",
+      "item_type": "Consumable",
+      "consumable_type": null,
+      "required_level": 10,
+      "effects": null,
+      "quality": "uncommon",
+      "value_copper": 50,
+      "icon": "textures/solid-colors/green.png",
+      "mesh": null,
+      "max_stack": 10
+    },
+    {
+      "id": "mana-bread",
+      "name": "Mana Bread",
+      "description": "Infused with arcane essence, it crackles when bitten.",
+      "item_type": "Consumable",
+      "consumable_type": null,
+      "required_level": 10,
+      "effects": null,
+      "quality": "uncommon",
+      "value_copper": 55,
+      "icon": "textures/solid-colors/blue.png",
+      "mesh": null,
+      "max_stack": 10
+    },
+    {
+      "id": "feast-of-plenty",
+      "name": "Feast of Plenty",
+      "description": "A grand spread enough for many. All who partake are strengthened.",
+      "item_type": "Consumable",
+      "consumable_type": null,
+      "required_level": 20,
+      "effects": null,
+      "quality": "rare",
+      "value_copper": 200,
+      "icon": "textures/solid-colors/purple.png",
+      "mesh": null,
+      "max_stack": 5
     }
   ],
   "quests": [
