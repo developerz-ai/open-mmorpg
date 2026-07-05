@@ -33,6 +33,37 @@ jobs:
       - name: test
         run: cargo nextest run --workspace --all-features
 
+  rust-integration:
+    name: rust (integration · live Postgres)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: omm
+          POSTGRES_PASSWORD: omm
+          POSTGRES_DB: omm_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U omm"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      # Yugabyte speaks the Postgres wire → dev/CI run on plain Postgres.
+      TEST_DATABASE_URL: postgres://omm:omm@localhost:5432/omm_test
+    steps:
+      - uses: actions/checkout@v5
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - uses: taiki-e/install-action@v2.81.6
+        with:
+          tool: nextest
+      - name: integration tests (ignored + unit, live DB)
+        run: cargo nextest run --workspace --all-features --run-ignored all
+
   web:
     name: web (lint · typecheck · test · build)
     runs-on: ubuntu-latest

@@ -49,6 +49,15 @@ axum = "0.8"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 proptest = "1"
+# Durable store: sqlx over the Postgres wire (YugabyteDB in prod, plain Postgres in dev).
+# rustls (no system OpenSSL); runtime queries + compile-time-embedded migrations.
+sqlx = { version = "0.8", default-features = false, features = [
+  "runtime-tokio",
+  "tls-rustls",
+  "postgres",
+  "macros",
+  "migrate",
+] }
 
 # Lints applied workspace-wide. CI additionally runs `clippy -D warnings`.
 # The hard rule (no unwrap/expect on the hot path) is a warn here and denied in CI,
