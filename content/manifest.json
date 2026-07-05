@@ -1,22 +1,749 @@
 {
   "id": "open-mmorpg.base",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "api_version": 1,
+  "asset_manifest_ref": "assets/manifest.json",
   "factions": [
-    { "id": "dawnward", "name": "The Dawnward Pact", "hostile_to": ["nightfen"] },
-    { "id": "nightfen", "name": "Nightfen Covenant", "hostile_to": ["dawnward"] }
+    {
+      "id": "aurelian-concord",
+      "name": "The Aurelian Concord",
+      "description": "Those who build. A pluralist coalition bound by charter, the arcane academy, and the dawn-faith.",
+      "colors": { "primary": "#d4af37", "secondary": "#1f6fb2" },
+      "capital": "solhaven",
+      "hostile_to": ["wildreach-pact"]
+    },
+    {
+      "id": "wildreach-pact",
+      "name": "The Wildreach Pact",
+      "description": "Those who endure. A sworn confederation of the exiled and untamed, bound by survival and honor.",
+      "colors": { "primary": "#9e1b32", "secondary": "#8c6a3e" },
+      "capital": "emberhold",
+      "hostile_to": ["aurelian-concord"]
+    }
   ],
-  "races": [],
-  "classes": [],
-  "abilities": [],
-  "items": [],
-  "quests": [],
-  "zones": [],
-  "spawn_tables": [],
-  "dungeons": [],
+  "races": [
+    {
+      "id": "aurin",
+      "name": "Aurin",
+      "description": "Adaptable dawn-faith builders; the Concord's founders and its conscience.",
+      "faction_id": "aurelian-concord",
+      "traits": ["indomitable-spirit"],
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 1,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 1
+      }
+    },
+    {
+      "id": "sylvani",
+      "name": "Sylvani",
+      "description": "Graceful, long-lived ley-attuned folk of the forest-spires.",
+      "faction_id": "aurelian-concord",
+      "traits": [],
+      "stats": {
+        "strength": -1,
+        "dexterity": 1,
+        "constitution": -1,
+        "intelligence": 2,
+        "wisdom": 1,
+        "charisma": 0
+      }
+    },
+    {
+      "id": "ordan",
+      "name": "Ordan",
+      "description": "Green-skinned honorbound warriors; the Pact's martial core.",
+      "faction_id": "wildreach-pact",
+      "traits": ["savage-fury"],
+      "stats": {
+        "strength": 2,
+        "dexterity": 0,
+        "constitution": 1,
+        "intelligence": -1,
+        "wisdom": 0,
+        "charisma": 0
+      }
+    },
+    {
+      "id": "vorni",
+      "name": "Vorni",
+      "description": "Auroch-kin plains-folk, spirit shamans and the Pact's moral center.",
+      "faction_id": "wildreach-pact",
+      "traits": [],
+      "stats": {
+        "strength": 1,
+        "dexterity": 0,
+        "constitution": 2,
+        "intelligence": -1,
+        "wisdom": 1,
+        "charisma": 0
+      }
+    }
+  ],
+  "classes": [
+    {
+      "id": "vanguard",
+      "name": "Vanguard",
+      "description": "Frontline martial soldier; a wall of steel and fury.",
+      "role": "tank",
+      "abilities": ["cleave", "shield-bash", "guardian-strike"],
+      "stat_growth": {
+        "strength": 2,
+        "dexterity": 1,
+        "constitution": 2,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "hp_per_level": 14,
+      "resource_per_level": 5
+    },
+    {
+      "id": "templar",
+      "name": "Templar",
+      "description": "Armored holy warrior who mends allies and smites the unworthy.",
+      "role": "healer",
+      "abilities": ["smite", "divine-aegis", "lay-on-hands"],
+      "stat_growth": {
+        "strength": 1,
+        "dexterity": 0,
+        "constitution": 2,
+        "intelligence": 0,
+        "wisdom": 2,
+        "charisma": 1
+      },
+      "hp_per_level": 12,
+      "resource_per_level": 8
+    },
+    {
+      "id": "warden",
+      "name": "Warden",
+      "description": "Totemic elementalist who channels the forces through earthen wards.",
+      "role": "healer",
+      "abilities": ["healing-surge", "totemic-ward"],
+      "stat_growth": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 1,
+        "intelligence": 1,
+        "wisdom": 3,
+        "charisma": 0
+      },
+      "hp_per_level": 9,
+      "resource_per_level": 10
+    },
+    {
+      "id": "ranger",
+      "name": "Ranger",
+      "description": "Marksman and beast-companion, master of the untamed reach.",
+      "role": "dps",
+      "abilities": ["quick-shot", "hunters-mark"],
+      "stat_growth": {
+        "strength": 0,
+        "dexterity": 3,
+        "constitution": 1,
+        "intelligence": 0,
+        "wisdom": 1,
+        "charisma": 0
+      },
+      "hp_per_level": 9,
+      "resource_per_level": 6
+    },
+    {
+      "id": "arcanist",
+      "name": "Arcanist",
+      "description": "Scholar of raw arcane; Lattice woven into bolts and flame.",
+      "role": "dps",
+      "abilities": ["arcane-bolt", "fireball"],
+      "stat_growth": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 3,
+        "wisdom": 1,
+        "charisma": 1
+      },
+      "hp_per_level": 7,
+      "resource_per_level": 12
+    },
+    {
+      "id": "shade",
+      "name": "Shade",
+      "description": "Stealthed assassin striking from shadow with precise lethality.",
+      "role": "dps",
+      "abilities": ["backstab", "shadowstep"],
+      "stat_growth": {
+        "strength": 1,
+        "dexterity": 3,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 1
+      },
+      "hp_per_level": 8,
+      "resource_per_level": 7
+    }
+  ],
+  "abilities": [
+    {
+      "id": "indomitable-spirit",
+      "name": "Indomitable Spirit",
+      "description": "Aurin racial: shrug off stun and fear effects.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 0,
+      "cast_time_sec": 0.0,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Buff", "magnitude": 0.0, "scaling": 0.0, "target": "self" }]
+    },
+    {
+      "id": "savage-fury",
+      "name": "Savage Fury",
+      "description": "Ordan racial: brief surge of attack power on combat open.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 0,
+      "cast_time_sec": 0.0,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Buff", "magnitude": 5.0, "scaling": 0.0, "target": "self" }]
+    },
+    {
+      "id": "cleave",
+      "name": "Cleave",
+      "description": "A wide melee arc striking the target and nearby foes.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 10,
+      "cast_time_sec": 0.0,
+      "range_yards": 5.0,
+      "effects": [{ "effect": "Damage", "magnitude": 12.0, "scaling": 1.0, "target": "enemy" }]
+    },
+    {
+      "id": "shield-bash",
+      "name": "Shield Bash",
+      "description": "Slam the shield forward, interrupting and staggering.",
+      "max_rank": 1,
+      "cooldown_sec": 8.0,
+      "resource_cost": 5,
+      "cast_time_sec": 0.0,
+      "range_yards": 5.0,
+      "effects": [{ "effect": "Debuff", "magnitude": 0.0, "scaling": 0.0, "target": "enemy" }]
+    },
+    {
+      "id": "guardian-strike",
+      "name": "Guardian Strike",
+      "description": "A measured blow that raises the vanguard's guard.",
+      "max_rank": 1,
+      "cooldown_sec": 6.0,
+      "resource_cost": 15,
+      "cast_time_sec": 0.0,
+      "range_yards": 5.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 10.0, "scaling": 0.8, "target": "enemy" },
+        { "effect": "Buff", "magnitude": 8.0, "scaling": 0.5, "target": "self" }
+      ]
+    },
+    {
+      "id": "smite",
+      "name": "Smite",
+      "description": "Channel dawn into a searing blow against the unholy.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 12,
+      "cast_time_sec": 1.5,
+      "range_yards": 8.0,
+      "effects": [{ "effect": "Damage", "magnitude": 14.0, "scaling": 0.9, "target": "enemy" }]
+    },
+    {
+      "id": "divine-aegis",
+      "name": "Divine Aegis",
+      "description": "Shield an ally with radiance, absorbing incoming harm.",
+      "max_rank": 1,
+      "cooldown_sec": 10.0,
+      "resource_cost": 18,
+      "cast_time_sec": 0.0,
+      "range_yards": 30.0,
+      "effects": [{ "effect": "Buff", "magnitude": 30.0, "scaling": 1.0, "target": "ally" }]
+    },
+    {
+      "id": "lay-on-hands",
+      "name": "Lay on Hands",
+      "description": "A surge of dawn that mends a wounded ally.",
+      "max_rank": 1,
+      "cooldown_sec": 12.0,
+      "resource_cost": 25,
+      "cast_time_sec": 2.0,
+      "range_yards": 30.0,
+      "effects": [{ "effect": "Heal", "magnitude": 45.0, "scaling": 1.2, "target": "ally" }]
+    },
+    {
+      "id": "healing-surge",
+      "name": "Healing Surge",
+      "description": "Totemic waters rise to mend a companion.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 14,
+      "cast_time_sec": 1.8,
+      "range_yards": 30.0,
+      "effects": [{ "effect": "Heal", "magnitude": 32.0, "scaling": 1.0, "target": "ally" }]
+    },
+    {
+      "id": "totemic-ward",
+      "name": "Totemic Ward",
+      "description": "Raise a ward of stone and root that slows attackers.",
+      "max_rank": 1,
+      "cooldown_sec": 15.0,
+      "resource_cost": 20,
+      "cast_time_sec": 0.0,
+      "range_yards": 20.0,
+      "effects": [{ "effect": "Buff", "magnitude": 10.0, "scaling": 0.5, "target": "ally" }]
+    },
+    {
+      "id": "quick-shot",
+      "name": "Quick Shot",
+      "description": "A swift arrow loosed without breaking stride.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 8,
+      "cast_time_sec": 0.0,
+      "range_yards": 35.0,
+      "effects": [{ "effect": "Damage", "magnitude": 11.0, "scaling": 1.0, "target": "enemy" }]
+    },
+    {
+      "id": "hunters-mark",
+      "name": "Hunter's Mark",
+      "description": "Mark a foe, exposing them to extra harm from all.",
+      "max_rank": 1,
+      "cooldown_sec": 10.0,
+      "resource_cost": 6,
+      "cast_time_sec": 0.0,
+      "range_yards": 40.0,
+      "effects": [{ "effect": "Debuff", "magnitude": 0.0, "scaling": 0.0, "target": "enemy" }]
+    },
+    {
+      "id": "arcane-bolt",
+      "name": "Arcane Bolt",
+      "description": "A lance of raw Lattice energy hurled at a foe.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 10,
+      "cast_time_sec": 1.2,
+      "range_yards": 35.0,
+      "effects": [{ "effect": "Damage", "magnitude": 13.0, "scaling": 0.9, "target": "enemy" }]
+    },
+    {
+      "id": "fireball",
+      "name": "Fireball",
+      "description": "Hurl a roaring sphere of Rift-touched flame.",
+      "max_rank": 1,
+      "cooldown_sec": 2.5,
+      "resource_cost": 30,
+      "cast_time_sec": 2.0,
+      "range_yards": 30.0,
+      "effects": [{ "effect": "Damage", "magnitude": 26.0, "scaling": 0.8, "target": "enemy" }]
+    },
+    {
+      "id": "backstab",
+      "name": "Backstab",
+      "description": "A vicious strike from behind for enormous damage.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 15,
+      "cast_time_sec": 0.0,
+      "range_yards": 4.0,
+      "effects": [{ "effect": "Damage", "magnitude": 22.0, "scaling": 1.5, "target": "enemy" }]
+    },
+    {
+      "id": "shadowstep",
+      "name": "Shadowstep",
+      "description": "Vanish into shadow and reappear behind your target.",
+      "max_rank": 1,
+      "cooldown_sec": 18.0,
+      "resource_cost": 12,
+      "cast_time_sec": 0.0,
+      "range_yards": 25.0,
+      "effects": [{ "effect": "Teleport", "magnitude": 0.0, "scaling": 0.0, "target": "enemy" }]
+    }
+  ],
+  "items": [
+    {
+      "id": "rusty-shortsword",
+      "name": "Rusty Shortsword",
+      "description": "A pitted blade, but it still bites.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 1,
+      "stats": {
+        "strength": 2,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 10,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-cube.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "apprentice-rod",
+      "name": "Apprentice Rod",
+      "description": "A student's first focus for channeling the arcane.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 1,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 3,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 12,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-plane.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "guardsman-tunic",
+      "name": "Guardsman Tunic",
+      "description": "Quilted and reinforced for the standing watch.",
+      "item_type": "Armor",
+      "slot": "chest",
+      "required_level": 1,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 3,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 15,
+      "icon": "textures/solid-colors/white.png",
+      "mesh": "meshes/placeholder-sphere.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "minor-healing-potion",
+      "name": "Minor Healing Potion",
+      "description": "A swallow of mending draught.",
+      "item_type": "Consumable",
+      "required_level": 1,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 5,
+      "icon": "textures/solid-colors/white.png",
+      "max_stack": 10
+    },
+    {
+      "id": "wolf-pelt",
+      "name": "Wolf Pelt",
+      "description": "A coarse pelt taken from a dawnshore wolf.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 3,
+      "max_stack": 20
+    },
+    {
+      "id": "venomfang-dagger",
+      "name": "Venomfang Dagger",
+      "description": "A hollow-bladed dagger that weeps toxin.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 8,
+      "stats": {
+        "strength": 0,
+        "dexterity": 6,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 250,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-cube.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "hollowveil-mantle",
+      "name": "Hollowveil Mantle",
+      "description": "A mantle woven from the chill of the crypt.",
+      "item_type": "Armor",
+      "slot": "chest",
+      "required_level": 8,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 5,
+        "intelligence": 0,
+        "wisdom": 3,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 300,
+      "icon": "textures/solid-colors/white.png",
+      "mesh": "meshes/placeholder-sphere.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "crypt-relic",
+      "name": "Crypt Relic",
+      "description": "A pulsing shard pried from the Hollowveil depths.",
+      "item_type": "Quest",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 0,
+      "max_stack": 1
+    }
+  ],
+  "quests": [
+    {
+      "id": "awakening-in-dawnshore",
+      "name": "Awakening in Dawnshore",
+      "description": "The Emberheart's glow stirs you. Seek Warden Suran in the square.",
+      "level": 1,
+      "prerequisites": [],
+      "objectives": [
+        {
+          "objective_type": "Speak",
+          "target_id": "warden-surann",
+          "count": 1,
+          "description": "Speak with Warden Surann"
+        }
+      ],
+      "rewards": {
+        "experience": 100,
+        "gold_copper": 50,
+        "choice_items": [],
+        "items": ["minor-healing-potion"]
+      },
+      "giver_id": "env-emberheart",
+      "turn_in_id": "warden-surann",
+      "next_quest_id": "wolf-trouble"
+    },
+    {
+      "id": "wolf-trouble",
+      "name": "Wolf Trouble at the Pale Gates",
+      "description": "Wolves harry the outlying steadings. Thin their pack and bring proof.",
+      "level": 2,
+      "prerequisites": ["awakening-in-dawnshore"],
+      "objectives": [
+        {
+          "objective_type": "Kill",
+          "target_id": "dawnshore-wolf",
+          "count": 5,
+          "description": "Slay 5 dawnshore wolves"
+        },
+        {
+          "objective_type": "Gather",
+          "target_id": "wolf-pelt",
+          "count": 5,
+          "description": "Collect 5 wolf pelts"
+        }
+      ],
+      "rewards": {
+        "experience": 250,
+        "gold_copper": 100,
+        "choice_items": ["rusty-shortsword", "apprentice-rod"],
+        "items": []
+      },
+      "giver_id": "warden-surann",
+      "turn_in_id": "warden-surann",
+      "next_quest_id": "path-to-the-crypt"
+    },
+    {
+      "id": "path-to-the-crypt",
+      "name": "The Path to the Crypt",
+      "description": "A hollow wind blows from the old barrow. Find the Hollowveil entrance.",
+      "level": 6,
+      "prerequisites": ["wolf-trouble"],
+      "objectives": [
+        {
+          "objective_type": "Explore",
+          "target_id": "hollowveil-barrows",
+          "count": 1,
+          "description": "Discover the Hollowveil barrows"
+        }
+      ],
+      "rewards": { "experience": 400, "gold_copper": 150, "choice_items": [], "items": [] },
+      "giver_id": "warden-surann",
+      "turn_in_id": "warden-surann",
+      "next_quest_id": "relic-of-the-hollow"
+    },
+    {
+      "id": "relic-of-the-hollow",
+      "name": "Relic of the Hollow",
+      "description": "Descend into the Hollowveil, take the relic, and bring it to light.",
+      "level": 8,
+      "prerequisites": ["path-to-the-crypt"],
+      "objectives": [
+        {
+          "objective_type": "Kill",
+          "target_id": "hollowveil-warden",
+          "count": 1,
+          "description": "Defeat the Hollowveil Warden"
+        },
+        {
+          "objective_type": "Deliver",
+          "target_id": "crypt-relic",
+          "count": 1,
+          "description": "Deliver the Crypt Relic"
+        }
+      ],
+      "rewards": {
+        "experience": 800,
+        "gold_copper": 400,
+        "choice_items": ["venomfang-dagger", "hollowveil-mantle"],
+        "items": []
+      },
+      "giver_id": "warden-surann",
+      "turn_in_id": "warden-surann"
+    }
+  ],
+  "zones": [
+    {
+      "id": "solhaven",
+      "name": "Solhaven",
+      "min_level": 1,
+      "max_level": 50,
+      "safe_locations": [{ "id": "emberdawn-square", "position": [0.0, 0.0, 0.0], "yaw": 0.0 }],
+      "controlling_factions": ["aurelian-concord"],
+      "spawn_tables": [],
+      "navmesh": "nav/solhaven.nav"
+    },
+    {
+      "id": "emberhold",
+      "name": "Emberhold",
+      "min_level": 1,
+      "max_level": 50,
+      "safe_locations": [{ "id": "chieftains-fire", "position": [0.0, 0.0, 0.0], "yaw": 0.0 }],
+      "controlling_factions": ["wildreach-pact"],
+      "spawn_tables": [],
+      "navmesh": "nav/emberhold.nav"
+    },
+    {
+      "id": "dawnshore",
+      "name": "Dawnshore",
+      "min_level": 1,
+      "max_level": 10,
+      "safe_locations": [
+        { "id": "pale-gate", "position": [0.0, 0.0, 0.0], "yaw": 0.0 },
+        { "id": "dawnshore-inn", "position": [40.0, 0.0, 12.0], "yaw": 90.0 }
+      ],
+      "controlling_factions": ["aurelian-concord", "wildreach-pact"],
+      "spawn_tables": ["dawnshore-wolves"],
+      "navmesh": "nav/dawnshore.nav"
+    },
+    {
+      "id": "hollowveil-barrows",
+      "name": "Hollowveil Barrows",
+      "min_level": 6,
+      "max_level": 12,
+      "safe_locations": [{ "id": "barrows-approach", "position": [110.0, 0.0, 80.0], "yaw": 0.0 }],
+      "controlling_factions": [],
+      "spawn_tables": [],
+      "parent_zone_id": "dawnshore",
+      "navmesh": "nav/hollowveil-barrows.nav"
+    }
+  ],
+  "spawn_tables": [
+    {
+      "id": "dawnshore-wolves",
+      "entries": [
+        {
+          "entity_id": "dawnshore-wolf",
+          "weight": 100,
+          "max_count": 10,
+          "positions": [[28.0, 0.0, 40.0], [60.0, 0.0, 30.0], [45.0, 0.0, 70.0]]
+        },
+        {
+          "entity_id": "dawnshore-boar",
+          "weight": 40,
+          "max_count": 5,
+          "positions": [[70.0, 0.0, 60.0]]
+        }
+      ],
+      "respawn_sec": 60
+    }
+  ],
+  "dungeons": [
+    {
+      "id": "hollowveil-crypt",
+      "name": "Hollowveil Crypt",
+      "min_level": 6,
+      "recommended_level": 8,
+      "max_players": 5,
+      "boss_ids": ["hollowveil-warden"],
+      "trash_spawn_tables": [],
+      "loot_tables": ["venomfang-dagger", "hollowveil-mantle", "crypt-relic"],
+      "time_limit_minutes": 60,
+      "lockout_hours": 24,
+      "entrance_zone_id": "hollowveil-barrows",
+      "entrance_position": [120.0, 0.0, 90.0]
+    }
+  ],
   "economy": {
-    "auction_houses": [],
-    "trading_rules": [],
-    "starting_gold_copper": 0
+    "auction_houses": [
+      {
+        "id": "solhaven-exchange",
+        "name": "The Solhaven Exchange",
+        "zone_id": "solhaven",
+        "position": [8.0, 0.0, 6.0],
+        "fee_percentage": 0.05,
+        "min_bid_increment": 0.05,
+        "max_listings_per_account": 20,
+        "listing_duration_hours": 48,
+        "deposit_percentage": 0.05
+      }
+    ],
+    "trading_rules": [
+      {
+        "item_pattern": "crypt-relic",
+        "tradable": false,
+        "auctionable": false,
+        "mailing_allowed": false
+      },
+      {
+        "item_pattern": "venomfang-*",
+        "tradable": true,
+        "auctionable": true,
+        "mailing_allowed": true
+      }
+    ],
+    "starting_gold_copper": 100
   }
 }
