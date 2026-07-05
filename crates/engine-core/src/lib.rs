@@ -19,8 +19,10 @@
 //! re-simulation and replay depend on.
 
 pub mod run;
+pub mod schedule;
 
 pub use run::{headless_run, run_ticks};
+pub use schedule::{FrameSet, SimSet, TICK_DT};
 
 use bevy_app::prelude::*;
 use bevy_app::PluginGroupBuilder;
@@ -43,8 +45,9 @@ pub const TICK_HZ: f64 = 30.0;
 #[reflect(Resource)]
 pub struct FixedTick(pub u64);
 
-/// Advance the fixed-tick heartbeat by one. Runs in [`FixedUpdate`], so it fires
-/// exactly once per fixed simulation step. Saturating: never panics on overflow.
+/// Advance the fixed-tick heartbeat by one. Runs in [`SimSet::PostSim`], so it
+/// fires exactly once per fixed simulation step, after that step's sim work.
+/// Saturating: never panics on overflow.
 fn advance_fixed_tick(mut tick: ResMut<FixedTick>) {
     tick.0 = tick.0.saturating_add(1);
 }
@@ -59,10 +62,11 @@ pub struct EngineCorePlugin;
 
 impl Plugin for EngineCorePlugin {
     fn build(&self, app: &mut App) {
+        schedule::configure(app);
         app.insert_resource(Time::<Fixed>::from_hz(TICK_HZ))
             .init_resource::<FixedTick>()
             .register_type::<FixedTick>()
-            .add_systems(FixedUpdate, advance_fixed_tick);
+            .add_systems(FixedUpdate, advance_fixed_tick.in_set(SimSet::PostSim));
     }
 }
 

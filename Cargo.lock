@@ -993,6 +993,7 @@ dependencies = [
  "bevy_ecs",
  "bevy_reflect",
  "bevy_time",
+ "omm-ecs-core",
 ]
 
 [[package]]

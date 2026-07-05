@@ -13,5 +13,11 @@ bevy_ecs.workspace = true
 bevy_reflect.workspace = true
 bevy_time.workspace = true
 
+[dev-dependencies]
+# Test-only: prove the engine's TICK_DT stays aligned with the shared sim's.
+# Kept out of [dependencies] so engine-core carries no runtime dependency on
+# game code — the leanness invariant (engine knows nothing about the MMORPG).
+omm-ecs-core.workspace = true
+
 [lints]
 workspace = true
