@@ -24,6 +24,23 @@ Every spec here distills three proven references — **AzerothCore/TrinityCore**
 4. **Content is data, core is compiled.** New faction/class/ability ships with no `cargo build` ([content-scripting](content-scripting/README.md)).
 5. **Horizontal from day 1.** Autoscaled shards, no realm caps, no queues ([sharding](sharding/README.md)).
 
+## Framework vs. game — build other games on this
+This folder specifies a **game-agnostic authoritative-server framework**, not a hard-wired MMORPG. Our MMORPG is *one game* built on it; a survival sandbox, a co-op action-RPG, a MOBA, or a different MMO are others. The dividing line is the compiled-core / data-content line ([content-scripting](content-scripting/README.md)): the **framework is `crates/`**, a **game is `content/` + a [gameplay](../gameplay/README.md) design**. If building a different game needs a `cargo build` of the core, the split is in the wrong place. This is the [engine-is-a-library](../game-engine/README.md) rule, held on the server side.
+
+| Subsystem | Reusable framework (game-agnostic) | A game supplies (data / design) |
+|---|---|---|
+| [tick-loop](tick-loop/README.md) | Fixed-timestep deterministic loop, ECS schedule | Which systems run, tick-rate tuning |
+| [netcode](netcode/README.md) | Transport, snapshot+delta, prediction, AoI | The replicated component set |
+| [world-model](world-model/README.md) | Spatial index, interest, streaming, navmesh | Zones & geometry ([engine assets](../game-engine/assets/README.md)) |
+| [sharding](sharding/README.md) | Autoscale, handoff, merge/split | Zone topology, shard sizing |
+| [persistence](persistence/README.md) | Ownership txns, anti-dupe store, migrations | Schema of what's owned (items, chars) |
+| [security](security/README.md) | Authority, movement validation, rate limits | Tuning thresholds |
+| [content-scripting](content-scripting/README.md) | Schema loader, WASM/Lua sandbox, manifest | The content itself |
+| [combat](combat/README.md) | Ability **resolution** engine (effect dispatch, auras, threat) | Every actual AbilityDef |
+| [economy](economy/README.md) | Transactional value-move, ledger, AH/mail **plumbing** | Items, prices, sinks/faucets, recipes |
+
+**Reuse pattern:** a new game keeps the left column verbatim and replaces the right column with its own `content/` + `gameplay/` — no core fork. MMORPG-*specific design* (classes, factions, the 300-level arc, itemization) lives in [gameplay/](../gameplay/README.md), **never here** — this folder stays about the *runtime*, so it is the substrate every game shares.
+
 ## What we deliberately do differently from AzerothCore
 | ACore/TrinityCore (2004-era design) | Ours | Why |
 |---|---|---|
