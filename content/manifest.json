@@ -343,9 +343,9 @@
     {
       "id": "wilder",
       "name": "Wilder",
-      "description": "Shapeshifting primal who draws power from the Bloom force, shifting between bear, cat, and humanoid forms to tank, DPS, or heal.",
+      "description": "Shapeshifting primal who draws power from the Bloom force, shifting between bear, cat, and eagle forms to tank, DPS, or travel.",
       "role": "tank",
-      "abilities": ["primal-strike", "bear-form", "cat-form", "bloom-mend", "bloom-burst"],
+      "abilities": ["bear-form", "cat-form", "eagle-form", "healing-touch", "natures-swiftness"],
       "stat_growth": {
         "strength": 1,
         "dexterity": 1,
@@ -864,6 +864,39 @@
         { "effect": "Heal", "magnitude": 28.0, "scaling": 0.9, "target": "aoe_ally" },
         { "effect": "Damage", "magnitude": 24.0, "scaling": 0.8, "target": "aoe_enemy" }
       ]
+    },
+    {
+      "id": "eagle-form",
+      "name": "Eagle Form",
+      "description": "Shift into a swift eagle, gaining increased movement speed for travel.",
+      "max_rank": 1,
+      "cooldown_sec": 1.5,
+      "resource_cost": 10,
+      "cast_time_sec": 1.5,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Buff", "magnitude": 40.0, "scaling": 0.6, "target": "self" }]
+    },
+    {
+      "id": "healing-touch",
+      "name": "Healing Touch",
+      "description": "Instant primal heal that mends an ally's wounds with the Bloom force.",
+      "max_rank": 1,
+      "cooldown_sec": 8.0,
+      "resource_cost": 18,
+      "cast_time_sec": 0.0,
+      "range_yards": 30.0,
+      "effects": [{ "effect": "Heal", "magnitude": 35.0, "scaling": 1.0, "target": "ally" }]
+    },
+    {
+      "id": "natures-swiftness",
+      "name": "Nature's Swiftness",
+      "description": "Grant instant casting to your next spell within a short time.",
+      "max_rank": 1,
+      "cooldown_sec": 90.0,
+      "resource_cost": 12,
+      "cast_time_sec": 0.0,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Buff", "magnitude": 10.0, "scaling": 0.0, "target": "self" }]
     },
     {
       "id": "soul-shard",
