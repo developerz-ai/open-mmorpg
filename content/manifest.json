@@ -243,7 +243,7 @@
       "name": "Warden",
       "description": "Totemic elementalist who channels the forces through earthen wards.",
       "role": "healer",
-      "abilities": ["healing-surge", "totemic-ward"],
+      "abilities": ["healing-surge", "totemic-ward", "earth-shock"],
       "stat_growth": {
         "strength": 0,
         "dexterity": 0,
@@ -260,7 +260,7 @@
       "name": "Ranger",
       "description": "Marksman and beast-companion, master of the untamed reach.",
       "role": "dps",
-      "abilities": ["quick-shot", "hunters-mark"],
+      "abilities": ["quick-shot", "hunters-mark", "serpent-sting"],
       "stat_growth": {
         "strength": 0,
         "dexterity": 3,
@@ -277,7 +277,7 @@
       "name": "Arcanist",
       "description": "Scholar of raw arcane; Lattice woven into bolts and flame.",
       "role": "dps",
-      "abilities": ["arcane-bolt", "fireball"],
+      "abilities": ["arcane-bolt", "fireball", "frostbolt"],
       "stat_growth": {
         "strength": 0,
         "dexterity": 0,
@@ -294,7 +294,7 @@
       "name": "Shade",
       "description": "Stealthed assassin striking from shadow with precise lethality.",
       "role": "dps",
-      "abilities": ["backstab", "shadowstep"],
+      "abilities": ["backstab", "shadowstep", "venom-blade"],
       "stat_growth": {
         "strength": 1,
         "dexterity": 3,
@@ -384,6 +384,72 @@
       },
       "hp_per_level": 8,
       "resource_per_level": 11
+    },
+    {
+      "id": "ascetic",
+      "name": "Ascetic",
+      "description": "Inner-force martial artist who channels Ki through martial arts. Can tank, heal, or deal damage depending on stance.",
+      "role": "tank",
+      "abilities": [
+        "ki-strike",
+        "iron-skin",
+        "healing-palm",
+        "stance-of-the-stone",
+        "stance-of-the-mending-stream",
+        "stance-of-the-fist",
+        "inner-fire-burst"
+      ],
+      "stat_growth": {
+        "strength": 1,
+        "dexterity": 1,
+        "constitution": 2,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "hp_per_level": 10,
+      "resource_per_level": 8
+    },
+    {
+      "id": "oracle",
+      "name": "Oracle",
+      "description": "Radiance-healer and void-caller who wields both Dawn and Deep (Umbra) forces through prophecy and divine vision.",
+      "role": "healer",
+      "abilities": ["radiance", "void-bolt", "dawn-shield", "shadow-word"],
+      "stat_growth": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 1,
+        "wisdom": 2,
+        "charisma": 1
+      },
+      "hp_per_level": 8,
+      "resource_per_level": 12
+    },
+    {
+      "id": "channeler",
+      "name": "Channeler",
+      "description": "Mid-range empowerment mage who channels Essence and mana through Lattice·Bloom forces, weaving healing and damage in a flow of arcane energy.",
+      "role": "healer",
+      "abilities": [
+        "essence-channel",
+        "lattice-infusion",
+        "bloom-pulse",
+        "empowering-flow",
+        "essence-burst",
+        "mana-shield"
+      ],
+      "stat_growth": {
+        "strength": 0,
+        "dexterity": 1,
+        "constitution": 0,
+        "intelligence": 1,
+        "wisdom": 2,
+        "charisma": 0
+      },
+      "hp_per_level": 9,
+      "resource_per_level": 10
     }
   ],
   "abilities": [
@@ -545,6 +611,20 @@
       "effects": [{ "effect": "Damage", "magnitude": 26.0, "scaling": 0.8, "target": "enemy" }]
     },
     {
+      "id": "frostbolt",
+      "name": "Frostbolt",
+      "description": "Launch a bolt of freezing ice that deals frost damage and briefly slows the target.",
+      "max_rank": 1,
+      "cooldown_sec": 2.0,
+      "resource_cost": 22,
+      "cast_time_sec": 1.5,
+      "range_yards": 30.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 20.0, "scaling": 0.7, "target": "enemy" },
+        { "effect": "Debuff", "magnitude": 20.0, "scaling": 0.0, "target": "enemy" }
+      ]
+    },
+    {
       "id": "backstab",
       "name": "Backstab",
       "description": "A vicious strike from behind for enormous damage.",
@@ -554,6 +634,20 @@
       "cast_time_sec": 0.0,
       "range_yards": 4.0,
       "effects": [{ "effect": "Damage", "magnitude": 22.0, "scaling": 1.5, "target": "enemy" }]
+    },
+    {
+      "id": "venom-blade",
+      "name": "Venom Blade",
+      "description": "Coat your blade in deadly poison, dealing immediate damage and a damage-over-time effect.",
+      "max_rank": 1,
+      "cooldown_sec": 6.0,
+      "resource_cost": 18,
+      "cast_time_sec": 0.0,
+      "range_yards": 4.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 14.0, "scaling": 0.6, "target": "enemy" },
+        { "effect": "Damage", "magnitude": 6.0, "scaling": 0.3, "target": "enemy" }
+      ]
     },
     {
       "id": "shadowstep",
@@ -598,6 +692,20 @@
       "cast_time_sec": 0.0,
       "range_yards": 0.0,
       "effects": [{ "effect": "Buff", "magnitude": 8.0, "scaling": 0.3, "target": "self" }]
+    },
+    {
+      "id": "earth-shock",
+      "name": "Earth Shock",
+      "description": "Channel earthen energy into the target, dealing nature damage and briefly slowing movement.",
+      "max_rank": 1,
+      "cooldown_sec": 4.0,
+      "resource_cost": 20,
+      "cast_time_sec": 1.0,
+      "range_yards": 20.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 18.0, "scaling": 0.7, "target": "enemy" },
+        { "effect": "Debuff", "magnitude": 30.0, "scaling": 0.0, "target": "enemy" }
+      ]
     },
     {
       "id": "guardian-strength",
@@ -1027,6 +1135,317 @@
       "cast_time_sec": 5.0,
       "range_yards": 0.0,
       "effects": [{ "effect": "Summon", "magnitude": 0.0, "scaling": 0.0, "target": "group" }]
+    },
+    {
+      "id": "ki-strike",
+      "name": "Ki Strike",
+      "description": "A focused martial arts strike that channels inner force to damage the target.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 8,
+      "cast_time_sec": 0.0,
+      "range_yards": 5.0,
+      "effects": [{ "effect": "Damage", "magnitude": 12.0, "scaling": 1.0, "target": "enemy" }]
+    },
+    {
+      "id": "iron-skin",
+      "name": "Iron Skin",
+      "description": "Harden your body through inner force, reducing incoming damage for a time.",
+      "max_rank": 1,
+      "cooldown_sec": 15.0,
+      "resource_cost": 16,
+      "cast_time_sec": 0.0,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Buff", "magnitude": 30.0, "scaling": 1.0, "target": "self" }]
+    },
+    {
+      "id": "healing-palm",
+      "name": "Healing Palm",
+      "description": "Channel Ki through your palm to mend an ally's wounds.",
+      "max_rank": 1,
+      "cooldown_sec": 10.0,
+      "resource_cost": 20,
+      "cast_time_sec": 1.8,
+      "range_yards": 10.0,
+      "effects": [{ "effect": "Heal", "magnitude": 42.0, "scaling": 1.1, "target": "ally" }]
+    },
+    {
+      "id": "stance-of-the-stone",
+      "name": "Stance of the Stone",
+      "description": "Root yourself like stone, gaining increased threat generation and damage reduction.",
+      "max_rank": 1,
+      "cooldown_sec": 2.0,
+      "resource_cost": 18,
+      "cast_time_sec": 1.5,
+      "range_yards": 0.0,
+      "effects": [
+        { "effect": "Buff", "magnitude": 25.0, "scaling": 0.8, "target": "self" },
+        { "effect": "Buff", "magnitude": 15.0, "scaling": 0.5, "target": "self" }
+      ]
+    },
+    {
+      "id": "stance-of-the-mending-stream",
+      "name": "Stance of the Mending Stream",
+      "description": "Flow like water, increasing healing done and reducing casting time for healing abilities.",
+      "max_rank": 1,
+      "cooldown_sec": 2.0,
+      "resource_cost": 15,
+      "cast_time_sec": 1.5,
+      "range_yards": 0.0,
+      "effects": [
+        { "effect": "Buff", "magnitude": 22.0, "scaling": 0.9, "target": "self" },
+        { "effect": "Buff", "magnitude": 18.0, "scaling": 0.4, "target": "self" }
+      ]
+    },
+    {
+      "id": "stance-of-the-fist",
+      "name": "Stance of the Fist",
+      "description": "Strike like fire, increasing attack damage and speed.",
+      "max_rank": 1,
+      "cooldown_sec": 2.0,
+      "resource_cost": 12,
+      "cast_time_sec": 1.5,
+      "range_yards": 0.0,
+      "effects": [
+        { "effect": "Buff", "magnitude": 20.0, "scaling": 0.7, "target": "self" },
+        { "effect": "Buff", "magnitude": 18.0, "scaling": 0.5, "target": "self" }
+      ]
+    },
+    {
+      "id": "inner-fire-burst",
+      "name": "Inner Fire Burst",
+      "description": "Release your accumulated Ki in a powerful burst, dealing damage to nearby enemies.",
+      "max_rank": 1,
+      "cooldown_sec": 14.0,
+      "resource_cost": 28,
+      "cast_time_sec": 0.0,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Damage", "magnitude": 30.0, "scaling": 1.3, "target": "aoe_enemy" }]
+    },
+    {
+      "id": "radiance",
+      "name": "Radiance",
+      "description": "Channel Dawn magic in a burst of radiant light that heals all nearby allies.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 24,
+      "cast_time_sec": 2.2,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Heal", "magnitude": 32.0, "scaling": 1.0, "target": "aoe_ally" }]
+    },
+    {
+      "id": "void-bolt",
+      "name": "Void Bolt",
+      "description": "Hurl a bolt of crackling Deep magic energy at a foe, dealing void-touched damage.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 12,
+      "cast_time_sec": 1.4,
+      "range_yards": 35.0,
+      "effects": [{ "effect": "Damage", "magnitude": 18.0, "scaling": 1.0, "target": "enemy" }]
+    },
+    {
+      "id": "shadow-word",
+      "name": "Shadow Word",
+      "description": "Curse a target with shadowy pain that deals damage over time and weakens their resolve.",
+      "max_rank": 1,
+      "cooldown_sec": 8.0,
+      "resource_cost": 16,
+      "cast_time_sec": 1.2,
+      "range_yards": 30.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 8.0, "scaling": 0.6, "target": "enemy" },
+        { "effect": "Debuff", "magnitude": 10.0, "scaling": 0.4, "target": "enemy" }
+      ]
+    },
+    {
+      "id": "serpent-sting",
+      "name": "Serpent Sting",
+      "description": "Apply a venomous sting that deals nature damage over time.",
+      "max_rank": 1,
+      "cooldown_sec": 10.0,
+      "resource_cost": 14,
+      "cast_time_sec": 0.0,
+      "range_yards": 25.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 6.0, "scaling": 0.4, "target": "enemy" },
+        { "effect": "Damage", "magnitude": 4.0, "scaling": 0.3, "target": "enemy" }
+      ]
+    },
+    {
+      "id": "dawn-shield",
+      "name": "Dawn Shield",
+      "description": "Encase an ally in radiant light that absorbs incoming harm.",
+      "max_rank": 1,
+      "cooldown_sec": 12.0,
+      "resource_cost": 22,
+      "cast_time_sec": 0.0,
+      "range_yards": 30.0,
+      "effects": [{ "effect": "Buff", "magnitude": 38.0, "scaling": 1.0, "target": "ally" }]
+    },
+    {
+      "id": "essence-channel",
+      "name": "Essence Channel",
+      "description": "Channel raw Essence into a focused bolt that mends allies or burns foes.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 10,
+      "cast_time_sec": 1.5,
+      "range_yards": 30.0,
+      "effects": [
+        { "effect": "Heal", "magnitude": 28.0, "scaling": 1.0, "target": "ally" },
+        { "effect": "Damage", "magnitude": 22.0, "scaling": 0.85, "target": "enemy" }
+      ]
+    },
+    {
+      "id": "lattice-infusion",
+      "name": "Lattice Infusion",
+      "description": "Infuse an ally with Lattice energy, increasing their power and hastening their abilities.",
+      "max_rank": 1,
+      "cooldown_sec": 12.0,
+      "resource_cost": 18,
+      "cast_time_sec": 0.0,
+      "range_yards": 25.0,
+      "effects": [
+        { "effect": "Buff", "magnitude": 18.0, "scaling": 0.6, "target": "ally" },
+        { "effect": "Buff", "magnitude": 12.0, "scaling": 0.4, "target": "ally" }
+      ]
+    },
+    {
+      "id": "bloom-pulse",
+      "name": "Bloom Pulse",
+      "description": "Release a pulse of Bloom energy that mends nearby allies and damages nearby foes.",
+      "max_rank": 1,
+      "cooldown_sec": 10.0,
+      "resource_cost": 22,
+      "cast_time_sec": 0.0,
+      "range_yards": 0.0,
+      "effects": [
+        { "effect": "Heal", "magnitude": 24.0, "scaling": 0.8, "target": "aoe_ally" },
+        { "effect": "Damage", "magnitude": 20.0, "scaling": 0.7, "target": "aoe_enemy" }
+      ]
+    },
+    {
+      "id": "empowering-flow",
+      "name": "Empowering Flow",
+      "description": "Channel a sustained flow of Essence that continuously heals a target ally over time.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 8,
+      "cast_time_sec": 0.5,
+      "range_yards": 30.0,
+      "effects": [
+        { "effect": "Heal", "magnitude": 8.0, "scaling": 0.4, "target": "ally" },
+        { "effect": "Buff", "magnitude": 6.0, "scaling": 0.3, "target": "ally" }
+      ]
+    },
+    {
+      "id": "essence-burst",
+      "name": "Essence Burst",
+      "description": "Release accumulated Essence in a powerful burst, healing all nearby allies.",
+      "max_rank": 1,
+      "cooldown_sec": 14.0,
+      "resource_cost": 28,
+      "cast_time_sec": 0.0,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Heal", "magnitude": 32.0, "scaling": 1.2, "target": "aoe_ally" }]
+    },
+    {
+      "id": "mana-shield",
+      "name": "Mana Shield",
+      "description": "Wrap yourself in a shield of pure mana that absorbs incoming harm using your Essence instead of health.",
+      "max_rank": 1,
+      "cooldown_sec": 20.0,
+      "resource_cost": 25,
+      "cast_time_sec": 0.0,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Buff", "magnitude": 40.0, "scaling": 1.0, "target": "self" }]
+    },
+    {
+      "id": "jab",
+      "name": "Jab",
+      "description": "A quick palm strike that builds Ki through disciplined form.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 6,
+      "cast_time_sec": 0.0,
+      "range_yards": 5.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 10.0, "scaling": 0.9, "target": "enemy" },
+        { "effect": "Buff", "magnitude": 3.0, "scaling": 0.1, "target": "self" }
+      ]
+    },
+    {
+      "id": "roundhouse-kick",
+      "name": "Roundhouse Kick",
+      "description": "A sweeping circular kick that strikes all foes in a cone, consuming Ki to enhance the blow.",
+      "max_rank": 1,
+      "cooldown_sec": 8.0,
+      "resource_cost": 18,
+      "cast_time_sec": 0.5,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Damage", "magnitude": 24.0, "scaling": 1.1, "target": "aoe_enemy" }]
+    },
+    {
+      "id": "meditative-heal",
+      "name": "Meditative Heal",
+      "description": "Enter a meditative state, channeling Ki to continuously mend your wounds over time.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 8,
+      "cast_time_sec": 2.5,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Heal", "magnitude": 18.0, "scaling": 0.8, "target": "self" }]
+    },
+    {
+      "id": "transcendence",
+      "name": "Transcendence",
+      "description": "Enter a defensive stance, clearing debuffs and reducing damage taken through inner calm.",
+      "max_rank": 1,
+      "cooldown_sec": 45.0,
+      "resource_cost": 22,
+      "cast_time_sec": 0.0,
+      "range_yards": 0.0,
+      "effects": [
+        { "effect": "Buff", "magnitude": 28.0, "scaling": 0.9, "target": "self" },
+        { "effect": "Debuff", "magnitude": 0.0, "scaling": 0.0, "target": "self" }
+      ]
+    },
+    {
+      "id": "arcane-channel",
+      "name": "Arcane Channel",
+      "description": "Channel raw arcane energy into a target, dealing continuous damage while the channel is maintained.",
+      "max_rank": 1,
+      "cooldown_sec": 12.0,
+      "resource_cost": 15,
+      "cast_time_sec": 2.5,
+      "range_yards": 25.0,
+      "effects": [{ "effect": "Damage", "magnitude": 18.0, "scaling": 1.1, "target": "enemy" }]
+    },
+    {
+      "id": "leylines",
+      "name": "Leylines",
+      "description": "Tap into the ambient leyline network, granting your party increased casting and movement speed for a time.",
+      "max_rank": 1,
+      "cooldown_sec": 30.0,
+      "resource_cost": 35,
+      "cast_time_sec": 0.0,
+      "range_yards": 0.0,
+      "effects": [
+        { "effect": "Buff", "magnitude": 15.0, "scaling": 0.5, "target": "party" },
+        { "effect": "Buff", "magnitude": 10.0, "scaling": 0.3, "target": "party" }
+      ]
+    },
+    {
+      "id": "weave-shield",
+      "name": "Weave Shield",
+      "description": "Weave a protective barrier around an ally that absorbs a fixed amount of incoming damage.",
+      "max_rank": 1,
+      "cooldown_sec": 25.0,
+      "resource_cost": 30,
+      "cast_time_sec": 0.5,
+      "range_yards": 30.0,
+      "effects": [{ "effect": "Buff", "magnitude": 50.0, "scaling": 1.2, "target": "ally" }]
     }
   ],
   "items": [

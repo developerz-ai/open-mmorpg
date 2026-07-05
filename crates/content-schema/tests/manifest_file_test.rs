@@ -32,7 +32,7 @@ fn committed_manifest_loads_and_validates() {
 
     // The slice a player actually picks from at character creation.
     assert_eq!(manifest.races.len(), 12, "complete racial slate");
-    assert_eq!(manifest.classes.len(), 10, "complete hero class set");
+    assert_eq!(manifest.classes.len(), 13, "complete hero class set");
     assert!(
         manifest
             .races
@@ -41,8 +41,8 @@ fn committed_manifest_loads_and_validates() {
         "every race must belong to a canon faction"
     );
     assert!(
-        manifest.classes.iter().all(|c| !c.abilities.is_empty()),
-        "every class must grant at least one ability"
+        manifest.classes.iter().all(|c| c.abilities.len() >= 3),
+        "every class must grant at least three abilities"
     );
     assert!(
         manifest.races.iter().all(|r| r
