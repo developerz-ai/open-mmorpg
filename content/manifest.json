@@ -13,7 +13,9 @@
         "secondary": "#1f6fb2"
       },
       "capital": "solhaven",
-      "hostile_to": ["wildreach-pact"]
+      "hostile_to": [
+        "wildreach-pact"
+      ]
     },
     {
       "id": "wildreach-pact",
@@ -24,7 +26,9 @@
         "secondary": "#8c6a3e"
       },
       "capital": "emberhold",
-      "hostile_to": ["aurelian-concord"]
+      "hostile_to": [
+        "aurelian-concord"
+      ]
     }
   ],
   "races": [
@@ -33,7 +37,9 @@
       "name": "Aurin",
       "description": "Adaptable dawn-faith builders; the Concord's founders and its conscience.",
       "faction_id": "aurelian-concord",
-      "traits": ["indomitable-spirit"],
+      "traits": [
+        "indomitable-spirit"
+      ],
       "stats": {
         "strength": 0,
         "dexterity": 0,
@@ -63,7 +69,9 @@
       "name": "Karnat",
       "description": "Runecrafting forge-folk; veins etched with arcane lines that pulse with lattice-work.",
       "faction_id": "aurelian-concord",
-      "traits": ["runic-resilience"],
+      "traits": [
+        "runic-resilience"
+      ],
       "stats": {
         "strength": 1,
         "dexterity": 0,
@@ -78,7 +86,9 @@
       "name": "Cogwright",
       "description": "Clockwork engineers whose hands move with mechanical precision and arcane insight.",
       "faction_id": "aurelian-concord",
-      "traits": ["quick-repair"],
+      "traits": [
+        "quick-repair"
+      ],
       "stats": {
         "strength": 0,
         "dexterity": 1,
@@ -93,7 +103,9 @@
       "name": "Lucen",
       "description": "Dawn-touched seers bearing the radiant scar of their first sunrise, attuned to faith and prophecy.",
       "faction_id": "aurelian-concord",
-      "traits": ["dawnfire-blessing"],
+      "traits": [
+        "dawnfire-blessing"
+      ],
       "stats": {
         "strength": 0,
         "dexterity": 0,
@@ -108,7 +120,9 @@
       "name": "Brael",
       "description": "Honor-bound guardians who swear the Oath of the Last Watch; the Concord's first and last line of defense.",
       "faction_id": "aurelian-concord",
-      "traits": ["guardian-strength"],
+      "traits": [
+        "guardian-strength"
+      ],
       "stats": {
         "strength": 2,
         "dexterity": 0,
@@ -123,7 +137,9 @@
       "name": "Ordan",
       "description": "Green-skinned honorbound warriors; the Pact's martial core.",
       "faction_id": "wildreach-pact",
-      "traits": ["savage-fury"],
+      "traits": [
+        "savage-fury"
+      ],
       "stats": {
         "strength": 2,
         "dexterity": 0,
@@ -153,7 +169,9 @@
       "name": "Voss",
       "description": "Hollow-folk reclaimed from the crypt's chill; bearing the scar of their return with quiet purpose.",
       "faction_id": "wildreach-pact",
-      "traits": ["will-endurance"],
+      "traits": [
+        "will-endurance"
+      ],
       "stats": {
         "strength": 0,
         "dexterity": 0,
@@ -168,7 +186,9 @@
       "name": "Tza'ri",
       "description": "Desert walkers bound in honor to ancestor-spirits; guidance and insight flow through every bloodline.",
       "faction_id": "wildreach-pact",
-      "traits": ["ancestral-guidance"],
+      "traits": [
+        "ancestral-guidance"
+      ],
       "stats": {
         "strength": 0,
         "dexterity": 1,
@@ -183,7 +203,9 @@
       "name": "Ashkin",
       "description": "Trickster engineers of the deep wastes; every gear turns twice, and nothing is ever what it seems.",
       "faction_id": "wildreach-pact",
-      "traits": ["explosive-tricks"],
+      "traits": [
+        "explosive-tricks"
+      ],
       "stats": {
         "strength": 0,
         "dexterity": 2,
@@ -198,7 +220,9 @@
       "name": "Sarn",
       "description": "Dragon-touched warrior-folk; scales and fiery breath mark the ancient pact that still burns.",
       "faction_id": "wildreach-pact",
-      "traits": ["dragon-breath"],
+      "traits": [
+        "dragon-breath"
+      ],
       "stats": {
         "strength": 2,
         "dexterity": 0,
@@ -215,7 +239,11 @@
       "name": "Vanguard",
       "description": "Frontline martial soldier; a wall of steel and fury.",
       "role": "tank",
-      "abilities": ["cleave", "shield-bash", "guardian-strike"],
+      "abilities": [
+        "cleave",
+        "shield-bash",
+        "guardian-strike"
+      ],
       "stat_growth": {
         "strength": 2,
         "dexterity": 1,
@@ -232,7 +260,11 @@
       "name": "Templar",
       "description": "Armored holy warrior who mends allies and smites the unworthy.",
       "role": "healer",
-      "abilities": ["smite", "divine-aegis", "lay-on-hands"],
+      "abilities": [
+        "smite",
+        "divine-aegis",
+        "lay-on-hands"
+      ],
       "stat_growth": {
         "strength": 1,
         "dexterity": 0,
@@ -249,7 +281,11 @@
       "name": "Warden",
       "description": "Totemic elementalist who channels the forces through earthen wards.",
       "role": "healer",
-      "abilities": ["healing-surge", "totemic-ward", "earth-shock"],
+      "abilities": [
+        "healing-surge",
+        "totemic-ward",
+        "earth-shock"
+      ],
       "stat_growth": {
         "strength": 0,
         "dexterity": 0,
@@ -266,7 +302,11 @@
       "name": "Ranger",
       "description": "Marksman and beast-companion, master of the untamed reach.",
       "role": "dps",
-      "abilities": ["quick-shot", "hunters-mark", "serpent-sting"],
+      "abilities": [
+        "quick-shot",
+        "hunters-mark",
+        "serpent-sting"
+      ],
       "stat_growth": {
         "strength": 0,
         "dexterity": 3,
@@ -283,7 +323,11 @@
       "name": "Arcanist",
       "description": "Scholar of raw arcane; Lattice woven into bolts and flame.",
       "role": "dps",
-      "abilities": ["arcane-bolt", "fireball", "frostbolt"],
+      "abilities": [
+        "arcane-bolt",
+        "fireball",
+        "frostbolt"
+      ],
       "stat_growth": {
         "strength": 0,
         "dexterity": 0,
@@ -300,7 +344,11 @@
       "name": "Shade",
       "description": "Stealthed assassin striking from shadow with precise lethality.",
       "role": "dps",
-      "abilities": ["backstab", "shadowstep", "venom-blade"],
+      "abilities": [
+        "backstab",
+        "shadowstep",
+        "venom-blade"
+      ],
       "stat_growth": {
         "strength": 1,
         "dexterity": 3,
@@ -317,7 +365,12 @@
       "name": "Revenant",
       "description": "Plate-clad tank/DPS hybrid wielding runic power and the Hollow force.",
       "role": "tank",
-      "abilities": ["rune-strike", "death-gate", "soul-reaper", "army-of-the-dead"],
+      "abilities": [
+        "rune-strike",
+        "death-gate",
+        "soul-reaper",
+        "army-of-the-dead"
+      ],
       "stat_growth": {
         "strength": 2,
         "dexterity": 1,
@@ -334,7 +387,12 @@
       "name": "Riftblade",
       "description": "Leather-clad tank/DPS hybrid wielding Havoc and the Rift force.",
       "role": "tank",
-      "abilities": ["rift-strike", "chaotic-surge", "dimensional-tear", "chaos-storm"],
+      "abilities": [
+        "rift-strike",
+        "chaotic-surge",
+        "dimensional-tear",
+        "chaos-storm"
+      ],
       "stat_growth": {
         "strength": 1,
         "dexterity": 2,
@@ -351,7 +409,13 @@
       "name": "Wilder",
       "description": "Shapeshifting primal who draws power from the Bloom force, shifting between bear, cat, and eagle forms to tank, DPS, or travel.",
       "role": "tank",
-      "abilities": ["bear-form", "cat-form", "eagle-form", "healing-touch", "natures-swiftness"],
+      "abilities": [
+        "bear-form",
+        "cat-form",
+        "eagle-form",
+        "healing-touch",
+        "natures-swiftness"
+      ],
       "stat_growth": {
         "strength": 1,
         "dexterity": 1,
@@ -421,7 +485,12 @@
       "name": "Oracle",
       "description": "Radiance-healer and void-caller who wields both Dawn and Deep (Umbra) forces through prophecy and divine vision.",
       "role": "healer",
-      "abilities": ["radiance", "void-bolt", "dawn-shield", "shadow-word"],
+      "abilities": [
+        "radiance",
+        "void-bolt",
+        "dawn-shield",
+        "shadow-word"
+      ],
       "stat_growth": {
         "strength": 0,
         "dexterity": 0,
@@ -15585,7 +15654,9 @@
         "experience": 100,
         "gold_copper": 50,
         "choice_items": [],
-        "items": ["minor-healing-potion"]
+        "items": [
+          "minor-healing-potion"
+        ]
       },
       "giver_id": "env-emberheart",
       "turn_in_id": "warden-surann",
@@ -15596,7 +15667,9 @@
       "name": "Wolf Trouble at the Pale Gates",
       "description": "Wolves harry the outlying steadings. Thin their pack and bring proof.",
       "level": 2,
-      "prerequisites": ["awakening-in-dawnshore"],
+      "prerequisites": [
+        "awakening-in-dawnshore"
+      ],
       "objectives": [
         {
           "objective_type": "Kill",
@@ -15614,7 +15687,10 @@
       "rewards": {
         "experience": 250,
         "gold_copper": 100,
-        "choice_items": ["rusty-shortsword", "apprentice-rod"],
+        "choice_items": [
+          "rusty-shortsword",
+          "apprentice-rod"
+        ],
         "items": []
       },
       "giver_id": "warden-surann",
@@ -15626,7 +15702,9 @@
       "name": "The Path to the Crypt",
       "description": "A hollow wind blows from the old barrow. Find the Hollowveil entrance.",
       "level": 6,
-      "prerequisites": ["wolf-trouble"],
+      "prerequisites": [
+        "wolf-trouble"
+      ],
       "objectives": [
         {
           "objective_type": "Explore",
@@ -15650,7 +15728,9 @@
       "name": "Relic of the Hollow",
       "description": "Descend into the Hollowveil, take the relic, and bring it to light.",
       "level": 8,
-      "prerequisites": ["path-to-the-crypt"],
+      "prerequisites": [
+        "path-to-the-crypt"
+      ],
       "objectives": [
         {
           "objective_type": "Kill",
@@ -15668,7 +15748,10 @@
       "rewards": {
         "experience": 800,
         "gold_copper": 400,
-        "choice_items": ["venomfang-dagger", "hollowveil-mantle"],
+        "choice_items": [
+          "venomfang-dagger",
+          "hollowveil-mantle"
+        ],
         "items": []
       },
       "giver_id": "warden-surann",
@@ -15697,8 +15780,14 @@
       "rewards": {
         "experience": 150,
         "gold_copper": 75,
-        "choice_items": ["rusty-shortsword", "apprentice-rod"],
-        "items": ["minor-healing-potion", "travelers-ration"]
+        "choice_items": [
+          "rusty-shortsword",
+          "apprentice-rod"
+        ],
+        "items": [
+          "minor-healing-potion",
+          "travelers-ration"
+        ]
       },
       "giver_id": "innkeeper-mara",
       "turn_in_id": "innkeeper-mara",
@@ -15709,7 +15798,9 @@
       "name": "Strange Brew",
       "description": "A courier dropped a peculiar flask near the old bridge. Retrieve it for the innkeeper before something else finds it.",
       "level": 5,
-      "prerequisites": ["a-warm-meal"],
+      "prerequisites": [
+        "a-warm-meal"
+      ],
       "objectives": [
         {
           "objective_type": "Gather",
@@ -15727,8 +15818,13 @@
       "rewards": {
         "experience": 300,
         "gold_copper": 150,
-        "choice_items": ["guardsman-tunic", "rusty-shortsword"],
-        "items": ["healing-potion"]
+        "choice_items": [
+          "guardsman-tunic",
+          "rusty-shortsword"
+        ],
+        "items": [
+          "healing-potion"
+        ]
       },
       "giver_id": "innkeeper-mara",
       "turn_in_id": "innkeeper-mara",
@@ -15739,7 +15835,9 @@
       "name": "The Traveling Merchant",
       "description": "Merchant Gildas needs an escort to the Dawnshore market. The road has grown dangerous.",
       "level": 8,
-      "prerequisites": ["strange-brew"],
+      "prerequisites": [
+        "strange-brew"
+      ],
       "objectives": [
         {
           "objective_type": "Speak",
@@ -15758,7 +15856,10 @@
         "experience": 500,
         "gold_copper": 300,
         "choice_items": [],
-        "items": ["travelers-ration", "travelers-ration"]
+        "items": [
+          "travelers-ration",
+          "travelers-ration"
+        ]
       },
       "giver_id": "merchant-gildas",
       "turn_in_id": "merchant-gildas",
@@ -15787,8 +15888,14 @@
       "rewards": {
         "experience": 1200,
         "gold_copper": 500,
-        "choice_items": ["vanguard-training-sword", "templar-mace"],
-        "items": ["healing-potion", "healing-potion"]
+        "choice_items": [
+          "vanguard-training-sword",
+          "templar-mace"
+        ],
+        "items": [
+          "healing-potion",
+          "healing-potion"
+        ]
       },
       "giver_id": "gate-captain-theron",
       "turn_in_id": "gate-captain-theron",
@@ -15799,7 +15906,9 @@
       "name": "The Pact Skirmishers",
       "description": "Pact scouts have been spotted near the Pale Gate. Eliminate them before they report our defenses.",
       "level": 12,
-      "prerequisites": ["gates-under-siege"],
+      "prerequisites": [
+        "gates-under-siege"
+      ],
       "objectives": [
         {
           "objective_type": "Kill",
@@ -15823,8 +15932,14 @@
       "rewards": {
         "experience": 1500,
         "gold_copper": 750,
-        "choice_items": ["venomfang-dagger", "vanguard-training-sword"],
-        "items": ["greater-healing-potion", "minor-mana-potion"]
+        "choice_items": [
+          "venomfang-dagger",
+          "vanguard-training-sword"
+        ],
+        "items": [
+          "greater-healing-potion",
+          "minor-mana-potion"
+        ]
       },
       "giver_id": "gate-captain-theron",
       "turn_in_id": "gate-captain-theron",
@@ -15835,7 +15950,9 @@
       "name": "Reinforcement Request",
       "description": "The Pact threat is growing. Deliver Captain Theron's request for reinforcements to the Solhaven garrison.",
       "level": 15,
-      "prerequisites": ["the-pact-skirmishers"],
+      "prerequisites": [
+        "the-pact-skirmishers"
+      ],
       "objectives": [
         {
           "objective_type": "Deliver",
@@ -15853,8 +15970,15 @@
       "rewards": {
         "experience": 2000,
         "gold_copper": 1000,
-        "choice_items": ["templar-mace", "hollowveil-mantle"],
-        "items": ["greater-healing-potion", "mana-potion", "travelers-ration"]
+        "choice_items": [
+          "templar-mace",
+          "hollowveil-mantle"
+        ],
+        "items": [
+          "greater-healing-potion",
+          "mana-potion",
+          "travelers-ration"
+        ]
       },
       "giver_id": "gate-captain-theron",
       "turn_in_id": "solhaven-commander",
@@ -15889,9 +16013,15 @@
       "rewards": {
         "experience": 600,
         "gold_copper": 200,
-        "choice_items": ["iron-broadblade"],
-        "items": ["healing-potion"],
-        "abilities": ["cleave"]
+        "choice_items": [
+          "iron-broadblade"
+        ],
+        "items": [
+          "healing-potion"
+        ],
+        "abilities": [
+          "cleave"
+        ]
       },
       "giver_id": "vanguard-trainer-bron",
       "turn_in_id": "vanguard-trainer-bron",
@@ -15926,9 +16056,16 @@
       "rewards": {
         "experience": 1500,
         "gold_copper": 500,
-        "choice_items": ["arcane-focus"],
-        "items": ["mana-potion", "mana-potion"],
-        "abilities": ["fireball"]
+        "choice_items": [
+          "arcane-focus"
+        ],
+        "items": [
+          "mana-potion",
+          "mana-potion"
+        ],
+        "abilities": [
+          "fireball"
+        ]
       },
       "giver_id": "arcanist-trainer-elara",
       "turn_in_id": "arcanist-trainer-elara",
@@ -15963,9 +16100,16 @@
       "rewards": {
         "experience": 1500,
         "gold_copper": 500,
-        "choice_items": ["shadow-blade"],
-        "items": ["minor-mana-potion", "venom-coated-dagger"],
-        "abilities": ["shadowstep"]
+        "choice_items": [
+          "shadow-blade"
+        ],
+        "items": [
+          "minor-mana-potion",
+          "venom-coated-dagger"
+        ],
+        "abilities": [
+          "shadowstep"
+        ]
       },
       "giver_id": "shade-trainer-sylas",
       "turn_in_id": "shade-trainer-sylas",
@@ -15988,8 +16132,13 @@
       "rewards": {
         "experience": 2500,
         "gold_copper": 1200,
-        "choice_items": ["concord-medallion"],
-        "items": ["healing-potion", "healing-potion"]
+        "choice_items": [
+          "concord-medallion"
+        ],
+        "items": [
+          "healing-potion",
+          "healing-potion"
+        ]
       },
       "giver_id": "high-chancellor-valerius",
       "turn_in_id": "high-chancellor-valerius",
@@ -16000,7 +16149,9 @@
       "name": "A Diplomatic Mission",
       "description": "Travel to the Dawnshore frontier and gather intelligence on Pact movements. The Concord must know its enemy.",
       "level": 16,
-      "prerequisites": ["concord-call"],
+      "prerequisites": [
+        "concord-call"
+      ],
       "objectives": [
         {
           "objective_type": "Speak",
@@ -16030,8 +16181,14 @@
       "rewards": {
         "experience": 3000,
         "gold_copper": 1500,
-        "choice_items": ["concord-emblem", "guardsman-shield"],
-        "items": ["mana-potion", "travelers-ration"]
+        "choice_items": [
+          "concord-emblem",
+          "guardsman-shield"
+        ],
+        "items": [
+          "mana-potion",
+          "travelers-ration"
+        ]
       },
       "giver_id": "high-chancellor-valerius",
       "turn_in_id": "high-chancellor-valerius",
@@ -16042,7 +16199,9 @@
       "name": "The Academy's Request",
       "description": "Arcanist Elara requires ancient texts from the Hollowveil Barrows. Knowledge must be preserved.",
       "level": 17,
-      "prerequisites": ["diplomatic-mission"],
+      "prerequisites": [
+        "diplomatic-mission"
+      ],
       "objectives": [
         {
           "objective_type": "Speak",
@@ -16078,8 +16237,15 @@
       "rewards": {
         "experience": 3500,
         "gold_copper": 1800,
-        "choice_items": ["arcane-tome", "concord-emblem"],
-        "items": ["greater-healing-potion", "mana-potion", "mana-potion"]
+        "choice_items": [
+          "arcane-tome",
+          "concord-emblem"
+        ],
+        "items": [
+          "greater-healing-potion",
+          "mana-potion",
+          "mana-potion"
+        ]
       },
       "giver_id": "arcanist-trainer-elara",
       "turn_in_id": "arcanist-trainer-elara",
@@ -16090,7 +16256,9 @@
       "name": "Threats to the Order",
       "description": "Pact forces have been spotted near Solhaven. Eliminate their raiders before they strike the city.",
       "level": 18,
-      "prerequisites": ["academys-request"],
+      "prerequisites": [
+        "academys-request"
+      ],
       "objectives": [
         {
           "objective_type": "Speak",
@@ -16120,8 +16288,15 @@
       "rewards": {
         "experience": 4000,
         "gold_copper": 2000,
-        "choice_items": ["templar-greatsword", "concord-cloak"],
-        "items": ["greater-healing-potion", "greater-healing-potion", "mana-potion"]
+        "choice_items": [
+          "templar-greatsword",
+          "concord-cloak"
+        ],
+        "items": [
+          "greater-healing-potion",
+          "greater-healing-potion",
+          "mana-potion"
+        ]
       },
       "giver_id": "high-chancellor-valerius",
       "turn_in_id": "high-chancellor-valerius",
@@ -16132,7 +16307,9 @@
       "name": "The Accord's Final Test",
       "description": "Prove your worthiness to join the Concord's elite. Face a champion of the Pact in single combat.",
       "level": 20,
-      "prerequisites": ["threats-to-order"],
+      "prerequisites": [
+        "threats-to-order"
+      ],
       "objectives": [
         {
           "objective_type": "Speak",
@@ -16156,8 +16333,16 @@
       "rewards": {
         "experience": 5000,
         "gold_copper": 3000,
-        "choice_items": ["concord-champion-blade", "concord-champion-staff"],
-        "items": ["supreme-healing-potion", "mana-potion", "mana-potion", "travelers-ration"]
+        "choice_items": [
+          "concord-champion-blade",
+          "concord-champion-staff"
+        ],
+        "items": [
+          "supreme-healing-potion",
+          "mana-potion",
+          "mana-potion",
+          "travelers-ration"
+        ]
       },
       "giver_id": "high-chancellor-valerius",
       "turn_in_id": "high-chancellor-valerius",
@@ -16180,8 +16365,13 @@
       "rewards": {
         "experience": 2500,
         "gold_copper": 1200,
-        "choice_items": ["pact-blood-totem"],
-        "items": ["healing-potion", "healing-potion"]
+        "choice_items": [
+          "pact-blood-totem"
+        ],
+        "items": [
+          "healing-potion",
+          "healing-potion"
+        ]
       },
       "giver_id": "chieftain-thornfang",
       "turn_in_id": "chieftain-thornfang",
@@ -16192,7 +16382,9 @@
       "name": "Survival of the Fittest",
       "description": "The wilds are unforgiving. Hunt dangerous beasts and prove your strength to the Pact.",
       "level": 16,
-      "prerequisites": ["pacts-blood-oath"],
+      "prerequisites": [
+        "pacts-blood-oath"
+      ],
       "objectives": [
         {
           "objective_type": "Speak",
@@ -16228,8 +16420,15 @@
       "rewards": {
         "experience": 3000,
         "gold_copper": 1500,
-        "choice_items": ["pact-honor-blade", "hunter-vest"],
-        "items": ["healing-potion", "healing-potion", "travelers-ration"]
+        "choice_items": [
+          "pact-honor-blade",
+          "hunter-vest"
+        ],
+        "items": [
+          "healing-potion",
+          "healing-potion",
+          "travelers-ration"
+        ]
       },
       "giver_id": "chieftain-thornfang",
       "turn_in_id": "chieftain-thornfang",
@@ -16240,7 +16439,9 @@
       "name": "Honored Traditions",
       "description": "Elder Matriarch Stormsinger teaches you the ways of the Pact. Honor must be earned.",
       "level": 17,
-      "prerequisites": ["survival-of-fittest"],
+      "prerequisites": [
+        "survival-of-fittest"
+      ],
       "objectives": [
         {
           "objective_type": "Speak",
@@ -16276,8 +16477,15 @@
       "rewards": {
         "experience": 3500,
         "gold_copper": 1800,
-        "choice_items": ["stormsinger-kilt", "pact-honor-totem"],
-        "items": ["mana-potion", "greater-healing-potion", "travelers-ration"]
+        "choice_items": [
+          "stormsinger-kilt",
+          "pact-honor-totem"
+        ],
+        "items": [
+          "mana-potion",
+          "greater-healing-potion",
+          "travelers-ration"
+        ]
       },
       "giver_id": "elder-matriarch-stormsinger",
       "turn_in_id": "elder-matriarch-stormsinger",
@@ -16288,7 +16496,9 @@
       "name": "Enemies at the Gates",
       "description": "Concord forces encroach near the Pact's borders. Drive them back.",
       "level": 18,
-      "prerequisites": ["honored-traditions"],
+      "prerequisites": [
+        "honored-traditions"
+      ],
       "objectives": [
         {
           "objective_type": "Speak",
@@ -16324,8 +16534,15 @@
       "rewards": {
         "experience": 4000,
         "gold_copper": 2000,
-        "choice_items": ["pact-waraxe", "thornfang-vambraces"],
-        "items": ["greater-healing-potion", "greater-healing-potion", "minor-mana-potion"]
+        "choice_items": [
+          "pact-waraxe",
+          "thornfang-vambraces"
+        ],
+        "items": [
+          "greater-healing-potion",
+          "greater-healing-potion",
+          "minor-mana-potion"
+        ]
       },
       "giver_id": "chieftain-thornfang",
       "turn_in_id": "chieftain-thornfang",
@@ -16336,7 +16553,9 @@
       "name": "The Pact's Champion",
       "description": "Face the Concord's elite champion in ritual combat. Prove the Pact's superiority.",
       "level": 20,
-      "prerequisites": ["enemies-at-gates"],
+      "prerequisites": [
+        "enemies-at-gates"
+      ],
       "objectives": [
         {
           "objective_type": "Speak",
@@ -16360,8 +16579,16 @@
       "rewards": {
         "experience": 5000,
         "gold_copper": 3000,
-        "choice_items": ["pact-champion-greataxe", "pact-champion-claws"],
-        "items": ["supreme-healing-potion", "mana-potion", "mana-potion", "travelers-ration"]
+        "choice_items": [
+          "pact-champion-greataxe",
+          "pact-champion-claws"
+        ],
+        "items": [
+          "supreme-healing-potion",
+          "mana-potion",
+          "mana-potion",
+          "travelers-ration"
+        ]
       },
       "giver_id": "chieftain-thornfang",
       "turn_in_id": "chieftain-thornfang",
@@ -16377,12 +16604,20 @@
       "safe_locations": [
         {
           "id": "emberdawn-square",
-          "position": [0.0, 0.0, 0.0],
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
           "yaw": 0.0
         }
       ],
-      "controlling_factions": ["aurelian-concord"],
-      "spawn_tables": ["solhaven-faction-npcs"],
+      "controlling_factions": [
+        "aurelian-concord"
+      ],
+      "spawn_tables": [
+        "solhaven-faction-npcs"
+      ],
       "navmesh": "nav/solhaven.nav"
     },
     {
@@ -16393,12 +16628,20 @@
       "safe_locations": [
         {
           "id": "chieftains-fire",
-          "position": [0.0, 0.0, 0.0],
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
           "yaw": 0.0
         }
       ],
-      "controlling_factions": ["wildreach-pact"],
-      "spawn_tables": ["emberhold-faction-npcs"],
+      "controlling_factions": [
+        "wildreach-pact"
+      ],
+      "spawn_tables": [
+        "emberhold-faction-npcs"
+      ],
       "navmesh": "nav/emberhold.nav"
     },
     {
@@ -16409,17 +16652,32 @@
       "safe_locations": [
         {
           "id": "pale-gate",
-          "position": [0.0, 0.0, 0.0],
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
           "yaw": 0.0
         },
         {
           "id": "dawnshore-inn",
-          "position": [40.0, 0.0, 12.0],
+          "position": [
+            40.0,
+            0.0,
+            12.0
+          ],
           "yaw": 90.0
         }
       ],
-      "controlling_factions": ["aurelian-concord", "wildreach-pact"],
-      "spawn_tables": ["dawnshore-wolves", "dawnshore-inn-npcs", "pale-gate-npcs"],
+      "controlling_factions": [
+        "aurelian-concord",
+        "wildreach-pact"
+      ],
+      "spawn_tables": [
+        "dawnshore-wolves",
+        "dawnshore-inn-npcs",
+        "pale-gate-npcs"
+      ],
       "navmesh": "nav/dawnshore.nav"
     },
     {
@@ -16430,7 +16688,11 @@
       "safe_locations": [
         {
           "id": "barrows-approach",
-          "position": [110.0, 0.0, 80.0],
+          "position": [
+            110.0,
+            0.0,
+            80.0
+          ],
           "yaw": 0.0
         }
       ],
@@ -16447,17 +16709,32 @@
       "safe_locations": [
         {
           "id": "coast-waystation",
-          "position": [0.0, 0.0, 0.0],
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
           "yaw": 0.0
         },
         {
           "id": "fisher-haven",
-          "position": [50.0, 0.0, 30.0],
+          "position": [
+            50.0,
+            0.0,
+            30.0
+          ],
           "yaw": 90.0
         }
       ],
-      "controlling_factions": ["aurelian-concord", "wildreach-pact"],
-      "spawn_tables": ["veridian-murlocs", "coast-harpies", "smuggler-bandits"],
+      "controlling_factions": [
+        "aurelian-concord",
+        "wildreach-pact"
+      ],
+      "spawn_tables": [
+        "veridian-murlocs",
+        "coast-harpies",
+        "smuggler-bandits"
+      ],
       "navmesh": "nav/veridian-coast.nav"
     },
     {
@@ -16468,14 +16745,26 @@
       "safe_locations": [
         {
           "id": "cove-entrance",
-          "position": [0.0, 0.0, 0.0],
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
           "yaw": 0.0
         }
       ],
       "controlling_factions": [],
-      "spawn_tables": ["smuggler-cove-pirates", "smuggler-cove-lookouts", "smuggler-cove-bosses"],
+      "spawn_tables": [
+        "smuggler-cove-pirates",
+        "smuggler-cove-lookouts",
+        "smuggler-cove-bosses"
+      ],
       "parent_zone_id": "veridian-coast",
-      "entrance_position": [85.0, 0.0, 120.0],
+      "entrance_position": [
+        85.0,
+        0.0,
+        120.0
+      ],
       "navmesh": "nav/smuggler-cove.nav"
     },
     {
@@ -16486,16 +16775,26 @@
       "safe_locations": [
         {
           "id": "ironforge-outpost",
-          "position": [0.0, 0.0, 0.0],
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
           "yaw": 0.0
         },
         {
           "id": "snow-drift-refuge",
-          "position": [100.0, 15.0, 80.0],
+          "position": [
+            100.0,
+            15.0,
+            80.0
+          ],
           "yaw": 45.0
         }
       ],
-      "controlling_factions": ["aurelian-concord"],
+      "controlling_factions": [
+        "aurelian-concord"
+      ],
       "spawn_tables": [
         "ironforge-yeti",
         "peak-ice-elementals",
@@ -16506,6 +16805,43 @@
         "frost-giants"
       ],
       "navmesh": "nav/ironforge-peaks.nav"
+    },
+    {
+      "id": "frozen-depths",
+      "name": "Frozen Depths",
+      "min_level": 25,
+      "max_level": 30,
+      "parent_zone_id": "ironforge-peaks",
+      "safe_locations": [
+        {
+          "id": "frozen-depths-entrance",
+          "position": [
+            0.0,
+            -5,
+            0.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "id": "crystal-camp",
+          "position": [
+            120.0,
+            -15,
+            60.0
+          ],
+          "yaw": 90.0
+        }
+      ],
+      "controlling_factions": [],
+      "spawn_tables": [
+        "frozen-depths-ice-worms",
+        "frozen-depths-cave-stalkers",
+        "frozen-depths-ancient-ones",
+        "ironforge-yeti",
+        "peak-ice-elementals",
+        "frost-giants"
+      ],
+      "navmesh": "nav/frozen-depths.nav"
     }
   ],
   "spawn_tables": [
@@ -16516,13 +16852,35 @@
           "entity_id": "dawnshore-wolf",
           "weight": 100,
           "max_count": 10,
-          "positions": [[28.0, 0.0, 40.0], [60.0, 0.0, 30.0], [45.0, 0.0, 70.0]]
+          "positions": [
+            [
+              28.0,
+              0.0,
+              40.0
+            ],
+            [
+              60.0,
+              0.0,
+              30.0
+            ],
+            [
+              45.0,
+              0.0,
+              70.0
+            ]
+          ]
         },
         {
           "entity_id": "dawnshore-boar",
           "weight": 40,
           "max_count": 5,
-          "positions": [[70.0, 0.0, 60.0]]
+          "positions": [
+            [
+              70.0,
+              0.0,
+              60.0
+            ]
+          ]
         }
       ],
       "respawn_sec": 60
@@ -16534,25 +16892,49 @@
           "entity_id": "innkeeper-mara",
           "weight": 100,
           "max_count": 1,
-          "positions": [[15.0, 0.0, 25.0]]
+          "positions": [
+            [
+              15.0,
+              0.0,
+              25.0
+            ]
+          ]
         },
         {
           "entity_id": "merchant-gildas",
           "weight": 100,
           "max_count": 1,
-          "positions": [[12.0, 0.0, 28.0]]
+          "positions": [
+            [
+              12.0,
+              0.0,
+              28.0
+            ]
+          ]
         },
         {
           "entity_id": "arcanist-trainer-elara",
           "weight": 100,
           "max_count": 1,
-          "positions": [[18.0, 0.0, 30.0]]
+          "positions": [
+            [
+              18.0,
+              0.0,
+              30.0
+            ]
+          ]
         },
         {
           "entity_id": "shade-trainer-sylas",
           "weight": 100,
           "max_count": 1,
-          "positions": [[10.0, 0.0, 32.0]]
+          "positions": [
+            [
+              10.0,
+              0.0,
+              32.0
+            ]
+          ]
         }
       ],
       "respawn_sec": 300
@@ -16564,13 +16946,25 @@
           "entity_id": "gate-captain-theron",
           "weight": 100,
           "max_count": 1,
-          "positions": [[5.0, 0.0, 5.0]]
+          "positions": [
+            [
+              5.0,
+              0.0,
+              5.0
+            ]
+          ]
         },
         {
           "entity_id": "vanguard-trainer-bron",
           "weight": 100,
           "max_count": 1,
-          "positions": [[8.0, 0.0, 8.0]]
+          "positions": [
+            [
+              8.0,
+              0.0,
+              8.0
+            ]
+          ]
         }
       ],
       "respawn_sec": 300
@@ -16582,7 +16976,13 @@
           "entity_id": "high-chancellor-valerius",
           "weight": 100,
           "max_count": 1,
-          "positions": [[0.0, 0.0, 10.0]]
+          "positions": [
+            [
+              0.0,
+              0.0,
+              10.0
+            ]
+          ]
         }
       ],
       "respawn_sec": 300
@@ -16594,13 +16994,25 @@
           "entity_id": "chieftain-thornfang",
           "weight": 100,
           "max_count": 1,
-          "positions": [[5.0, 0.0, 8.0]]
+          "positions": [
+            [
+              5.0,
+              0.0,
+              8.0
+            ]
+          ]
         },
         {
           "entity_id": "elder-matriarch-stormsinger",
           "weight": 100,
           "max_count": 1,
-          "positions": [[8.0, 0.0, 5.0]]
+          "positions": [
+            [
+              8.0,
+              0.0,
+              5.0
+            ]
+          ]
         }
       ],
       "respawn_sec": 300
@@ -16613,18 +17025,54 @@
           "weight": 80,
           "max_count": 12,
           "positions": [
-            [20.0, 0.0, 15.0],
-            [35.0, 0.0, 25.0],
-            [15.0, 0.0, 40.0],
-            [45.0, 0.0, 50.0],
-            [25.0, 0.0, 65.0]
+            [
+              20.0,
+              0.0,
+              15.0
+            ],
+            [
+              35.0,
+              0.0,
+              25.0
+            ],
+            [
+              15.0,
+              0.0,
+              40.0
+            ],
+            [
+              45.0,
+              0.0,
+              50.0
+            ],
+            [
+              25.0,
+              0.0,
+              65.0
+            ]
           ]
         },
         {
           "entity_id": "murloc-lurker",
           "weight": 40,
           "max_count": 6,
-          "positions": [[30.0, 0.0, 10.0], [50.0, 0.0, 20.0], [20.0, 0.0, 55.0]]
+          "positions": [
+            [
+              30.0,
+              0.0,
+              10.0
+            ],
+            [
+              50.0,
+              0.0,
+              20.0
+            ],
+            [
+              20.0,
+              0.0,
+              55.0
+            ]
+          ]
         }
       ],
       "respawn_sec": 90
@@ -16637,17 +17085,44 @@
           "weight": 70,
           "max_count": 10,
           "positions": [
-            [-15.0, 8.0, 20.0],
-            [-25.0, 12.0, 35.0],
-            [-10.0, 10.0, 50.0],
-            [-30.0, 15.0, 25.0]
+            [
+              -15.0,
+              8.0,
+              20.0
+            ],
+            [
+              -25.0,
+              12.0,
+              35.0
+            ],
+            [
+              -10.0,
+              10.0,
+              50.0
+            ],
+            [
+              -30.0,
+              15.0,
+              25.0
+            ]
           ]
         },
         {
           "entity_id": "harpy-screecher",
           "weight": 30,
           "max_count": 4,
-          "positions": [[-20.0, 14.0, 30.0], [-35.0, 18.0, 40.0]]
+          "positions": [
+            [
+              -20.0,
+              14.0,
+              30.0
+            ],
+            [
+              -35.0,
+              18.0,
+              40.0
+            ]
+          ]
         }
       ],
       "respawn_sec": 120
@@ -16659,13 +17134,45 @@
           "entity_id": "smuggler-bandit",
           "weight": 100,
           "max_count": 8,
-          "positions": [[70.0, 0.0, 60.0], [80.0, 0.0, 55.0], [75.0, 0.0, 70.0], [85.0, 0.0, 65.0]]
+          "positions": [
+            [
+              70.0,
+              0.0,
+              60.0
+            ],
+            [
+              80.0,
+              0.0,
+              55.0
+            ],
+            [
+              75.0,
+              0.0,
+              70.0
+            ],
+            [
+              85.0,
+              0.0,
+              65.0
+            ]
+          ]
         },
         {
           "entity_id": "smuggler-leader",
           "weight": 20,
           "max_count": 2,
-          "positions": [[78.0, 0.0, 62.0], [82.0, 0.0, 68.0]]
+          "positions": [
+            [
+              78.0,
+              0.0,
+              62.0
+            ],
+            [
+              82.0,
+              0.0,
+              68.0
+            ]
+          ]
         }
       ],
       "respawn_sec": 180
@@ -16678,18 +17185,54 @@
           "weight": 100,
           "max_count": 10,
           "positions": [
-            [15.0, 0.0, 25.0],
-            [25.0, 0.0, 20.0],
-            [20.0, 0.0, 35.0],
-            [30.0, 0.0, 30.0],
-            [35.0, 0.0, 25.0]
+            [
+              15.0,
+              0.0,
+              25.0
+            ],
+            [
+              25.0,
+              0.0,
+              20.0
+            ],
+            [
+              20.0,
+              0.0,
+              35.0
+            ],
+            [
+              30.0,
+              0.0,
+              30.0
+            ],
+            [
+              35.0,
+              0.0,
+              25.0
+            ]
           ]
         },
         {
           "entity_id": "smuggler-gunner",
           "weight": 60,
           "max_count": 6,
-          "positions": [[18.0, 0.0, 28.0], [28.0, 0.0, 22.0], [33.0, 0.0, 27.0]]
+          "positions": [
+            [
+              18.0,
+              0.0,
+              28.0
+            ],
+            [
+              28.0,
+              0.0,
+              22.0
+            ],
+            [
+              33.0,
+              0.0,
+              27.0
+            ]
+          ]
         }
       ],
       "respawn_sec": 120
@@ -16701,7 +17244,28 @@
           "entity_id": "smuggler-scout",
           "weight": 80,
           "max_count": 5,
-          "positions": [[10.0, 0.0, 15.0], [40.0, 0.0, 10.0], [45.0, 0.0, 40.0], [5.0, 0.0, 45.0]]
+          "positions": [
+            [
+              10.0,
+              0.0,
+              15.0
+            ],
+            [
+              40.0,
+              0.0,
+              10.0
+            ],
+            [
+              45.0,
+              0.0,
+              40.0
+            ],
+            [
+              5.0,
+              0.0,
+              45.0
+            ]
+          ]
         }
       ],
       "respawn_sec": 150
@@ -16713,13 +17277,25 @@
           "entity_id": "captain-brineblood",
           "weight": 30,
           "max_count": 1,
-          "positions": [[50.0, 0.0, 50.0]]
+          "positions": [
+            [
+              50.0,
+              0.0,
+              50.0
+            ]
+          ]
         },
         {
           "entity_id": "first-mate-zarrah",
           "weight": 50,
           "max_count": 1,
-          "positions": [[48.0, 0.0, 52.0]]
+          "positions": [
+            [
+              48.0,
+              0.0,
+              52.0
+            ]
+          ]
         }
       ],
       "respawn_sec": 600
@@ -16732,19 +17308,64 @@
           "weight": 100,
           "max_count": 8,
           "positions": [
-            [60.0, 0.0, 80.0],
-            [70.0, 0.0, 75.0],
-            [65.0, 0.0, 90.0],
-            [80.0, 0.0, 85.0],
-            [75.0, 0.0, 95.0],
-            [85.0, 0.0, 70.0]
+            [
+              60.0,
+              0.0,
+              80.0
+            ],
+            [
+              70.0,
+              0.0,
+              75.0
+            ],
+            [
+              65.0,
+              0.0,
+              90.0
+            ],
+            [
+              80.0,
+              0.0,
+              85.0
+            ],
+            [
+              75.0,
+              0.0,
+              95.0
+            ],
+            [
+              85.0,
+              0.0,
+              70.0
+            ]
           ]
         },
         {
           "entity_id": "smuggler-gunner",
           "weight": 50,
           "max_count": 4,
-          "positions": [[63.0, 0.0, 83.0], [73.0, 0.0, 78.0], [83.0, 0.0, 73.0], [78.0, 0.0, 88.0]]
+          "positions": [
+            [
+              63.0,
+              0.0,
+              83.0
+            ],
+            [
+              73.0,
+              0.0,
+              78.0
+            ],
+            [
+              83.0,
+              0.0,
+              73.0
+            ],
+            [
+              78.0,
+              0.0,
+              88.0
+            ]
+          ]
         }
       ],
       "respawn_sec": 180
@@ -16757,12 +17378,36 @@
           "weight": 80,
           "max_count": 10,
           "positions": [
-            [100.0, 0.0, 120.0],
-            [110.0, 0.0, 115.0],
-            [105.0, 0.0, 130.0],
-            [115.0, 0.0, 125.0],
-            [120.0, 0.0, 110.0],
-            [108.0, 0.0, 140.0]
+            [
+              100.0,
+              0.0,
+              120.0
+            ],
+            [
+              110.0,
+              0.0,
+              115.0
+            ],
+            [
+              105.0,
+              0.0,
+              130.0
+            ],
+            [
+              115.0,
+              0.0,
+              125.0
+            ],
+            [
+              120.0,
+              0.0,
+              110.0
+            ],
+            [
+              108.0,
+              0.0,
+              140.0
+            ]
           ]
         },
         {
@@ -16770,10 +17415,26 @@
           "weight": 40,
           "max_count": 5,
           "positions": [
-            [103.0, 0.0, 123.0],
-            [113.0, 0.0, 118.0],
-            [118.0, 0.0, 113.0],
-            [106.0, 0.0, 133.0]
+            [
+              103.0,
+              0.0,
+              123.0
+            ],
+            [
+              113.0,
+              0.0,
+              118.0
+            ],
+            [
+              118.0,
+              0.0,
+              113.0
+            ],
+            [
+              106.0,
+              0.0,
+              133.0
+            ]
           ]
         }
       ],
@@ -16787,14 +17448,46 @@
           "weight": 100,
           "max_count": 12,
           "positions": [
-            [90.0, 8.0, 140.0],
-            [95.0, 10.0, 135.0],
-            [100.0, 9.0, 145.0],
-            [105.0, 11.0, 130.0],
-            [85.0, 7.0, 145.0],
-            [110.0, 12.0, 125.0],
-            [92.0, 8.0, 150.0],
-            [98.0, 10.0, 155.0]
+            [
+              90.0,
+              8.0,
+              140.0
+            ],
+            [
+              95.0,
+              10.0,
+              135.0
+            ],
+            [
+              100.0,
+              9.0,
+              145.0
+            ],
+            [
+              105.0,
+              11.0,
+              130.0
+            ],
+            [
+              85.0,
+              7.0,
+              145.0
+            ],
+            [
+              110.0,
+              12.0,
+              125.0
+            ],
+            [
+              92.0,
+              8.0,
+              150.0
+            ],
+            [
+              98.0,
+              10.0,
+              155.0
+            ]
           ]
         },
         {
@@ -16802,10 +17495,26 @@
           "weight": 30,
           "max_count": 6,
           "positions": [
-            [93.0, 9.0, 143.0],
-            [103.0, 11.0, 133.0],
-            [88.0, 8.0, 148.0],
-            [108.0, 12.0, 123.0]
+            [
+              93.0,
+              9.0,
+              143.0
+            ],
+            [
+              103.0,
+              11.0,
+              133.0
+            ],
+            [
+              88.0,
+              8.0,
+              148.0
+            ],
+            [
+              108.0,
+              12.0,
+              123.0
+            ]
           ]
         }
       ],
@@ -16819,19 +17528,54 @@
           "weight": 100,
           "max_count": 8,
           "positions": [
-            [40.0, 25.0, 60.0],
-            [55.0, 28.0, 70.0],
-            [35.0, 22.0, 80.0],
-            [60.0, 30.0, 55.0],
-            [45.0, 26.0, 75.0],
-            [50.0, 27.0, 65.0]
+            [
+              40.0,
+              25.0,
+              60.0
+            ],
+            [
+              55.0,
+              28.0,
+              70.0
+            ],
+            [
+              35.0,
+              22.0,
+              80.0
+            ],
+            [
+              60.0,
+              30.0,
+              55.0
+            ],
+            [
+              45.0,
+              26.0,
+              75.0
+            ],
+            [
+              50.0,
+              27.0,
+              65.0
+            ]
           ]
         },
         {
           "entity_id": "yeti-elder",
           "weight": 30,
           "max_count": 2,
-          "positions": [[48.0, 29.0, 68.0], [52.0, 31.0, 72.0]]
+          "positions": [
+            [
+              48.0,
+              29.0,
+              68.0
+            ],
+            [
+              52.0,
+              31.0,
+              72.0
+            ]
+          ]
         }
       ],
       "respawn_sec": 180
@@ -16844,19 +17588,59 @@
           "weight": 80,
           "max_count": 6,
           "positions": [
-            [80.0, 35.0, 40.0],
-            [95.0, 38.0, 45.0],
-            [85.0, 36.0, 55.0],
-            [100.0, 40.0, 35.0],
-            [90.0, 37.0, 50.0],
-            [105.0, 42.0, 30.0]
+            [
+              80.0,
+              35.0,
+              40.0
+            ],
+            [
+              95.0,
+              38.0,
+              45.0
+            ],
+            [
+              85.0,
+              36.0,
+              55.0
+            ],
+            [
+              100.0,
+              40.0,
+              35.0
+            ],
+            [
+              90.0,
+              37.0,
+              50.0
+            ],
+            [
+              105.0,
+              42.0,
+              30.0
+            ]
           ]
         },
         {
           "entity_id": "ice-crystal-golem",
           "weight": 40,
           "max_count": 3,
-          "positions": [[88.0, 39.0, 48.0], [98.0, 41.0, 38.0], [92.0, 40.0, 43.0]]
+          "positions": [
+            [
+              88.0,
+              39.0,
+              48.0
+            ],
+            [
+              98.0,
+              41.0,
+              38.0
+            ],
+            [
+              92.0,
+              40.0,
+              43.0
+            ]
+          ]
         }
       ],
       "respawn_sec": 240
@@ -16869,21 +17653,69 @@
           "weight": 100,
           "max_count": 10,
           "positions": [
-            [20.0, 18.0, 30.0],
-            [35.0, 20.0, 25.0],
-            [15.0, 17.0, 40.0],
-            [40.0, 22.0, 20.0],
-            [25.0, 19.0, 35.0],
-            [30.0, 21.0, 28.0],
-            [18.0, 16.0, 45.0],
-            [38.0, 23.0, 22.0]
+            [
+              20.0,
+              18.0,
+              30.0
+            ],
+            [
+              35.0,
+              20.0,
+              25.0
+            ],
+            [
+              15.0,
+              17.0,
+              40.0
+            ],
+            [
+              40.0,
+              22.0,
+              20.0
+            ],
+            [
+              25.0,
+              19.0,
+              35.0
+            ],
+            [
+              30.0,
+              21.0,
+              28.0
+            ],
+            [
+              18.0,
+              16.0,
+              45.0
+            ],
+            [
+              38.0,
+              23.0,
+              22.0
+            ]
           ]
         },
         {
           "entity_id": "alpha-snow-wolf",
           "weight": 25,
           "max_count": 3,
-          "positions": [[28.0, 20.0, 32.0], [33.0, 22.0, 26.0], [22.0, 18.0, 38.0]]
+          "positions": [
+            [
+              28.0,
+              20.0,
+              32.0
+            ],
+            [
+              33.0,
+              22.0,
+              26.0
+            ],
+            [
+              22.0,
+              18.0,
+              38.0
+            ]
+          ]
         }
       ],
       "respawn_sec": 120
@@ -16896,20 +17728,59 @@
           "weight": 90,
           "max_count": 7,
           "positions": [
-            [120.0, 20.0, 100.0],
-            [135.0, 22.0, 95.0],
-            [110.0, 18.0, 110.0],
-            [140.0, 25.0, 90.0],
-            [125.0, 21.0, 105.0],
-            [130.0, 23.0, 98.0],
-            [115.0, 19.0, 108.0]
+            [
+              120.0,
+              20.0,
+              100.0
+            ],
+            [
+              135.0,
+              22.0,
+              95.0
+            ],
+            [
+              110.0,
+              18.0,
+              110.0
+            ],
+            [
+              140.0,
+              25.0,
+              90.0
+            ],
+            [
+              125.0,
+              21.0,
+              105.0
+            ],
+            [
+              130.0,
+              23.0,
+              98.0
+            ],
+            [
+              115.0,
+              19.0,
+              108.0
+            ]
           ]
         },
         {
           "entity_id": "elder-frost-bear",
           "weight": 35,
           "max_count": 2,
-          "positions": [[128.0, 24.0, 102.0], [133.0, 26.0, 96.0]]
+          "positions": [
+            [
+              128.0,
+              24.0,
+              102.0
+            ],
+            [
+              133.0,
+              26.0,
+              96.0
+            ]
+          ]
         }
       ],
       "respawn_sec": 200
@@ -16922,20 +17793,54 @@
           "weight": 80,
           "max_count": 5,
           "positions": [
-            [150.0, 22.0, 80.0],
-            [165.0, 24.0, 75.0],
-            [140.0, 20.0, 90.0],
-            [170.0, 26.0, 70.0],
-            [155.0, 23.0, 85.0],
-            [160.0, 25.0, 78.0],
-            [145.0, 21.0, 88.0]
+            [
+              150.0,
+              22.0,
+              80.0
+            ],
+            [
+              165.0,
+              24.0,
+              75.0
+            ],
+            [
+              140.0,
+              20.0,
+              90.0
+            ],
+            [
+              170.0,
+              26.0,
+              70.0
+            ],
+            [
+              155.0,
+              23.0,
+              85.0
+            ],
+            [
+              160.0,
+              25.0,
+              78.0
+            ],
+            [
+              145.0,
+              21.0,
+              88.0
+            ]
           ]
         },
         {
           "entity_id": "iron-grizzly-matriarch",
           "weight": 20,
           "max_count": 1,
-          "positions": [[158.0, 25.0, 82.0]]
+          "positions": [
+            [
+              158.0,
+              25.0,
+              82.0
+            ]
+          ]
         }
       ],
       "respawn_sec": 300
@@ -16948,23 +17853,74 @@
           "weight": 100,
           "max_count": 12,
           "positions": [
-            [65.0, 19.0, 45.0],
-            [80.0, 21.0, 40.0],
-            [60.0, 18.0, 55.0],
-            [85.0, 23.0, 35.0],
-            [70.0, 20.0, 50.0],
-            [75.0, 22.0, 43.0],
-            [58.0, 17.0, 58.0],
-            [88.0, 24.0, 32.0],
-            [63.0, 19.0, 52.0],
-            [78.0, 22.0, 38.0]
+            [
+              65.0,
+              19.0,
+              45.0
+            ],
+            [
+              80.0,
+              21.0,
+              40.0
+            ],
+            [
+              60.0,
+              18.0,
+              55.0
+            ],
+            [
+              85.0,
+              23.0,
+              35.0
+            ],
+            [
+              70.0,
+              20.0,
+              50.0
+            ],
+            [
+              75.0,
+              22.0,
+              43.0
+            ],
+            [
+              58.0,
+              17.0,
+              58.0
+            ],
+            [
+              88.0,
+              24.0,
+              32.0
+            ],
+            [
+              63.0,
+              19.0,
+              52.0
+            ],
+            [
+              78.0,
+              22.0,
+              38.0
+            ]
           ]
         },
         {
           "entity_id": "worg-pack-leader",
           "weight": 30,
           "max_count": 2,
-          "positions": [[73.0, 21.0, 47.0], [83.0, 23.0, 37.0]]
+          "positions": [
+            [
+              73.0,
+              21.0,
+              47.0
+            ],
+            [
+              83.0,
+              23.0,
+              37.0
+            ]
+          ]
         }
       ],
       "respawn_sec": 150
@@ -16976,16 +17932,203 @@
           "entity_id": "frost-giant",
           "weight": 15,
           "max_count": 2,
-          "positions": [[180.0, 28.0, 60.0], [195.0, 30.0, 55.0]]
+          "positions": [
+            [
+              180.0,
+              28.0,
+              60.0
+            ],
+            [
+              195.0,
+              30.0,
+              55.0
+            ]
+          ]
         },
         {
           "entity_id": "frost-giant-champion",
           "weight": 5,
           "max_count": 1,
-          "positions": [[188.0, 32.0, 58.0]]
+          "positions": [
+            [
+              188.0,
+              32.0,
+              58.0
+            ]
+          ]
         }
       ],
       "respawn_sec": 600
+    },
+    {
+      "id": "frozen-depths-ice-worms",
+      "entries": [
+        {
+          "entity_id": "ice-worm",
+          "weight": 100,
+          "max_count": 10,
+          "positions": [
+            [
+              50.0,
+              -5,
+              30.0
+            ],
+            [
+              65.0,
+              -8,
+              25.0
+            ],
+            [
+              45.0,
+              -6,
+              40.0
+            ],
+            [
+              70.0,
+              -10,
+              20.0
+            ],
+            [
+              55.0,
+              -7,
+              35.0
+            ],
+            [
+              60.0,
+              -9,
+              28.0
+            ],
+            [
+              48.0,
+              -5,
+              38.0
+            ]
+          ]
+        },
+        {
+          "entity_id": "frost-serpent",
+          "weight": 40,
+          "max_count": 4,
+          "positions": [
+            [
+              58.0,
+              -12,
+              45.0
+            ],
+            [
+              72.0,
+              -15,
+              38.0
+            ],
+            [
+              52.0,
+              -13,
+              50.0
+            ],
+            [
+              68.0,
+              -14,
+              42.0
+            ]
+          ]
+        }
+      ],
+      "respawn_sec": 120
+    },
+    {
+      "id": "frozen-depths-cave-stalkers",
+      "entries": [
+        {
+          "entity_id": "cave-stalker",
+          "weight": 80,
+          "max_count": 8,
+          "positions": [
+            [
+              85.0,
+              -10,
+              60.0
+            ],
+            [
+              100.0,
+              -12,
+              55.0
+            ],
+            [
+              90.0,
+              -11,
+              70.0
+            ],
+            [
+              105.0,
+              -14,
+              50.0
+            ],
+            [
+              95.0,
+              -13,
+              65.0
+            ],
+            [
+              110.0,
+              -15,
+              48.0
+            ]
+          ]
+        },
+        {
+          "entity_id": "shadow-ice-wraith",
+          "weight": 30,
+          "max_count": 3,
+          "positions": [
+            [
+              98.0,
+              -18,
+              62.0
+            ],
+            [
+              108.0,
+              -20,
+              58.0
+            ],
+            [
+              93.0,
+              -19,
+              68.0
+            ]
+          ]
+        }
+      ],
+      "respawn_sec": 180
+    },
+    {
+      "id": "frozen-depths-ancient-ones",
+      "entries": [
+        {
+          "entity_id": "cryo-drake",
+          "weight": 10,
+          "max_count": 1,
+          "positions": [
+            [
+              140.0,
+              -25,
+              80.0
+            ]
+          ]
+        },
+        {
+          "entity_id": "permafrost-guardian",
+          "weight": 5,
+          "max_count": 1,
+          "positions": [
+            [
+              155.0,
+              -28,
+              75.0
+            ]
+          ]
+        }
+      ],
+      "respawn_sec": 900
     }
   ],
   "dungeons": [
@@ -16995,13 +18138,23 @@
       "min_level": 6,
       "recommended_level": 8,
       "max_players": 5,
-      "boss_ids": ["hollowveil-warden"],
+      "boss_ids": [
+        "hollowveil-warden"
+      ],
       "trash_spawn_tables": [],
-      "loot_tables": ["venomfang-dagger", "hollowveil-mantle", "crypt-relic"],
+      "loot_tables": [
+        "venomfang-dagger",
+        "hollowveil-mantle",
+        "crypt-relic"
+      ],
       "time_limit_minutes": 60,
       "lockout_hours": 24,
       "entrance_zone_id": "hollowveil-barrows",
-      "entrance_position": [120.0, 0.0, 90.0]
+      "entrance_position": [
+        120.0,
+        0.0,
+        90.0
+      ]
     },
     {
       "id": "smugglers-cove",
@@ -17009,7 +18162,11 @@
       "min_level": 15,
       "recommended_level": 18,
       "max_players": 5,
-      "boss_ids": ["captain-brinebeard", "first-mate-zulra", "parrot-polly"],
+      "boss_ids": [
+        "captain-brinebeard",
+        "first-mate-zulra",
+        "parrot-polly"
+      ],
       "trash_spawn_tables": [
         "smuggler-cove-pirates",
         "smuggler-cove-lookouts",
@@ -17017,11 +18174,19 @@
         "cove-murlocs",
         "parrot-minions"
       ],
-      "loot_tables": ["brinebeards-pistol", "captains-coat", "pollys-perch"],
+      "loot_tables": [
+        "brinebeards-pistol",
+        "captains-coat",
+        "pollys-perch"
+      ],
       "time_limit_minutes": 90,
       "lockout_hours": 24,
       "entrance_zone_id": "smuggler-cove",
-      "entrance_position": [95.0, 0.0, 135.0]
+      "entrance_position": [
+        95.0,
+        0.0,
+        135.0
+      ]
     }
   ],
   "economy": {
@@ -17030,7 +18195,11 @@
         "id": "solhaven-exchange",
         "name": "The Solhaven Exchange",
         "zone_id": "solhaven",
-        "position": [8.0, 0.0, 6.0],
+        "position": [
+          8.0,
+          0.0,
+          6.0
+        ],
         "fee_percentage": 0.05,
         "min_bid_increment": 0.05,
         "max_listings_per_account": 20,
@@ -17041,7 +18210,11 @@
         "id": "emberhold-exchange",
         "name": "The Emberhold Exchange",
         "zone_id": "emberhold",
-        "position": [10.0, 0.0, 8.0],
+        "position": [
+          10.0,
+          0.0,
+          8.0
+        ],
         "fee_percentage": 0.05,
         "min_bid_increment": 0.05,
         "max_listings_per_account": 20,
