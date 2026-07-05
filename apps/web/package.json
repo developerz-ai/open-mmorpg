@@ -14,7 +14,7 @@
   "dependencies": {
     "@omm/i18n": "workspace:*",
     "@omm/ui": "workspace:*",
-    "@solidjs/router": "^0.15.0",
+    "@solidjs/router": "^0.16.1",
     "@tanstack/solid-query": "^5.62.0",
     "solid-js": "^1.9.0",
     "zod": "^3.24.0"
