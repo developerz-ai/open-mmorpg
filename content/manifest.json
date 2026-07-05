@@ -15050,6 +15050,17 @@
         "max_listings_per_account": 20,
         "listing_duration_hours": 48,
         "deposit_percentage": 0.05
+      },
+      {
+        "id": "emberhold-exchange",
+        "name": "The Emberhold Exchange",
+        "zone_id": "emberhold",
+        "position": [10.0, 0.0, 8.0],
+        "fee_percentage": 0.05,
+        "min_bid_increment": 0.05,
+        "max_listings_per_account": 20,
+        "listing_duration_hours": 48,
+        "deposit_percentage": 0.05
       }
     ],
     "trading_rules": [
