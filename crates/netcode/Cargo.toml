@@ -8,6 +8,11 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
+omm-protocol.workspace = true
+serde.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true
 
 [lints]
 workspace = true
