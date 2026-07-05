@@ -339,6 +339,51 @@
       },
       "hp_per_level": 10,
       "resource_per_level": 7
+    },
+    {
+      "id": "wilder",
+      "name": "Wilder",
+      "description": "Shapeshifting primal who draws power from the Bloom force, shifting between bear, cat, and eagle forms to tank, DPS, or travel.",
+      "role": "tank",
+      "abilities": ["bear-form", "cat-form", "eagle-form", "healing-touch", "natures-swiftness"],
+      "stat_growth": {
+        "strength": 1,
+        "dexterity": 1,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 2,
+        "charisma": 0
+      },
+      "hp_per_level": 11,
+      "resource_per_level": 9
+    },
+    {
+      "id": "occultist",
+      "name": "Occultist",
+      "description": "Pact-caster who bargains with Deep entities, wielding Rift, Hollow, and Deep forces through soul shards and summoned minions.",
+      "role": "dps",
+      "abilities": [
+        "soul-shard",
+        "pact-bolt",
+        "summon-hollow-servant",
+        "drain-life",
+        "dark-pact",
+        "summon-voidwalker",
+        "drain-soul",
+        "soul-fire",
+        "demon-armor",
+        "ritual-of-summoning"
+      ],
+      "stat_growth": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 1,
+        "wisdom": 3,
+        "charisma": 0
+      },
+      "hp_per_level": 8,
+      "resource_per_level": 11
     }
   ],
   "abilities": [
@@ -766,6 +811,222 @@
       "cast_time_sec": 3.0,
       "range_yards": 0.0,
       "effects": [{ "effect": "Damage", "magnitude": 8.0, "scaling": 0.6, "target": "aoe_enemy" }]
+    },
+    {
+      "id": "primal-strike",
+      "name": "Primal Strike",
+      "description": "A quick claw strike infused with primal Bloom energy.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 10,
+      "cast_time_sec": 0.0,
+      "range_yards": 5.0,
+      "effects": [{ "effect": "Damage", "magnitude": 13.0, "scaling": 1.0, "target": "enemy" }]
+    },
+    {
+      "id": "bear-form",
+      "name": "Bear Form",
+      "description": "Shift into a powerful bear, gaining increased threat generation and damage reduction.",
+      "max_rank": 1,
+      "cooldown_sec": 1.5,
+      "resource_cost": 15,
+      "cast_time_sec": 1.5,
+      "range_yards": 0.0,
+      "effects": [
+        { "effect": "Buff", "magnitude": 25.0, "scaling": 0.8, "target": "self" },
+        { "effect": "Buff", "magnitude": 15.0, "scaling": 0.5, "target": "self" }
+      ]
+    },
+    {
+      "id": "cat-form",
+      "name": "Cat Form",
+      "description": "Shift into a swift cat, gaining increased attack speed and movement speed.",
+      "max_rank": 1,
+      "cooldown_sec": 1.5,
+      "resource_cost": 12,
+      "cast_time_sec": 1.5,
+      "range_yards": 0.0,
+      "effects": [
+        { "effect": "Buff", "magnitude": 18.0, "scaling": 0.6, "target": "self" },
+        { "effect": "Buff", "magnitude": 20.0, "scaling": 0.5, "target": "self" }
+      ]
+    },
+    {
+      "id": "bloom-mend",
+      "name": "Bloom Mend",
+      "description": "Channel the Bloom force to mend an ally's wounds with primal energy.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 16,
+      "cast_time_sec": 2.0,
+      "range_yards": 30.0,
+      "effects": [{ "effect": "Heal", "magnitude": 38.0, "scaling": 1.1, "target": "ally" }]
+    },
+    {
+      "id": "bloom-burst",
+      "name": "Bloom Burst",
+      "description": "Release accumulated Bloom energy in a burst that heals nearby allies and damages nearby enemies.",
+      "max_rank": 1,
+      "cooldown_sec": 15.0,
+      "resource_cost": 28,
+      "cast_time_sec": 0.0,
+      "range_yards": 0.0,
+      "effects": [
+        { "effect": "Heal", "magnitude": 28.0, "scaling": 0.9, "target": "aoe_ally" },
+        { "effect": "Damage", "magnitude": 24.0, "scaling": 0.8, "target": "aoe_enemy" }
+      ]
+    },
+    {
+      "id": "eagle-form",
+      "name": "Eagle Form",
+      "description": "Shift into a swift eagle, gaining increased movement speed for travel.",
+      "max_rank": 1,
+      "cooldown_sec": 1.5,
+      "resource_cost": 10,
+      "cast_time_sec": 1.5,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Buff", "magnitude": 40.0, "scaling": 0.6, "target": "self" }]
+    },
+    {
+      "id": "healing-touch",
+      "name": "Healing Touch",
+      "description": "Instant primal heal that mends an ally's wounds with the Bloom force.",
+      "max_rank": 1,
+      "cooldown_sec": 8.0,
+      "resource_cost": 18,
+      "cast_time_sec": 0.0,
+      "range_yards": 30.0,
+      "effects": [{ "effect": "Heal", "magnitude": 35.0, "scaling": 1.0, "target": "ally" }]
+    },
+    {
+      "id": "natures-swiftness",
+      "name": "Nature's Swiftness",
+      "description": "Grant instant casting to your next spell within a short time.",
+      "max_rank": 1,
+      "cooldown_sec": 90.0,
+      "resource_cost": 12,
+      "cast_time_sec": 0.0,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Buff", "magnitude": 10.0, "scaling": 0.0, "target": "self" }]
+    },
+    {
+      "id": "soul-shard",
+      "name": "Soul Shard",
+      "description": "Extract a fragment of soul essence from a defeated foe, storing it as a shard for pact magic.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 0,
+      "cast_time_sec": 1.5,
+      "range_yards": 5.0,
+      "effects": [{ "effect": "Buff", "magnitude": 1.0, "scaling": 0.0, "target": "self" }]
+    },
+    {
+      "id": "pact-bolt",
+      "name": "Pact Bolt",
+      "description": "Hurl a bolt of crackling pact energy, dealing Rift-touched damage to your target.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 8,
+      "cast_time_sec": 1.3,
+      "range_yards": 35.0,
+      "effects": [{ "effect": "Damage", "magnitude": 14.0, "scaling": 0.95, "target": "enemy" }]
+    },
+    {
+      "id": "summon-hollow-servant",
+      "name": "Summon Hollow Servant",
+      "description": "Consume soul shards to summon a hollow servant from the Deep to fight at your side.",
+      "max_rank": 1,
+      "cooldown_sec": 45.0,
+      "resource_cost": 3,
+      "cast_time_sec": 2.5,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Summon", "magnitude": 0.0, "scaling": 0.0, "target": "self" }]
+    },
+    {
+      "id": "drain-life",
+      "name": "Drain Life",
+      "description": "Channel dark pact energy, draining life from your foe and mending your own wounds.",
+      "max_rank": 1,
+      "cooldown_sec": 12.0,
+      "resource_cost": 20,
+      "cast_time_sec": 2.8,
+      "range_yards": 25.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 22.0, "scaling": 0.9, "target": "enemy" },
+        { "effect": "Heal", "magnitude": 18.0, "scaling": 0.7, "target": "self" }
+      ]
+    },
+    {
+      "id": "dark-pact",
+      "name": "Dark Pact",
+      "description": "Consume soul shards to unleash devastating Deep force damage, sacrificing some of your own life force.",
+      "max_rank": 1,
+      "cooldown_sec": 18.0,
+      "resource_cost": 5,
+      "cast_time_sec": 2.0,
+      "range_yards": 30.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 38.0, "scaling": 1.3, "target": "enemy" },
+        { "effect": "Damage", "magnitude": 10.0, "scaling": 0.0, "target": "self" }
+      ]
+    },
+    {
+      "id": "summon-voidwalker",
+      "name": "Summon Voidwalker",
+      "description": "Consume soul shards to summon a voidwalker from the Rift to fight at your side.",
+      "max_rank": 1,
+      "cooldown_sec": 60.0,
+      "resource_cost": 3,
+      "cast_time_sec": 3.0,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Summon", "magnitude": 0.0, "scaling": 0.0, "target": "self" }]
+    },
+    {
+      "id": "drain-soul",
+      "name": "Drain Soul",
+      "description": "Channel dark energy, damaging your foe and extracting a soul shard on death.",
+      "max_rank": 1,
+      "cooldown_sec": 15.0,
+      "resource_cost": 18,
+      "cast_time_sec": 3.0,
+      "range_yards": 25.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 28.0, "scaling": 0.85, "target": "enemy" },
+        { "effect": "Buff", "magnitude": 1.0, "scaling": 0.0, "target": "self" }
+      ]
+    },
+    {
+      "id": "soul-fire",
+      "name": "Soul Fire",
+      "description": "Consume a soul shard to hurl a bolt of Deep-touched flame that burns through enemy defenses.",
+      "max_rank": 1,
+      "cooldown_sec": 8.0,
+      "resource_cost": 4,
+      "cast_time_sec": 1.8,
+      "range_yards": 35.0,
+      "effects": [{ "effect": "Damage", "magnitude": 32.0, "scaling": 1.2, "target": "enemy" }]
+    },
+    {
+      "id": "demon-armor",
+      "name": "Demon Armor",
+      "description": "Consume soul shards to imbue yourself with demonic protection, increasing armor for a time.",
+      "max_rank": 1,
+      "cooldown_sec": 30.0,
+      "resource_cost": 2,
+      "cast_time_sec": 1.5,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Buff", "magnitude": 35.0, "scaling": 0.9, "target": "self" }]
+    },
+    {
+      "id": "ritual-of-summoning",
+      "name": "Ritual of Summoning",
+      "description": "Consume soul shards to open a Rift gate, summoning group members to your location.",
+      "max_rank": 1,
+      "cooldown_sec": 300.0,
+      "resource_cost": 5,
+      "cast_time_sec": 5.0,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Summon", "magnitude": 0.0, "scaling": 0.0, "target": "group" }]
     }
   ],
   "items": [
