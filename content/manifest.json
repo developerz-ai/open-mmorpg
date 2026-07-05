@@ -53,6 +53,66 @@
       }
     },
     {
+      "id": "karnat",
+      "name": "Karnat",
+      "description": "Runecrafting forge-folk; veins etched with arcane lines that pulse with lattice-work.",
+      "faction_id": "aurelian-concord",
+      "traits": ["runic-resilience"],
+      "stats": {
+        "strength": 1,
+        "dexterity": 0,
+        "constitution": 2,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      }
+    },
+    {
+      "id": "cogwright",
+      "name": "Cogwright",
+      "description": "Clockwork engineers whose hands move with mechanical precision and arcane insight.",
+      "faction_id": "aurelian-concord",
+      "traits": ["quick-repair"],
+      "stats": {
+        "strength": 0,
+        "dexterity": 1,
+        "constitution": 0,
+        "intelligence": 2,
+        "wisdom": 0,
+        "charisma": 0
+      }
+    },
+    {
+      "id": "lucen",
+      "name": "Lucen",
+      "description": "Dawn-touched seers bearing the radiant scar of their first sunrise, attuned to faith and prophecy.",
+      "faction_id": "aurelian-concord",
+      "traits": ["dawnfire-blessing"],
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 1,
+        "wisdom": 1,
+        "charisma": 1
+      }
+    },
+    {
+      "id": "brael",
+      "name": "Brael",
+      "description": "Honor-bound guardians who swear the Oath of the Last Watch; the Concord's first and last line of defense.",
+      "faction_id": "aurelian-concord",
+      "traits": ["guardian-strength"],
+      "stats": {
+        "strength": 2,
+        "dexterity": 0,
+        "constitution": 1,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      }
+    },
+    {
       "id": "ordan",
       "name": "Ordan",
       "description": "Green-skinned honorbound warriors; the Pact's martial core.",
@@ -79,6 +139,66 @@
         "constitution": 2,
         "intelligence": -1,
         "wisdom": 1,
+        "charisma": 0
+      }
+    },
+    {
+      "id": "voss",
+      "name": "Voss",
+      "description": "Hollow-folk reclaimed from the crypt's chill; bearing the scar of their return with quiet purpose.",
+      "faction_id": "wildreach-pact",
+      "traits": ["will-endurance"],
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 1,
+        "wisdom": 1,
+        "charisma": 0
+      }
+    },
+    {
+      "id": "tzari",
+      "name": "Tza'ri",
+      "description": "Desert walkers bound in honor to ancestor-spirits; guidance and insight flow through every bloodline.",
+      "faction_id": "wildreach-pact",
+      "traits": ["ancestral-guidance"],
+      "stats": {
+        "strength": 0,
+        "dexterity": 1,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 1,
+        "charisma": 1
+      }
+    },
+    {
+      "id": "ashkin",
+      "name": "Ashkin",
+      "description": "Trickster engineers of the deep wastes; every gear turns twice, and nothing is ever what it seems.",
+      "faction_id": "wildreach-pact",
+      "traits": ["explosive-tricks"],
+      "stats": {
+        "strength": 0,
+        "dexterity": 2,
+        "constitution": 0,
+        "intelligence": 1,
+        "wisdom": 0,
+        "charisma": 0
+      }
+    },
+    {
+      "id": "sarn",
+      "name": "Sarn",
+      "description": "Dragon-touched warrior-folk; scales and fiery breath mark the ancient pact that still burns.",
+      "faction_id": "wildreach-pact",
+      "traits": ["dragon-breath"],
+      "stats": {
+        "strength": 2,
+        "dexterity": 0,
+        "constitution": 1,
+        "intelligence": 0,
+        "wisdom": 0,
         "charisma": 0
       }
     }
@@ -366,6 +486,94 @@
       "cast_time_sec": 0.0,
       "range_yards": 25.0,
       "effects": [{ "effect": "Teleport", "magnitude": 0.0, "scaling": 0.0, "target": "enemy" }]
+    },
+    {
+      "id": "runic-resilience",
+      "name": "Runic Resilience",
+      "description": "Karnat racial: arcane veins harden skin, granting temporary defense.",
+      "max_rank": 1,
+      "cooldown_sec": 60.0,
+      "resource_cost": 0,
+      "cast_time_sec": 0.0,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Buff", "magnitude": 15.0, "scaling": 0.5, "target": "self" }]
+    },
+    {
+      "id": "quick-repair",
+      "name": "Quick Repair",
+      "description": "Cogwright racial: emergency self-mend using clockwork nanites.",
+      "max_rank": 1,
+      "cooldown_sec": 45.0,
+      "resource_cost": 0,
+      "cast_time_sec": 1.5,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Heal", "magnitude": 25.0, "scaling": 0.8, "target": "self" }]
+    },
+    {
+      "id": "dawnfire-blessing",
+      "name": "Dawnfire Blessing",
+      "description": "Lucen racial: radiant scar flares, adding holy damage to attacks.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 0,
+      "cast_time_sec": 0.0,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Buff", "magnitude": 8.0, "scaling": 0.3, "target": "self" }]
+    },
+    {
+      "id": "guardian-strength",
+      "name": "Guardian Strength",
+      "description": "Brael racial: oathbound might increases threat generation.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 0,
+      "cast_time_sec": 0.0,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Buff", "magnitude": 20.0, "scaling": 0.6, "target": "self" }]
+    },
+    {
+      "id": "will-endurance",
+      "name": "Will Endurance",
+      "description": "Voss racial: hollow-folk resolve grants resistance to fear and stun.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 0,
+      "cast_time_sec": 0.0,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Buff", "magnitude": 0.0, "scaling": 0.0, "target": "self" }]
+    },
+    {
+      "id": "ancestral-guidance",
+      "name": "Ancestral Guidance",
+      "description": "Tza'ri racial: ancestor-spirits grant insight and spirit power.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 0,
+      "cast_time_sec": 0.0,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Buff", "magnitude": 10.0, "scaling": 0.4, "target": "self" }]
+    },
+    {
+      "id": "explosive-tricks",
+      "name": "Explosive Tricks",
+      "description": "Ashkin racial: fire gadgetry erupts in a cone of flame.",
+      "max_rank": 1,
+      "cooldown_sec": 30.0,
+      "resource_cost": 0,
+      "cast_time_sec": 0.5,
+      "range_yards": 10.0,
+      "effects": [{ "effect": "Damage", "magnitude": 18.0, "scaling": 0.7, "target": "enemy" }]
+    },
+    {
+      "id": "dragon-breath",
+      "name": "Dragon Breath",
+      "description": "Sarn racial: exhale a cone of draconic flame.",
+      "max_rank": 1,
+      "cooldown_sec": 25.0,
+      "resource_cost": 0,
+      "cast_time_sec": 0.8,
+      "range_yards": 12.0,
+      "effects": [{ "effect": "Damage", "magnitude": 22.0, "scaling": 0.8, "target": "enemy" }]
     }
   ],
   "items": [
