@@ -10,6 +10,7 @@ repository.workspace = true
 [dependencies]
 omm-ecs-core.workspace = true
 omm-protocol.workspace = true
+omm-errors.workspace = true
 
 [dev-dependencies]
 proptest.workspace = true

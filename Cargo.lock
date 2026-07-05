@@ -1024,6 +1024,7 @@ name = "omm-sim"
 version = "0.0.0"
 dependencies = [
  "omm-ecs-core",
+ "omm-errors",
  "omm-protocol",
  "proptest",
 ]
