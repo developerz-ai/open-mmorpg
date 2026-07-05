@@ -5,6 +5,20 @@
 //! genesis world and reconstruct the authoritative state bit-for-bit, so a
 //! trusted box can re-simulate a suspect's inputs and compare one
 //! [`omm_sim::WorldHash`] per tick instead of the whole world.
+//!
+//! # Property coverage
+//!
+//! In addition to the scripted scenario tests, three core replay properties are
+//! verified by proptest over arbitrary input streams:
+//!
+//! 1. **Idempotent replay** — calling `replay` twice on the same log produces
+//!    equal hashes (replay is a pure function).
+//! 2. **Second-shard equality** — a fresh, independent World that replays the
+//!    same log from the same genesis lands on the same hash as the live session
+//!    (the cross-shard re-sim guarantee).
+//! 3. **Intent sensitivity** — replacing one intent with a semantically different
+//!    one moves the final hash (a doctored log cannot reproduce the authoritative
+//!    state).
 
 use omm_ecs_core::{
     AbilityDef, AbilityId, AuraSpec, EffectKind, EntityId, Periodic, TargetKind, TargetShape, Team,
@@ -12,6 +26,7 @@ use omm_ecs_core::{
 use omm_protocol::{CharacterId, Intent, Tick, Vec3};
 use omm_sim::combat::Actor;
 use omm_sim::{replay, InputBatch, InputLog, World, WorldHash};
+use proptest::prelude::*;
 use std::collections::BTreeMap;
 
 fn at(x: f32, z: f32) -> Vec3 {
@@ -164,4 +179,126 @@ fn a_tampered_input_log_diverges() {
         live.state_hash(),
         "a doctored input log cannot reproduce the authoritative hash",
     );
+}
+
+// ── proptest ─────────────────────────────────────────────────────────────────
+
+/// A minimal two-actor world plus a zero-cost, always-available nuke — simple
+/// enough to exercise in proptest without combinatorial state explosion.
+fn simple_abilities() -> BTreeMap<AbilityId, AbilityDef> {
+    let nuke = AbilityDef {
+        id: AbilityId(1),
+        power_cost: 0,
+        cooldown_ticks: 0,
+        gcd_ticks: 0,
+        range: 999.0,
+        target_kind: TargetKind::Enemy,
+        shape: TargetShape::Single,
+        effects: vec![EffectKind::Damage(5)],
+    };
+    [(nuke.id, nuke)].into_iter().collect()
+}
+
+/// Build a reproducible session from a `(x, z, is_cast)` triple per tick.
+///
+/// Returns `(genesis, log, final_world)`.  The genesis is taken before any
+/// step so a second replay can start from an identical state.
+fn build_session(ticks: &[(f32, f32, bool)]) -> (World, InputLog, World) {
+    let table = simple_abilities();
+    let mut world = World::new();
+    let caster = world.spawn(Actor::new(at(0.0, 0.0), Team(1), 100, 100));
+    let target = world.spawn(Actor::new(at(2.0, 0.0), Team(2), 100, 100));
+    let genesis = world.clone();
+    let mut log = InputLog::new();
+    for &(x, z, is_cast) in ticks {
+        let tick = world.now();
+        let intent = if is_cast {
+            cast_on(1, target)
+        } else {
+            Intent::Move { dir: at(x, z) }
+        };
+        let batch: InputBatch = vec![(caster, intent)];
+        log.record_batch(tick, &batch);
+        world.step(&batch, &table);
+    }
+    (genesis, log, world)
+}
+
+/// Proptest strategy: a short sequence of (x, z, is_cast) triples.
+fn arb_ticks() -> impl Strategy<Value = Vec<(f32, f32, bool)>> {
+    prop::collection::vec(
+        (-3.0f32..3.0f32, -3.0f32..3.0f32, proptest::bool::ANY),
+        0..16,
+    )
+}
+
+proptest! {
+    /// Replay is a pure function: calling it twice on the same genesis + log
+    /// produces bit-identical hashes — no hidden mutable state.
+    #[test]
+    fn replay_twice_produces_equal_hashes(ticks in arb_ticks()) {
+        let (genesis, log, _) = build_session(&ticks);
+        let table = simple_abilities();
+        let h1 = replay(&genesis, &log, &table).state_hash();
+        let h2 = replay(&genesis, &log, &table).state_hash();
+        prop_assert_eq!(h1, h2);
+    }
+
+    /// A completely independent World that replays the same log from an equal
+    /// genesis reaches the same final hash — the cross-shard re-sim guarantee.
+    ///
+    /// This is the core promise: two trusted boxes given (genesis, log) always
+    /// agree on the authoritative hash, so a mismatch against a client-asserted
+    /// hash is conclusive.
+    #[test]
+    fn second_shard_replay_matches_authoritative(ticks in arb_ticks()) {
+        let (genesis, log, live) = build_session(&ticks);
+        let second_shard = replay(&genesis, &log, &simple_abilities());
+        prop_assert_eq!(
+            second_shard.state_hash(),
+            live.state_hash(),
+            "a second independent shard must land on the same authoritative hash",
+        );
+    }
+
+    /// Replacing one Move intent with a semantically distinct one (a cast that
+    /// deals damage) changes the final hash — the sim is sensitive to every
+    /// applied input.
+    #[test]
+    fn replacing_first_intent_with_cast_diverges(
+        // At least one tick so there is something to tamper with.
+        first_x in 0.5f32..3.0f32,
+        rest in prop::collection::vec(((-3.0f32..3.0f32, -3.0f32..3.0f32), proptest::bool::ANY), 0..8),
+    ) {
+        let table = simple_abilities();
+
+        // Honest session: first tick is a Move, rest follow the proptest choices.
+        let mut honest_ticks: Vec<(f32, f32, bool)> = vec![(first_x, 0.0, false)];
+        honest_ticks.extend(rest.iter().map(|&((x, z), c)| (x, z, c)));
+        let (genesis, _honest_log, live) = build_session(&honest_ticks);
+
+        // Tampered session: same genesis, but the first intent is a cast instead.
+        let mut world2 = World::new();
+        let caster2 = world2.spawn(Actor::new(at(0.0, 0.0), Team(1), 100, 100));
+        let target2 = world2.spawn(Actor::new(at(2.0, 0.0), Team(2), 100, 100));
+        // genesis2 must equal genesis for the re-sim to be meaningful.
+        let genesis2 = world2.clone();
+        let _ = genesis2; // both have the same content; use the original below.
+        let mut tampered_log = InputLog::new();
+        tampered_log.record(Tick(0), caster2, cast_on(1, target2)); // cast replaces move
+        for (i, &((x, z), is_cast)) in rest.iter().enumerate() {
+            let tick = Tick((i + 1) as u64);
+            let intent = if is_cast { cast_on(1, target2) } else { Intent::Move { dir: at(x, z) } };
+            tampered_log.record(tick, caster2, intent);
+        }
+
+        let tampered_out = replay(&genesis, &tampered_log, &table);
+        // The honest run moved the caster; the tampered run cast instead, dealing
+        // damage and leaving the caster in a different position → hashes diverge.
+        prop_assert_ne!(
+            tampered_out.state_hash(),
+            live.state_hash(),
+            "replacing a Move with a cast must change the authoritative hash",
+        );
+    }
 }
