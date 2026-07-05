@@ -16496,7 +16496,15 @@
         }
       ],
       "controlling_factions": ["aurelian-concord"],
-      "spawn_tables": ["ironforge-yeti", "peak-ice-elementals", "mountain-wolves", "frost-bears"],
+      "spawn_tables": [
+        "ironforge-yeti",
+        "peak-ice-elementals",
+        "mountain-wolves",
+        "frost-bears",
+        "iron-grizzlies",
+        "mountain-worgs",
+        "frost-giants"
+      ],
       "navmesh": "nav/ironforge-peaks.nav"
     }
   ],
@@ -16905,6 +16913,79 @@
         }
       ],
       "respawn_sec": 200
+    },
+    {
+      "id": "iron-grizzlies",
+      "entries": [
+        {
+          "entity_id": "iron-grizzly",
+          "weight": 80,
+          "max_count": 5,
+          "positions": [
+            [150.0, 22.0, 80.0],
+            [165.0, 24.0, 75.0],
+            [140.0, 20.0, 90.0],
+            [170.0, 26.0, 70.0],
+            [155.0, 23.0, 85.0],
+            [160.0, 25.0, 78.0],
+            [145.0, 21.0, 88.0]
+          ]
+        },
+        {
+          "entity_id": "iron-grizzly-matriarch",
+          "weight": 20,
+          "max_count": 1,
+          "positions": [[158.0, 25.0, 82.0]]
+        }
+      ],
+      "respawn_sec": 300
+    },
+    {
+      "id": "mountain-worgs",
+      "entries": [
+        {
+          "entity_id": "mountain-worg",
+          "weight": 100,
+          "max_count": 12,
+          "positions": [
+            [65.0, 19.0, 45.0],
+            [80.0, 21.0, 40.0],
+            [60.0, 18.0, 55.0],
+            [85.0, 23.0, 35.0],
+            [70.0, 20.0, 50.0],
+            [75.0, 22.0, 43.0],
+            [58.0, 17.0, 58.0],
+            [88.0, 24.0, 32.0],
+            [63.0, 19.0, 52.0],
+            [78.0, 22.0, 38.0]
+          ]
+        },
+        {
+          "entity_id": "worg-pack-leader",
+          "weight": 30,
+          "max_count": 2,
+          "positions": [[73.0, 21.0, 47.0], [83.0, 23.0, 37.0]]
+        }
+      ],
+      "respawn_sec": 150
+    },
+    {
+      "id": "frost-giants",
+      "entries": [
+        {
+          "entity_id": "frost-giant",
+          "weight": 15,
+          "max_count": 2,
+          "positions": [[180.0, 28.0, 60.0], [195.0, 30.0, 55.0]]
+        },
+        {
+          "entity_id": "frost-giant-champion",
+          "weight": 5,
+          "max_count": 1,
+          "positions": [[188.0, 32.0, 58.0]]
+        }
+      ],
+      "respawn_sec": 600
     }
   ],
   "dungeons": [
