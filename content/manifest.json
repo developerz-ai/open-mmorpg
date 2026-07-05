@@ -15485,6 +15485,69 @@
       "max_stack": 1
     },
     {
+      "id": "brinebeards-pistol",
+      "name": "Brinebeard's Pistol",
+      "description": "A flintlock pistol once wielded by the notorious pirate Brinebeard. Still fires true.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 18,
+      "stats": {
+        "strength": 0,
+        "dexterity": 10,
+        "constitution": 0,
+        "intelligence": 5,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 2500,
+      "icon": "textures/solid-colors/orange.png",
+      "mesh": "meshes/placeholder-cube.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "captains-coat",
+      "name": "Captain's Coat",
+      "description": "A reinforced mail coat worn by pirate captains. Salt-stained but sturdy.",
+      "item_type": "Armor",
+      "slot": "chest",
+      "required_level": 18,
+      "stats": {
+        "strength": 0,
+        "dexterity": 6,
+        "constitution": 8,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 2200,
+      "icon": "textures/solid-colors/orange.png",
+      "mesh": "meshes/placeholder-sphere.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "pollys-perch",
+      "name": "Polly's Perch",
+      "description": "An enchanted wooden perch that grants keen sight and quick reflexes.",
+      "item_type": "Trinket",
+      "slot": "trinket",
+      "required_level": 18,
+      "stats": {
+        "strength": 0,
+        "dexterity": 8,
+        "constitution": 0,
+        "intelligence": 3,
+        "wisdom": 4,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 2000,
+      "icon": "textures/solid-colors/purple.png",
+      "mesh": "meshes/placeholder-sphere.gltf",
+      "max_stack": 1
+    },
+    {
       "id": "polly-perch",
       "name": "Polly's Perch",
       "description": "A favored feathered roost belonging to Parrot Polly.",
