@@ -14513,6 +14513,312 @@
       "icon": "textures/solid-colors/purple.png",
       "mesh": null,
       "max_stack": 5
+    },
+    {
+      "id": "copper-ore",
+      "name": "Copper Ore",
+      "description": "A raw nugget of copper, soft and malleable.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 2,
+      "max_stack": 20
+    },
+    {
+      "id": "tin-ore",
+      "name": "Tin Ore",
+      "description": "A dull grey ore used in alloys.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 3,
+      "max_stack": 20
+    },
+    {
+      "id": "iron-ore",
+      "name": "Iron Ore",
+      "description": "A heavy stone ringed with veins of iron.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 10,
+      "max_stack": 20
+    },
+    {
+      "id": "mithril-ore",
+      "name": "Mithril Ore",
+      "description": "A feather-light vein of shimmering mithril.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 35,
+      "max_stack": 20
+    },
+    {
+      "id": "peacebloom",
+      "name": "Peacebloom",
+      "description": "A small white flower with healing properties.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 2,
+      "max_stack": 20
+    },
+    {
+      "id": "silverleaf",
+      "name": "Silverleaf",
+      "description": "Silvery leaves that glimmer in the light.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 2,
+      "max_stack": 20
+    },
+    {
+      "id": "earthroot",
+      "name": "Earthroot",
+      "description": "A gnarled root with a rich, earthen scent.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 8,
+      "max_stack": 20
+    },
+    {
+      "id": "kingsblood",
+      "name": "Kingsblood",
+      "description": "A regal red flower with potent magical properties.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 30,
+      "max_stack": 20
+    },
+    {
+      "id": "light-leather",
+      "name": "Light Leather",
+      "description": "A patch of soft, flexible leather.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 3,
+      "max_stack": 20
+    },
+    {
+      "id": "medium-leather",
+      "name": "Medium Leather",
+      "description": "A sturdy piece of medium-grade leather.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 12,
+      "max_stack": 20
+    },
+    {
+      "id": "heavy-leather",
+      "name": "Heavy Leather",
+      "description": "A thick, durable hide for armor crafting.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 28,
+      "max_stack": 20
+    },
+    {
+      "id": "malachite",
+      "name": "Malachite",
+      "description": "A vibrant green stone with swirling patterns.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 5,
+      "max_stack": 20
+    },
+    {
+      "id": "tiger-eye",
+      "name": "Tiger Eye",
+      "description": "A golden gemstone with chatoyant bands.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 15,
+      "max_stack": 20
+    },
+    {
+      "id": "moss-agate",
+      "name": "Moss Agate",
+      "description": "A translucent stone with moss-like inclusions.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 40,
+      "max_stack": 20
+    },
+    {
+      "id": "linen-wool",
+      "name": "Linen Wool",
+      "description": "Coarse woven cloth suitable for basic tailoring.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 2,
+      "max_stack": 20
+    },
+    {
+      "id": "silk-wool",
+      "name": "Silk Wool",
+      "description": "Fine silky fabric for advanced garments.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 11,
+      "max_stack": 20
+    },
+    {
+      "id": "mageweave",
+      "name": "Mageweave",
+      "description": "Enchanted cloth that hums with arcane energy.",
+      "item_type": "CraftingMaterial",
+      "required_level": 0,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 32,
+      "max_stack": 20
     }
   ],
   "quests": [
