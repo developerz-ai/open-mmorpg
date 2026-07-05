@@ -328,7 +328,7 @@
       "name": "Riftblade",
       "description": "Leather-clad tank/DPS hybrid wielding Havoc and the Rift force.",
       "role": "tank",
-      "abilities": ["rift-strike", "havoc-surge", "rift-shield"],
+      "abilities": ["rift-strike", "chaotic-surge", "dimensional-tear", "chaos-storm"],
       "stat_growth": {
         "strength": 1,
         "dexterity": 2,
@@ -730,6 +730,42 @@
       "cast_time_sec": 2.5,
       "range_yards": 0.0,
       "effects": [{ "effect": "Summon", "magnitude": 0.0, "scaling": 0.0, "target": "self" }]
+    },
+    {
+      "id": "chaotic-surge",
+      "name": "Chaotic Surge",
+      "description": "Release accumulated Havoc in a violent explosion, dealing devastating damage to all nearby enemies.",
+      "max_rank": 1,
+      "cooldown_sec": 12.0,
+      "resource_cost": 25,
+      "cast_time_sec": 0.0,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Damage", "magnitude": 32.0, "scaling": 1.4, "target": "aoe_enemy" }]
+    },
+    {
+      "id": "dimensional-tear",
+      "name": "Dimensional Tear",
+      "description": "Tear through reality to teleport to your target location, leaving rift damage in your wake.",
+      "max_rank": 1,
+      "cooldown_sec": 20.0,
+      "resource_cost": 18,
+      "cast_time_sec": 0.5,
+      "range_yards": 35.0,
+      "effects": [
+        { "effect": "Teleport", "magnitude": 0.0, "scaling": 0.0, "target": "self" },
+        { "effect": "Damage", "magnitude": 14.0, "scaling": 0.8, "target": "aoe_enemy" }
+      ]
+    },
+    {
+      "id": "chaos-storm",
+      "name": "Chaos Storm",
+      "description": "Channel a vortex of chaotic energy that continuously damages all enemies within range.",
+      "max_rank": 1,
+      "cooldown_sec": 18.0,
+      "resource_cost": 8,
+      "cast_time_sec": 3.0,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Damage", "magnitude": 8.0, "scaling": 0.6, "target": "aoe_enemy" }]
     }
   ],
   "items": [
