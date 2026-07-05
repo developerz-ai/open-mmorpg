@@ -436,7 +436,7 @@
     {
       "id": "channeler",
       "name": "Channeler",
-      "description": "Mid-range empowerment mage who channels Essence and mana through Lattice\u00b7Bloom forces, weaving healing and damage in a flow of arcane energy.",
+      "description": "Mid-range empowerment mage who channels Essence and mana through Lattice·Bloom forces, weaving healing and damage in a flow of arcane energy.",
       "role": "healer",
       "abilities": [
         "essence-channel",
@@ -16477,6 +16477,27 @@
       "parent_zone_id": "veridian-coast",
       "entrance_position": [85.0, 0.0, 120.0],
       "navmesh": "nav/smuggler-cove.nav"
+    },
+    {
+      "id": "ironforge-peaks",
+      "name": "Ironforge Peaks",
+      "min_level": 20,
+      "max_level": 30,
+      "safe_locations": [
+        {
+          "id": "ironforge-outpost",
+          "position": [0.0, 0.0, 0.0],
+          "yaw": 0.0
+        },
+        {
+          "id": "snow-drift-refuge",
+          "position": [100.0, 15.0, 80.0],
+          "yaw": 45.0
+        }
+      ],
+      "controlling_factions": ["aurelian-concord"],
+      "spawn_tables": ["ironforge-yeti", "peak-ice-elementals", "mountain-wolves", "frost-bears"],
+      "navmesh": "nav/ironforge-peaks.nav"
     }
   ],
   "spawn_tables": [
@@ -16781,6 +16802,109 @@
         }
       ],
       "respawn_sec": 90
+    },
+    {
+      "id": "ironforge-yeti",
+      "entries": [
+        {
+          "entity_id": "frost-yeti",
+          "weight": 100,
+          "max_count": 8,
+          "positions": [
+            [40.0, 25.0, 60.0],
+            [55.0, 28.0, 70.0],
+            [35.0, 22.0, 80.0],
+            [60.0, 30.0, 55.0],
+            [45.0, 26.0, 75.0],
+            [50.0, 27.0, 65.0]
+          ]
+        },
+        {
+          "entity_id": "yeti-elder",
+          "weight": 30,
+          "max_count": 2,
+          "positions": [[48.0, 29.0, 68.0], [52.0, 31.0, 72.0]]
+        }
+      ],
+      "respawn_sec": 180
+    },
+    {
+      "id": "peak-ice-elementals",
+      "entries": [
+        {
+          "entity_id": "frost-elemental",
+          "weight": 80,
+          "max_count": 6,
+          "positions": [
+            [80.0, 35.0, 40.0],
+            [95.0, 38.0, 45.0],
+            [85.0, 36.0, 55.0],
+            [100.0, 40.0, 35.0],
+            [90.0, 37.0, 50.0],
+            [105.0, 42.0, 30.0]
+          ]
+        },
+        {
+          "entity_id": "ice-crystal-golem",
+          "weight": 40,
+          "max_count": 3,
+          "positions": [[88.0, 39.0, 48.0], [98.0, 41.0, 38.0], [92.0, 40.0, 43.0]]
+        }
+      ],
+      "respawn_sec": 240
+    },
+    {
+      "id": "mountain-wolves",
+      "entries": [
+        {
+          "entity_id": "snow-wolf",
+          "weight": 100,
+          "max_count": 10,
+          "positions": [
+            [20.0, 18.0, 30.0],
+            [35.0, 20.0, 25.0],
+            [15.0, 17.0, 40.0],
+            [40.0, 22.0, 20.0],
+            [25.0, 19.0, 35.0],
+            [30.0, 21.0, 28.0],
+            [18.0, 16.0, 45.0],
+            [38.0, 23.0, 22.0]
+          ]
+        },
+        {
+          "entity_id": "alpha-snow-wolf",
+          "weight": 25,
+          "max_count": 3,
+          "positions": [[28.0, 20.0, 32.0], [33.0, 22.0, 26.0], [22.0, 18.0, 38.0]]
+        }
+      ],
+      "respawn_sec": 120
+    },
+    {
+      "id": "frost-bears",
+      "entries": [
+        {
+          "entity_id": "frost-bear",
+          "weight": 90,
+          "max_count": 7,
+          "positions": [
+            [120.0, 20.0, 100.0],
+            [135.0, 22.0, 95.0],
+            [110.0, 18.0, 110.0],
+            [140.0, 25.0, 90.0],
+            [125.0, 21.0, 105.0],
+            [130.0, 23.0, 98.0],
+            [115.0, 19.0, 108.0]
+          ]
+        },
+        {
+          "entity_id": "elder-frost-bear",
+          "weight": 35,
+          "max_count": 2,
+          "positions": [[128.0, 24.0, 102.0], [133.0, 26.0, 96.0]]
+        }
+      ],
+      "respawn_sec": 200
     }
   ],
   "dungeons": [
