@@ -3,7 +3,7 @@
  * bin/setup — fresh clone to ready. Checks prereqs, installs JS deps, warms the
  * Rust build, and (best-effort) boots the local data stores via Docker.
  */
-import { have, runInherit } from './lib/cmd.ts';
+import { have, run, runInherit } from './lib/cmd.ts';
 import { log } from './lib/log.ts';
 import { fromRoot } from './lib/paths.ts';
 
@@ -15,6 +15,17 @@ for (const bin of ['cargo', 'bun']) {
   }
 }
 log.ok('cargo + bun present');
+
+// Check for Linux build dependencies needed for Bevy
+if (process.platform === 'linux') {
+  const linuxDeps = ['libasound2-dev', 'libudev-dev', 'libx11-dev', 'pkg-config', 'g++'];
+  const missing = linuxDeps.filter((dep) => run(['dpkg', '-l', dep]).code !== 0);
+  if (missing.length > 0) {
+    log.warn(
+      `Missing Linux development libraries. Install with:\n  sudo apt-get install -y ${missing.join(' ')}`,
+    );
+  }
+}
 
 log.step('Installing JS deps');
 if (runInherit(['bun', 'install']) !== 0) {
