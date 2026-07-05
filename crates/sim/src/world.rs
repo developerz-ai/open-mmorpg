@@ -12,6 +12,7 @@
 //! the schedule advances one authoritative structure rather than several.
 
 use crate::combat::Actor;
+use crate::hash::WorldHash;
 use crate::movement::{apply_move, integrate_all};
 use omm_ecs_core::{AbilityDef, AbilityId, EntityId};
 use omm_protocol::{CharacterId, Intent, Tick};
@@ -84,6 +85,19 @@ impl World {
     #[must_use]
     pub fn now(&self) -> Tick {
         self.now
+    }
+
+    /// A deterministic, platform-stable [`WorldHash`] of the authoritative state.
+    ///
+    /// Folds every actor in server-issued id order through FNV-1a — position and
+    /// velocity by `f32::to_bits` (never a float compare), current/max health and
+    /// power, and a cooldown/aura summary. Same state → same hash on any box, so
+    /// replay and anti-cheat re-simulation detect divergence by comparing one
+    /// `u64` per tick instead of the whole world. The tick counter itself is not
+    /// folded: two runs compare hashes at matching ticks, so state alone decides.
+    #[must_use]
+    pub fn state_hash(&self) -> WorldHash {
+        crate::hash::hash_world(&self.actors)
     }
 }
 
@@ -340,6 +354,55 @@ mod tests {
         // Target is at zero health → prune_dead removed it.
         assert!(w.get(target).is_none());
         assert_eq!(w.len(), 1);
+    }
+
+    // ── World::state_hash ─────────────────────────────────────────────────────
+
+    #[test]
+    fn state_hash_ignores_the_tick_counter() {
+        // Only actor state is folded, so an idle world hashes the same however
+        // many empty ticks have advanced it.
+        let mut w = World::new();
+        w.spawn(Actor::new(at(2.0, 5.0), Team(1), 100, 100));
+        let before = w.state_hash();
+        w.step(&[], &BTreeMap::new());
+        w.step(&[], &BTreeMap::new());
+        assert_eq!(w.now(), Tick(2));
+        assert_eq!(w.state_hash(), before, "empty ticks must not move the hash");
+    }
+
+    #[test]
+    fn state_hash_tracks_a_move() {
+        let mut w = World::new();
+        let id = w.spawn(Actor::new(Vec3::default(), Team(1), 100, 100));
+        let before = w.state_hash();
+        w.step(
+            &[(id, Intent::Move { dir: at(1.0, 0.0) })],
+            &BTreeMap::new(),
+        );
+        assert_ne!(
+            w.state_hash(),
+            before,
+            "an integrated move must change the hash"
+        );
+    }
+
+    #[test]
+    fn re_simulation_reproduces_the_same_hash() {
+        // The anti-cheat contract: re-running the same inputs on a fresh world
+        // reproduces the authoritative hash exactly, tick for tick.
+        let run = || {
+            let mut w = World::new();
+            let id = w.spawn(Actor::new(Vec3::default(), Team(1), 100, 100));
+            let mut hashes = Vec::new();
+            for step in 0..8u32 {
+                let dir = at(step as f32, -(step as f32));
+                w.step(&[(id, Intent::Move { dir })], &BTreeMap::new());
+                hashes.push(w.state_hash());
+            }
+            hashes
+        };
+        assert_eq!(run(), run());
     }
 
     // ── proptest: step determinism ───────────────────────────────────────────

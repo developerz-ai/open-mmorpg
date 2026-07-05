@@ -173,6 +173,21 @@ impl Cooldowns {
         );
         self.gcd_until = Tick(now.0.saturating_add(u64::from(gcd_ticks)));
     }
+
+    /// The shared global-cooldown deadline — the tick the GCD elapses. Exposed
+    /// for deterministic state hashing and inspection; the fields stay private
+    /// so only [`trigger`](Self::trigger) can arm a cooldown.
+    #[must_use]
+    pub fn gcd_until(&self) -> Tick {
+        self.gcd_until
+    }
+
+    /// The armed per-ability ready ticks in deterministic ability-id order — the
+    /// ordered `BTreeMap`, never insertion order — so a state hash over them is
+    /// stable across runs and machines.
+    pub fn ready_ticks(&self) -> impl Iterator<Item = (AbilityId, Tick)> + '_ {
+        self.ready_at.iter().map(|(&id, &tick)| (id, tick))
+    }
 }
 
 /// A live aura application on a target.
@@ -266,6 +281,20 @@ mod tests {
         assert!(!cds.is_ready(a, Tick(2)), "GCD not elapsed");
         assert!(!cds.is_ready(a, Tick(10)), "ability still on cooldown");
         assert!(cds.is_ready(a, Tick(30)), "cooldown elapsed");
+    }
+
+    #[test]
+    fn cooldown_summary_is_id_ordered_for_hashing() {
+        let mut cds = Cooldowns::default();
+        // Arm out of id order; the summary must still come back id-sorted.
+        cds.trigger(AbilityId(9), Tick(0), 30, 3);
+        cds.trigger(AbilityId(2), Tick(0), 15, 3);
+        assert_eq!(cds.gcd_until(), Tick(3));
+        let armed: Vec<_> = cds.ready_ticks().collect();
+        assert_eq!(
+            armed,
+            vec![(AbilityId(2), Tick(15)), (AbilityId(9), Tick(30))]
+        );
     }
 
     #[test]
