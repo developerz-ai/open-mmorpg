@@ -1339,6 +1339,56 @@
       "cast_time_sec": 0.0,
       "range_yards": 0.0,
       "effects": [{ "effect": "Buff", "magnitude": 40.0, "scaling": 1.0, "target": "self" }]
+    },
+    {
+      "id": "jab",
+      "name": "Jab",
+      "description": "A quick palm strike that builds Ki through disciplined form.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 6,
+      "cast_time_sec": 0.0,
+      "range_yards": 5.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 10.0, "scaling": 0.9, "target": "enemy" },
+        { "effect": "Buff", "magnitude": 3.0, "scaling": 0.1, "target": "self" }
+      ]
+    },
+    {
+      "id": "roundhouse-kick",
+      "name": "Roundhouse Kick",
+      "description": "A sweeping circular kick that strikes all foes in a cone, consuming Ki to enhance the blow.",
+      "max_rank": 1,
+      "cooldown_sec": 8.0,
+      "resource_cost": 18,
+      "cast_time_sec": 0.5,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Damage", "magnitude": 24.0, "scaling": 1.1, "target": "aoe_enemy" }]
+    },
+    {
+      "id": "meditative-heal",
+      "name": "Meditative Heal",
+      "description": "Enter a meditative state, channeling Ki to continuously mend your wounds over time.",
+      "max_rank": 1,
+      "cooldown_sec": 0.0,
+      "resource_cost": 8,
+      "cast_time_sec": 2.5,
+      "range_yards": 0.0,
+      "effects": [{ "effect": "Heal", "magnitude": 18.0, "scaling": 0.8, "target": "self" }]
+    },
+    {
+      "id": "transcendence",
+      "name": "Transcendence",
+      "description": "Enter a defensive stance, clearing debuffs and reducing damage taken through inner calm.",
+      "max_rank": 1,
+      "cooldown_sec": 45.0,
+      "resource_cost": 22,
+      "cast_time_sec": 0.0,
+      "range_yards": 0.0,
+      "effects": [
+        { "effect": "Buff", "magnitude": 28.0, "scaling": 0.9, "target": "self" },
+        { "effect": "Debuff", "magnitude": 0.0, "scaling": 0.0, "target": "self" }
+      ]
     }
   ],
   "items": [
