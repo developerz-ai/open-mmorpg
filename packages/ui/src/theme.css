@@ -2,19 +2,39 @@
  * Dark theme ONLY — no light theme, no toggle. Tokens are named by ROLE, not
  * value, and stored as space-separated RGB channels so alpha compositing works:
  *   color: rgb(var(--color-fg) / 0.8);
- * Components reference tokens (or the bg-bg / text-fg utilities), never raw hex.
- * → docs/architecture/09-operator-web.md
+ * Components reference tokens (or the bg / text utilities), never raw hex.
+ * Operators re-brand by overriding token VALUES (accent/surface) — never by
+ * editing components, never by shipping a light theme.
+ * → docs/architecture/09-operator-web.md · docs/specs/web-client/design-system
  */
 :root {
+  /* Color — by role */
   --color-bg: 18 18 20;
   --color-bg-soft: 28 28 32;
   --color-surface: 34 34 39;
+  --color-surface-hover: 42 42 48;
   --color-fg: 228 226 222;
   --color-fg-strong: 248 247 245;
   --color-fg-muted: 150 146 140;
   --color-line: 54 54 60;
   --color-accent: 96 170 240;
   --color-accent-strong: 130 190 248;
+  --color-success: 120 200 140;
+  --color-danger: 232 120 120;
+  --color-warning: 226 186 110;
+
+  /* Motion — tokenized once, referenced by role (transform/opacity only) */
+  --dur-instant: 90ms;
+  --dur-fast: 150ms;
+  --dur-base: 220ms;
+  --dur-slow: 360ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Radii */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-pill: 999px;
 }
 
 * {
@@ -29,8 +49,48 @@ body {
   line-height: 1.5;
 }
 
+a {
+  color: rgb(var(--color-accent-strong));
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+a:hover {
+  color: rgb(var(--color-accent));
+}
+
+/* Visible focus ring on every interactive element — never outline:none alone. */
+:focus-visible {
+  outline: 2px solid rgb(var(--color-accent));
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/*
+ * Honor reduced-motion globally — a11y non-negotiable, keeps diffs stable.
+ * `!important` is required here: this reset must override any component's own
+ * transition/animation declaration regardless of specificity.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    /* biome-ignore lint/complexity/noImportantStyles: reduced-motion reset must win over component motion */
+    animation-duration: 0.001ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: reduced-motion reset must win over component motion */
+    animation-iteration-count: 1 !important;
+    /* biome-ignore lint/complexity/noImportantStyles: reduced-motion reset must win over component motion */
+    transition-duration: 0.001ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: reduced-motion reset must win over component motion */
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Utilities — semantic, by role. Components use these, never raw hex. */
 .bg-bg {
   background: rgb(var(--color-bg));
+}
+.bg-bg-soft {
+  background: rgb(var(--color-bg-soft));
 }
 .bg-surface {
   background: rgb(var(--color-surface));
@@ -43,4 +103,20 @@ body {
 }
 .text-fg-muted {
   color: rgb(var(--color-fg-muted));
+}
+.text-accent {
+  color: rgb(var(--color-accent-strong));
+}
+
+/* Screen-reader-only — labels that must exist for a11y but not render visibly. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
