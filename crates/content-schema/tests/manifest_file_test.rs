@@ -41,8 +41,8 @@ fn committed_manifest_loads_and_validates() {
         "every race must belong to a canon faction"
     );
     assert!(
-        manifest.classes.iter().all(|c| !c.abilities.is_empty()),
-        "every class must grant at least one ability"
+        manifest.classes.iter().all(|c| c.abilities.len() >= 3),
+        "every class must grant at least three abilities"
     );
     assert!(
         manifest.races.iter().all(|r| r

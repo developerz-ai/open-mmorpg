@@ -243,7 +243,7 @@
       "name": "Warden",
       "description": "Totemic elementalist who channels the forces through earthen wards.",
       "role": "healer",
-      "abilities": ["healing-surge", "totemic-ward"],
+      "abilities": ["healing-surge", "totemic-ward", "earth-shock"],
       "stat_growth": {
         "strength": 0,
         "dexterity": 0,
@@ -260,7 +260,7 @@
       "name": "Ranger",
       "description": "Marksman and beast-companion, master of the untamed reach.",
       "role": "dps",
-      "abilities": ["quick-shot", "hunters-mark"],
+      "abilities": ["quick-shot", "hunters-mark", "serpent-sting"],
       "stat_growth": {
         "strength": 0,
         "dexterity": 3,
@@ -277,7 +277,7 @@
       "name": "Arcanist",
       "description": "Scholar of raw arcane; Lattice woven into bolts and flame.",
       "role": "dps",
-      "abilities": ["arcane-bolt", "fireball"],
+      "abilities": ["arcane-bolt", "fireball", "frostbolt"],
       "stat_growth": {
         "strength": 0,
         "dexterity": 0,
@@ -294,7 +294,7 @@
       "name": "Shade",
       "description": "Stealthed assassin striking from shadow with precise lethality.",
       "role": "dps",
-      "abilities": ["backstab", "shadowstep"],
+      "abilities": ["backstab", "shadowstep", "venom-blade"],
       "stat_growth": {
         "strength": 1,
         "dexterity": 3,
@@ -611,6 +611,20 @@
       "effects": [{ "effect": "Damage", "magnitude": 26.0, "scaling": 0.8, "target": "enemy" }]
     },
     {
+      "id": "frostbolt",
+      "name": "Frostbolt",
+      "description": "Launch a bolt of freezing ice that deals frost damage and briefly slows the target.",
+      "max_rank": 1,
+      "cooldown_sec": 2.0,
+      "resource_cost": 22,
+      "cast_time_sec": 1.5,
+      "range_yards": 30.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 20.0, "scaling": 0.7, "target": "enemy" },
+        { "effect": "Debuff", "magnitude": 20.0, "scaling": 0.0, "target": "enemy" }
+      ]
+    },
+    {
       "id": "backstab",
       "name": "Backstab",
       "description": "A vicious strike from behind for enormous damage.",
@@ -620,6 +634,20 @@
       "cast_time_sec": 0.0,
       "range_yards": 4.0,
       "effects": [{ "effect": "Damage", "magnitude": 22.0, "scaling": 1.5, "target": "enemy" }]
+    },
+    {
+      "id": "venom-blade",
+      "name": "Venom Blade",
+      "description": "Coat your blade in deadly poison, dealing immediate damage and a damage-over-time effect.",
+      "max_rank": 1,
+      "cooldown_sec": 6.0,
+      "resource_cost": 18,
+      "cast_time_sec": 0.0,
+      "range_yards": 4.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 14.0, "scaling": 0.6, "target": "enemy" },
+        { "effect": "Damage", "magnitude": 6.0, "scaling": 0.3, "target": "enemy" }
+      ]
     },
     {
       "id": "shadowstep",
@@ -664,6 +692,20 @@
       "cast_time_sec": 0.0,
       "range_yards": 0.0,
       "effects": [{ "effect": "Buff", "magnitude": 8.0, "scaling": 0.3, "target": "self" }]
+    },
+    {
+      "id": "earth-shock",
+      "name": "Earth Shock",
+      "description": "Channel earthen energy into the target, dealing nature damage and briefly slowing movement.",
+      "max_rank": 1,
+      "cooldown_sec": 4.0,
+      "resource_cost": 20,
+      "cast_time_sec": 1.0,
+      "range_yards": 20.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 18.0, "scaling": 0.7, "target": "enemy" },
+        { "effect": "Debuff", "magnitude": 30.0, "scaling": 0.0, "target": "enemy" }
+      ]
     },
     {
       "id": "guardian-strength",
@@ -1214,6 +1256,20 @@
       "effects": [
         { "effect": "Damage", "magnitude": 8.0, "scaling": 0.6, "target": "enemy" },
         { "effect": "Debuff", "magnitude": 10.0, "scaling": 0.4, "target": "enemy" }
+      ]
+    },
+    {
+      "id": "serpent-sting",
+      "name": "Serpent Sting",
+      "description": "Apply a venomous sting that deals nature damage over time.",
+      "max_rank": 1,
+      "cooldown_sec": 10.0,
+      "resource_cost": 14,
+      "cast_time_sec": 0.0,
+      "range_yards": 25.0,
+      "effects": [
+        { "effect": "Damage", "magnitude": 6.0, "scaling": 0.4, "target": "enemy" },
+        { "effect": "Damage", "magnitude": 4.0, "scaling": 0.3, "target": "enemy" }
       ]
     },
     {
