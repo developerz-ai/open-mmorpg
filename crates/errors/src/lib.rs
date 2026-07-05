@@ -19,6 +19,8 @@ pub enum ClientCode {
     NotFound = 1003,
     /// The action conflicts with current state (e.g. already claimed).
     Conflict = 1004,
+    /// The caller exceeded an edge rate limit (login flood / packet spam).
+    TooManyRequests = 1005,
     /// The server hit an internal fault. No detail is exposed.
     Internal = 2000,
 }
