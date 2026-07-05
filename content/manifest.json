@@ -13952,6 +13952,321 @@
       "icon": "textures/solid-colors/orange.png",
       "mesh": "meshes/placeholder-cube.gltf",
       "max_stack": 1
+    },
+    {
+      "id": "thin-leather-necklace",
+      "name": "Thin Leather Necklace",
+      "description": "A simple cord with a modest charm.",
+      "item_type": "Trinket",
+      "slot": "neck",
+      "required_level": 1,
+      "stats": {
+        "strength": 1,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 8,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-torus.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "worn-bronze-ring",
+      "name": "Worn Bronze Ring",
+      "description": "A bent band of dull metal.",
+      "item_type": "Trinket",
+      "slot": "ring",
+      "required_level": 1,
+      "stats": {
+        "strength": 0,
+        "dexterity": 1,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 6,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-torus.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "tattered-cloak",
+      "name": "Tattered Cloak",
+      "description": "Barely provides warmth, let alone protection.",
+      "item_type": "Trinket",
+      "slot": "back",
+      "required_level": 1,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 1,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 7,
+      "icon": "textures/checker-512.png",
+      "mesh": "meshes/placeholder-plane.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "silver-chain-amulet",
+      "name": "Silver Chain Amulet",
+      "description": "A gleaming pendant on a fine chain.",
+      "item_type": "Trinket",
+      "slot": "neck",
+      "required_level": 5,
+      "stats": {
+        "strength": 3,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 120,
+      "icon": "textures/solid-colors/green.png",
+      "mesh": "meshes/placeholder-torus.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "signet-of-the-dawn",
+      "name": "Signet of the Dawn",
+      "description": "A ring awarded to those who serve the first light.",
+      "item_type": "Trinket",
+      "slot": "ring",
+      "required_level": 5,
+      "stats": {
+        "strength": 0,
+        "dexterity": 2,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 100,
+      "icon": "textures/solid-colors/green.png",
+      "mesh": "meshes/placeholder-torus.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "traveler-cape",
+      "name": "Traveler Cape",
+      "description": "A sturdy cloth cape for long roads.",
+      "item_type": "Trinket",
+      "slot": "back",
+      "required_level": 5,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 3,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 110,
+      "icon": "textures/solid-colors/green.png",
+      "mesh": "meshes/placeholder-plane.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "crystal-pendant",
+      "name": "Crystal Pendant",
+      "description": "A refractive crystal that catches the eye.",
+      "item_type": "Trinket",
+      "slot": "neck",
+      "required_level": 10,
+      "stats": {
+        "strength": 5,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 480,
+      "icon": "textures/solid-colors/blue.png",
+      "mesh": "meshes/placeholder-torus.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "band-of-alacrity",
+      "name": "Band of Alacrity",
+      "description": "Engraved with symbols of swift motion.",
+      "item_type": "Trinket",
+      "slot": "ring",
+      "required_level": 10,
+      "stats": {
+        "strength": 0,
+        "dexterity": 4,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 420,
+      "icon": "textures/solid-colors/blue.png",
+      "mesh": "meshes/placeholder-torus.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "warden-mantle",
+      "name": "Warden Mantle",
+      "description": "A heavy cloak bearing the crest of the guard.",
+      "item_type": "Trinket",
+      "slot": "back",
+      "required_level": 10,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 5,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 450,
+      "icon": "textures/solid-colors/blue.png",
+      "mesh": "meshes/placeholder-plane.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "philosopher-beads",
+      "name": "Philosopher Beads",
+      "description": "Each bead represents a truth learned.",
+      "item_type": "Trinket",
+      "slot": "neck",
+      "required_level": 15,
+      "stats": {
+        "strength": 7,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 980,
+      "icon": "textures/solid-colors/blue.png",
+      "mesh": "meshes/placeholder-torus.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "ring-of-prescience",
+      "name": "Ring of Prescience",
+      "description": "The metal seems to hum with foresight.",
+      "item_type": "Trinket",
+      "slot": "ring",
+      "required_level": 15,
+      "stats": {
+        "strength": 0,
+        "dexterity": 6,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 890,
+      "icon": "textures/solid-colors/blue.png",
+      "mesh": "meshes/placeholder-torus.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "shadow-walker-cloak",
+      "name": "Shadow Walker Cloak",
+      "description": "Woven from dusk-black thread, it seems to absorb light.",
+      "item_type": "Trinket",
+      "slot": "back",
+      "required_level": 15,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 7,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 940,
+      "icon": "textures/solid-colors/blue.png",
+      "mesh": "meshes/placeholder-plane.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "adamantine-chain",
+      "name": "Adamantine Chain",
+      "description": "A necklace of unbreakable metal from the deep delves.",
+      "item_type": "Trinket",
+      "slot": "neck",
+      "required_level": 20,
+      "stats": {
+        "strength": 9,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "epic",
+      "value_copper": 2600,
+      "icon": "textures/solid-colors/orange.png",
+      "mesh": "meshes/placeholder-torus.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "circle-of-the-unbound",
+      "name": "Circle of the Unbound",
+      "description": "A ring that pulses with the rhythm of a beating heart.",
+      "item_type": "Trinket",
+      "slot": "ring",
+      "required_level": 20,
+      "stats": {
+        "strength": 0,
+        "dexterity": 8,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "epic",
+      "value_copper": 2450,
+      "icon": "textures/solid-colors/orange.png",
+      "mesh": "meshes/placeholder-torus.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "void-drape",
+      "name": "Void Drape",
+      "description": "A cape that billows in winds that do not exist.",
+      "item_type": "Trinket",
+      "slot": "back",
+      "required_level": 20,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 9,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "epic",
+      "value_copper": 2550,
+      "icon": "textures/solid-colors/orange.png",
+      "mesh": "meshes/placeholder-plane.gltf",
+      "max_stack": 1
     }
   ],
   "quests": [
