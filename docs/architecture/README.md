@@ -3,6 +3,7 @@
 > How we build the best **open-core MMORPG engine**. The [initial idea](../initial-idea/README.md) says *what/why*; this says *how*. Every choice defaults to the [gold standards](../../CLAUDE.md#standards) and deviates only with a reason (recorded as an ADR).
 
 ## ADRs
+
 | Decision | Covers |
 |---|---|
 | [decisions/0001-engine-crate-family-and-features.md](decisions/0001-engine-crate-family-and-features.md) | Bevy 0.19 sub-crate vs umbrella, DLSS/all-features exclusion, determinism boundary |

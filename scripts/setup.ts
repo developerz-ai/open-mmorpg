@@ -19,7 +19,12 @@ log.ok('cargo + bun present');
 // Check for Linux build dependencies needed for Bevy
 if (process.platform === 'linux') {
   const linuxDeps = ['libasound2-dev', 'libudev-dev', 'libx11-dev', 'pkg-config', 'g++'];
-  const missing = linuxDeps.filter((dep) => run(['dpkg', '-l', dep]).code !== 0);
+  const missing = linuxDeps.filter((dep) => {
+    // `dpkg -l` reports success for `rc` (removed, config-files-left) packages;
+    // require the explicit "install ok installed" state instead.
+    const res = run(['dpkg-query', '-s', dep]);
+    return res.code !== 0 || !res.stdout.includes('install ok installed');
+  });
   if (missing.length > 0) {
     log.warn(
       `Missing Linux development libraries. Install with:\n  sudo apt-get install -y ${missing.join(' ')}`,

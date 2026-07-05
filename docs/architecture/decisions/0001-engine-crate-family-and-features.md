@@ -42,7 +42,7 @@ The workspace pins **Bevy 0.19** across all engine crates (see `[workspace.depen
 The umbrella `bevy` crate is a convenience re-export. Depending on it pulls **all** optional sub-crates with their defaults, including windowing, audio, and platform-specific renderer backends, which are useless (and expensive) in a headless context. Pulling sub-crates individually means:
 
 1. Compile times scale with what you use.
-2. Headless targets have **zero GPU/OS dependencies** — the crate graph compiles anywhere `no_std`-compatible crates run.
+2. Headless targets have **zero GPU/windowing dependencies** — the crate graph stays headless without implying `no_std`.
 3. Feature drift is explicit: adding a Bevy feature is a conscious PR-level decision, not a transitive surprise.
 
 ### DLSS / all-features exclusion
