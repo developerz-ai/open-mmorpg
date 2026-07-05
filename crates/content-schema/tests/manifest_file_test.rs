@@ -32,7 +32,7 @@ fn committed_manifest_loads_and_validates() {
 
     // The slice a player actually picks from at character creation.
     assert_eq!(manifest.races.len(), 12, "complete racial slate");
-    assert!(manifest.classes.len() >= 4);
+    assert_eq!(manifest.classes.len(), 8, "complete hero class set");
     assert!(
         manifest
             .races
@@ -50,6 +50,13 @@ fn committed_manifest_loads_and_validates() {
             .iter()
             .all(|t| manifest.abilities.iter().any(|a| a.id == *t))),
         "every racial trait must resolve to an ability"
+    );
+    assert!(
+        manifest.classes.iter().all(|c| c
+            .abilities
+            .iter()
+            .all(|a| manifest.abilities.iter().any(|ability| ability.id == *a))),
+        "every class ability must resolve to an ability definition"
     );
 
     // A walkable, populated world: at least one zone, spawn table, dungeon, AH.
