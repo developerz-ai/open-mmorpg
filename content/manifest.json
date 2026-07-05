@@ -15441,6 +15441,129 @@
       "value_copper": 0,
       "icon": "textures/solid-colors/green.png",
       "max_stack": 10
+    },
+    {
+      "id": "brinebeard-cutlass",
+      "name": "Brinebeard's Cutlass",
+      "description": "Captain Brinebeard's rusted but deadly blade.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 15,
+      "stats": {
+        "strength": 3,
+        "dexterity": 8,
+        "constitution": 2,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 1500,
+      "icon": "textures/solid-colors/blue.png",
+      "mesh": "meshes/placeholder-cube.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "zulra-voodoo-doll",
+      "name": "Zulra's Voodoo Doll",
+      "description": "A crude doll infused with First Mate Zulra's hex magic.",
+      "item_type": "Trinket",
+      "slot": "trinket",
+      "required_level": 15,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 3,
+        "intelligence": 0,
+        "wisdom": 6,
+        "charisma": 2
+      },
+      "quality": "uncommon",
+      "value_copper": 800,
+      "icon": "textures/solid-colors/purple.png",
+      "mesh": "meshes/placeholder-sphere.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "brinebeards-pistol",
+      "name": "Brinebeard's Pistol",
+      "description": "A flintlock pistol once wielded by the notorious pirate Brinebeard. Still fires true.",
+      "item_type": "Weapon",
+      "slot": "mainhand",
+      "required_level": 18,
+      "stats": {
+        "strength": 0,
+        "dexterity": 10,
+        "constitution": 0,
+        "intelligence": 5,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 2500,
+      "icon": "textures/solid-colors/orange.png",
+      "mesh": "meshes/placeholder-cube.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "captains-coat",
+      "name": "Captain's Coat",
+      "description": "A reinforced mail coat worn by pirate captains. Salt-stained but sturdy.",
+      "item_type": "Armor",
+      "slot": "chest",
+      "required_level": 18,
+      "stats": {
+        "strength": 0,
+        "dexterity": 6,
+        "constitution": 8,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 2200,
+      "icon": "textures/solid-colors/orange.png",
+      "mesh": "meshes/placeholder-sphere.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "pollys-perch",
+      "name": "Polly's Perch",
+      "description": "An enchanted wooden perch that grants keen sight and quick reflexes.",
+      "item_type": "Trinket",
+      "slot": "trinket",
+      "required_level": 18,
+      "stats": {
+        "strength": 0,
+        "dexterity": 8,
+        "constitution": 0,
+        "intelligence": 3,
+        "wisdom": 4,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 2000,
+      "icon": "textures/solid-colors/purple.png",
+      "mesh": "meshes/placeholder-sphere.gltf",
+      "max_stack": 1
+    },
+    {
+      "id": "polly-perch",
+      "name": "Polly's Perch",
+      "description": "A favored feathered roost belonging to Parrot Polly.",
+      "item_type": "Quest",
+      "required_level": 15,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 0,
+      "max_stack": 1
     }
   ],
   "quests": [
@@ -16571,6 +16694,93 @@
         }
       ],
       "respawn_sec": 600
+    },
+    {
+      "id": "smuggler-cutthroats",
+      "entries": [
+        {
+          "entity_id": "smuggler-cutthroat",
+          "weight": 100,
+          "max_count": 8,
+          "positions": [
+            [60.0, 0.0, 80.0],
+            [70.0, 0.0, 75.0],
+            [65.0, 0.0, 90.0],
+            [80.0, 0.0, 85.0],
+            [75.0, 0.0, 95.0],
+            [85.0, 0.0, 70.0]
+          ]
+        },
+        {
+          "entity_id": "smuggler-gunner",
+          "weight": 50,
+          "max_count": 4,
+          "positions": [[63.0, 0.0, 83.0], [73.0, 0.0, 78.0], [83.0, 0.0, 73.0], [78.0, 0.0, 88.0]]
+        }
+      ],
+      "respawn_sec": 180
+    },
+    {
+      "id": "cove-murlocs",
+      "entries": [
+        {
+          "entity_id": "cove-murloc",
+          "weight": 80,
+          "max_count": 10,
+          "positions": [
+            [100.0, 0.0, 120.0],
+            [110.0, 0.0, 115.0],
+            [105.0, 0.0, 130.0],
+            [115.0, 0.0, 125.0],
+            [120.0, 0.0, 110.0],
+            [108.0, 0.0, 140.0]
+          ]
+        },
+        {
+          "entity_id": "murloc-lurker",
+          "weight": 40,
+          "max_count": 5,
+          "positions": [
+            [103.0, 0.0, 123.0],
+            [113.0, 0.0, 118.0],
+            [118.0, 0.0, 113.0],
+            [106.0, 0.0, 133.0]
+          ]
+        }
+      ],
+      "respawn_sec": 120
+    },
+    {
+      "id": "parrot-minions",
+      "entries": [
+        {
+          "entity_id": "parrot-minion",
+          "weight": 100,
+          "max_count": 12,
+          "positions": [
+            [90.0, 8.0, 140.0],
+            [95.0, 10.0, 135.0],
+            [100.0, 9.0, 145.0],
+            [105.0, 11.0, 130.0],
+            [85.0, 7.0, 145.0],
+            [110.0, 12.0, 125.0],
+            [92.0, 8.0, 150.0],
+            [98.0, 10.0, 155.0]
+          ]
+        },
+        {
+          "entity_id": "parrot-swarmer",
+          "weight": 30,
+          "max_count": 6,
+          "positions": [
+            [93.0, 9.0, 143.0],
+            [103.0, 11.0, 133.0],
+            [88.0, 8.0, 148.0],
+            [108.0, 12.0, 123.0]
+          ]
+        }
+      ],
+      "respawn_sec": 90
     }
   ],
   "dungeons": [
@@ -16587,6 +16797,26 @@
       "lockout_hours": 24,
       "entrance_zone_id": "hollowveil-barrows",
       "entrance_position": [120.0, 0.0, 90.0]
+    },
+    {
+      "id": "smugglers-cove",
+      "name": "Smuggler's Cove",
+      "min_level": 15,
+      "recommended_level": 18,
+      "max_players": 5,
+      "boss_ids": ["captain-brinebeard", "first-mate-zulra", "parrot-polly"],
+      "trash_spawn_tables": [
+        "smuggler-cove-pirates",
+        "smuggler-cove-lookouts",
+        "smuggler-cutthroats",
+        "cove-murlocs",
+        "parrot-minions"
+      ],
+      "loot_tables": ["brinebeards-pistol", "captains-coat", "pollys-perch"],
+      "time_limit_minutes": 90,
+      "lockout_hours": 24,
+      "entrance_zone_id": "smuggler-cove",
+      "entrance_position": [95.0, 0.0, 135.0]
     }
   ],
   "economy": {

@@ -62,13 +62,22 @@ fn committed_manifest_loads_and_validates() {
     // A walkable, populated world: at least one zone, spawn table, dungeon, AH.
     assert!(!manifest.zones.is_empty());
     assert!(!manifest.spawn_tables.is_empty());
-    assert_eq!(manifest.dungeons.len(), 1);
+    assert!(!manifest.dungeons.is_empty());
     assert!(!manifest.economy.auction_houses.is_empty());
 
-    // The dungeon sits inside a known zone, and its loot resolves to real items.
-    let dungeon = &manifest.dungeons[0];
-    assert!(manifest
-        .zones
-        .iter()
-        .any(|z| Some(z.id.as_str()) == dungeon.entrance_zone_id.as_deref()));
+    // Each dungeon sits inside a known zone.
+    for dungeon in &manifest.dungeons {
+        assert!(manifest
+            .zones
+            .iter()
+            .any(|z| Some(z.id.as_str()) == dungeon.entrance_zone_id.as_deref()));
+        // Dungeon loot tables must reference real items.
+        for item_id in &dungeon.loot_tables {
+            assert!(
+                manifest.items.iter().any(|i| i.id == *item_id),
+                "dungeon '{}' loot_tables references unknown item '{item_id}'",
+                dungeon.id
+            );
+        }
+    }
 }
