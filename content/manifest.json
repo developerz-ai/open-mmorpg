@@ -16334,7 +16334,7 @@
         }
       ],
       "controlling_factions": ["aurelian-concord", "wildreach-pact"],
-      "spawn_tables": [],
+      "spawn_tables": ["veridian-murlocs", "coast-harpies", "smuggler-bandits"],
       "navmesh": "nav/veridian-coast.nav"
     }
   ],
@@ -16434,6 +16434,71 @@
         }
       ],
       "respawn_sec": 300
+    },
+    {
+      "id": "veridian-murlocs",
+      "entries": [
+        {
+          "entity_id": "veridian-murloc",
+          "weight": 80,
+          "max_count": 12,
+          "positions": [
+            [20.0, 0.0, 15.0],
+            [35.0, 0.0, 25.0],
+            [15.0, 0.0, 40.0],
+            [45.0, 0.0, 50.0],
+            [25.0, 0.0, 65.0]
+          ]
+        },
+        {
+          "entity_id": "murloc-lurker",
+          "weight": 40,
+          "max_count": 6,
+          "positions": [[30.0, 0.0, 10.0], [50.0, 0.0, 20.0], [20.0, 0.0, 55.0]]
+        }
+      ],
+      "respawn_sec": 90
+    },
+    {
+      "id": "coast-harpies",
+      "entries": [
+        {
+          "entity_id": "coast-harpy",
+          "weight": 70,
+          "max_count": 10,
+          "positions": [
+            [-15.0, 8.0, 20.0],
+            [-25.0, 12.0, 35.0],
+            [-10.0, 10.0, 50.0],
+            [-30.0, 15.0, 25.0]
+          ]
+        },
+        {
+          "entity_id": "harpy-screecher",
+          "weight": 30,
+          "max_count": 4,
+          "positions": [[-20.0, 14.0, 30.0], [-35.0, 18.0, 40.0]]
+        }
+      ],
+      "respawn_sec": 120
+    },
+    {
+      "id": "smuggler-bandits",
+      "entries": [
+        {
+          "entity_id": "smuggler-bandit",
+          "weight": 100,
+          "max_count": 8,
+          "positions": [[70.0, 0.0, 60.0], [80.0, 0.0, 55.0], [75.0, 0.0, 70.0], [85.0, 0.0, 65.0]]
+        },
+        {
+          "entity_id": "smuggler-leader",
+          "weight": 20,
+          "max_count": 2,
+          "positions": [[78.0, 0.0, 62.0], [82.0, 0.0, 68.0]]
+        }
+      ],
+      "respawn_sec": 180
     }
   ],
   "dungeons": [
