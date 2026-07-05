@@ -1,7 +1,10 @@
 version: 2
-# Grouped weekly minor/patch updates. Major bumps are ignored — they land via a
-# deliberate, human-reviewed PR, not an automated one (a major can break the
-# build or ship semantics changes, e.g. zod 3→4). Bump majors by hand.
+# Grouped weekly minor/patch updates that auto-merge once CI is green
+# (.github/workflows/dependabot-automerge.yml).
+# - Major bumps are ignored — they land via a deliberate, human-reviewed PR
+#   (a major can break the build or change semantics, e.g. zod 3→4).
+# - cooldown: 30 days — only bump to a version that has been public ≥30 days, so
+#   we skip freshly-published releases before they auto-merge.
 updates:
   # Rust workspace (root Cargo.toml + all crates).
   - package-ecosystem: cargo
@@ -9,6 +12,8 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 10
+    cooldown:
+      default-days: 30
     groups:
       cargo-minor-patch:
         update-types:
@@ -26,6 +31,8 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 10
+    cooldown:
+      default-days: 30
     groups:
       js-minor-patch:
         update-types:
@@ -41,6 +48,8 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
+    cooldown:
+      default-days: 30
     groups:
       actions-minor-patch:
         update-types:
