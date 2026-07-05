@@ -14,6 +14,7 @@ members = [
   "crates/content-schema",
   "crates/errors",
   "crates/world",
+  "crates/engine-core",
   "apps/gateway",
   "apps/shard",
   "apps/client",
@@ -42,7 +43,15 @@ omm-scripting = { path = "crates/scripting" }
 omm-content-schema = { path = "crates/content-schema" }
 omm-errors = { path = "crates/errors" }
 omm-world = { path = "crates/world" }
+omm-engine-core = { path = "crates/engine-core" }
 # external
+# Bevy — consumed as individual sub-crates (not the umbrella `bevy`) so the
+# engine ships only what it uses and boots headless with no GPU/windowing.
+# The headless core needs: app lifecycle, ECS, reflection, fixed-timestep time.
+bevy_app = { version = "0.19", default-features = false, features = ["bevy_reflect", "std"] }
+bevy_ecs = { version = "0.19", default-features = false, features = ["bevy_reflect", "std", "multi_threaded"] }
+bevy_reflect = { version = "0.19", default-features = false, features = ["std"] }
+bevy_time = { version = "0.19", default-features = false, features = ["std"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 thiserror = "2"

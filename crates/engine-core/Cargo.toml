@@ -1,0 +1,17 @@
+[package]
+name = "omm-engine-core"
+description = "Reusable Bevy-based engine core: headless-first App/Plugin bootstrap, reflection registry, fixed-timestep schedule."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+bevy_app.workspace = true
+bevy_ecs.workspace = true
+bevy_reflect.workspace = true
+bevy_time.workspace = true
+
+[lints]
+workspace = true
