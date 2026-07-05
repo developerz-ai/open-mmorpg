@@ -2200,6 +2200,196 @@
       "max_stack": 10
     },
     {
+      "id": "healing-potion",
+      "name": "Healing Potion",
+      "description": "A standard mending draught that knits wounds.",
+      "item_type": "Consumable",
+      "required_level": 10,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 25,
+      "icon": "textures/solid-colors/white.png",
+      "max_stack": 10
+    },
+    {
+      "id": "greater-healing-potion",
+      "name": "Greater Healing Potion",
+      "description": "A potent draught that rapidly restores vitality.",
+      "item_type": "Consumable",
+      "required_level": 20,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 100,
+      "icon": "textures/solid-colors/green.png",
+      "max_stack": 10
+    },
+    {
+      "id": "supreme-healing-potion",
+      "name": "Supreme Healing Potion",
+      "description": "An extraordinary elixir that mends even grievous injuries.",
+      "item_type": "Consumable",
+      "required_level": 30,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 400,
+      "icon": "textures/solid-colors/blue.png",
+      "max_stack": 10
+    },
+    {
+      "id": "minor-mana-potion",
+      "name": "Minor Mana Potion",
+      "description": "A faintly glowing draft that restores a touch of arcane energy.",
+      "item_type": "Consumable",
+      "required_level": 5,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 15,
+      "icon": "textures/solid-colors/white.png",
+      "max_stack": 10
+    },
+    {
+      "id": "mana-potion",
+      "name": "Mana Potion",
+      "description": "A standard arcane draught that restores magical energy.",
+      "item_type": "Consumable",
+      "required_level": 15,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "common",
+      "value_copper": 40,
+      "icon": "textures/solid-colors/white.png",
+      "max_stack": 10
+    },
+    {
+      "id": "greater-mana-potion",
+      "name": "Greater Mana Potion",
+      "description": "A potent elixir that quickly replenishes arcane reserves.",
+      "item_type": "Consumable",
+      "required_level": 25,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 150,
+      "icon": "textures/solid-colors/green.png",
+      "max_stack": 10
+    },
+    {
+      "id": "rage-potion",
+      "name": "Rage Potion",
+      "description": "A fiery brew that temporarily strengthens the arm and fuels aggression.",
+      "item_type": "Consumable",
+      "required_level": 10,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 60,
+      "icon": "textures/solid-colors/red.png",
+      "max_stack": 10
+    },
+    {
+      "id": "greater-rage-potion",
+      "name": "Greater Rage Potion",
+      "description": "A volatile draft that surges through the body, granting immense physical power.",
+      "item_type": "Consumable",
+      "required_level": 20,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 250,
+      "icon": "textures/solid-colors/blue.png",
+      "max_stack": 10
+    },
+    {
+      "id": "clarity-potion",
+      "name": "Clarity Potion",
+      "description": "A crystalline infusion that sharpens the mind and quickens spellcasting.",
+      "item_type": "Consumable",
+      "required_level": 15,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "uncommon",
+      "value_copper": 75,
+      "icon": "textures/solid-colors/green.png",
+      "max_stack": 10
+    },
+    {
+      "id": "greater-clarity-potion",
+      "name": "Greater Clarity Potion",
+      "description": "A transcendent brew that elevates consciousness to near-perfect clarity.",
+      "item_type": "Consumable",
+      "required_level": 25,
+      "stats": {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+      },
+      "quality": "rare",
+      "value_copper": 300,
+      "icon": "textures/solid-colors/blue.png",
+      "max_stack": 10
+    },
+    {
       "id": "wolf-pelt",
       "name": "Wolf Pelt",
       "description": "A coarse pelt taken from a dawnshore wolf.",
