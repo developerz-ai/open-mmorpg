@@ -2,6 +2,7 @@
 //! threat, and determinism.
 
 use super::*;
+use crate::World;
 use omm_ecs_core::{AbilityId, AuraSpec};
 use proptest::prelude::*;
 
@@ -25,9 +26,8 @@ fn nuke() -> AbilityDef {
 
 fn two_actor_world() -> (World, EntityId, EntityId) {
     let mut w = World::new();
-    let (caster, target) = (EntityId::new(1), EntityId::new(2));
-    w.insert(caster, Actor::new(at(0.0, 0.0), Team(1), 100, 100));
-    w.insert(target, Actor::new(at(3.0, 0.0), Team(2), 100, 100));
+    let caster = w.spawn(Actor::new(at(0.0, 0.0), Team(1), 100, 100));
+    let target = w.spawn(Actor::new(at(3.0, 0.0), Team(2), 100, 100));
     (w, caster, target)
 }
 
@@ -54,9 +54,8 @@ fn rejects_when_on_cooldown() {
 #[test]
 fn rejects_out_of_range() {
     let mut w = World::new();
-    let (caster, target) = (EntityId::new(1), EntityId::new(2));
-    w.insert(caster, Actor::new(at(0.0, 0.0), Team(1), 100, 100));
-    w.insert(target, Actor::new(at(50.0, 0.0), Team(2), 100, 100));
+    let caster = w.spawn(Actor::new(at(0.0, 0.0), Team(1), 100, 100));
+    let target = w.spawn(Actor::new(at(50.0, 0.0), Team(2), 100, 100));
     assert_eq!(
         w.cast(Tick(0), caster, &nuke(), Some(target)),
         Err(RejectReason::OutOfRange)
@@ -66,9 +65,8 @@ fn rejects_out_of_range() {
 #[test]
 fn rejects_not_enough_power() {
     let mut w = World::new();
-    let (caster, target) = (EntityId::new(1), EntityId::new(2));
-    w.insert(caster, Actor::new(at(0.0, 0.0), Team(1), 100, 10));
-    w.insert(target, Actor::new(at(1.0, 0.0), Team(2), 100, 100));
+    let caster = w.spawn(Actor::new(at(0.0, 0.0), Team(1), 100, 10));
+    let target = w.spawn(Actor::new(at(1.0, 0.0), Team(2), 100, 100));
     assert_eq!(
         w.cast(Tick(0), caster, &nuke(), Some(target)),
         Err(RejectReason::NotEnoughPower)
@@ -78,9 +76,8 @@ fn rejects_not_enough_power() {
 #[test]
 fn rejects_friendly_fire_on_enemy_ability() {
     let mut w = World::new();
-    let (caster, ally) = (EntityId::new(1), EntityId::new(2));
-    w.insert(caster, Actor::new(at(0.0, 0.0), Team(1), 100, 100));
-    w.insert(ally, Actor::new(at(1.0, 0.0), Team(1), 100, 100));
+    let caster = w.spawn(Actor::new(at(0.0, 0.0), Team(1), 100, 100));
+    let ally = w.spawn(Actor::new(at(1.0, 0.0), Team(1), 100, 100));
     assert_eq!(
         w.cast(Tick(0), caster, &nuke(), Some(ally)),
         Err(RejectReason::InvalidTarget)
@@ -90,20 +87,10 @@ fn rejects_friendly_fire_on_enemy_ability() {
 #[test]
 fn radius_ability_hits_all_enemies_in_range() {
     let mut w = World::new();
-    let caster = EntityId::new(1);
-    w.insert(caster, Actor::new(at(0.0, 0.0), Team(1), 100, 100));
-    w.insert(
-        EntityId::new(2),
-        Actor::new(at(1.0, 0.0), Team(2), 100, 100),
-    );
-    w.insert(
-        EntityId::new(3),
-        Actor::new(at(2.0, 0.0), Team(2), 100, 100),
-    );
-    w.insert(
-        EntityId::new(4),
-        Actor::new(at(40.0, 0.0), Team(2), 100, 100),
-    ); // far
+    let caster = w.spawn(Actor::new(at(0.0, 0.0), Team(1), 100, 100));
+    let near_a = w.spawn(Actor::new(at(1.0, 0.0), Team(2), 100, 100));
+    let near_b = w.spawn(Actor::new(at(2.0, 0.0), Team(2), 100, 100));
+    let far = w.spawn(Actor::new(at(40.0, 0.0), Team(2), 100, 100));
     let aoe = AbilityDef {
         id: AbilityId(2),
         power_cost: 0,
@@ -114,19 +101,17 @@ fn radius_ability_hits_all_enemies_in_range() {
         shape: TargetShape::Radius(5.0),
         effects: vec![EffectKind::Damage(10)],
     };
-    w.cast(Tick(0), caster, &aoe, Some(EntityId::new(2)))
-        .unwrap();
-    assert_eq!(w.get(EntityId::new(2)).unwrap().health.current, 90);
-    assert_eq!(w.get(EntityId::new(3)).unwrap().health.current, 90);
-    assert_eq!(w.get(EntityId::new(4)).unwrap().health.current, 100); // out of radius
+    w.cast(Tick(0), caster, &aoe, Some(near_a)).unwrap();
+    assert_eq!(w.get(near_a).unwrap().health.current, 90);
+    assert_eq!(w.get(near_b).unwrap().health.current, 90);
+    assert_eq!(w.get(far).unwrap().health.current, 100); // out of radius
 }
 
 #[test]
 fn dot_aura_ticks_on_period_and_expires() {
     let mut w = World::new();
-    let (caster, target) = (EntityId::new(1), EntityId::new(2));
-    w.insert(caster, Actor::new(at(0.0, 0.0), Team(1), 100, 100));
-    w.insert(target, Actor::new(at(1.0, 0.0), Team(2), 100, 100));
+    let caster = w.spawn(Actor::new(at(0.0, 0.0), Team(1), 100, 100));
+    let target = w.spawn(Actor::new(at(1.0, 0.0), Team(2), 100, 100));
     let dot = AbilityDef {
         id: AbilityId(3),
         power_cost: 0,
@@ -163,17 +148,20 @@ proptest! {
                 let _ = w.cast(Tick(t), caster, &nuke(), Some(target));
                 w.tick_auras(Tick(t));
             }
-            w
+            (w, caster, target)
         };
-        let a = build();
-        let b = build();
+        let (a, a_caster, a_target) = build();
+        let (b, b_caster, b_target) = build();
+        // Server-issued ids are deterministic across identical spawn order.
+        prop_assert_eq!(a_caster, b_caster);
+        prop_assert_eq!(a_target, b_target);
         prop_assert_eq!(
-            a.get(EntityId::new(2)).unwrap().health.current,
-            b.get(EntityId::new(2)).unwrap().health.current
+            a.get(a_target).unwrap().health.current,
+            b.get(b_target).unwrap().health.current
         );
         prop_assert_eq!(
-            a.get(EntityId::new(1)).unwrap().power.current,
-            b.get(EntityId::new(1)).unwrap().power.current
+            a.get(a_caster).unwrap().power.current,
+            b.get(b_caster).unwrap().power.current
         );
     }
 }
