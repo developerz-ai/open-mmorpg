@@ -216,8 +216,8 @@ describe('Progress/Spinner component accessibility', () => {
 
   test('Indeterminate progress lacks aria-valuenow', () => {
     const content = readFileSync(join(import.meta.dir, 'Progress.tsx'), 'utf-8');
-    // Should check for conditional aria-valuenow
-    expect(content).toMatch(/if.*aria-valuenow|undefined/);
+    // Should check for conditional aria-valuenow (nullish coalescing)
+    expect(content).toMatch(/aria-valuenow=\{local\.value\s*\?\?/);
   });
 });
 
@@ -268,8 +268,8 @@ describe('Card component accessibility', () => {
 
   test('Card has landmark role if needed', () => {
     const content = readFileSync(join(import.meta.dir, 'Card.tsx'), 'utf-8');
-    // Card might have article, region, or no role
-    expect(content.length).toBeGreaterThan(0);
+    // Card uses <section> which is an HTML5 landmark
+    expect(content).toMatch(/<section/);
   });
 });
 

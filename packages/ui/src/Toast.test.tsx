@@ -79,7 +79,7 @@ describe('Toast component structure', () => {
     const content = readFileSync(toastPath, 'utf-8');
     expect(content).toContain('toasts');
     expect(content).toContain('onDismiss');
-    expect(content).toContain('toast().id');
+    expect(content).toContain('toast.id');
   });
 
   test('ToastContainer has position variants', () => {

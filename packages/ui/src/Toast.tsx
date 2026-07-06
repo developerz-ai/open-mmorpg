@@ -1,5 +1,5 @@
 import type { JSX } from 'solid-js';
-import { createEffect, createSignal, Index, Show, splitProps } from 'solid-js';
+import { createEffect, createSignal, For, Show, splitProps } from 'solid-js';
 import { cx } from './cx.ts';
 
 export type ToastTone = 'success' | 'error' | 'warning' | 'info';
@@ -123,18 +123,18 @@ export function ToastContainer(props: ToastContainerProps): JSX.Element {
       class={cx('omm-toast-container', `omm-toast-container--${position()}`, local.class)}
       {...rest}
     >
-      <Index each={local.toasts}>
+      <For each={local.toasts}>
         {(toast) => (
           <Toast
-            tone={toast().tone}
-            duration={toast().duration}
-            action={toast().action}
-            onDismiss={() => local.onDismiss(toast().id)}
+            tone={toast.tone}
+            duration={toast.duration}
+            action={toast.action}
+            onDismiss={() => local.onDismiss(toast.id)}
           >
-            {toast().children}
+            {toast.children}
           </Toast>
         )}
-      </Index>
+      </For>
     </div>
   );
 }

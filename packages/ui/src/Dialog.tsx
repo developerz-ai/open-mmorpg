@@ -76,7 +76,7 @@ export function Dialog(props: DialogProps) {
 
       document.body.style.overflow = 'hidden';
 
-      return () => previouslyFocused;
+      return previouslyFocused;
     } else if (!isOpen && wasOpen) {
       // Dialog closed: restore body scroll, return focus to trigger
       document.body.style.overflow = '';
@@ -121,6 +121,7 @@ export function Dialog(props: DialogProps) {
   };
 
   const handleOverlayKeyDown = (e: KeyboardEvent) => {
+    if (e.target !== overlayRef()) return;
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       close();
