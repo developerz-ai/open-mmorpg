@@ -9,7 +9,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "test": "bun test --path-ignore-patterns 'src/**/*.spec.tsx'",
+    "test": "bun test",
     "test:unit": "vitest",
     "test:e2e": "playwright test",
     "test:e2e:shop": "CASH_SHOP_ENABLED=true playwright test e2e/shop-enabled.e2e.ts"

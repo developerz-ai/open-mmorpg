@@ -27,7 +27,9 @@ const EnvSchema = z.object({
   VITE_LOGO_URL: z.string().optional(),
   VITE_GATEWAY_URL: z.string().url().default('http://localhost:8080'),
   VITE_WORLDSVC_URL: z.string().url().default('http://localhost:8081'),
-  VITE_LOCALE: z.enum(['en']).default('en'),
+  VITE_LOCALE: z
+    .enum(['en', 'de', 'es', 'fr', 'ja', 'zh', 'ko', 'ru', 'pt', 'it', 'pl', 'tr', 'ar'])
+    .default('en'),
   VITE_BRAND_ACCENT: rgbChannels,
   VITE_BRAND_ACCENT_STRONG: rgbChannels,
   VITE_USE_MOCKS: flag(false),
@@ -59,7 +61,7 @@ export interface OperatorConfig {
     accent?: string;
     accentStrong?: string;
   };
-  locale: 'en';
+  locale: 'en' | 'de' | 'es' | 'fr' | 'ja' | 'zh' | 'ko' | 'ru' | 'pt' | 'it' | 'pl' | 'tr' | 'ar';
   endpoints: { gatewayUrl: string; worldsvcUrl: string };
   /** Route the API client to the in-memory mock backend (server not yet live). */
   useMocks: boolean;

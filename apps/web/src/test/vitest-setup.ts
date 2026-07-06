@@ -29,7 +29,7 @@ vi.mock('../config', () => ({
       checksums: {},
     },
   },
-  parseConfig: (raw: Record<string, unknown>) => ({
+  parseConfig: (_raw: Record<string, unknown>) => ({
     brand: {
       realmName: 'Test Realm',
       accent: '255 0 0',
