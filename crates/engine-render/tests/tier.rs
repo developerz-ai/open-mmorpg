@@ -200,6 +200,57 @@ fn tier_order_is_richest_to_leanest() {
     );
 }
 
+// ── tier degrade ladder ─────────────────────────────────────────────────────────
+
+/// A hero asset that *wants* Ultra steps down to the richest tier the device runs,
+/// walking Ultra → High → Web — the graceful counterpart to `ensure_supported_by`.
+#[test]
+fn ultra_desire_degrades_to_the_supported_tier() {
+    assert_eq!(
+        RenderTier::Ultra.degrade_to_supported(&GpuCapabilities::native_ultra()),
+        RenderTier::Ultra
+    );
+    assert_eq!(
+        RenderTier::Ultra.degrade_to_supported(&GpuCapabilities::native_high()),
+        RenderTier::High
+    );
+    assert_eq!(
+        RenderTier::Ultra.degrade_to_supported(&GpuCapabilities::web_baseline()),
+        RenderTier::Web
+    );
+}
+
+/// Degrade only steps *down*: a leaner desire is honored even on the richest GPU,
+/// so a forced-Web config never gets silently upgraded to Ultra.
+#[test]
+fn degrade_never_upgrades_a_leaner_desire() {
+    let ultra = GpuCapabilities::native_ultra();
+    assert_eq!(
+        RenderTier::Web.degrade_to_supported(&ultra),
+        RenderTier::Web
+    );
+    assert_eq!(
+        RenderTier::High.degrade_to_supported(&ultra),
+        RenderTier::High
+    );
+}
+
+/// Asking for the top tier is exactly "give me the best this device runs" — the
+/// degrade of Ultra must equal `select` for every capability set.
+#[test]
+fn degrade_of_ultra_equals_select() {
+    for caps in [
+        GpuCapabilities::native_ultra(),
+        GpuCapabilities::native_high(),
+        GpuCapabilities::web_baseline(),
+    ] {
+        assert_eq!(
+            RenderTier::Ultra.degrade_to_supported(&caps),
+            RenderTier::select(&caps)
+        );
+    }
+}
+
 // ── reflection registration ────────────────────────────────────────────────────
 
 /// All tier types must be registered in the app's reflection registry.

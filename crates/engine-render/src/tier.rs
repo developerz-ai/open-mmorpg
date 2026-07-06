@@ -201,6 +201,23 @@ impl RenderTier {
     pub fn virtual_geometry(self) -> bool {
         matches!(self, RenderTier::Ultra)
     }
+
+    /// Degrade a *desired* tier to the richest tier `caps` can actually run, walking
+    /// the ladder **Ultra → High → Web**. This is how a hero asset that *wants* the
+    /// meshlet/Ultra path resolves on a device missing the native capabilities: it
+    /// steps down one rung at a time instead of failing loud like
+    /// [`ensure_supported_by`](Self::ensure_supported_by).
+    ///
+    /// Never *upgrades*: a desire leaner than the hardware's best (e.g. forcing
+    /// [`Web`](RenderTier::Web) on an RTX card) is honored as-is. Total and
+    /// deterministic — `select(caps)` is the ceiling, `self` the floor.
+    #[must_use]
+    pub fn degrade_to_supported(self, caps: &GpuCapabilities) -> Self {
+        // Tiers order richest → leanest (Ultra < High < Web), so the *leaner* of the
+        // desired tier and the best the hardware supports is `max`: Ultra desired +
+        // High support → High; Web desired + Ultra support → Web (never upgraded).
+        self.max(Self::select(caps))
+    }
 }
 
 #[cfg(test)]
@@ -339,5 +356,74 @@ mod tests {
     fn tiers_order_richest_to_leanest() {
         assert!(RenderTier::Ultra < RenderTier::High);
         assert!(RenderTier::High < RenderTier::Web);
+    }
+
+    #[test]
+    fn degrade_ultra_desire_steps_down_to_the_supported_tier() {
+        // An Ultra-wanting hero asset lands on whatever the hardware actually runs.
+        assert_eq!(
+            RenderTier::Ultra.degrade_to_supported(&GpuCapabilities::native_ultra()),
+            RenderTier::Ultra
+        );
+        assert_eq!(
+            RenderTier::Ultra.degrade_to_supported(&GpuCapabilities::native_high()),
+            RenderTier::High
+        );
+        assert_eq!(
+            RenderTier::Ultra.degrade_to_supported(&GpuCapabilities::web_baseline()),
+            RenderTier::Web
+        );
+    }
+
+    #[test]
+    fn degrade_high_desire_on_a_web_device_falls_to_web() {
+        assert_eq!(
+            RenderTier::High.degrade_to_supported(&GpuCapabilities::web_baseline()),
+            RenderTier::Web
+        );
+    }
+
+    #[test]
+    fn degrade_never_upgrades_a_leaner_desire() {
+        // A leaner desire is honored even on the richest hardware — degrade only
+        // steps down, never up.
+        assert_eq!(
+            RenderTier::Web.degrade_to_supported(&GpuCapabilities::native_ultra()),
+            RenderTier::Web
+        );
+        assert_eq!(
+            RenderTier::High.degrade_to_supported(&GpuCapabilities::native_ultra()),
+            RenderTier::High
+        );
+    }
+
+    #[test]
+    fn degrade_matches_select_when_asking_for_the_top_tier() {
+        // Requesting the richest tier is exactly "give me the best this device runs".
+        for caps in [
+            GpuCapabilities::native_ultra(),
+            GpuCapabilities::native_high(),
+            GpuCapabilities::web_baseline(),
+        ] {
+            assert_eq!(
+                RenderTier::Ultra.degrade_to_supported(&caps),
+                RenderTier::select(&caps)
+            );
+        }
+    }
+
+    #[test]
+    fn degrade_is_idempotent() {
+        // Degrading an already-degraded tier changes nothing — it has hit the floor.
+        for caps in [
+            GpuCapabilities::native_ultra(),
+            GpuCapabilities::native_high(),
+            GpuCapabilities::web_baseline(),
+        ] {
+            for desired in [RenderTier::Ultra, RenderTier::High, RenderTier::Web] {
+                let once = desired.degrade_to_supported(&caps);
+                assert_eq!(once.degrade_to_supported(&caps), once);
+            }
+        }
     }
 }

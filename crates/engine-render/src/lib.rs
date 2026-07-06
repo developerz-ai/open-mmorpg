@@ -3,10 +3,12 @@
 //!
 //! # Architecture
 //! The render layer is optional and gates behind the `render` feature (native
-//! heads only). Headless builds (`--no-default-features`) exclude it entirely.
-//! Pure logic (tier selection, material mapping, CSM math, instrumentation) runs
-//! headless and testable; device code (GPU passes, shaders) compiles only under
-//! the feature.
+//! heads only); `meshlet` is a strict superset that adds virtual-geometry hero
+//! assets ([`aaa`]). Headless builds (`--no-default-features`) exclude both
+//! entirely. Pure logic (tier selection + degrade, material mapping, CSM math,
+//! instrumentation, hero-geometry selection) runs headless and testable; device
+//! code (GPU passes, shaders, meshlet cluster culling) compiles only under the
+//! feature.
 //!
 //! # Headless-first
 //! [Tier selection](tier) and [material data mapping](material) are pure,
@@ -28,6 +30,9 @@
 //!   no linker error from mis-wired optional deps.
 //! - Tier-selection logic: `GpuCapabilities` → `RenderTier` is deterministic and
 //!   matches the spec (all paths, boundary cases, precedence order).
+//! - Tier degrade + hero-asset path: the `Ultra→High→Web` degrade ladder
+//!   (`RenderTier::degrade_to_supported`) and `HeroGeometry::select` (meshlet ⇔
+//!   Ultra tier *and* a `meshlet` build) are deterministic and total.
 //! - CSM split math: cascade near/far bounds are finite, ordered, and match the
 //!   Zhang et al. practical-split formula to 0.1 % tolerance.
 //! - Frame-budget logic: EMA seeding, smoothing (α=0.1), over-budget tallying, and
@@ -45,6 +50,9 @@
 //! - GPU memory / VRAM budget — no GPU allocator in headless.
 //! - Shader compilation — `wgpu` shaders are compiled on device; CI only sees the
 //!   Rust side.
+//! - Meshlet virtual geometry — cluster culling, software raster, and hero-asset
+//!   frames need a Vulkan/Metal device; CI compiles the `meshlet` wiring (under
+//!   `--all-features`) but runs no GPU, so the rendered result is unverified here.
 //!
 //! # Honest gaps vs Unreal Engine
 //!
@@ -66,6 +74,7 @@
 //! with no cross-cutting effect — the architecture is the investment, not the
 //! current technique list.
 
+mod aaa;
 mod budget;
 mod error;
 mod material;
@@ -77,6 +86,9 @@ pub use bevy_pbr;
 #[cfg(feature = "render")]
 pub use bevy_render;
 
+#[cfg(feature = "meshlet")]
+pub use aaa::{add_meshlet_hero_path, MeshletMesh, MeshletMesh3d, HERO_CLUSTER_BUFFER_SLOTS};
+pub use aaa::{meshlet_compiled, HeroAsset, HeroGeometry};
 pub use budget::{FrameBudget, FrameSample, RenderBudget};
 pub use error::RenderError;
 pub use material::{GltfMetallicRoughness, MaterialAlphaMode, PbrMaterial};
@@ -120,6 +132,13 @@ impl Plugin for EngineRenderPlugin {
                 app.add_plugins(PbrPlugin::default());
             }
         }
+
+        // Meshlet is a strict superset of `render` (the branch above ran first and
+        // created the render sub-app the plugin needs). Hero assets on the Ultra
+        // tier then render via GPU cluster culling; every other tier degrades to
+        // discrete LOD — see [`aaa`].
+        #[cfg(feature = "meshlet")]
+        aaa::add_meshlet_hero_path(app);
     }
 }
 
@@ -131,6 +150,8 @@ fn register_render_types(app: &mut App) {
         .register_type::<AntiAliasing>()
         .register_type::<GlobalIllumination>()
         .register_type::<GpuCapabilities>()
+        .register_type::<HeroAsset>()
+        .register_type::<HeroGeometry>()
         .register_type::<MaterialAlphaMode>()
         .register_type::<GltfMetallicRoughness>()
         .register_type::<PbrMaterial>()
@@ -170,6 +191,8 @@ mod tests {
             TypeId::of::<AntiAliasing>(),
             TypeId::of::<GlobalIllumination>(),
             TypeId::of::<GpuCapabilities>(),
+            TypeId::of::<HeroAsset>(),
+            TypeId::of::<HeroGeometry>(),
             TypeId::of::<MaterialAlphaMode>(),
             TypeId::of::<GltfMetallicRoughness>(),
             TypeId::of::<PbrMaterial>(),

@@ -49,6 +49,13 @@ render = [
     "dep:bevy_color",
     "dep:bevy_material",
 ]
+# Meshlet virtual geometry (Nanite-style GPU cluster culling) for hero / high-poly
+# static assets — a strict superset of `render` (needs the full PBR pipeline). MIT:
+# `bevy_pbr/meshlet` pulls only `lz4_flex` + `range-alloc`, so unlike `dlss`/`solari`
+# (non-MIT, NVIDIA-only — never exposed here per ADR-0001) it stays a first-class
+# workspace feature, safe under `--all-features`. Other tiers degrade to discrete
+# LOD — see `aaa` (hero-asset wiring) + `tier` (Ultra→High→Web ladder).
+meshlet = ["render", "bevy_pbr/meshlet"]
 
 [lints]
 workspace = true
