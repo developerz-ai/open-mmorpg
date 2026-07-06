@@ -18,6 +18,53 @@
 //! headless with zero GPU deps. Either way the render-config types are registered
 //! for reflection so tools and agents can enumerate them.
 //! → `docs/specs/game-engine/rendering/README.md`.
+//!
+//! # What CI verifies vs what it does not
+//!
+//! **CI verifies (headless, every commit):**
+//! - Compile under `--no-default-features` (headless): all pure logic compiles, no
+//!   GPU dep leaks through.
+//! - Compile under `--features render` (native): the feature gate itself compiles;
+//!   no linker error from mis-wired optional deps.
+//! - Tier-selection logic: `GpuCapabilities` → `RenderTier` is deterministic and
+//!   matches the spec (all paths, boundary cases, precedence order).
+//! - CSM split math: cascade near/far bounds are finite, ordered, and match the
+//!   Zhang et al. practical-split formula to 0.1 % tolerance.
+//! - Frame-budget logic: EMA seeding, smoothing (α=0.1), over-budget tallying, and
+//!   determinism (same sequence → same aggregates).
+//! - Reflection registration: every render-config type is in the app's
+//!   `AppTypeRegistry` so the MCP editor and agents can enumerate them.
+//! - `RenderBudget` resource is inserted by `EngineRenderPlugin` in headless mode.
+//!
+//! **CI does NOT verify (GPU required, client-track / manual):**
+//! - Actual rendered frames — pixel correctness, shadow seam blending, AA quality.
+//! - Real frame times — the EMA and over-budget tally are exercised with synthetic
+//!   samples; wall-clock measurements require a real GPU tick loop.
+//! - DLSS, TAA, SMAA output quality — verified against reference images in the
+//!   client-track manual pass.
+//! - GPU memory / VRAM budget — no GPU allocator in headless.
+//! - Shader compilation — `wgpu` shaders are compiled on device; CI only sees the
+//!   Rust side.
+//!
+//! # Honest gaps vs Unreal Engine
+//!
+//! This crate is honest about what it is: a **principled scaffold** for an
+//! open-core MMORPG engine, not a decade of shipping AAA titles.
+//!
+//! | Capability | This crate | Unreal Engine |
+//! |---|---|---|
+//! | Tier ladder | 3 tiers: Web/High/Ultra; capability-driven selection | Scalability groups (low → epic) with per-CVars |
+//! | GI | Baked irradiance volumes (High/Web); Solari RT (Ultra, NVIDIA-only) | Lumen (HW RT + SW fallback, all vendors) |
+//! | Geometry | Discrete LOD + imposters (High/Web); meshlet virtual geometry (Ultra) | Nanite (all DX12 targets) |
+//! | Shadows | 4-cascade CSM + contact shadows; VSM tracked upstream | VSM (Virtual Shadow Maps) shipping |
+//! | AA/Upscaling | SMAA (Web), TAA (High), DLSS (Ultra, NVIDIA) | TSR (Temporal Super Resolution, cross-vendor) |
+//! | Frame budget | Headless instrumentation resource (EMA + over-budget tally) | Unreal Insights (full GPU/CPU profiler, stat commands) |
+//! | Shader pipeline | wgpu (Vulkan/Metal/DX12/WebGPU) | Unreal's HLSL pipeline; manual per-vendor shader variants |
+//!
+//! The tier ladder and pure-logic modules are designed so that adding a new
+//! technique (e.g. a VXGI baked-GI replacement) is a contained change in one module
+//! with no cross-cutting effect — the architecture is the investment, not the
+//! current technique list.
 
 mod budget;
 mod error;
