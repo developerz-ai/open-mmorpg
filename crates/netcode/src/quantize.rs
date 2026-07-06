@@ -73,8 +73,14 @@ mod tests {
         #[test]
         fn angle_error_bounded(a in 0.0f32..core::f32::consts::TAU) {
             let back = dequantize_angle(quantize_angle(a));
-            // One i16 step is TAU/65536 rad; allow one step of error.
-            prop_assert!((back - a).abs() <= core::f32::consts::TAU / 32768.0);
+            // The codec wraps at a full turn, so error must be measured on the
+            // circle, not the line: an `a` just below TAU quantizes to 0 (≡ TAU),
+            // a tiny angular error but a ~TAU linear one. Fold the difference into
+            // `[0, TAU)` and take the shorter arc. One i16 step is TAU/65536 rad;
+            // allow one step of slack.
+            let raw = (back - a).rem_euclid(core::f32::consts::TAU);
+            let circular = raw.min(core::f32::consts::TAU - raw);
+            prop_assert!(circular <= core::f32::consts::TAU / 32768.0);
         }
     }
 }
