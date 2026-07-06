@@ -27,6 +27,16 @@ pub enum RenderError {
         format: String,
     },
 
+    /// A glTF PBR factor is non-finite (NaN/±inf). Factors must be real numbers —
+    /// a broken asset is rejected, not rendered as garbage.
+    #[error("invalid material parameter `{parameter}`: {detail}")]
+    InvalidMaterialParameter {
+        /// The offending factor (e.g. `metallic_factor`, `base_color_factor[1]`).
+        parameter: String,
+        /// What was wrong (e.g. the non-finite value seen).
+        detail: String,
+    },
+
     /// CSM cascade parameters are invalid (e.g. non-positive split distance,
     /// cascade count out of bounds).
     #[error("invalid CSM configuration: {detail}")]
@@ -62,6 +72,17 @@ mod tests {
             format: "KHR_transmission".to_owned(),
         };
         assert!(err.to_string().contains("KHR_transmission"));
+    }
+
+    #[test]
+    fn invalid_material_parameter_names_factor_and_detail() {
+        let err = RenderError::InvalidMaterialParameter {
+            parameter: "base_color_factor[1]".to_owned(),
+            detail: "expected a finite number, got NaN".to_owned(),
+        };
+        let text = err.to_string();
+        assert!(text.contains("base_color_factor[1]"), "got: {err}");
+        assert!(text.contains("NaN"), "got: {err}");
     }
 
     #[test]

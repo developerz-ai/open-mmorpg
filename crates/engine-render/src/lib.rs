@@ -9,14 +9,19 @@
 //! the feature.
 //!
 //! # Headless-first
-//! Tier selection, material data mapping, and CSM cascade computation are pure,
-//! deterministic logic with no GPU/window dependency. Frame instrumentation
-//! (draw count, frame time) is a reflected resource that drives adaptive LOD and
-//! optimization — the logic is headless. Device passes and shaders gate behind
-//! the `render` feature so `--no-default-features` boots headless with zero GPU
-//! deps. → `docs/architecture/04-game-engine/render/README.md`.
+//! [Tier selection](tier) and [material data mapping](material) are pure,
+//! deterministic logic with no GPU/window dependency — an agent reasons about the
+//! render tier ladder and validates material data in a headless harness exactly as
+//! the rendered client does. Under the `render` feature, [`PbrMaterial`] gains a
+//! [`to_standard_material`](PbrMaterial::to_standard_material) conversion and
+//! [`EngineRenderPlugin`] adds the device pipeline; `--no-default-features` boots
+//! headless with zero GPU deps. Either way the render-config types are registered
+//! for reflection so tools and agents can enumerate them.
+//! → `docs/specs/game-engine/rendering/README.md`.
 
 mod error;
+mod material;
+mod tier;
 
 #[cfg(feature = "render")]
 pub use bevy_pbr;
@@ -24,6 +29,8 @@ pub use bevy_pbr;
 pub use bevy_render;
 
 pub use error::RenderError;
+pub use material::{GltfMetallicRoughness, MaterialAlphaMode, PbrMaterial};
+pub use tier::{AntiAliasing, GlobalIllumination, GpuCapabilities, RenderTier};
 
 use bevy_app::{App, Plugin};
 
@@ -31,9 +38,10 @@ use bevy_app::{App, Plugin};
 /// spatial AA, and tier-driven optimization.
 ///
 /// Headless-safe when the `render` feature is disabled. When enabled (native
-/// heads), adds the full render pipeline: bevy render/PBR/core_pipeline plugins,
-/// reflection registration for render types, and the tier-selection + material
-/// mapping logic.
+/// heads), adds the full render pipeline: bevy render/PBR/core_pipeline plugins.
+/// Either way it registers the render-config types (tiers, capabilities, material
+/// data) for reflection — an unregistered type is invisible to agents, which is a
+/// bug.
 ///
 /// Composition: add on top of `omm_engine_core::EnginePlugins` after
 /// `EngineAssetsPlugin`.
@@ -42,6 +50,10 @@ pub struct EngineRenderPlugin;
 
 impl Plugin for EngineRenderPlugin {
     fn build(&self, app: &mut App) {
+        // Headless-safe, always: the render-config data types are reflected so the
+        // inspector / MCP editor / agents can enumerate them in any build.
+        register_render_types(app);
+
         #[cfg(feature = "render")]
         {
             use bevy_pbr::PbrPlugin;
@@ -54,24 +66,59 @@ impl Plugin for EngineRenderPlugin {
             if !app.is_plugin_added::<PbrPlugin>() {
                 app.add_plugins(PbrPlugin::default());
             }
-
-            // Register render types for reflection.
-            // (TBD: material descriptors, CSM cascade data, budget instrumentation)
-        }
-        #[cfg(not(feature = "render"))]
-        {
-            // Headless build: render pipeline excluded, app unchanged.
-            let _ = app;
         }
     }
+}
+
+/// Register the render-config types (tiers, capabilities, material data) with the
+/// app's reflection registry. Headless-safe — pure reflection, no GPU — so it runs
+/// in every build and is unit-testable without instantiating a device.
+fn register_render_types(app: &mut App) {
+    app.register_type::<RenderTier>()
+        .register_type::<AntiAliasing>()
+        .register_type::<GlobalIllumination>()
+        .register_type::<GpuCapabilities>()
+        .register_type::<MaterialAlphaMode>()
+        .register_type::<GltfMetallicRoughness>()
+        .register_type::<PbrMaterial>();
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+    use bevy_ecs::prelude::AppTypeRegistry;
+    use core::any::TypeId;
+    use omm_engine_core::EnginePlugins;
 
     #[test]
     fn plugin_constructs() {
         let _plugin = EngineRenderPlugin;
+    }
+
+    #[test]
+    fn render_config_types_are_registered() {
+        // Exercise the registration path directly rather than adding the full
+        // plugin: under `--all-features` the plugin's `render` branch would create
+        // a GPU device, which the headless CI runner has no display for. The
+        // reflection registration is the headless behavior we assert here.
+        let mut app = App::new();
+        app.add_plugins(EnginePlugins);
+        register_render_types(&mut app);
+
+        let registry = app.world().resource::<AppTypeRegistry>().read();
+        for type_id in [
+            TypeId::of::<RenderTier>(),
+            TypeId::of::<AntiAliasing>(),
+            TypeId::of::<GlobalIllumination>(),
+            TypeId::of::<GpuCapabilities>(),
+            TypeId::of::<MaterialAlphaMode>(),
+            TypeId::of::<GltfMetallicRoughness>(),
+            TypeId::of::<PbrMaterial>(),
+        ] {
+            assert!(
+                registry.get(type_id).is_some(),
+                "a render-config type is not registered"
+            );
+        }
     }
 }

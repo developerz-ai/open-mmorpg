@@ -27,6 +27,11 @@ thiserror.workspace = true
 bevy_render = { workspace = true, optional = true }
 bevy_pbr = { workspace = true, optional = true }
 bevy_core_pipeline = { workspace = true, optional = true }
+# Concrete target types for the metallic-roughness → `StandardMaterial` mapping:
+# `Color`/`LinearRgba` (base color, emissive) and `AlphaMode` (transparency).
+# Render-gated — the headless build maps to the pure `PbrMaterial` data only.
+bevy_color = { workspace = true, optional = true }
+bevy_material = { workspace = true, optional = true }
 
 [dev-dependencies]
 omm-engine-core.workspace = true
@@ -34,9 +39,16 @@ omm-engine-core.workspace = true
 [features]
 default = []
 # Enables the full render pipeline (native/AAA heads): PBR material system,
-# core render passes, and CSM. Compiles device code and render shaders.
-# Disabled in headless/server/test builds.
-render = ["dep:bevy_render", "dep:bevy_pbr", "dep:bevy_core_pipeline"]
+# core render passes, and CSM. Compiles device code and render shaders, and the
+# `PbrMaterial` → `StandardMaterial` conversion. Disabled in headless/server/test
+# builds — the pure tier-selection + material data mapping stays available.
+render = [
+    "dep:bevy_render",
+    "dep:bevy_pbr",
+    "dep:bevy_core_pipeline",
+    "dep:bevy_color",
+    "dep:bevy_material",
+]
 
 [lints]
 workspace = true

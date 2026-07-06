@@ -68,6 +68,11 @@ bevy_gltf = { version = "0.19", default-features = false }
 bevy_render = { version = "0.19", default-features = false }
 bevy_pbr = { version = "0.19", default-features = false }
 bevy_core_pipeline = { version = "0.19", default-features = false }
+# Color + material abstractions — named by the render-gated `StandardMaterial`
+# mapping (`Color`/`LinearRgba`, `AlphaMode`). Already in the graph via `bevy_pbr`;
+# declared here so the mapping can target the concrete types under `render`.
+bevy_color = { version = "0.19", default-features = false, features = ["std"] }
+bevy_material = { version = "0.19", default-features = false }
 zstd = "0.13"
 ron = "0.8"
 serde = { version = "1", features = ["derive"] }
