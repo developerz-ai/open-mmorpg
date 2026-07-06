@@ -48,8 +48,7 @@ export const zh: Catalog = {
   home: {
     heroCta: '进入服务器',
     downloadHeading: '下载客户端',
-    downloadBody:
-      '支持 Windows、macOS 或 Linux。客户端是一个轻量级原生应用程序。',
+    downloadBody: '支持 Windows、macOS 或 Linux。客户端是一个轻量级原生应用程序。',
     download: '下载',
     featuresHeading: '游戏特色',
     feature: {
