@@ -29,6 +29,11 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+.omm-btn:focus-visible {
+  outline: 3px solid rgb(var(--color-focus-ring));
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px rgb(var(--color-bg));
+}
 .omm-btn--primary {
   background: rgb(var(--color-accent));
   color: rgb(var(--color-bg));
@@ -133,8 +138,10 @@
   font: inherit;
   transition: border-color var(--dur-fast) var(--ease-out);
 }
-.input:focus {
+.input:focus-visible {
   border-color: rgb(var(--color-accent));
+  outline: 2px solid rgb(var(--color-focus-ring));
+  outline-offset: -1px;
 }
 .input[aria-invalid="true"] {
   border-color: rgb(var(--color-danger));
@@ -222,8 +229,10 @@
   cursor: pointer;
   transition: border-color var(--dur-fast) var(--ease-out);
 }
-.select-trigger:focus {
+.select-trigger:focus-visible {
   border-color: rgb(var(--color-accent));
+  outline: 2px solid rgb(var(--color-focus-ring));
+  outline-offset: -1px;
 }
 .select-trigger--invalid {
   border-color: rgb(var(--color-danger));
@@ -354,8 +363,8 @@
 .tab:hover {
   color: rgb(var(--color-fg));
 }
-.tab:focus {
-  outline: 2px solid rgb(var(--color-accent));
+.tab:focus-visible {
+  outline: 2px solid rgb(var(--color-focus-ring));
   outline-offset: -2px;
 }
 .tab--selected {
@@ -490,6 +499,10 @@
 .omm-toast__action:hover {
   background: rgb(var(--color-accent) / 0.25);
 }
+.omm-toast__action:focus-visible {
+  outline: 2px solid rgb(var(--color-focus-ring));
+  outline-offset: 1px;
+}
 .omm-toast__close {
   width: 1.4rem;
   height: 1.4rem;
@@ -506,4 +519,8 @@
 }
 .omm-toast__close:hover {
   color: rgb(var(--color-fg));
+}
+.omm-toast__close:focus-visible {
+  outline: 2px solid rgb(var(--color-focus-ring));
+  outline-offset: 1px;
 }
