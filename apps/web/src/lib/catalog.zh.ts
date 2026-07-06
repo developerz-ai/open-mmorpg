@@ -94,6 +94,9 @@ export const zh: Catalog = {
       rate_limited: '尝试次数过多。请等待后重试。',
       twofa_required: '输入您的双因素代码以继续。',
       email_taken: '此电子邮箱已被注册。',
+      wrong_password: '当前密码不正确。',
+      password_too_short: '密码至少需要 8 个字符。',
+      password_mismatch: '新密码不匹配。',
     },
     account: {
       heading: '账户',
@@ -103,6 +106,18 @@ export const zh: Catalog = {
       logout: '登出',
       loggedOut: '您已登出。',
       loginPrompt: '登录以管理您的账户。',
+      settings: {
+        heading: '账户设置',
+        profileHeading: '个人资料',
+        saveProfile: '保存资料',
+        profileSaved: '资料已保存。',
+        passwordHeading: '修改密码',
+        currentPassword: '当前密码',
+        newPassword: '新密码',
+        confirmPassword: '确认新密码',
+        changePassword: '修改密码',
+        passwordChanged: '密码已修改。',
+      },
     },
   },
   armory: {

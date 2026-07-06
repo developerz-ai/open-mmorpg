@@ -101,6 +101,9 @@ export const es: Catalog = {
       rate_limited: 'Demasiados intentos. Por favor espera e intenta de nuevo.',
       twofa_required: 'Ingresa tu código de dos factores para continuar.',
       email_taken: 'Este correo electrónico ya está registrado.',
+      wrong_password: 'Tu contraseña actual es incorrecta.',
+      password_too_short: 'La contraseña debe tener al menos 8 caracteres.',
+      password_mismatch: 'Las nuevas contraseñas no coinciden.',
     },
     account: {
       heading: 'Cuenta',
@@ -110,6 +113,18 @@ export const es: Catalog = {
       logout: 'Cerrar sesión',
       loggedOut: 'Has cerrado sesión.',
       loginPrompt: 'Inicia sesión para administrar tu cuenta.',
+      settings: {
+        heading: 'Ajustes de la cuenta',
+        profileHeading: 'Perfil',
+        saveProfile: 'Guardar perfil',
+        profileSaved: 'Perfil guardado.',
+        passwordHeading: 'Cambiar contraseña',
+        currentPassword: 'Contraseña actual',
+        newPassword: 'Nueva contraseña',
+        confirmPassword: 'Confirmar nueva contraseña',
+        changePassword: 'Cambiar contraseña',
+        passwordChanged: 'Contraseña cambiada.',
+      },
     },
   },
   armory: {

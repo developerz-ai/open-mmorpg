@@ -95,6 +95,9 @@ export const fr: Catalog = {
       rate_limited: 'Trop de tentatives. Veuillez attendre et réessayer.',
       twofa_required: 'Entrez votre code à deux facteurs pour continuer.',
       email_taken: 'Cet e-mail est déjà enregistré.',
+      wrong_password: 'Votre mot de passe actuel est incorrect.',
+      password_too_short: 'Le mot de passe doit comporter au moins 8 caractères.',
+      password_mismatch: 'Les nouveaux mots de passe ne correspondent pas.',
     },
     account: {
       heading: 'Compte',
@@ -104,6 +107,18 @@ export const fr: Catalog = {
       logout: 'Se déconnecter',
       loggedOut: 'Vous êtes déconnecté.',
       loginPrompt: 'Connectez-vous pour gérer votre compte.',
+      settings: {
+        heading: 'Paramètres du compte',
+        profileHeading: 'Profil',
+        saveProfile: 'Enregistrer le profil',
+        profileSaved: 'Profil enregistré.',
+        passwordHeading: 'Changer le mot de passe',
+        currentPassword: 'Mot de passe actuel',
+        newPassword: 'Nouveau mot de passe',
+        confirmPassword: 'Confirmer le nouveau mot de passe',
+        changePassword: 'Changer le mot de passe',
+        passwordChanged: 'Mot de passe modifié.',
+      },
     },
   },
   armory: {

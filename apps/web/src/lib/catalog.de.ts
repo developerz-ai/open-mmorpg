@@ -102,6 +102,9 @@ export const de: Catalog = {
       rate_limited: 'Zu viele Versuche. Bitte warte und versuche es erneut.',
       twofa_required: 'Gib deinen Zwei-Faktor-Code ein, um fortzufahren.',
       email_taken: 'Diese E-Mail ist bereits registriert.',
+      wrong_password: 'Dein aktuelles Passwort ist falsch.',
+      password_too_short: 'Das Passwort muss mindestens 8 Zeichen lang sein.',
+      password_mismatch: 'Die neuen Passwörter stimmen nicht überein.',
     },
     account: {
       heading: 'Konto',
@@ -111,6 +114,18 @@ export const de: Catalog = {
       logout: 'Abmelden',
       loggedOut: 'Du bist abgemeldet.',
       loginPrompt: 'Melde dich an, um dein Konto zu verwalten.',
+      settings: {
+        heading: 'Kontoeinstellungen',
+        profileHeading: 'Profil',
+        saveProfile: 'Profil speichern',
+        profileSaved: 'Profil gespeichert.',
+        passwordHeading: 'Passwort ändern',
+        currentPassword: 'Aktuelles Passwort',
+        newPassword: 'Neues Passwort',
+        confirmPassword: 'Neues Passwort bestätigen',
+        changePassword: 'Passwort ändern',
+        passwordChanged: 'Passwort geändert.',
+      },
     },
   },
   armory: {

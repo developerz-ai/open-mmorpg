@@ -101,6 +101,9 @@ export const en: Catalog = {
       rate_limited: 'Too many attempts. Please wait and try again.',
       twofa_required: 'Enter your two-factor code to continue.',
       email_taken: 'That email is already registered.',
+      wrong_password: 'Your current password is incorrect.',
+      password_too_short: 'Password must be at least 8 characters.',
+      password_mismatch: 'The new passwords do not match.',
     },
     account: {
       heading: 'Account',
@@ -110,6 +113,18 @@ export const en: Catalog = {
       logout: 'Log out',
       loggedOut: 'You are logged out.',
       loginPrompt: 'Log in to manage your account.',
+      settings: {
+        heading: 'Account settings',
+        profileHeading: 'Profile',
+        saveProfile: 'Save profile',
+        profileSaved: 'Profile saved.',
+        passwordHeading: 'Change password',
+        currentPassword: 'Current password',
+        newPassword: 'New password',
+        confirmPassword: 'Confirm new password',
+        changePassword: 'Change password',
+        passwordChanged: 'Password changed.',
+      },
     },
   },
   armory: {
