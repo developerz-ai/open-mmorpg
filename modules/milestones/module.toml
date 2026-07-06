@@ -1,0 +1,17 @@
+# Build-time manifest for the milestones compiled module.
+# See docs/architecture/10-modules.md.
+[module]
+name = "milestones"
+version = "0.0.0"
+# The omm-module-api hook-API version this module targets.
+core-api-version = 1
+description = "Tracks player activity across several server events and unlocks achievement milestones (first login, level 10/20, explorer, chatterbox, tinkerer)."
+# The server hooks this module implements (documentation; code is the truth).
+hooks = [
+    "on_player_login",
+    "on_level_up",
+    "on_zone_enter",
+    "on_item_use",
+    "on_chat",
+    "on_tick",
+]
