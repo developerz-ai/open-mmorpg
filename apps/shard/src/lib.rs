@@ -2,6 +2,9 @@
 //!
 //! The `omm-shard` binary ([`main`](../main.rs)) is a thin tokio entrypoint over
 //! these modules:
+//! - [`abilities`] — the data→runtime bridge that lowers authored
+//!   `content-schema` abilities onto the compiled `ecs-core` shape at boot,
+//!   fail-loud on invalid data.
 //! - [`tick`] — the fixed-timestep pacer that decouples wall-clock from sim
 //!   ticks, so `World::step` always sees the same `dt` (the property replay and
 //!   anti-cheat re-simulation depend on).
@@ -12,5 +15,6 @@
 //! Splitting these into a library (rather than burying them in `main`) is what
 //! lets every lifecycle edge be unit-tested without a socket or a running loop.
 
+pub mod abilities;
 pub mod session;
 pub mod tick;

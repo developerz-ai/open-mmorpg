@@ -7,9 +7,11 @@
 //! (docs/architecture/03-netcode-and-sharding.md).
 
 use std::collections::BTreeMap;
+use std::path::Path;
 use std::time::Instant;
 
-use omm_ecs_core::{AbilityDef, AbilityId};
+use omm_content_schema::load_manifest_dir;
+use omm_shard::abilities::build_ability_table;
 use omm_shard::tick::FixedTimestep;
 use omm_sim::{InputBatch, World};
 
@@ -23,10 +25,28 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // The authoritative entity set this shard owns. Actors are admitted as
     // sessions bind (a later slice); it starts empty and advances regardless.
     let mut world = World::new();
-    // The content ability table `World::step` resolves casts against. The
-    // data→runtime loader is a later slice; an empty table drops every cast
-    // cleanly, so the tick loop is exercised end-to-end today.
-    let abilities: BTreeMap<AbilityId, AbilityDef> = BTreeMap::new();
+    // The content ability table `World::step` resolves casts against, lowered
+    // from the datapack at boot. A present-but-invalid datapack is fail-loud
+    // (aborts boot); a *missing* one degrades to an empty table so dev and CI
+    // run without one — an empty table simply drops every cast cleanly.
+    let content_dir = std::env::var("OMM_CONTENT_DIR").unwrap_or_else(|_| "content".to_string());
+    let content_dir = Path::new(&content_dir);
+    let abilities = if content_dir.join("manifest.json").is_file() {
+        let manifest = load_manifest_dir(content_dir)?;
+        let table = build_ability_table(&manifest.abilities)?;
+        tracing::info!(
+            count = table.len(),
+            dir = %content_dir.display(),
+            "loaded content ability table"
+        );
+        table
+    } else {
+        tracing::warn!(
+            dir = %content_dir.display(),
+            "no datapack found — booting with an empty ability table"
+        );
+        BTreeMap::new()
+    };
     // No transport is wired yet, so every tick drains zero intents. Hoisted out
     // of the loop to keep the tick path allocation-free.
     let inputs: InputBatch = Vec::new();

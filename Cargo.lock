@@ -2032,6 +2032,7 @@ dependencies = [
  "omm-sim",
  "omm-transport",
  "omm-world",
+ "thiserror",
  "tokio",
  "tracing",
  "tracing-subscriber",
