@@ -1,10 +1,17 @@
-//! # Engine Animation — data-authored blend graph + distance-tiered LOD
+//! # Engine Animation — blend graph, IK, VAT math + distance-tiered LOD
 //!
-//! First-party animation layer for the game engine. Two pure, headless pieces
+//! First-party animation layer for the game engine. Four pure, headless pieces
 //! plus a feature-gated skinning head:
 //! - [`graph`] — a data-authored [`BlendGraph`](graph::BlendGraph): weighted,
 //!   additive, and masked pose blending, the three primitives every AAA anim
 //!   graph reduces to. Pure math, evaluated identically in CI and on the client.
+//! - [`ik`] — in-house inverse kinematics: an exact analytic
+//!   [`solve_two_bone`](ik::solve_two_bone) limb solver (pole-controlled) and a
+//!   general [`IkChain`](ik::IkChain) FABRIK solver. Pure, deterministic — no
+//!   ecosystem IK crate (ADR-0001).
+//! - [`vat`] — vertex-animation-texture frame/index math: [`VatClip`](vat::VatClip)
+//!   frame sampling and [`VatLayout`](vat::VatLayout) texel/UV addressing for
+//!   crowd-scale baked instances. Pure; GPU bake/playback is the client's job.
 //! - [`lod`] — distance-tiered [`AnimTier`](lod::AnimTier) selection: near
 //!   skeletal → mid reduced → far VAT, with the local player pinned to full
 //!   skeletal. Pure, deterministic.
@@ -28,6 +35,10 @@
 //!   and fail-loud joint-count/weight/index validation.
 //! - Blend-graph evaluation over the flat node arena, including cyclic/over-deep
 //!   and dangling-id rejection.
+//! - Two-bone + FABRIK IK: reach, bone-length preservation, pole bend direction,
+//!   unreachable straightening, determinism, and degenerate-input guards.
+//! - VAT frame sampling (loop/once/ping-pong wrap & clamp) and layout texel/UV/index
+//!   math, including out-of-range and non-finite-time handling.
 //! - LOD tier selection across the distance ladder, the local-player-never-VAT
 //!   rule, NaN handling, and reduced-bone-budget math.
 //! - Reflection registration: every authored animation type is in the app's
@@ -41,10 +52,12 @@
 //!
 //! # Honest gaps vs Unreal
 //! Bevy core ships no state machines, blend trees, IK, or root motion. This crate
-//! provides the blend primitives and a data-authored graph over them; FSM
-//! transition logic and an IK solver layer on top and are not part of this batch.
-//! Motion is cosmetic on the client — authoritative position comes from the
-//! server; animation interpolates toward it, never asserts it.
+//! fills the blend primitives + data-authored graph, in-house two-bone/FABRIK IK,
+//! and the VAT crowd-instancing math — the pieces the spec named community crates
+//! for, implemented ourselves (ADR-0003) to avoid ecosystem lag on Bevy 0.19. FSM
+//! transition logic layers on top and is not part of this batch. Motion is cosmetic
+//! on the client — authoritative position comes from the server; animation
+//! interpolates toward it, never asserts it.
 //! → `docs/specs/game-engine/animation/README.md`.
 
 use bevy_app::{App, Plugin};
@@ -53,11 +66,15 @@ use bevy_reflect::Reflect;
 
 pub mod error;
 pub mod graph;
+pub mod ik;
 pub mod lod;
+pub mod vat;
 
 pub use error::AnimError;
 pub use graph::{BlendGraph, BlendNode, BoneMask, ClipId, JointId, NodeId, Pose};
+pub use ik::{align_rotation, solve_two_bone, IkChain, IkParams, IkSolution, TwoBoneSolution};
 pub use lod::{AnimTier, LodThresholds};
+pub use vat::{PlaybackMode, VatClip, VatLayout, VatSample};
 
 /// Global animation configuration and runtime state.
 #[derive(Resource, Reflect, Debug, Clone, Copy, PartialEq)]
@@ -128,7 +145,12 @@ fn register_anim_types(app: &mut App) {
         .register_type::<NodeId>()
         .register_type::<BoneMask>()
         .register_type::<BlendNode>()
-        .register_type::<BlendGraph>();
+        .register_type::<BlendGraph>()
+        .register_type::<IkParams>()
+        .register_type::<IkChain>()
+        .register_type::<PlaybackMode>()
+        .register_type::<VatClip>()
+        .register_type::<VatLayout>();
 }
 
 #[cfg(test)]
@@ -165,6 +187,11 @@ mod tests {
             TypeId::of::<BoneMask>(),
             TypeId::of::<BlendNode>(),
             TypeId::of::<BlendGraph>(),
+            TypeId::of::<IkParams>(),
+            TypeId::of::<IkChain>(),
+            TypeId::of::<PlaybackMode>(),
+            TypeId::of::<VatClip>(),
+            TypeId::of::<VatLayout>(),
         ] {
             assert!(
                 registry.get(type_id).is_some(),
