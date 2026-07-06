@@ -237,3 +237,63 @@
   background: rgb(var(--color-accent) / 0.15);
   color: rgb(var(--color-accent-strong));
 }
+
+/* Dialog ------------------------------------------------------------------ */
+.dialog-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgb(0 0 0 / 0.6);
+  animation: omm-fade-in var(--dur-fast) var(--ease-out);
+}
+@keyframes omm-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.dialog-content {
+  width: 100%;
+  max-width: 32rem;
+  max-height: 85vh;
+  overflow: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid rgb(var(--color-line));
+  background: rgb(var(--color-surface));
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.5);
+  animation: omm-scale-in var(--dur-fast) var(--ease-out);
+}
+@keyframes omm-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.dialog-title {
+  margin: 0 0 0.75rem;
+  padding: 1.25rem 1.5rem 0;
+  font-size: 1.1rem;
+  color: rgb(var(--color-fg-strong));
+}
+.dialog-body {
+  padding: 0 1.5rem 1rem;
+  line-height: 1.6;
+  color: rgb(var(--color-fg));
+}
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid rgb(var(--color-line));
+}
