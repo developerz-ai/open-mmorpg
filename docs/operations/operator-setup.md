@@ -148,9 +148,21 @@ The portal applies these at boot (`applyBrand()` in `lib/brand.ts`) — componen
 ### Supported Locales
 
 The portal currently supports:
-- `en` — English (default, only supported locale)
+- `en` — English (default)
+- `de` — German
+- `es` — Spanish
+- `fr` — French
+- `ja` — Japanese
+- `zh` — Chinese (Simplified)
+- `ko` — Korean
+- `ru` — Russian
+- `pt` — Portuguese
+- `it` — Italian
+- `pl` — Polish
+- `tr` — Turkish
+- `ar` — Arabic
 
-**Note:** Additional locales (de/es/fr/ja/zh/ko) are planned but not yet implemented. The i18n infrastructure is in place, but locale catalogs and schema extensions are not yet shipped.
+All 13 locales have complete catalogs and are fully implemented.
 
 ### Adding a New Locale (when infrastructure is complete)
 

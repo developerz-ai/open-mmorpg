@@ -7,7 +7,8 @@ export function useCharacter(name: () => string) {
     queryKey: ['armory', 'character', name()],
     queryFn: () => fetchCharacter(name()),
     staleTime: 60_000,
-    retry: false,
+    retry: 2,
+    retryDelay: (attempt) => Math.min(1000 * 2 ** (attempt - 1), 10000),
   }));
 }
 
@@ -17,6 +18,7 @@ export function useGuild(name: () => string) {
     queryKey: ['armory', 'guild', name()],
     queryFn: () => fetchGuild(name()),
     staleTime: 60_000,
-    retry: false,
+    retry: 2,
+    retryDelay: (attempt) => Math.min(1000 * 2 ** (attempt - 1), 10000),
   }));
 }

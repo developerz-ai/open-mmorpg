@@ -1,0 +1,86 @@
+# Track Status
+track: web-client
+wave: "3"
+target: "50-web-client"
+status: in-progress
+
+# PRs
+prs:
+  - id: "052-1"
+    title: "Docs & status update for completed features"
+    branch: fix/web-client-docs-update
+    status: pending
+    complexity: quick
+  - id: "052-2"
+    title: "Loading & error UX improvements"
+    branch: feat/web-loading-error-ux
+    status: pending
+    complexity: coding
+    depends_on: ["052-1"]
+  - id: "052-3"
+    title: "Performance & SEO (code splitting, meta tags, sitemap, PWA)"
+    branch: feat/web-performance-seo
+    status: pending
+    complexity: coding
+    depends_on: ["052-1"]
+  - id: "052-4"
+    title: "Accessibility deep dive (keyboard, ARIA, focus)"
+    branch: feat/web-a11y-deep-dive
+    status: pending
+    complexity: general
+  - id: "052-5"
+    title: "UX polish - motion, toasts, micro-interactions"
+    branch: feat/web-ux-polish-motion
+    status: pending
+    complexity: coding
+  - id: "052-6"
+    title: "Operator analytics hooks"
+    branch: feat/web-analytics-hooks
+    status: pending
+    complexity: general
+  - id: "052-7"
+    title: "Test coverage expansion"
+    branch: feat/web-test-coverage
+    status: pending
+    complexity: general
+
+# Definition of Done
+criteria:
+  - description: "All docs updated to reflect current state (13 locales, features)"
+    status: pending
+  - description: "Skeleton loading screens for all major data views"
+    status: pending
+  - description: "Error boundary component with graceful fallbacks"
+    status: pending
+  - description: "Retry logic with exponential backoff in all query hooks"
+    status: pending
+  - description: "Code splitting reduces initial bundle by 30%+"
+    status: pending
+  - description: "SEO meta tags component + sitemap generator"
+    status: pending
+  - description: "PWA manifest + service worker for offline caching"
+    status: pending
+  - description: "Operator analytics hooks implemented"
+    status: pending
+  - description: "Keyboard navigation tests passing"
+    status: pending
+  - description: "ARIA label verification tests passing"
+    status: pending
+  - description: "Focus management utilities in packages/ui"
+    status: pending
+  - description: "Transition animations respecting prefers-reduced-motion"
+    status: pending
+  - description: "Toast notification system with auto-dismiss"
+    status: pending
+  - description: "Micro-interactions on buttons and cards"
+    status: pending
+  - description: "Brand utilities unit tests passing"
+    status: pending
+  - description: "i18n utilities unit tests passing"
+    status: pending
+  - description: "Component integration tests passing"
+    status: pending
+  - description: "bin/check green across all changes"
+    status: pending
+  - description: "All PRs merged via claudetm merge-pr"
+    status: pending

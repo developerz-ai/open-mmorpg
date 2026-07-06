@@ -7,5 +7,7 @@ export function useFeed() {
     queryKey: ['world', 'feed'],
     queryFn: fetchFeed,
     refetchInterval: 30_000,
+    retry: 3,
+    retryDelay: (attempt) => Math.min(1000 * 2 ** (attempt - 1), 30000),
   }));
 }

@@ -15,6 +15,8 @@ export function useListings(query: () => string) {
     queryKey: ['auction', 'listings', query()],
     queryFn: () => fetchListings(query()),
     staleTime: 15_000,
+    retry: 3,
+    retryDelay: (attempt) => Math.min(1000 * 2 ** (attempt - 1), 30000),
   }));
 }
 
@@ -25,6 +27,8 @@ export function usePriceHistory(item: () => string) {
     queryFn: () => fetchPriceHistory(item()),
     enabled: item() !== '',
     staleTime: 60_000,
+    retry: 3,
+    retryDelay: (attempt) => Math.min(1000 * 2 ** (attempt - 1), 30000),
   }));
 }
 

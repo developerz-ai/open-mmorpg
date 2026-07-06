@@ -35,4 +35,42 @@ describe('i18n', () => {
     expect(resolveLocale('xx')).toBe('en');
     expect(resolveLocale('en')).toBe('en');
   });
+
+  describe('edge cases', () => {
+    test('interpolates repeated placeholders', () => {
+      const t2 = createTranslator({ message: '{name} and {name} again' });
+      expect(t2('message', { name: 'Bob' })).toBe('Bob and Bob again');
+    });
+
+    test('handles missing params in interpolation', () => {
+      const t2 = createTranslator({ msg: 'Hello {name}, welcome' });
+      expect(t2('msg', {})).toBe('Hello {name}, welcome');
+    });
+
+    test('handles numeric params', () => {
+      const t2 = createTranslator({ price: '{gold}g {silver}s' });
+      expect(t2('price', { gold: 10, silver: 50 })).toBe('10g 50s');
+    });
+
+    test('handles missing params', () => {
+      const t2 = createTranslator({ val: 'Value: {x}' });
+      expect(t2('val', {})).toBe('Value: {x}');
+    });
+
+    test('preserves whitespace', () => {
+      const t2 = createTranslator({ spaces: '  lots  of  spaces  ' });
+      expect(t2('spaces')).toBe('  lots  of  spaces  ');
+    });
+
+    test('handles empty catalog', () => {
+      const t3 = createTranslator({});
+      expect(t3('any.key')).toBe('⟦any.key⟧');
+    });
+
+    test('handles very long keys', () => {
+      const t3 = createTranslator({});
+      const longKey = 'a'.repeat(100);
+      expect(t3(longKey)).toBe(`⟦${longKey}⟧`);
+    });
+  });
 });
