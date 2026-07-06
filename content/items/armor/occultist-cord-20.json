@@ -1,0 +1,21 @@
+{
+  "id": "occultist-cord-20",
+  "name": "Voidlord's Occultist Cord",
+  "description": "A cord that can hold the essence of a god.",
+  "item_type": "Armor",
+  "slot": "waist",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 9,
+    "wisdom": 9,
+    "charisma": 0
+  },
+  "quality": "epic",
+  "value_copper": 2420,
+  "icon": "textures/solid-colors/violet.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

@@ -1,0 +1,24 @@
+{
+  "id": "soul-reaper",
+  "name": "Soul Reaper",
+  "description": "A vicious strike that saps the target's essence, mending your own wounds.",
+  "max_rank": 1,
+  "cooldown_sec": 12.0,
+  "resource_cost": 22,
+  "cast_time_sec": 0.0,
+  "range_yards": 5.0,
+  "effects": [
+    {
+      "effect": "Damage",
+      "magnitude": 18.0,
+      "scaling": 1.2,
+      "target": "enemy"
+    },
+    {
+      "effect": "Heal",
+      "magnitude": 12.0,
+      "scaling": 0.6,
+      "target": "self"
+    }
+  ]
+}

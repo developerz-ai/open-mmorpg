@@ -1,0 +1,21 @@
+{
+  "id": "warden-mantle",
+  "name": "Warden Mantle",
+  "description": "A heavy cloak bearing the crest of the guard.",
+  "item_type": "Trinket",
+  "slot": "back",
+  "required_level": 10,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 450,
+  "icon": "textures/solid-colors/blue.png",
+  "mesh": "meshes/placeholder-plane.gltf",
+  "max_stack": 1
+}

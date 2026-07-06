@@ -1,0 +1,18 @@
+{
+  "id": "radiance",
+  "name": "Radiance",
+  "description": "Channel Dawn magic in a burst of radiant light that heals all nearby allies.",
+  "max_rank": 1,
+  "cooldown_sec": 0.0,
+  "resource_cost": 24,
+  "cast_time_sec": 2.2,
+  "range_yards": 0.0,
+  "effects": [
+    {
+      "effect": "Heal",
+      "magnitude": 32.0,
+      "scaling": 1.0,
+      "target": "aoe_ally"
+    }
+  ]
+}

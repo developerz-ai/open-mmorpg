@@ -1,0 +1,21 @@
+{
+  "id": "mystic-fusion-staff",
+  "name": "Mystic Fusion Staff",
+  "description": "A staff that fuses raw arcane energy into devastating bolts.",
+  "item_type": "Weapon",
+  "slot": "mainhand",
+  "required_level": 15,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 12,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 900,
+  "icon": "textures/checker-512.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

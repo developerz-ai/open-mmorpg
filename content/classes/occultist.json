@@ -1,0 +1,28 @@
+{
+  "id": "occultist",
+  "name": "Occultist",
+  "description": "Pact-caster who bargains with Deep entities, wielding Rift, Hollow, and Deep forces through soul shards and summoned minions.",
+  "role": "dps",
+  "abilities": [
+    "soul-shard",
+    "pact-bolt",
+    "summon-hollow-servant",
+    "drain-life",
+    "dark-pact",
+    "summon-voidwalker",
+    "drain-soul",
+    "soul-fire",
+    "demon-armor",
+    "ritual-of-summoning"
+  ],
+  "stat_growth": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 1,
+    "wisdom": 3,
+    "charisma": 0
+  },
+  "hp_per_level": 8,
+  "resource_per_level": 11
+}

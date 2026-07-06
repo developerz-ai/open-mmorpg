@@ -1,0 +1,18 @@
+{
+  "id": "shield-bash",
+  "name": "Shield Bash",
+  "description": "Slam the shield forward, interrupting and staggering.",
+  "max_rank": 1,
+  "cooldown_sec": 8.0,
+  "resource_cost": 5,
+  "cast_time_sec": 0.0,
+  "range_yards": 5.0,
+  "effects": [
+    {
+      "effect": "Debuff",
+      "magnitude": 0.0,
+      "scaling": 0.0,
+      "target": "enemy"
+    }
+  ]
+}

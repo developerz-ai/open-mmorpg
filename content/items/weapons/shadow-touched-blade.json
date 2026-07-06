@@ -1,0 +1,21 @@
+{
+  "id": "shadow-touched-blade",
+  "name": "Shadow Touched Blade",
+  "description": "A blade forged in darkness that seems to drink the light.",
+  "item_type": "Weapon",
+  "slot": "mainhand",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 16,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 1850,
+  "icon": "textures/checker-512.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

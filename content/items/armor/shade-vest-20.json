@@ -1,0 +1,21 @@
+{
+  "id": "shade-vest-20",
+  "name": "Shadowlord's Shade Vest",
+  "description": "A vest worn by legends of the dark.",
+  "item_type": "Armor",
+  "slot": "chest",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 10,
+    "constitution": 9,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "epic",
+  "value_copper": 3900,
+  "icon": "textures/solid-colors/gold.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

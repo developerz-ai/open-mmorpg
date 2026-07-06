@@ -1,0 +1,17 @@
+{
+  "id": "warden",
+  "name": "Warden",
+  "description": "Totemic elementalist who channels the forces through earthen wards.",
+  "role": "healer",
+  "abilities": ["healing-surge", "totemic-ward", "earth-shock"],
+  "stat_growth": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 1,
+    "intelligence": 1,
+    "wisdom": 3,
+    "charisma": 0
+  },
+  "hp_per_level": 9,
+  "resource_per_level": 10
+}

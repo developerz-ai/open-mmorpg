@@ -1,0 +1,21 @@
+{
+  "id": "channeler-pauldrons-10",
+  "name": "Adept's Channeler Pauldrons",
+  "description": "Mail pauldrons that radiate overwhelming intensity.",
+  "item_type": "Armor",
+  "slot": "shoulder",
+  "required_level": 10,
+  "stats": {
+    "strength": 0,
+    "dexterity": 6,
+    "constitution": 5,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 360,
+  "icon": "textures/solid-colors/gray.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

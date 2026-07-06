@@ -1,0 +1,21 @@
+{
+  "id": "revenant-bracers-10",
+  "name": "Shade's Revenant Bracers",
+  "description": "Terrifying bracers that moved faster than sight.",
+  "item_type": "Armor",
+  "slot": "wrist",
+  "required_level": 10,
+  "stats": {
+    "strength": 3,
+    "dexterity": 3,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 260,
+  "icon": "textures/solid-colors/orange.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

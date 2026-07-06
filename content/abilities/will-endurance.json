@@ -1,0 +1,18 @@
+{
+  "id": "will-endurance",
+  "name": "Will Endurance",
+  "description": "Voss racial: hollow-folk resolve grants resistance to fear and stun.",
+  "max_rank": 1,
+  "cooldown_sec": 0.0,
+  "resource_cost": 0,
+  "cast_time_sec": 0.0,
+  "range_yards": 0.0,
+  "effects": [
+    {
+      "effect": "Buff",
+      "magnitude": 0.0,
+      "scaling": 0.0,
+      "target": "self"
+    }
+  ]
+}

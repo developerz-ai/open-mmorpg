@@ -1,0 +1,18 @@
+{
+  "id": "moss-agate",
+  "name": "Moss Agate",
+  "description": "A translucent stone with moss-like inclusions.",
+  "item_type": "CraftingMaterial",
+  "required_level": 0,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 40,
+  "max_stack": 20
+}

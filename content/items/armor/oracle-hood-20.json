@@ -1,0 +1,21 @@
+{
+  "id": "oracle-hood-20",
+  "name": "Fateseer's Oracle Hood",
+  "description": "A hood that has witnessed the beginning and end.",
+  "item_type": "Armor",
+  "slot": "head",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 9,
+    "wisdom": 10,
+    "charisma": 9
+  },
+  "quality": "epic",
+  "value_copper": 3200,
+  "icon": "textures/solid-colors/gold.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

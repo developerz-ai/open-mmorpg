@@ -1,0 +1,48 @@
+{
+  "id": "survival-of-fittest",
+  "name": "Survival of the Fittest",
+  "description": "The wilds are unforgiving. Hunt dangerous beasts and prove your strength to the Pact.",
+  "level": 16,
+  "prerequisites": ["pacts-blood-oath"],
+  "objectives": [
+    {
+      "objective_type": "Speak",
+      "target_id": "chieftain-thornfang",
+      "count": 1,
+      "description": "Receive the hunting challenge"
+    },
+    {
+      "objective_type": "Kill",
+      "target_id": "dawnshore-wolf",
+      "count": 20,
+      "description": "Slay 20 dawnshore wolves"
+    },
+    {
+      "objective_type": "Kill",
+      "target_id": "dawnshore-boar",
+      "count": 10,
+      "description": "Slay 10 boars"
+    },
+    {
+      "objective_type": "Gather",
+      "target_id": "wolf-pelt",
+      "count": 10,
+      "description": "Collect 10 wolf pelts"
+    },
+    {
+      "objective_type": "Speak",
+      "target_id": "chieftain-thornfang",
+      "count": 1,
+      "description": "Return to Chieftain Thornfang"
+    }
+  ],
+  "rewards": {
+    "experience": 3000,
+    "gold_copper": 1500,
+    "choice_items": ["pact-honor-blade", "hunter-vest"],
+    "items": ["healing-potion", "healing-potion", "travelers-ration"]
+  },
+  "giver_id": "chieftain-thornfang",
+  "turn_in_id": "chieftain-thornfang",
+  "next_quest_id": "honored-traditions"
+}

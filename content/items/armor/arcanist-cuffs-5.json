@@ -1,0 +1,21 @@
+{
+  "id": "arcanist-cuffs-5",
+  "name": "Initiate's Arcanist Cuffs",
+  "description": "Cuffs with protective runes etched along the seams.",
+  "item_type": "Armor",
+  "slot": "wrist",
+  "required_level": 5,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 2,
+    "intelligence": 3,
+    "wisdom": 3,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 55,
+  "icon": "textures/solid-colors/purple.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

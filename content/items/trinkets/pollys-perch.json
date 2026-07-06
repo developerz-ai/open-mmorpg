@@ -1,0 +1,21 @@
+{
+  "id": "pollys-perch",
+  "name": "Polly's Perch",
+  "description": "An enchanted wooden perch that grants keen sight and quick reflexes.",
+  "item_type": "Trinket",
+  "slot": "trinket",
+  "required_level": 18,
+  "stats": {
+    "strength": 0,
+    "dexterity": 8,
+    "constitution": 0,
+    "intelligence": 3,
+    "wisdom": 4,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 2000,
+  "icon": "textures/solid-colors/purple.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

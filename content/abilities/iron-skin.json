@@ -1,0 +1,18 @@
+{
+  "id": "iron-skin",
+  "name": "Iron Skin",
+  "description": "Harden your body through inner force, reducing incoming damage for a time.",
+  "max_rank": 1,
+  "cooldown_sec": 15.0,
+  "resource_cost": 16,
+  "cast_time_sec": 0.0,
+  "range_yards": 0.0,
+  "effects": [
+    {
+      "effect": "Buff",
+      "magnitude": 30.0,
+      "scaling": 1.0,
+      "target": "self"
+    }
+  ]
+}

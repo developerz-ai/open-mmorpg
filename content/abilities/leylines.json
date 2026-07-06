@@ -1,0 +1,24 @@
+{
+  "id": "leylines",
+  "name": "Leylines",
+  "description": "Tap into the ambient leyline network, granting your party increased casting and movement speed for a time.",
+  "max_rank": 1,
+  "cooldown_sec": 30.0,
+  "resource_cost": 35,
+  "cast_time_sec": 0.0,
+  "range_yards": 0.0,
+  "effects": [
+    {
+      "effect": "Buff",
+      "magnitude": 15.0,
+      "scaling": 0.5,
+      "target": "party"
+    },
+    {
+      "effect": "Buff",
+      "magnitude": 10.0,
+      "scaling": 0.3,
+      "target": "party"
+    }
+  ]
+}

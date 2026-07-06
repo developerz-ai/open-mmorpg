@@ -1,0 +1,15 @@
+{
+  "id": "aurin",
+  "name": "Aurin",
+  "description": "Adaptable dawn-faith builders; the Concord's founders and its conscience.",
+  "faction_id": "aurelian-concord",
+  "traits": ["indomitable-spirit"],
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 1,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 1
+  }
+}

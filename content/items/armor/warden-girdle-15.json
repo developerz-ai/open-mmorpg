@@ -1,0 +1,21 @@
+{
+  "id": "warden-girdle-15",
+  "name": "Expert's Warden Girdle",
+  "description": "A mail girdle that channels ancient earth wisdom.",
+  "item_type": "Armor",
+  "slot": "waist",
+  "required_level": 15,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 7,
+    "intelligence": 0,
+    "wisdom": 8,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 840,
+  "icon": "textures/solid-colors/green.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

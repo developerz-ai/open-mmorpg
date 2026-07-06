@@ -1,0 +1,17 @@
+{
+  "id": "oracle",
+  "name": "Oracle",
+  "description": "Radiance-healer and void-caller who wields both Dawn and Deep (Umbra) forces through prophecy and divine vision.",
+  "role": "healer",
+  "abilities": ["radiance", "void-bolt", "dawn-shield", "shadow-word"],
+  "stat_growth": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 1,
+    "wisdom": 2,
+    "charisma": 1
+  },
+  "hp_per_level": 8,
+  "resource_per_level": 12
+}

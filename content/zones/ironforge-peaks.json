@@ -1,0 +1,29 @@
+{
+  "id": "ironforge-peaks",
+  "name": "Ironforge Peaks",
+  "min_level": 20,
+  "max_level": 30,
+  "safe_locations": [
+    {
+      "id": "ironforge-outpost",
+      "position": [0.0, 0.0, 0.0],
+      "yaw": 0.0
+    },
+    {
+      "id": "snow-drift-refuge",
+      "position": [100.0, 15.0, 80.0],
+      "yaw": 45.0
+    }
+  ],
+  "controlling_factions": ["aurelian-concord"],
+  "spawn_tables": [
+    "ironforge-yeti",
+    "peak-ice-elementals",
+    "mountain-wolves",
+    "frost-bears",
+    "iron-grizzlies",
+    "mountain-worgs",
+    "frost-giants"
+  ],
+  "navmesh": "nav/ironforge-peaks.nav"
+}

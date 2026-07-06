@@ -1,0 +1,21 @@
+{
+  "id": "zulra-voodoo-doll",
+  "name": "Zulra's Voodoo Doll",
+  "description": "A crude doll infused with First Mate Zulra's hex magic.",
+  "item_type": "Trinket",
+  "slot": "trinket",
+  "required_level": 15,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 3,
+    "intelligence": 0,
+    "wisdom": 6,
+    "charisma": 2
+  },
+  "quality": "uncommon",
+  "value_copper": 800,
+  "icon": "textures/solid-colors/purple.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

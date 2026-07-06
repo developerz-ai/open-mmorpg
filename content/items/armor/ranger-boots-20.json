@@ -1,0 +1,21 @@
+{
+  "id": "ranger-boots-20",
+  "name": "Pathfinder's Ranger Boots",
+  "description": "Boots that walk between worlds.",
+  "item_type": "Armor",
+  "slot": "feet",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 10,
+    "constitution": 9,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "epic",
+  "value_copper": 3200,
+  "icon": "textures/solid-colors/gold.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

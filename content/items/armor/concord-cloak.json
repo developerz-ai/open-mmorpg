@@ -1,0 +1,21 @@
+{
+  "id": "concord-cloak",
+  "name": "Concord Cloak",
+  "description": "A fine cloak bearing the Concord's colors.",
+  "item_type": "Armor",
+  "slot": "back",
+  "required_level": 18,
+  "stats": {
+    "strength": 0,
+    "dexterity": 6,
+    "constitution": 4,
+    "intelligence": 4,
+    "wisdom": 0,
+    "charisma": 4
+  },
+  "quality": "uncommon",
+  "value_copper": 900,
+  "icon": "textures/solid-colors/blue.png",
+  "mesh": "meshes/placeholder-plane.gltf",
+  "max_stack": 1
+}

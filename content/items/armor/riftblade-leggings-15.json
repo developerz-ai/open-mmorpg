@@ -1,0 +1,21 @@
+{
+  "id": "riftblade-leggings-15",
+  "name": "Expert's Riftblade Leggings",
+  "description": "Leggings that phase through blows.",
+  "item_type": "Armor",
+  "slot": "legs",
+  "required_level": 15,
+  "stats": {
+    "strength": 0,
+    "dexterity": 8,
+    "constitution": 7,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 1250,
+  "icon": "textures/solid-colors/purple.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

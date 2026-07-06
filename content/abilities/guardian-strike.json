@@ -1,0 +1,24 @@
+{
+  "id": "guardian-strike",
+  "name": "Guardian Strike",
+  "description": "A measured blow that raises the vanguard's guard.",
+  "max_rank": 1,
+  "cooldown_sec": 6.0,
+  "resource_cost": 15,
+  "cast_time_sec": 0.0,
+  "range_yards": 5.0,
+  "effects": [
+    {
+      "effect": "Damage",
+      "magnitude": 10.0,
+      "scaling": 0.8,
+      "target": "enemy"
+    },
+    {
+      "effect": "Buff",
+      "magnitude": 8.0,
+      "scaling": 0.5,
+      "target": "self"
+    }
+  ]
+}

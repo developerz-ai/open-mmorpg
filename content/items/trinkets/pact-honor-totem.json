@@ -1,0 +1,21 @@
+{
+  "id": "pact-honor-totem",
+  "name": "Pact Honor Totem",
+  "description": "A totem of honor, granted to those who prove their worth.",
+  "item_type": "Trinket",
+  "slot": "trinket",
+  "required_level": 17,
+  "stats": {
+    "strength": 6,
+    "dexterity": 0,
+    "constitution": 8,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 4
+  },
+  "quality": "uncommon",
+  "value_copper": 900,
+  "icon": "textures/solid-colors/red.png",
+  "mesh": "meshes/placeholder-totem.gltf",
+  "max_stack": 1
+}

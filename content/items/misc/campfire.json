@@ -1,0 +1,19 @@
+{
+  "id": "campfire",
+  "name": "Campfire",
+  "description": "A portable fire kit for cooking and warmth while traveling.",
+  "item_type": "Misc",
+  "required_level": 0,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "common",
+  "value_copper": 10,
+  "icon": "textures/solid-colors/orange.png",
+  "max_stack": 5
+}

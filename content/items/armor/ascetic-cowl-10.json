@@ -1,0 +1,21 @@
+{
+  "id": "ascetic-cowl-10",
+  "name": "Adept's Ascetic Cowl",
+  "description": "A cowl of pure concentration.",
+  "item_type": "Armor",
+  "slot": "head",
+  "required_level": 10,
+  "stats": {
+    "strength": 6,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 380,
+  "icon": "textures/solid-colors/orange.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

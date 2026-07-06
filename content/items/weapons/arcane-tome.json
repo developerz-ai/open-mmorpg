@@ -1,0 +1,21 @@
+{
+  "id": "arcane-tome",
+  "name": "Arcane Tome",
+  "description": "A tome of ancient knowledge, preserved by the Concord.",
+  "item_type": "Weapon",
+  "slot": "mainhand",
+  "required_level": 17,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 12,
+    "wisdom": 8,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 800,
+  "icon": "textures/checker-512.png",
+  "mesh": "meshes/placeholder-book.gltf",
+  "max_stack": 1
+}

@@ -1,0 +1,24 @@
+{
+  "id": "awakening-in-dawnshore",
+  "name": "Awakening in Dawnshore",
+  "description": "The Emberheart's glow stirs you. Seek Warden Surann in the square.",
+  "level": 1,
+  "prerequisites": [],
+  "objectives": [
+    {
+      "objective_type": "Speak",
+      "target_id": "warden-surann",
+      "count": 1,
+      "description": "Speak with Warden Surann"
+    }
+  ],
+  "rewards": {
+    "experience": 100,
+    "gold_copper": 50,
+    "choice_items": [],
+    "items": ["minor-healing-potion"]
+  },
+  "giver_id": "env-emberheart",
+  "turn_in_id": "warden-surann",
+  "next_quest_id": "wolf-trouble"
+}

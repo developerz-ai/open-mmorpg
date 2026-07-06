@@ -1,0 +1,21 @@
+{
+  "id": "revenant-sabatons-10",
+  "name": "Shade's Revenant Sabatons",
+  "description": "Terrifying sabatons that left no trace.",
+  "item_type": "Armor",
+  "slot": "feet",
+  "required_level": 10,
+  "stats": {
+    "strength": 3,
+    "dexterity": 3,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 300,
+  "icon": "textures/solid-colors/orange.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

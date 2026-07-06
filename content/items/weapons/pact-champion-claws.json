@@ -1,0 +1,21 @@
+{
+  "id": "pact-champion-claws",
+  "name": "Pact Champion Claws",
+  "description": "Brutal claws that strike with the fury of the wild.",
+  "item_type": "Weapon",
+  "slot": "mainhand",
+  "required_level": 20,
+  "stats": {
+    "strength": 12,
+    "dexterity": 20,
+    "constitution": 8,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "epic",
+  "value_copper": 3000,
+  "icon": "textures/solid-colors/gold.png",
+  "mesh": "meshes/placeholder-claws.gltf",
+  "max_stack": 1
+}

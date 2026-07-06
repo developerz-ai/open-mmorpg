@@ -1,0 +1,30 @@
+{
+  "id": "gates-under-siege",
+  "name": "Gates Under Siege",
+  "description": "The Pale Gate comes under attack by Pact forces. Hold the line against waves of enemies.",
+  "level": 10,
+  "prerequisites": [],
+  "objectives": [
+    {
+      "objective_type": "Kill",
+      "target_id": "pact-assault-wave",
+      "count": 5,
+      "description": "Defeat 5 waves of Pact assault forces"
+    },
+    {
+      "objective_type": "Speak",
+      "target_id": "gate-captain-theron",
+      "count": 1,
+      "description": "Report to Gate Captain Theron"
+    }
+  ],
+  "rewards": {
+    "experience": 1200,
+    "gold_copper": 500,
+    "choice_items": ["vanguard-training-sword", "templar-mace"],
+    "items": ["healing-potion", "healing-potion"]
+  },
+  "giver_id": "gate-captain-theron",
+  "turn_in_id": "gate-captain-theron",
+  "next_quest_id": "the-pact-skirmishers"
+}

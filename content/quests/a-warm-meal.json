@@ -1,0 +1,30 @@
+{
+  "id": "a-warm-meal",
+  "name": "A Warm Meal",
+  "description": "The innkeeper, Mara, needs fresh meat for her stew. Gather boar meat from the nearby woods.",
+  "level": 3,
+  "prerequisites": [],
+  "objectives": [
+    {
+      "objective_type": "Gather",
+      "target_id": "boar-meat",
+      "count": 3,
+      "description": "Gather 3 boar meat"
+    },
+    {
+      "objective_type": "Speak",
+      "target_id": "innkeeper-mara",
+      "count": 1,
+      "description": "Speak to Innkeeper Mara"
+    }
+  ],
+  "rewards": {
+    "experience": 150,
+    "gold_copper": 75,
+    "choice_items": ["rusty-shortsword", "apprentice-rod"],
+    "items": ["minor-healing-potion", "travelers-ration"]
+  },
+  "giver_id": "innkeeper-mara",
+  "turn_in_id": "innkeeper-mara",
+  "next_quest_id": "strange-brew"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "shadow-blade",
+  "name": "Shadow Blade",
+  "description": "A dagger that seems to absorb light.",
+  "item_type": "Weapon",
+  "slot": "mainhand",
+  "required_level": 10,
+  "stats": {
+    "strength": 0,
+    "dexterity": 5,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 2
+  },
+  "quality": "rare",
+  "value_copper": 450,
+  "icon": "textures/checker-512.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

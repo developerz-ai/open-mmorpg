@@ -1,0 +1,18 @@
+{
+  "id": "mithril-ore",
+  "name": "Mithril Ore",
+  "description": "A feather-light vein of shimmering mithril.",
+  "item_type": "CraftingMaterial",
+  "required_level": 0,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 35,
+  "max_stack": 20
+}

@@ -1,0 +1,21 @@
+{
+  "id": "warden-leggings-10",
+  "name": "Adept's Warden Leggings",
+  "description": "Mail leggings that stride between realms of safety.",
+  "item_type": "Armor",
+  "slot": "legs",
+  "required_level": 10,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 0,
+    "wisdom": 6,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 405,
+  "icon": "textures/solid-colors/green.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

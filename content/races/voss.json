@@ -1,0 +1,15 @@
+{
+  "id": "voss",
+  "name": "Voss",
+  "description": "Hollow-folk reclaimed from the crypt's chill; bearing the scar of their return with quiet purpose.",
+  "faction_id": "wildreach-pact",
+  "traits": ["will-endurance"],
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 1,
+    "wisdom": 1,
+    "charisma": 0
+  }
+}

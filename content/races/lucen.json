@@ -1,0 +1,15 @@
+{
+  "id": "lucen",
+  "name": "Lucen",
+  "description": "Dawn-touched seers bearing the radiant scar of their first sunrise, attuned to faith and prophecy.",
+  "faction_id": "aurelian-concord",
+  "traits": ["dawnfire-blessing"],
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 1,
+    "wisdom": 1,
+    "charisma": 1
+  }
+}

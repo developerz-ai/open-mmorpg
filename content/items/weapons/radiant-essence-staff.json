@@ -1,0 +1,21 @@
+{
+  "id": "radiant-essence-staff",
+  "name": "Radiant Essence Staff",
+  "description": "A staff that channels pure Essence into mending light and devastating power.",
+  "item_type": "Weapon",
+  "slot": "mainhand",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 16,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 1950,
+  "icon": "textures/checker-512.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

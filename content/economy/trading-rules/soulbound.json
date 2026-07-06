@@ -1,0 +1,6 @@
+{
+  "item_pattern": "soulbound-*",
+  "tradable": false,
+  "auctionable": false,
+  "mailing_allowed": false
+}

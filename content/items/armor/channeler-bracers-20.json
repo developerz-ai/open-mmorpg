@@ -1,0 +1,21 @@
+{
+  "id": "channeler-bracers-20",
+  "name": "Master Channeler's Bracers",
+  "description": "Mail bracers pulsing with the full power of arcane destruction.",
+  "item_type": "Armor",
+  "slot": "wrist",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 10,
+    "constitution": 9,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "epic",
+  "value_copper": 2340,
+  "icon": "textures/solid-colors/gold.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

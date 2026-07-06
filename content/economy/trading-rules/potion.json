@@ -1,0 +1,6 @@
+{
+  "item_pattern": "potion-*",
+  "tradable": true,
+  "auctionable": true,
+  "mailing_allowed": true
+}

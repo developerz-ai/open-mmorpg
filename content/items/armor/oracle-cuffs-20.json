@@ -1,0 +1,21 @@
+{
+  "id": "oracle-cuffs-20",
+  "name": "Fateseer's Oracle Cuffs",
+  "description": "Cuffs that can glimpse all possible futures.",
+  "item_type": "Armor",
+  "slot": "wrist",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 9,
+    "wisdom": 9,
+    "charisma": 9
+  },
+  "quality": "epic",
+  "value_copper": 2420,
+  "icon": "textures/solid-colors/gold.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

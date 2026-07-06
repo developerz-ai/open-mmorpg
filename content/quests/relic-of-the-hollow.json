@@ -1,0 +1,29 @@
+{
+  "id": "relic-of-the-hollow",
+  "name": "Relic of the Hollow",
+  "description": "Descend into the Hollowveil, take the relic, and bring it to light.",
+  "level": 8,
+  "prerequisites": ["path-to-the-crypt"],
+  "objectives": [
+    {
+      "objective_type": "Kill",
+      "target_id": "hollowveil-warden",
+      "count": 1,
+      "description": "Defeat the Hollowveil Warden"
+    },
+    {
+      "objective_type": "Deliver",
+      "target_id": "crypt-relic",
+      "count": 1,
+      "description": "Deliver the Crypt Relic"
+    }
+  ],
+  "rewards": {
+    "experience": 800,
+    "gold_copper": 400,
+    "choice_items": ["venomfang-dagger", "hollowveil-mantle"],
+    "items": []
+  },
+  "giver_id": "warden-surann",
+  "turn_in_id": "warden-surann"
+}

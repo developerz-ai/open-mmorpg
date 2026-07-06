@@ -1,0 +1,21 @@
+{
+  "id": "templar-helm-10",
+  "name": "Justicar's Templar Helm",
+  "description": "A radiant helm embodying divine justice.",
+  "item_type": "Armor",
+  "slot": "head",
+  "required_level": 10,
+  "stats": {
+    "strength": 6,
+    "dexterity": 0,
+    "constitution": 3,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 430,
+  "icon": "textures/solid-colors/gray.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

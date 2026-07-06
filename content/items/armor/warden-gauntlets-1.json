@@ -1,0 +1,21 @@
+{
+  "id": "warden-gauntlets-1",
+  "name": "Warden Gauntlets",
+  "description": "Mail gauntlets that channel protective energy.",
+  "item_type": "Armor",
+  "slot": "hands",
+  "required_level": 1,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 1,
+    "intelligence": 0,
+    "wisdom": 2,
+    "charisma": 0
+  },
+  "quality": "common",
+  "value_copper": 7,
+  "icon": "textures/solid-colors/green.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

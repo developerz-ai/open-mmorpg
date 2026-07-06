@@ -1,0 +1,21 @@
+{
+  "id": "ranger-leggings-5",
+  "name": "Initiate's Ranger Leggings",
+  "description": "Sturdy leggings for long patrols.",
+  "item_type": "Armor",
+  "slot": "legs",
+  "required_level": 5,
+  "stats": {
+    "strength": 0,
+    "dexterity": 4,
+    "constitution": 3,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 90,
+  "icon": "textures/solid-colors/green.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

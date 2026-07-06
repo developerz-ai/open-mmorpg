@@ -1,0 +1,24 @@
+{
+  "id": "rune-strike",
+  "name": "Rune Strike",
+  "description": "A devastating melee blow that carves weakening runes into the target, reducing their defense.",
+  "max_rank": 1,
+  "cooldown_sec": 0.0,
+  "resource_cost": 12,
+  "cast_time_sec": 0.0,
+  "range_yards": 5.0,
+  "effects": [
+    {
+      "effect": "Damage",
+      "magnitude": 14.0,
+      "scaling": 1.1,
+      "target": "enemy"
+    },
+    {
+      "effect": "Debuff",
+      "magnitude": 8.0,
+      "scaling": 0.4,
+      "target": "enemy"
+    }
+  ]
+}

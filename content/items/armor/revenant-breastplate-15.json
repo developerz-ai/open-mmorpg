@@ -1,0 +1,21 @@
+{
+  "id": "revenant-breastplate-15",
+  "name": "Death's Revenant Breastplate",
+  "description": "Epic plate that has walked the void between worlds.",
+  "item_type": "Armor",
+  "slot": "chest",
+  "required_level": 15,
+  "stats": {
+    "strength": 4,
+    "dexterity": 8,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 1850,
+  "icon": "textures/solid-colors/orange.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

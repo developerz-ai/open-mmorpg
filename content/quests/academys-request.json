@@ -1,0 +1,48 @@
+{
+  "id": "academys-request",
+  "name": "The Academy's Request",
+  "description": "Arcanist Elara requires ancient texts from the Hollowveil Barrows. Knowledge must be preserved.",
+  "level": 17,
+  "prerequisites": ["diplomatic-mission"],
+  "objectives": [
+    {
+      "objective_type": "Speak",
+      "target_id": "arcanist-trainer-elara",
+      "count": 1,
+      "description": "Speak with Arcanist Elara"
+    },
+    {
+      "objective_type": "Explore",
+      "target_id": "hollowveil-barrows",
+      "count": 1,
+      "description": "Enter the Hollowveil Barrows"
+    },
+    {
+      "objective_type": "Kill",
+      "target_id": "hollowveil-warden",
+      "count": 1,
+      "description": "Defeat the Hollowveil Warden"
+    },
+    {
+      "objective_type": "Gather",
+      "target_id": "ancient-texts",
+      "count": 1,
+      "description": "Recover the ancient texts"
+    },
+    {
+      "objective_type": "Deliver",
+      "target_id": "ancient-texts",
+      "count": 1,
+      "description": "Deliver the texts to Elara"
+    }
+  ],
+  "rewards": {
+    "experience": 3500,
+    "gold_copper": 1800,
+    "choice_items": ["arcane-tome", "concord-emblem"],
+    "items": ["greater-healing-potion", "mana-potion", "mana-potion"]
+  },
+  "giver_id": "arcanist-trainer-elara",
+  "turn_in_id": "arcanist-trainer-elara",
+  "next_quest_id": "threats-to-order"
+}

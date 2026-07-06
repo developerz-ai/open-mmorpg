@@ -1,0 +1,18 @@
+{
+  "id": "fireball",
+  "name": "Fireball",
+  "description": "Hurl a roaring sphere of Rift-touched flame.",
+  "max_rank": 1,
+  "cooldown_sec": 2.5,
+  "resource_cost": 30,
+  "cast_time_sec": 2.0,
+  "range_yards": 30.0,
+  "effects": [
+    {
+      "effect": "Damage",
+      "magnitude": 26.0,
+      "scaling": 0.8,
+      "target": "enemy"
+    }
+  ]
+}

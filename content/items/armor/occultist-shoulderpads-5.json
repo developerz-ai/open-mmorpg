@@ -1,0 +1,21 @@
+{
+  "id": "occultist-shoulderpads-5",
+  "name": "Acolyte's Occultist Shoulderpads",
+  "description": "Shoulderpads infused with Deep energy.",
+  "item_type": "Armor",
+  "slot": "shoulder",
+  "required_level": 5,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 2,
+    "intelligence": 3,
+    "wisdom": 3,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 75,
+  "icon": "textures/solid-colors/violet.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

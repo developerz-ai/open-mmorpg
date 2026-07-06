@@ -1,0 +1,21 @@
+{
+  "id": "pact-honor-blade",
+  "name": "Pact Honor Blade",
+  "description": "A curved blade forged in Pact tradition.",
+  "item_type": "Weapon",
+  "slot": "mainhand",
+  "required_level": 16,
+  "stats": {
+    "strength": 10,
+    "dexterity": 8,
+    "constitution": 4,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 750,
+  "icon": "textures/checker-512.png",
+  "mesh": "meshes/placeholder-curveblade.gltf",
+  "max_stack": 1
+}

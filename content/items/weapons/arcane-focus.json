@@ -1,0 +1,21 @@
+{
+  "id": "arcane-focus",
+  "name": "Arcane Focus",
+  "description": "A crystal focus that hums with latent power.",
+  "item_type": "Weapon",
+  "slot": "mainhand",
+  "required_level": 10,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 6,
+    "wisdom": 2,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 500,
+  "icon": "textures/checker-512.png",
+  "mesh": "meshes/placeholder-plane.gltf",
+  "max_stack": 1
+}

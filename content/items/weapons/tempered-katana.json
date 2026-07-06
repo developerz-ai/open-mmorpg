@@ -1,0 +1,21 @@
+{
+  "id": "tempered-katana",
+  "name": "Tempered Katana",
+  "description": "A masterfully forged blade that strikes with deadly precision.",
+  "item_type": "Weapon",
+  "slot": "mainhand",
+  "required_level": 15,
+  "stats": {
+    "strength": 12,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 800,
+  "icon": "textures/checker-512.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

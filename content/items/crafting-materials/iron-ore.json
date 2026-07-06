@@ -1,0 +1,18 @@
+{
+  "id": "iron-ore",
+  "name": "Iron Ore",
+  "description": "A heavy stone ringed with veins of iron.",
+  "item_type": "CraftingMaterial",
+  "required_level": 0,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 10,
+  "max_stack": 20
+}

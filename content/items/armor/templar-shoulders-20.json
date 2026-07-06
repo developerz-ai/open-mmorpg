@@ -1,0 +1,21 @@
+{
+  "id": "templar-shoulders-20",
+  "name": "Divine Templar Shoulders",
+  "description": "Legendary shoulders that bore divine glory.",
+  "item_type": "Armor",
+  "slot": "shoulder",
+  "required_level": 20,
+  "stats": {
+    "strength": 5,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "epic",
+  "value_copper": 2920,
+  "icon": "textures/solid-colors/gray.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

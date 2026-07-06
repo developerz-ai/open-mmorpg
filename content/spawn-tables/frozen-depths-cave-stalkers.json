@@ -1,0 +1,25 @@
+{
+  "id": "frozen-depths-cave-stalkers",
+  "entries": [
+    {
+      "entity_id": "cave-stalker",
+      "weight": 80,
+      "max_count": 8,
+      "positions": [
+        [85.0, -10, 60.0],
+        [100.0, -12, 55.0],
+        [90.0, -11, 70.0],
+        [105.0, -14, 50.0],
+        [95.0, -13, 65.0],
+        [110.0, -15, 48.0]
+      ]
+    },
+    {
+      "entity_id": "shadow-ice-wraith",
+      "weight": 30,
+      "max_count": 3,
+      "positions": [[98.0, -18, 62.0], [108.0, -20, 58.0], [93.0, -19, 68.0]]
+    }
+  ],
+  "respawn_sec": 180
+}

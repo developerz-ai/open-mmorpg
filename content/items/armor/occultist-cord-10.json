@@ -1,0 +1,21 @@
+{
+  "id": "occultist-cord-10",
+  "name": "Pactbinder's Occultist Cord",
+  "description": "A cord that can hold multiple soul shards.",
+  "item_type": "Armor",
+  "slot": "waist",
+  "required_level": 10,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 3,
+    "intelligence": 5,
+    "wisdom": 5,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 280,
+  "icon": "textures/solid-colors/violet.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

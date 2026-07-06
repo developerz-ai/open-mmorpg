@@ -1,0 +1,21 @@
+{
+  "id": "ascetic-sash-15",
+  "name": "Expert's Ascetic Sash",
+  "description": "Sash bearing lineage markings.",
+  "item_type": "Armor",
+  "slot": "waist",
+  "required_level": 15,
+  "stats": {
+    "strength": 8,
+    "dexterity": 0,
+    "constitution": 7,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 875,
+  "icon": "textures/solid-colors/orange.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

@@ -1,0 +1,21 @@
+{
+  "id": "channeler-bracers-1",
+  "name": "Channeler Bracers",
+  "description": "Mail bracers etched with acceleration runes.",
+  "item_type": "Armor",
+  "slot": "wrist",
+  "required_level": 1,
+  "stats": {
+    "strength": 0,
+    "dexterity": 2,
+    "constitution": 1,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "common",
+  "value_copper": 6,
+  "icon": "textures/solid-colors/gray.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

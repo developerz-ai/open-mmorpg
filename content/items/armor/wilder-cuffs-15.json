@@ -1,0 +1,21 @@
+{
+  "id": "wilder-cuffs-15",
+  "name": "Expert's Wilder Cuffs",
+  "description": "Armguards that block all blows.",
+  "item_type": "Armor",
+  "slot": "wrist",
+  "required_level": 15,
+  "stats": {
+    "strength": 8,
+    "dexterity": 0,
+    "constitution": 7,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 875,
+  "icon": "textures/solid-colors/brown.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

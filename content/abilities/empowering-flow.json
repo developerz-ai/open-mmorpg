@@ -1,0 +1,24 @@
+{
+  "id": "empowering-flow",
+  "name": "Empowering Flow",
+  "description": "Channel a sustained flow of Essence that continuously heals a target ally over time.",
+  "max_rank": 1,
+  "cooldown_sec": 0.0,
+  "resource_cost": 8,
+  "cast_time_sec": 0.5,
+  "range_yards": 30.0,
+  "effects": [
+    {
+      "effect": "Heal",
+      "magnitude": 8.0,
+      "scaling": 0.4,
+      "target": "ally"
+    },
+    {
+      "effect": "Buff",
+      "magnitude": 6.0,
+      "scaling": 0.3,
+      "target": "ally"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "warden-bracers-15",
+  "name": "Expert's Warden Bracers",
+  "description": "Mail bracers thrumming with potent healing magic.",
+  "item_type": "Armor",
+  "slot": "wrist",
+  "required_level": 15,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 7,
+    "intelligence": 0,
+    "wisdom": 8,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 840,
+  "icon": "textures/solid-colors/green.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

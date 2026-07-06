@@ -1,0 +1,21 @@
+{
+  "id": "occultist-shoulderpads-20",
+  "name": "Voidlord's Occultist Shoulderpads",
+  "description": "Shoulderpads that mark you as master of the void.",
+  "item_type": "Armor",
+  "slot": "shoulder",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 9,
+    "wisdom": 9,
+    "charisma": 0
+  },
+  "quality": "epic",
+  "value_copper": 2900,
+  "icon": "textures/solid-colors/violet.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

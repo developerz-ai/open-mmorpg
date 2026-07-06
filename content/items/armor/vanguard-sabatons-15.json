@@ -1,0 +1,21 @@
+{
+  "id": "vanguard-sabatons-15",
+  "name": "Champion's Vanguard Sabatons",
+  "description": "Epic sabatons that stood on hallowed grounds.",
+  "item_type": "Armor",
+  "slot": "feet",
+  "required_level": 15,
+  "stats": {
+    "strength": 4,
+    "dexterity": 0,
+    "constitution": 4,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 910,
+  "icon": "textures/solid-colors/gray.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

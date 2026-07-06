@@ -1,0 +1,21 @@
+{
+  "id": "templar-mace",
+  "name": "Templar Mace",
+  "description": "A weighted mace blessed with protective wards.",
+  "item_type": "Weapon",
+  "slot": "mainhand",
+  "required_level": 1,
+  "stats": {
+    "strength": 2,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 1,
+    "charisma": 0
+  },
+  "quality": "common",
+  "value_copper": 25,
+  "icon": "textures/checker-512.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

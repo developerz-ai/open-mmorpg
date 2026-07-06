@@ -1,0 +1,18 @@
+{
+  "id": "wolf-pelt",
+  "name": "Wolf Pelt",
+  "description": "A coarse pelt taken from a dawnshore wolf.",
+  "item_type": "CraftingMaterial",
+  "required_level": 0,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "common",
+  "value_copper": 3,
+  "max_stack": 20
+}

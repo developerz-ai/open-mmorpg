@@ -1,0 +1,24 @@
+{
+  "id": "concord-call",
+  "name": "The Concord's Call",
+  "description": "High Chancellor Valerius summons you to Solhaven. The Concord requires your service.",
+  "level": 15,
+  "prerequisites": [],
+  "objectives": [
+    {
+      "objective_type": "Speak",
+      "target_id": "high-chancellor-valerius",
+      "count": 1,
+      "description": "Speak with High Chancellor Valerius in Solhaven"
+    }
+  ],
+  "rewards": {
+    "experience": 2500,
+    "gold_copper": 1200,
+    "choice_items": ["concord-medallion"],
+    "items": ["healing-potion", "healing-potion"]
+  },
+  "giver_id": "high-chancellor-valerius",
+  "turn_in_id": "high-chancellor-valerius",
+  "next_quest_id": "diplomatic-mission"
+}

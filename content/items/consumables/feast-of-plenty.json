@@ -1,0 +1,14 @@
+{
+  "id": "feast-of-plenty",
+  "name": "Feast of Plenty",
+  "description": "A grand spread enough for many. All who partake are strengthened.",
+  "item_type": "Consumable",
+  "consumable_type": null,
+  "required_level": 20,
+  "effects": null,
+  "quality": "rare",
+  "value_copper": 200,
+  "icon": "textures/solid-colors/purple.png",
+  "mesh": null,
+  "max_stack": 5
+}

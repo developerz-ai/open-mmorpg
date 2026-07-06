@@ -1,0 +1,21 @@
+{
+  "id": "vanguard-gauntlets-20",
+  "name": "Warlord's Vanguard Gauntlets",
+  "description": "Legendary gauntlets that crushed legendary foes.",
+  "item_type": "Armor",
+  "slot": "hands",
+  "required_level": 20,
+  "stats": {
+    "strength": 5,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "epic",
+  "value_copper": 2540,
+  "icon": "textures/solid-colors/gray.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

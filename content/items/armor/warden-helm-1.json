@@ -1,0 +1,21 @@
+{
+  "id": "warden-helm-1",
+  "name": "Warden Helm",
+  "description": "A mail helm adorned with earthen runes.",
+  "item_type": "Armor",
+  "slot": "head",
+  "required_level": 1,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 1,
+    "intelligence": 0,
+    "wisdom": 2,
+    "charisma": 0
+  },
+  "quality": "common",
+  "value_copper": 8,
+  "icon": "textures/solid-colors/green.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

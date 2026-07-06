@@ -1,0 +1,21 @@
+{
+  "id": "shadow-walker-cloak",
+  "name": "Shadow Walker Cloak",
+  "description": "Woven from dusk-black thread, it seems to absorb light.",
+  "item_type": "Trinket",
+  "slot": "back",
+  "required_level": 15,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 7,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 940,
+  "icon": "textures/solid-colors/blue.png",
+  "mesh": "meshes/placeholder-plane.gltf",
+  "max_stack": 1
+}

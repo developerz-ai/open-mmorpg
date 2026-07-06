@@ -1,0 +1,21 @@
+{
+  "id": "arcanist-leggings-20",
+  "name": "Archmage's Arcanist Leggings",
+  "description": "Leggings infused with pure arcane essence.",
+  "item_type": "Armor",
+  "slot": "legs",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 9,
+    "wisdom": 9,
+    "charisma": 0
+  },
+  "quality": "epic",
+  "value_copper": 2900,
+  "icon": "textures/solid-colors/purple.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

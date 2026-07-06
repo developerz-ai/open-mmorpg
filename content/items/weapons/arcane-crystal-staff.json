@@ -1,0 +1,21 @@
+{
+  "id": "arcane-crystal-staff",
+  "name": "Arcane Crystal Staff",
+  "description": "A staff topped with a flawless arcane crystal of immense power.",
+  "item_type": "Weapon",
+  "slot": "mainhand",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 16,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 2000,
+  "icon": "textures/checker-512.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

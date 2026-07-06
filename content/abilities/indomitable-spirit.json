@@ -1,0 +1,18 @@
+{
+  "id": "indomitable-spirit",
+  "name": "Indomitable Spirit",
+  "description": "Aurin racial: shrug off stun and fear effects.",
+  "max_rank": 1,
+  "cooldown_sec": 0.0,
+  "resource_cost": 0,
+  "cast_time_sec": 0.0,
+  "range_yards": 0.0,
+  "effects": [
+    {
+      "effect": "Buff",
+      "magnitude": 0.0,
+      "scaling": 0.0,
+      "target": "self"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "oracle-cuffs-10",
+  "name": "Prophet's Oracle Cuffs",
+  "description": "Cuffs that protect from dark influences.",
+  "item_type": "Armor",
+  "slot": "wrist",
+  "required_level": 10,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 3,
+    "intelligence": 5,
+    "wisdom": 5,
+    "charisma": 5
+  },
+  "quality": "rare",
+  "value_copper": 280,
+  "icon": "textures/solid-colors/gold.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

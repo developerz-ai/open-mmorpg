@@ -1,0 +1,16 @@
+{
+  "id": "emberhold",
+  "name": "Emberhold",
+  "min_level": 1,
+  "max_level": 50,
+  "safe_locations": [
+    {
+      "id": "chieftains-fire",
+      "position": [0.0, 0.0, 0.0],
+      "yaw": 0.0
+    }
+  ],
+  "controlling_factions": ["wildreach-pact"],
+  "spawn_tables": ["emberhold-faction-npcs"],
+  "navmesh": "nav/emberhold.nav"
+}

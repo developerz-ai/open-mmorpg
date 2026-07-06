@@ -1,0 +1,21 @@
+{
+  "id": "arcanist-shoulderpads-20",
+  "name": "Archmage's Arcanist Shoulderpads",
+  "description": "Shoulderpads that command respect from all magical beings.",
+  "item_type": "Armor",
+  "slot": "shoulder",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 9,
+    "wisdom": 9,
+    "charisma": 0
+  },
+  "quality": "epic",
+  "value_copper": 2900,
+  "icon": "textures/solid-colors/purple.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

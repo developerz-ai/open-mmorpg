@@ -1,0 +1,21 @@
+{
+  "id": "shade-hood-15",
+  "name": "Expert's Shade Hood",
+  "description": "A hood that unnerves observers.",
+  "item_type": "Armor",
+  "slot": "head",
+  "required_level": 15,
+  "stats": {
+    "strength": 0,
+    "dexterity": 8,
+    "constitution": 7,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 1150,
+  "icon": "textures/solid-colors/gray.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

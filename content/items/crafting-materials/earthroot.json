@@ -1,0 +1,18 @@
+{
+  "id": "earthroot",
+  "name": "Earthroot",
+  "description": "A gnarled root with a rich, earthen scent.",
+  "item_type": "CraftingMaterial",
+  "required_level": 0,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 8,
+  "max_stack": 20
+}

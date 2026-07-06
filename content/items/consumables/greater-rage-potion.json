@@ -1,0 +1,19 @@
+{
+  "id": "greater-rage-potion",
+  "name": "Greater Rage Potion",
+  "description": "A volatile draft that surges through the body, granting immense physical power.",
+  "item_type": "Consumable",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 250,
+  "icon": "textures/solid-colors/blue.png",
+  "max_stack": 10
+}

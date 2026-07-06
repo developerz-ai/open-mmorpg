@@ -1,0 +1,21 @@
+{
+  "id": "revenant-sabatons-20",
+  "name": "Voidlord's Revenant Sabatons",
+  "description": "Legendary sabatons that left no footprint in reality.",
+  "item_type": "Armor",
+  "slot": "feet",
+  "required_level": 20,
+  "stats": {
+    "strength": 5,
+    "dexterity": 5,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "epic",
+  "value_copper": 2540,
+  "icon": "textures/solid-colors/orange.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

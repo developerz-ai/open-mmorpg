@@ -1,0 +1,18 @@
+{
+  "id": "soul-fire",
+  "name": "Soul Fire",
+  "description": "Consume a soul shard to hurl a bolt of Deep-touched flame that burns through enemy defenses.",
+  "max_rank": 1,
+  "cooldown_sec": 8.0,
+  "resource_cost": 4,
+  "cast_time_sec": 1.8,
+  "range_yards": 35.0,
+  "effects": [
+    {
+      "effect": "Damage",
+      "magnitude": 32.0,
+      "scaling": 1.2,
+      "target": "enemy"
+    }
+  ]
+}

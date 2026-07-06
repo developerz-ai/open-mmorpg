@@ -1,0 +1,21 @@
+{
+  "id": "concord-champion-staff",
+  "name": "Concord Champion Staff",
+  "description": "A staff of office for the Concord's arcane champions.",
+  "item_type": "Weapon",
+  "slot": "mainhand",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 6,
+    "intelligence": 20,
+    "wisdom": 12,
+    "charisma": 0
+  },
+  "quality": "epic",
+  "value_copper": 3000,
+  "icon": "textures/solid-colors/gold.png",
+  "mesh": "meshes/placeholder-staff.gltf",
+  "max_stack": 1
+}

@@ -1,0 +1,24 @@
+{
+  "id": "path-to-the-crypt",
+  "name": "The Path to the Crypt",
+  "description": "A hollow wind blows from the old barrow. Find the Hollowveil entrance.",
+  "level": 6,
+  "prerequisites": ["wolf-trouble"],
+  "objectives": [
+    {
+      "objective_type": "Explore",
+      "target_id": "hollowveil-barrows",
+      "count": 1,
+      "description": "Discover the Hollowveil barrows"
+    }
+  ],
+  "rewards": {
+    "experience": 400,
+    "gold_copper": 150,
+    "choice_items": [],
+    "items": []
+  },
+  "giver_id": "warden-surann",
+  "turn_in_id": "warden-surann",
+  "next_quest_id": "relic-of-the-hollow"
+}

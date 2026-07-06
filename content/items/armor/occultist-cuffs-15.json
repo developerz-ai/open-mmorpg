@@ -1,0 +1,21 @@
+{
+  "id": "occultist-cuffs-15",
+  "name": "Soulbinder's Occultist Cuffs",
+  "description": "Cuffs that can enslave the unwary.",
+  "item_type": "Armor",
+  "slot": "wrist",
+  "required_level": 15,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 4,
+    "intelligence": 7,
+    "wisdom": 7,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 870,
+  "icon": "textures/solid-colors/violet.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

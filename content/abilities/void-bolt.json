@@ -1,0 +1,18 @@
+{
+  "id": "void-bolt",
+  "name": "Void Bolt",
+  "description": "Hurl a bolt of crackling Deep magic energy at a foe, dealing void-touched damage.",
+  "max_rank": 1,
+  "cooldown_sec": 0.0,
+  "resource_cost": 12,
+  "cast_time_sec": 1.4,
+  "range_yards": 35.0,
+  "effects": [
+    {
+      "effect": "Damage",
+      "magnitude": 18.0,
+      "scaling": 1.0,
+      "target": "enemy"
+    }
+  ]
+}

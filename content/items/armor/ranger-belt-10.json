@@ -1,0 +1,21 @@
+{
+  "id": "ranger-belt-10",
+  "name": "Adept's Ranger Belt",
+  "description": "Belt with quick-access arrow loops.",
+  "item_type": "Armor",
+  "slot": "waist",
+  "required_level": 10,
+  "stats": {
+    "strength": 0,
+    "dexterity": 6,
+    "constitution": 5,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 290,
+  "icon": "textures/solid-colors/green.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

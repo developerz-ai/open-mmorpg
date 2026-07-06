@@ -1,0 +1,18 @@
+{
+  "id": "runic-surge",
+  "name": "Runic Surge",
+  "description": "Channel runic power into a devastating melee strike.",
+  "max_rank": 1,
+  "cooldown_sec": 0.0,
+  "resource_cost": 14,
+  "cast_time_sec": 0.0,
+  "range_yards": 5.0,
+  "effects": [
+    {
+      "effect": "Damage",
+      "magnitude": 16.0,
+      "scaling": 1.2,
+      "target": "enemy"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "oracle-robe-20",
+  "name": "Fateseer's Oracle Robe",
+  "description": "Robes that embody the duality of Dawn and Deep.",
+  "item_type": "Armor",
+  "slot": "chest",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 6,
+    "intelligence": 10,
+    "wisdom": 11,
+    "charisma": 10
+  },
+  "quality": "epic",
+  "value_copper": 4400,
+  "icon": "textures/solid-colors/gold.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

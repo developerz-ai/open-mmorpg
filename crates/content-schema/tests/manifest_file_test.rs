@@ -1,13 +1,18 @@
 //! Guards the committed datapack.
 //!
-//! `include_str!` embeds `content/manifest.json` at compile time, so this test
-//! always validates the *real* committed datapack — not an inline fixture — on
-//! every build. If the file moves or grows invalid, this fails (or won't
-//! compile), closing the gap where only inline test samples were validated.
+//! Loads the *real* committed split-tree datapack under `content/` — not an
+//! inline fixture — via [`load_manifest_dir`], so every build re-validates the
+//! actual data on disk. If the tree grows invalid or a domain dir goes missing,
+//! this fails, closing the gap where only inline test samples were validated.
 
-use omm_content_schema::load_manifest;
+use std::path::PathBuf;
 
-const COMMITTED_MANIFEST: &str = include_str!("../../../content/manifest.json");
+use omm_content_schema::load_manifest_dir;
+
+/// Resolve `content/` relative to this crate (workspace root holds it).
+fn content_dir() -> PathBuf {
+    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../content")
+}
 
 /// The two canon rival factions (docs/specs/gameplay/factions).
 const CONCORD: &str = "aurelian-concord";
@@ -15,15 +20,16 @@ const PACT: &str = "wildreach-pact";
 
 #[test]
 fn committed_manifest_loads_and_validates() {
-    let manifest = load_manifest(COMMITTED_MANIFEST.as_bytes())
-        .expect("content/manifest.json must parse and pass validate()");
+    let manifest =
+        load_manifest_dir(&content_dir()).expect("content/ must parse and pass validate()");
     assert_eq!(
         manifest.api_version,
         omm_content_schema::CONTENT_API_VERSION
     );
     assert_eq!(manifest.id, "open-mmorpg.base");
 
-    // Two canon factions, mutually hostile, each with a capital zone.
+    // Two canon factions, mutually hostile, each with a capital zone. The dir
+    // loader emits entities in sorted-id order, which is the canon order here.
     let faction_ids: Vec<&str> = manifest.factions.iter().map(|f| f.id.as_str()).collect();
     assert_eq!(faction_ids, [CONCORD, PACT]);
     let concord = manifest.factions.iter().find(|f| f.id == CONCORD).unwrap();

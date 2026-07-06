@@ -1,0 +1,18 @@
+{
+  "id": "linen-wool",
+  "name": "Linen Wool",
+  "description": "Coarse woven cloth suitable for basic tailoring.",
+  "item_type": "CraftingMaterial",
+  "required_level": 0,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "common",
+  "value_copper": 2,
+  "max_stack": 20
+}

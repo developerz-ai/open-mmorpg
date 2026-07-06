@@ -1,0 +1,19 @@
+{
+  "id": "empty-vial",
+  "name": "Empty Vial",
+  "description": "A small glass vial for holding alchemical mixtures.",
+  "item_type": "CraftingMaterial",
+  "required_level": 0,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "common",
+  "value_copper": 1,
+  "icon": "textures/solid-colors/white.png",
+  "max_stack": 20
+}

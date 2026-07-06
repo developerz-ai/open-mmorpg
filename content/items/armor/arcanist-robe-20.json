@@ -1,0 +1,21 @@
+{
+  "id": "arcanist-robe-20",
+  "name": "Archmage's Arcanist Robe",
+  "description": "Robes that have witnessed the unraveling of reality itself.",
+  "item_type": "Armor",
+  "slot": "chest",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 6,
+    "intelligence": 11,
+    "wisdom": 10,
+    "charisma": 0
+  },
+  "quality": "epic",
+  "value_copper": 4400,
+  "icon": "textures/solid-colors/purple.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

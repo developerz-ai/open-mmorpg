@@ -1,0 +1,21 @@
+{
+  "id": "ascetic-leggings-1",
+  "name": "Ascetic Leggings",
+  "description": "Loose-fitting leggings for kicking.",
+  "item_type": "Armor",
+  "slot": "legs",
+  "required_level": 1,
+  "stats": {
+    "strength": 2,
+    "dexterity": 0,
+    "constitution": 1,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "common",
+  "value_copper": 9,
+  "icon": "textures/solid-colors/orange.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

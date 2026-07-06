@@ -1,0 +1,24 @@
+{
+  "id": "pacts-blood-oath",
+  "name": "The Pact's Blood Oath",
+  "description": "Chieftain Thornfang calls you to Emberhold. The Pact requires your strength.",
+  "level": 15,
+  "prerequisites": [],
+  "objectives": [
+    {
+      "objective_type": "Speak",
+      "target_id": "chieftain-thornfang",
+      "count": 1,
+      "description": "Speak with Chieftain Thornfang in Emberhold"
+    }
+  ],
+  "rewards": {
+    "experience": 2500,
+    "gold_copper": 1200,
+    "choice_items": ["pact-blood-totem"],
+    "items": ["healing-potion", "healing-potion"]
+  },
+  "giver_id": "chieftain-thornfang",
+  "turn_in_id": "chieftain-thornfang",
+  "next_quest_id": "survival-of-fittest"
+}

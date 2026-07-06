@@ -1,0 +1,36 @@
+{
+  "id": "the-pact-skirmishers",
+  "name": "The Pact Skirmishers",
+  "description": "Pact scouts have been spotted near the Pale Gate. Eliminate them before they report our defenses.",
+  "level": 12,
+  "prerequisites": ["gates-under-siege"],
+  "objectives": [
+    {
+      "objective_type": "Kill",
+      "target_id": "pact-scout",
+      "count": 10,
+      "description": "Slay 10 Pact skirmishers"
+    },
+    {
+      "objective_type": "Gather",
+      "target_id": "scout-intel",
+      "count": 1,
+      "description": "Recover Pact intelligence"
+    },
+    {
+      "objective_type": "Speak",
+      "target_id": "gate-captain-theron",
+      "count": 1,
+      "description": "Deliver intelligence to Gate Captain Theron"
+    }
+  ],
+  "rewards": {
+    "experience": 1500,
+    "gold_copper": 750,
+    "choice_items": ["venomfang-dagger", "vanguard-training-sword"],
+    "items": ["greater-healing-potion", "minor-mana-potion"]
+  },
+  "giver_id": "gate-captain-theron",
+  "turn_in_id": "gate-captain-theron",
+  "next_quest_id": "reinforcement-request"
+}

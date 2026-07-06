@@ -1,0 +1,18 @@
+{
+  "id": "smuggler-cove-bosses",
+  "entries": [
+    {
+      "entity_id": "captain-brineblood",
+      "weight": 30,
+      "max_count": 1,
+      "positions": [[50.0, 0.0, 50.0]]
+    },
+    {
+      "entity_id": "first-mate-zarrah",
+      "weight": 50,
+      "max_count": 1,
+      "positions": [[48.0, 0.0, 52.0]]
+    }
+  ],
+  "respawn_sec": 600
+}

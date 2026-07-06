@@ -1,0 +1,18 @@
+{
+  "id": "heavy-leather",
+  "name": "Heavy Leather",
+  "description": "A thick, durable hide for armor crafting.",
+  "item_type": "CraftingMaterial",
+  "required_level": 0,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 28,
+  "max_stack": 20
+}

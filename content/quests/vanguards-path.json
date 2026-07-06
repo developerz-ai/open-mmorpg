@@ -1,0 +1,37 @@
+{
+  "id": "vanguards-path",
+  "name": "The Vanguard's Path",
+  "description": "Prove your strength as a Vanguard. Master the cleave technique under Bron's tutelage.",
+  "level": 5,
+  "prerequisites": [],
+  "objectives": [
+    {
+      "objective_type": "Speak",
+      "target_id": "vanguard-trainer-bron",
+      "count": 1,
+      "description": "Speak with Vanguard Trainer Bron"
+    },
+    {
+      "objective_type": "Kill",
+      "target_id": "dawnshore-wolf",
+      "count": 8,
+      "description": "Slay 8 dawnshore wolves using basic attacks"
+    },
+    {
+      "objective_type": "Kill",
+      "target_id": "dawnshore-boar",
+      "count": 3,
+      "description": "Slay 3 boars with heavy strikes"
+    }
+  ],
+  "rewards": {
+    "experience": 600,
+    "gold_copper": 200,
+    "choice_items": ["iron-broadblade"],
+    "items": ["healing-potion"],
+    "abilities": ["cleave"]
+  },
+  "giver_id": "vanguard-trainer-bron",
+  "turn_in_id": "vanguard-trainer-bron",
+  "next_quest_id": null
+}

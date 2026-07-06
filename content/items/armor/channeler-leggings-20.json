@@ -1,0 +1,21 @@
+{
+  "id": "channeler-leggings-20",
+  "name": "Master Channeler's Leggings",
+  "description": "Mail leggings that stride between realms of conquest.",
+  "item_type": "Armor",
+  "slot": "legs",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 10,
+    "constitution": 9,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "epic",
+  "value_copper": 3510,
+  "icon": "textures/solid-colors/gold.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

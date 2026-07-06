@@ -1,0 +1,11 @@
+{
+  "id": "aurelian-concord",
+  "name": "The Aurelian Concord",
+  "description": "Those who build. A pluralist coalition bound by charter, the arcane academy, and the dawn-faith.",
+  "colors": {
+    "primary": "#d4af37",
+    "secondary": "#1f6fb2"
+  },
+  "capital": "solhaven",
+  "hostile_to": ["wildreach-pact"]
+}

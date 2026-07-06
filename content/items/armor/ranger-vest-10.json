@@ -1,0 +1,21 @@
+{
+  "id": "ranger-vest-10",
+  "name": "Adept's Ranger Vest",
+  "description": "Expertly crafted vest for survival.",
+  "item_type": "Armor",
+  "slot": "chest",
+  "required_level": 10,
+  "stats": {
+    "strength": 0,
+    "dexterity": 6,
+    "constitution": 5,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 450,
+  "icon": "textures/solid-colors/green.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

@@ -1,0 +1,24 @@
+{
+  "id": "stance-of-the-mending-stream",
+  "name": "Stance of the Mending Stream",
+  "description": "Flow like water, increasing healing done and reducing casting time for healing abilities.",
+  "max_rank": 1,
+  "cooldown_sec": 2.0,
+  "resource_cost": 15,
+  "cast_time_sec": 1.5,
+  "range_yards": 0.0,
+  "effects": [
+    {
+      "effect": "Buff",
+      "magnitude": 22.0,
+      "scaling": 0.9,
+      "target": "self"
+    },
+    {
+      "effect": "Buff",
+      "magnitude": 18.0,
+      "scaling": 0.4,
+      "target": "self"
+    }
+  ]
+}

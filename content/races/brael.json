@@ -1,0 +1,15 @@
+{
+  "id": "brael",
+  "name": "Brael",
+  "description": "Honor-bound guardians who swear the Oath of the Last Watch; the Concord's first and last line of defense.",
+  "faction_id": "aurelian-concord",
+  "traits": ["guardian-strength"],
+  "stats": {
+    "strength": 2,
+    "dexterity": 0,
+    "constitution": 1,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  }
+}

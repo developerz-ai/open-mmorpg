@@ -1,0 +1,18 @@
+{
+  "id": "healing-touch",
+  "name": "Healing Touch",
+  "description": "Instant primal heal that mends an ally's wounds with the Bloom force.",
+  "max_rank": 1,
+  "cooldown_sec": 8.0,
+  "resource_cost": 18,
+  "cast_time_sec": 0.0,
+  "range_yards": 30.0,
+  "effects": [
+    {
+      "effect": "Heal",
+      "magnitude": 35.0,
+      "scaling": 1.0,
+      "target": "ally"
+    }
+  ]
+}

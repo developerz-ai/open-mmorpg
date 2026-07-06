@@ -1,0 +1,21 @@
+{
+  "id": "oracle-gloves-20",
+  "name": "Fateseer's Oracle Gloves",
+  "description": "Gloves that can shape the threads of destiny.",
+  "item_type": "Armor",
+  "slot": "hands",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 9,
+    "wisdom": 9,
+    "charisma": 9
+  },
+  "quality": "epic",
+  "value_copper": 2650,
+  "icon": "textures/solid-colors/gold.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

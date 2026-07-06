@@ -1,0 +1,21 @@
+{
+  "id": "shade-gloves-15",
+  "name": "Expert's Shade Gloves",
+  "description": "Gloves that strike like cobras.",
+  "item_type": "Armor",
+  "slot": "hands",
+  "required_level": 15,
+  "stats": {
+    "strength": 0,
+    "dexterity": 8,
+    "constitution": 7,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 1050,
+  "icon": "textures/solid-colors/gray.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

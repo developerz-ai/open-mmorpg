@@ -1,0 +1,21 @@
+{
+  "id": "riftblade-boots-1",
+  "name": "Riftblade Boots",
+  "description": "Boots that leave rift traces.",
+  "item_type": "Armor",
+  "slot": "feet",
+  "required_level": 1,
+  "stats": {
+    "strength": 0,
+    "dexterity": 2,
+    "constitution": 1,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "common",
+  "value_copper": 8,
+  "icon": "textures/solid-colors/purple.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

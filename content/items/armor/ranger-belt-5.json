@@ -1,0 +1,21 @@
+{
+  "id": "ranger-belt-5",
+  "name": "Initiate's Ranger Belt",
+  "description": "Belt with extra pouches for gear.",
+  "item_type": "Armor",
+  "slot": "waist",
+  "required_level": 5,
+  "stats": {
+    "strength": 0,
+    "dexterity": 4,
+    "constitution": 3,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 65,
+  "icon": "textures/solid-colors/green.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

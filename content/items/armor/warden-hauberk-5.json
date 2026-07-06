@@ -1,0 +1,21 @@
+{
+  "id": "warden-hauberk-5",
+  "name": "Initiate's Warden Hauberk",
+  "description": "A mail hauberk infused with totemic protection.",
+  "item_type": "Armor",
+  "slot": "chest",
+  "required_level": 5,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 3,
+    "intelligence": 0,
+    "wisdom": 4,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 100,
+  "icon": "textures/solid-colors/green.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

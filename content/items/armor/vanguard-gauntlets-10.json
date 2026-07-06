@@ -1,0 +1,21 @@
+{
+  "id": "vanguard-gauntlets-10",
+  "name": "Veteran's Vanguard Gauntlets",
+  "description": "Masterwork gauntlets for crushing enemy defenses.",
+  "item_type": "Armor",
+  "slot": "hands",
+  "required_level": 10,
+  "stats": {
+    "strength": 3,
+    "dexterity": 0,
+    "constitution": 3,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 300,
+  "icon": "textures/solid-colors/gray.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

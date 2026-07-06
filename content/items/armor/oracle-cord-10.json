@@ -1,0 +1,21 @@
+{
+  "id": "oracle-cord-10",
+  "name": "Prophet's Oracle Cord",
+  "description": "A cord that has absorbed countless prayers.",
+  "item_type": "Armor",
+  "slot": "waist",
+  "required_level": 10,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 3,
+    "intelligence": 5,
+    "wisdom": 5,
+    "charisma": 5
+  },
+  "quality": "rare",
+  "value_copper": 280,
+  "icon": "textures/solid-colors/gold.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

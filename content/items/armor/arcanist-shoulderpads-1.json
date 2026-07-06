@@ -1,0 +1,21 @@
+{
+  "id": "arcanist-shoulderpads-1",
+  "name": "Arcanist Shoulderpads",
+  "description": "Light shoulder protection for arcanists.",
+  "item_type": "Armor",
+  "slot": "shoulder",
+  "required_level": 1,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 1,
+    "intelligence": 1,
+    "wisdom": 1,
+    "charisma": 0
+  },
+  "quality": "common",
+  "value_copper": 6,
+  "icon": "textures/solid-colors/purple.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

@@ -1,0 +1,18 @@
+{
+  "id": "totemic-ward",
+  "name": "Totemic Ward",
+  "description": "Raise a ward of stone and root that slows attackers.",
+  "max_rank": 1,
+  "cooldown_sec": 15.0,
+  "resource_cost": 20,
+  "cast_time_sec": 0.0,
+  "range_yards": 20.0,
+  "effects": [
+    {
+      "effect": "Buff",
+      "magnitude": 10.0,
+      "scaling": 0.5,
+      "target": "ally"
+    }
+  ]
+}

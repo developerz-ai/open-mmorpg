@@ -1,0 +1,24 @@
+{
+  "id": "hollow-strike",
+  "name": "Hollow Strike",
+  "description": "A chilling blow fueled by the Hollow force, sapping enemy strength.",
+  "max_rank": 1,
+  "cooldown_sec": 8.0,
+  "resource_cost": 18,
+  "cast_time_sec": 0.0,
+  "range_yards": 5.0,
+  "effects": [
+    {
+      "effect": "Damage",
+      "magnitude": 14.0,
+      "scaling": 1.0,
+      "target": "enemy"
+    },
+    {
+      "effect": "Debuff",
+      "magnitude": 10.0,
+      "scaling": 0.5,
+      "target": "enemy"
+    }
+  ]
+}

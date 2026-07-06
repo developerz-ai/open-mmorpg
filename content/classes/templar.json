@@ -1,0 +1,17 @@
+{
+  "id": "templar",
+  "name": "Templar",
+  "description": "Armored holy warrior who mends allies and smites the unworthy.",
+  "role": "healer",
+  "abilities": ["smite", "divine-aegis", "lay-on-hands"],
+  "stat_growth": {
+    "strength": 1,
+    "dexterity": 0,
+    "constitution": 2,
+    "intelligence": 0,
+    "wisdom": 2,
+    "charisma": 1
+  },
+  "hp_per_level": 12,
+  "resource_per_level": 8
+}

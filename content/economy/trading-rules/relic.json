@@ -1,0 +1,6 @@
+{
+  "item_pattern": "*-relic",
+  "tradable": false,
+  "auctionable": false,
+  "mailing_allowed": false
+}

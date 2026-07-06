@@ -1,0 +1,21 @@
+{
+  "id": "ranger-boots-5",
+  "name": "Initiate's Ranger Boots",
+  "description": "Boots that track silently through brush.",
+  "item_type": "Armor",
+  "slot": "feet",
+  "required_level": 5,
+  "stats": {
+    "strength": 0,
+    "dexterity": 4,
+    "constitution": 3,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 85,
+  "icon": "textures/solid-colors/green.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

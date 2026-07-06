@@ -1,0 +1,14 @@
+{
+  "id": "hollowveil-crypt",
+  "name": "Hollowveil Crypt",
+  "min_level": 6,
+  "recommended_level": 8,
+  "max_players": 5,
+  "boss_ids": ["hollowveil-warden"],
+  "trash_spawn_tables": [],
+  "loot_tables": ["venomfang-dagger", "hollowveil-mantle", "crypt-relic"],
+  "time_limit_minutes": 60,
+  "lockout_hours": 24,
+  "entrance_zone_id": "hollowveil-barrows",
+  "entrance_position": [120.0, 0.0, 90.0]
+}

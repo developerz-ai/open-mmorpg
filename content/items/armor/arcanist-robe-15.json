@@ -1,0 +1,21 @@
+{
+  "id": "arcanist-robe-15",
+  "name": "Expert's Arcanist Robe",
+  "description": "Robes that serve as a second skin for masters of the arcane.",
+  "item_type": "Armor",
+  "slot": "chest",
+  "required_level": 15,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 9,
+    "wisdom": 8,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 1580,
+  "icon": "textures/solid-colors/purple.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

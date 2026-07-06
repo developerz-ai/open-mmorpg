@@ -1,0 +1,21 @@
+{
+  "id": "revenant-sabatons-15",
+  "name": "Death's Revenant Sabatons",
+  "description": "Epic sabatons that left death in their wake.",
+  "item_type": "Armor",
+  "slot": "feet",
+  "required_level": 15,
+  "stats": {
+    "strength": 4,
+    "dexterity": 4,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 910,
+  "icon": "textures/solid-colors/orange.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

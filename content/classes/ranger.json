@@ -1,0 +1,17 @@
+{
+  "id": "ranger",
+  "name": "Ranger",
+  "description": "Marksman and beast-companion, master of the untamed reach.",
+  "role": "dps",
+  "abilities": ["quick-shot", "hunters-mark", "serpent-sting"],
+  "stat_growth": {
+    "strength": 0,
+    "dexterity": 3,
+    "constitution": 1,
+    "intelligence": 0,
+    "wisdom": 1,
+    "charisma": 0
+  },
+  "hp_per_level": 9,
+  "resource_per_level": 6
+}

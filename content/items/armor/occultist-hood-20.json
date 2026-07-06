@@ -1,0 +1,21 @@
+{
+  "id": "occultist-hood-20",
+  "name": "Voidlord's Occultist Hood",
+  "description": "A hood that commands the Deep itself.",
+  "item_type": "Armor",
+  "slot": "head",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 9,
+    "wisdom": 10,
+    "charisma": 0
+  },
+  "quality": "epic",
+  "value_copper": 3200,
+  "icon": "textures/solid-colors/violet.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

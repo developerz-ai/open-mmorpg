@@ -1,0 +1,21 @@
+{
+  "id": "tattered-cloak",
+  "name": "Tattered Cloak",
+  "description": "Barely provides warmth, let alone protection.",
+  "item_type": "Trinket",
+  "slot": "back",
+  "required_level": 1,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 1,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "common",
+  "value_copper": 7,
+  "icon": "textures/checker-512.png",
+  "mesh": "meshes/placeholder-plane.gltf",
+  "max_stack": 1
+}

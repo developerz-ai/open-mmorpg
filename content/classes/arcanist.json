@@ -1,0 +1,17 @@
+{
+  "id": "arcanist",
+  "name": "Arcanist",
+  "description": "Scholar of raw arcane; Lattice woven into bolts and flame.",
+  "role": "dps",
+  "abilities": ["arcane-bolt", "fireball", "frostbolt"],
+  "stat_growth": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 3,
+    "wisdom": 1,
+    "charisma": 1
+  },
+  "hp_per_level": 7,
+  "resource_per_level": 12
+}

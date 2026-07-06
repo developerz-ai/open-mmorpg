@@ -1,0 +1,18 @@
+{
+  "id": "quick-shot",
+  "name": "Quick Shot",
+  "description": "A swift arrow loosed without breaking stride.",
+  "max_rank": 1,
+  "cooldown_sec": 0.0,
+  "resource_cost": 8,
+  "cast_time_sec": 0.0,
+  "range_yards": 35.0,
+  "effects": [
+    {
+      "effect": "Damage",
+      "magnitude": 11.0,
+      "scaling": 1.0,
+      "target": "enemy"
+    }
+  ]
+}

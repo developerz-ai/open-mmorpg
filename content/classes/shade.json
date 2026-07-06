@@ -1,0 +1,17 @@
+{
+  "id": "shade",
+  "name": "Shade",
+  "description": "Stealthed assassin striking from shadow with precise lethality.",
+  "role": "dps",
+  "abilities": ["backstab", "shadowstep", "venom-blade"],
+  "stat_growth": {
+    "strength": 1,
+    "dexterity": 3,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 1
+  },
+  "hp_per_level": 8,
+  "resource_per_level": 7
+}

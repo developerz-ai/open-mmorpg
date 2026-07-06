@@ -1,0 +1,21 @@
+{
+  "id": "warden-helm-10",
+  "name": "Adept's Warden Helm",
+  "description": "A mail helm crowned with crystalline protection.",
+  "item_type": "Armor",
+  "slot": "head",
+  "required_level": 10,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 0,
+    "wisdom": 6,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 360,
+  "icon": "textures/solid-colors/green.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

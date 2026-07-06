@@ -1,0 +1,21 @@
+{
+  "id": "oracle-cord-15",
+  "name": "Visionary's Oracle Cord",
+  "description": "A cord that stores the weight of destiny.",
+  "item_type": "Armor",
+  "slot": "waist",
+  "required_level": 15,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 4,
+    "intelligence": 7,
+    "wisdom": 7,
+    "charisma": 7
+  },
+  "quality": "rare",
+  "value_copper": 870,
+  "icon": "textures/solid-colors/gold.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

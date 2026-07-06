@@ -1,0 +1,21 @@
+{
+  "id": "templar-gauntlets-5",
+  "name": "Acolyte's Templar Gauntlets",
+  "description": "Consecrated gauntlets for delivering divine justice.",
+  "item_type": "Armor",
+  "slot": "hands",
+  "required_level": 5,
+  "stats": {
+    "strength": 2,
+    "dexterity": 0,
+    "constitution": 2,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 70,
+  "icon": "textures/solid-colors/gray.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

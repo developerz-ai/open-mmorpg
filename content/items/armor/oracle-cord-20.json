@@ -1,0 +1,21 @@
+{
+  "id": "oracle-cord-20",
+  "name": "Fateseer's Oracle Cord",
+  "description": "A cord that can bind the threads of fate.",
+  "item_type": "Armor",
+  "slot": "waist",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 9,
+    "wisdom": 9,
+    "charisma": 9
+  },
+  "quality": "epic",
+  "value_copper": 2420,
+  "icon": "textures/solid-colors/gold.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

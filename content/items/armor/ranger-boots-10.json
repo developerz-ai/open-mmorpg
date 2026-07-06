@@ -1,0 +1,21 @@
+{
+  "id": "ranger-boots-10",
+  "name": "Adept's Ranger Boots",
+  "description": "Boots enchanted for silent stepping.",
+  "item_type": "Armor",
+  "slot": "feet",
+  "required_level": 10,
+  "stats": {
+    "strength": 0,
+    "dexterity": 6,
+    "constitution": 5,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 380,
+  "icon": "textures/solid-colors/green.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

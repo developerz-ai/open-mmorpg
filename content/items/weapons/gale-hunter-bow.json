@@ -1,0 +1,21 @@
+{
+  "id": "gale-hunter-bow",
+  "name": "Gale Hunter Bow",
+  "description": "A lightweight bow that rides the wind with every shot.",
+  "item_type": "Weapon",
+  "slot": "mainhand",
+  "required_level": 5,
+  "stats": {
+    "strength": 0,
+    "dexterity": 5,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 160,
+  "icon": "textures/checker-512.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

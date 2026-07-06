@@ -1,0 +1,18 @@
+{
+  "id": "tiger-eye",
+  "name": "Tiger Eye",
+  "description": "A golden gemstone with chatoyant bands.",
+  "item_type": "CraftingMaterial",
+  "required_level": 0,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 15,
+  "max_stack": 20
+}
