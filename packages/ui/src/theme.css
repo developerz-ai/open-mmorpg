@@ -22,6 +22,7 @@
   --color-success: 120 200 140;
   --color-danger: 232 120 120;
   --color-warning: 226 186 110;
+  --color-focus-ring: 96 170 240;
 
   /* Motion — tokenized once, referenced by role (transform/opacity only) */
   --dur-instant: 90ms;
@@ -108,6 +109,33 @@ a:hover {
   color: rgb(var(--color-accent-strong));
 }
 
+/* High-contrast mode — overrides for WCAG AAA compliance */
+@media (prefers-contrast: more) {
+  :root {
+    --color-bg: 0 0 0;
+    --color-bg-soft: 30 30 30;
+    --color-surface: 45 45 45;
+    --color-surface-hover: 60 60 60;
+    --color-fg: 255 255 255;
+    --color-fg-strong: 255 255 255;
+    --color-fg-muted: 210 210 210;
+    --color-line: 120 120 120;
+    --color-accent: 100 180 255;
+    --color-accent-strong: 140 200 255;
+    --color-success: 140 220 160;
+    --color-danger: 255 140 140;
+    --color-warning: 255 220 140;
+    --color-focus-ring: 255 255 255;
+  }
+
+  /* Ensure borders are visible in high-contrast mode */
+  .bg-bg,
+  .bg-bg-soft,
+  .bg-surface {
+    border: 1px solid rgb(var(--color-line));
+  }
+}
+
 /* Screen-reader-only — labels that must exist for a11y but not render visibly. */
 .sr-only {
   position: absolute;
@@ -119,4 +147,21 @@ a:hover {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* Enhanced focus indicators — WCAG 2.1 2.4.7 Focus Visible */
+:focus-visible {
+  outline: 3px solid rgb(var(--color-focus-ring));
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 0 0 1px rgb(var(--color-bg));
+}
+
+/* Ensure focus is always visible on interactive elements */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid rgb(var(--color-focus-ring));
+  outline-offset: 2px;
 }

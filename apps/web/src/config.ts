@@ -25,6 +25,7 @@ const EnvSchema = z.object({
   VITE_REALM_NAME: z.string().min(1).default('Open-MMORPG'),
   VITE_REALM_TAGLINE: z.string().optional(),
   VITE_LOGO_URL: z.string().optional(),
+  VITE_FAVICON_URL: z.string().optional(),
   VITE_GATEWAY_URL: z.string().url().default('http://localhost:8080'),
   VITE_WORLDSVC_URL: z.string().url().default('http://localhost:8081'),
   VITE_LOCALE: z
@@ -57,6 +58,7 @@ export interface OperatorConfig {
     realmName: string;
     tagline?: string;
     logoUrl?: string;
+    faviconUrl?: string;
     /** Accent token overrides ("R G B" channels), applied within the dark palette. */
     accent?: string;
     accentStrong?: string;
@@ -102,6 +104,7 @@ export function parseConfig(raw: Record<string, unknown>): OperatorConfig {
       realmName: e.VITE_REALM_NAME,
       tagline: e.VITE_REALM_TAGLINE,
       logoUrl: e.VITE_LOGO_URL,
+      faviconUrl: e.VITE_FAVICON_URL,
       accent: e.VITE_BRAND_ACCENT,
       accentStrong: e.VITE_BRAND_ACCENT_STRONG,
     },

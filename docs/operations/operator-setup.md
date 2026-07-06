@@ -30,8 +30,9 @@ VITE_WORLDSVC_URL="https://world.myrealm.com" # Armory, auction house, feed
 
 ```bash
 # Branding
-VITE_REALM_TAGLINE="Adventure awaits"         # Hero subtitle
+VITE_REALM_TAGLINE="Adventure awaits"           # Hero subtitle
 VITE_LOGO_URL="https://cdn.myrealm.com/logo.png" # Custom logo (replaces text)
+VITE_FAVICON_URL="https://cdn.myrealm.com/favicon.ico" # Custom favicon
 
 # Theming (dark theme only — accent retint within the palette)
 VITE_BRAND_ACCENT="96 170 240"                # R G B channels (overrides --color-accent)
@@ -298,6 +299,113 @@ Check the browser console for Zod validation errors (bad env format). Verify:
 ### Strings Show as `⟦key⟧`
 
 Missing i18n keys — check the locale catalog has the required key. Example: `⟦nav.home⟧` means `nav.home` is missing from the active locale.
+
+## Brand Preview Mode
+
+For operators testing custom themes, the portal includes a brand preview mode in development. When enabled, it displays a visual indicator and logs the current configuration to the browser console.
+
+To enable brand preview:
+
+```typescript
+import { enableBrandPreview } from './lib/brand';
+import { config } from './config';
+
+// In your development entry point
+if (import.meta.env.DEV) {
+  enableBrandPreview(config);
+}
+```
+
+This will:
+- Add a floating indicator showing the realm name
+- Log the current theme configuration to the console
+- Validate contrast ratios and warn if they don't meet WCAG AA
+
+## Example Configurations
+
+### Default (Blue Accent)
+
+```bash
+VITE_REALM_NAME="Open-MMORPG"
+VITE_BRAND_ACCENT="96 170 240"
+VITE_BRAND_ACCENT_STRONG="130 190 248"
+```
+
+### Gold Theme
+
+```bash
+VITE_REALM_NAME="Azeroth Realms"
+VITE_REALM_TAGLINE="Your legend awaits"
+VITE_BRAND_ACCENT="226 186 110"
+VITE_BRAND_ACCENT_STRONG="248 210 140"
+```
+
+### Green Theme
+
+```bash
+VITE_REALM_NAME="Nature's Realm"
+VITE_REALM_TAGLINE="Explore the wild"
+VITE_BRAND_ACCENT="120 200 140"
+VITE_BRAND_ACCENT_STRONG="140 220 160"
+```
+
+### Purple Theme
+
+```bash
+VITE_REALM_NAME="Mystic Realms"
+VITE_REALM_TAGLINE="Magic awaits"
+VITE_BRAND_ACCENT="168 130 240"
+VITE_BRAND_ACCENT_STRONG="190 160 255"
+```
+
+### Red/Danger Theme
+
+```bash
+VITE_REALM_NAME="Bloodlust Realms"
+VITE_REALM_TAGLINE="Battle for glory"
+VITE_BRAND_ACCENT="232 120 120"
+VITE_BRAND_ACCENT_STRONG="255 140 140"
+```
+
+## Contrast Validation
+
+When setting custom accent colors, ensure they meet WCAG AA contrast requirements:
+
+- **Accent on background**: Minimum 3:1 contrast ratio (for large UI elements)
+- **Accent-strong on background**: Minimum 4.5:1 contrast ratio (for normal text)
+- **Focus indicators**: Minimum 3:1 contrast ratio against adjacent colors
+
+The portal automatically validates contrast in development mode and logs warnings to the console if ratios are below thresholds.
+
+To manually validate:
+
+1. Build your config with custom accents
+2. Load the site in development mode
+3. Check the browser console for contrast warnings
+4. Use the browser's contrast checker (DevTools) to verify specific elements
+
+Example warning:
+```
+[Brand] Contrast warnings: [
+  {
+    key: 'accent-strong-on-bg',
+    message: 'Accent strong has low contrast on background for text',
+    ratio: 3.8,
+    required: 4.5
+  }
+]
+```
+
+## Favicon and OG Meta Tags
+
+The portal automatically sets favicon and Open Graph meta tags based on your configuration:
+
+- **Favicon**: Set `VITE_FAVICON_URL` to your favicon path
+- **OG Image**: Set `VITE_LOGO_URL` to use as the Open Graph image
+- **OG Title**: Automatically set to `VITE_REALM_NAME`
+- **OG Description**: Automatically set to `VITE_REALM_TAGLINE`
+
+These tags improve how your realm appears when shared on social media platforms.
 
 ## Next Steps
 

@@ -145,10 +145,50 @@
   display: flex;
   gap: 0.75rem;
   align-items: baseline;
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  transition: background var(--dur-fast) var(--ease-out);
+}
+.feed-item--new {
+  background: rgb(var(--color-accent) / 0.1);
+  border-left: 2px solid rgb(var(--color-accent));
+  padding-left: 0.5rem;
+}
+.feed-item--highlighted {
+  background: rgb(var(--color-warning) / 0.15);
+  border: 1px solid rgb(var(--color-warning));
+  animation: feed-highlight 1s ease-out;
+}
+@keyframes feed-highlight {
+  0% {
+    background: rgb(var(--color-warning) / 0.4);
+  }
+  100% {
+    background: rgb(var(--color-warning) / 0.15);
+  }
+}
+.feed-item__new-badge {
+  color: rgb(var(--color-accent));
+  font-size: 1.2rem;
+  line-height: 1;
 }
 .feed-item__time {
   font-size: 0.85rem;
   white-space: nowrap;
+}
+.feed-item__share {
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: rgb(var(--color-fg-muted));
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.feed-item__share:hover {
+  color: rgb(var(--color-accent));
+}
+.feed-item__share:focus-visible {
+  outline: 2px solid rgb(var(--color-focus-ring));
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
 }
 
 /* A button that reads as a link (for in-table drill-downs). */
@@ -158,6 +198,17 @@
   padding: 0;
   font: inherit;
   cursor: pointer;
+  color: rgb(var(--color-accent-strong));
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.link-button:hover {
+  color: rgb(var(--color-accent));
+}
+.link-button:focus-visible {
+  outline: 2px solid rgb(var(--color-focus-ring));
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
 }
 
 /* Price-history bar chart */
@@ -393,4 +444,95 @@
 .shop-item__price {
   font-weight: 500;
   color: rgb(var(--color-fg-strong));
+}
+
+/* Character stats grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 1rem;
+}
+
+/* Guild info */
+.guild-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Spinner wrapper for centered loading */
+.spinner-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  background: rgb(var(--color-bg-soft));
+  border-radius: var(--radius-sm);
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: rgb(var(--color-fg-muted));
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgb(var(--color-fg-strong));
+}
+
+/* Talents grid */
+.talents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: 1rem;
+}
+
+.talent-item {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: rgb(var(--color-bg-soft));
+  border-radius: var(--radius-sm);
+}
+
+.talent-icon {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(var(--color-surface));
+  border-radius: var(--radius-sm);
+}
+
+.talent-icon img {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+}
+
+.talent-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.talent-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgb(var(--color-fg-strong));
+}
+
+.talent-rank {
+  font-size: 0.85rem;
+  color: rgb(var(--color-fg-muted));
 }
