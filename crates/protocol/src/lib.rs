@@ -68,8 +68,16 @@ pub enum ServerMsg {
         character: CharacterId,
         shard: ShardId,
     },
-    /// An authoritative world snapshot for `tick`.
-    Snapshot { tick: Tick, self_pos: Vec3 },
+    /// An authoritative delta snapshot for `tick`.
+    ///
+    /// `delta` is a netcode `DeltaFrame` — the entities that changed or left the
+    /// client's view since its acknowledged baseline — serialized to bytes.
+    /// Protocol carries it opaquely so this crate never depends on `omm-netcode`:
+    /// the shard encodes the frame, the client decodes it, and a wire change to
+    /// the frame stays one edit in netcode. `tick` is mirrored out of the
+    /// payload so the reliability layer can drop a stale snapshot without
+    /// decoding it.
+    Snapshot { tick: Tick, delta: Vec<u8> },
     /// A rejected request, with a stable, wire-safe code.
     Rejected { code: u16 },
     /// Keep-alive reply.
@@ -118,5 +126,18 @@ mod tests {
             ServerMsg::rejected(ClientCode::Forbidden),
             ServerMsg::Rejected { code: 1002 }
         );
+    }
+
+    #[test]
+    fn server_snapshot_roundtrips_through_json() {
+        // The delta payload is opaque bytes on the wire — protocol never decodes
+        // it, so a byte vector stands in for a serialized netcode frame here.
+        let msg = ServerMsg::Snapshot {
+            tick: Tick(5),
+            delta: vec![1, 2, 3, 4],
+        };
+        let json = serde_json::to_string(&msg).unwrap();
+        let back: ServerMsg = serde_json::from_str(&json).unwrap();
+        assert_eq!(msg, back);
     }
 }

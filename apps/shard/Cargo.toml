@@ -7,17 +7,26 @@ rust-version.workspace = true
 license.workspace = true
 repository.workspace = true
 
+[lib]
+name = "omm_shard"
+path = "src/lib.rs"
+
 [[bin]]
 name = "omm-shard"
 path = "src/main.rs"
 
 [dependencies]
 tokio.workspace = true
+thiserror.workspace = true
+serde_json.workspace = true
 tracing.workspace = true
 tracing-subscriber.workspace = true
 omm-ecs-core.workspace = true
 omm-sim.workspace = true
 omm-netcode.workspace = true
+omm-transport.workspace = true
+omm-world.workspace = true
+omm-content-schema.workspace = true
 omm-protocol.workspace = true
 
 [lints]

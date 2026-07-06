@@ -69,6 +69,15 @@ impl World {
         self.actors.get(&id)
     }
 
+    /// Iterate live actors in server-issued id order.
+    ///
+    /// Read-only and deterministic (`BTreeMap` order), so the replication egress
+    /// can snapshot the whole world without reaching into its internals. Yields
+    /// each actor beside the server id a snapshot stamps on the wire.
+    pub fn iter(&self) -> impl Iterator<Item = (EntityId, &Actor)> {
+        self.actors.iter().map(|(&id, actor)| (id, actor))
+    }
+
     /// Number of live actors.
     #[must_use]
     pub fn len(&self) -> usize {
@@ -169,11 +178,14 @@ impl World {
 /// Resolve the target id a client named onto a sim [`EntityId`].
 ///
 /// A client can only *name* a target by the [`CharacterId`] it sees on the wire;
-/// the shard owns the authoritative entity set and its server-issued ids. Until
-/// the session registry lands (client ↔ server-issued entity, a later slice), the
-/// two id spaces are bridged by raw value. This stays server-authoritative: the
-/// resolved id is still validated inside [`World::cast`], so a client naming an
-/// absent or illegal target is rejected, never trusted.
+/// the shard owns the authoritative entity set and its server-issued ids. The
+/// *caster* is already resolved server-side — the shard's session registry binds
+/// each connection to the entity it drives — so the id keying every intent is
+/// never one a client asserted. The *target* wire id is still bridged by raw
+/// value here; resolving it against the shard's live entity set moves to the
+/// input-batch boundary in a later slice. Either way this stays
+/// server-authoritative: the resolved id is validated inside [`World::cast`], so
+/// a client naming an absent or illegal target is rejected, never trusted.
 fn resolve_target(target: Option<CharacterId>) -> Option<EntityId> {
     target.map(|c| EntityId::new(c.raw()))
 }
@@ -230,6 +242,18 @@ mod tests {
         let id = w.spawn(actor());
         assert!(w.get(id).is_some());
         assert!(w.get(EntityId::new(999)).is_none());
+    }
+
+    #[test]
+    fn iter_yields_actors_in_server_id_order() {
+        let mut w = World::new();
+        let a = w.spawn(Actor::new(at(1.0, 0.0), Team(1), 100, 100));
+        let b = w.spawn(Actor::new(at(2.0, 0.0), Team(1), 100, 100));
+        let ids: Vec<_> = w.iter().map(|(id, _)| id).collect();
+        assert_eq!(ids, vec![a, b]);
+        // The borrow reads real actor state, not a placeholder.
+        let found = w.iter().find(|(id, _)| *id == a).unwrap();
+        assert_eq!(found.1.pos.0, at(1.0, 0.0));
     }
 
     #[test]
