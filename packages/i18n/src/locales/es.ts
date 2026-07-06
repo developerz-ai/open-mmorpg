@@ -48,8 +48,7 @@ export const es: Catalog = {
   home: {
     heroCta: 'Entra al reino',
     downloadHeading: 'Descargar el cliente',
-    downloadBody:
-      'Juega en Windows, macOS o Linux. El cliente es una aplicación nativa ligera.',
+    downloadBody: 'Juega en Windows, macOS o Linux. El cliente es una aplicación nativa ligera.',
     download: 'Descargar',
     featuresHeading: 'Te espera',
     feature: {
