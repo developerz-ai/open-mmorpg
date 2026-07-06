@@ -1,0 +1,42 @@
+[package]
+name = "omm-engine-render"
+description = "Engine render pipeline: clustered-forward+ PBR, CSM, baked GI, spatial AA, tier selection, material mapping."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+# Headless-safe core: app lifecycle, ECS (messages/systems), and reflection. None
+# of these pull a GPU/window. Material data mapping, capability tier selection,
+# CSM cascade math, and frame-time instrumentation are pure, headless logic.
+bevy_app.workspace = true
+bevy_asset.workspace = true
+bevy_ecs.workspace = true
+bevy_reflect.workspace = true
+bevy_math.workspace = true
+# Engine libraries: asset server (manifest/LOD/streaming), core plugin registry.
+omm-engine-core.workspace = true
+omm-engine-assets.workspace = true
+# Typed, fail-loud errors for render-layer operations.
+thiserror.workspace = true
+# Render pipeline crates: clustered-forward+ PBR, CSM, material bindings,
+# render pass organization. Gated by `render` feature — headless builds never
+# compile them.
+bevy_render = { workspace = true, optional = true }
+bevy_pbr = { workspace = true, optional = true }
+bevy_core_pipeline = { workspace = true, optional = true }
+
+[dev-dependencies]
+omm-engine-core.workspace = true
+
+[features]
+default = []
+# Enables the full render pipeline (native/AAA heads): PBR material system,
+# core render passes, and CSM. Compiles device code and render shaders.
+# Disabled in headless/server/test builds.
+render = ["dep:bevy_render", "dep:bevy_pbr", "dep:bevy_core_pipeline"]
+
+[lints]
+workspace = true

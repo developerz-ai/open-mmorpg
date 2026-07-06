@@ -3365,6 +3365,23 @@ dependencies = [
 ]
 
 [[package]]
+name = "omm-engine-render"
+version = "0.0.0"
+dependencies = [
+ "bevy_app",
+ "bevy_asset",
+ "bevy_core_pipeline",
+ "bevy_ecs",
+ "bevy_math",
+ "bevy_pbr",
+ "bevy_reflect",
+ "bevy_render",
+ "omm-engine-assets",
+ "omm-engine-core",
+ "thiserror 2.0.18",
+]
+
+[[package]]
 name = "omm-engine-scene"
 version = "0.0.0"
 dependencies = [
