@@ -199,4 +199,24 @@ export const en: Catalog = {
     osLinux: 'Linux (Ubuntu 20.04+)',
     specsLinux: 'x64 CPU, 4GB RAM, 500MB disk',
   },
+  cashShop: {
+    heading: 'Cash Shop',
+    allCategories: 'All',
+    buy: 'Buy',
+    buying: 'Buying…',
+    bought: 'Purchased {item} for {price} credits.',
+    currency: 'credits',
+    col: {
+      item: 'Item',
+      category: 'Category',
+      price: 'Price',
+    },
+    empty: 'No items in this category.',
+    category: {
+      boosts: 'Boosts',
+      cosmetics: 'Cosmetics',
+      account: 'Account',
+      mounts: 'Mounts',
+    },
+  },
 };
