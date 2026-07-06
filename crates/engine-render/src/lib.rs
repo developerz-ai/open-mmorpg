@@ -19,8 +19,10 @@
 //! for reflection so tools and agents can enumerate them.
 //! → `docs/specs/game-engine/rendering/README.md`.
 
+mod budget;
 mod error;
 mod material;
+mod shadows;
 mod tier;
 
 #[cfg(feature = "render")]
@@ -28,8 +30,10 @@ pub use bevy_pbr;
 #[cfg(feature = "render")]
 pub use bevy_render;
 
+pub use budget::{FrameBudget, FrameSample, RenderBudget};
 pub use error::RenderError;
 pub use material::{GltfMetallicRoughness, MaterialAlphaMode, PbrMaterial};
+pub use shadows::{CascadeInterval, CascadeSplits, CsmConfig, MAX_CASCADES};
 pub use tier::{AntiAliasing, GlobalIllumination, GpuCapabilities, RenderTier};
 
 use bevy_app::{App, Plugin};
@@ -51,8 +55,10 @@ pub struct EngineRenderPlugin;
 impl Plugin for EngineRenderPlugin {
     fn build(&self, app: &mut App) {
         // Headless-safe, always: the render-config data types are reflected so the
-        // inspector / MCP editor / agents can enumerate them in any build.
+        // inspector / MCP editor / agents can enumerate them in any build, and the
+        // frame-budget instrumentation resource exists to be read (pure data, no GPU).
         register_render_types(app);
+        app.init_resource::<RenderBudget>();
 
         #[cfg(feature = "render")]
         {
@@ -80,7 +86,13 @@ fn register_render_types(app: &mut App) {
         .register_type::<GpuCapabilities>()
         .register_type::<MaterialAlphaMode>()
         .register_type::<GltfMetallicRoughness>()
-        .register_type::<PbrMaterial>();
+        .register_type::<PbrMaterial>()
+        .register_type::<CsmConfig>()
+        .register_type::<CascadeInterval>()
+        .register_type::<CascadeSplits>()
+        .register_type::<FrameBudget>()
+        .register_type::<FrameSample>()
+        .register_type::<RenderBudget>();
 }
 
 #[cfg(test)]
@@ -114,11 +126,33 @@ mod tests {
             TypeId::of::<MaterialAlphaMode>(),
             TypeId::of::<GltfMetallicRoughness>(),
             TypeId::of::<PbrMaterial>(),
+            TypeId::of::<CsmConfig>(),
+            TypeId::of::<CascadeInterval>(),
+            TypeId::of::<CascadeSplits>(),
+            TypeId::of::<FrameBudget>(),
+            TypeId::of::<FrameSample>(),
+            TypeId::of::<RenderBudget>(),
         ] {
             assert!(
                 registry.get(type_id).is_some(),
                 "a render-config type is not registered"
             );
         }
+    }
+
+    /// The headless build's plugin wiring: adding [`EngineRenderPlugin`] with the
+    /// `render` feature off must register the config types and insert the pure
+    /// frame-budget resource — no GPU, no window. Gated off under `render` so
+    /// `--all-features` never tries to create a device on the display-less runner.
+    #[cfg(not(feature = "render"))]
+    #[test]
+    fn headless_plugin_inserts_budget_resource() {
+        let mut app = App::new();
+        app.add_plugins(EnginePlugins)
+            .add_plugins(EngineRenderPlugin);
+        assert!(
+            app.world().get_resource::<RenderBudget>().is_some(),
+            "EngineRenderPlugin must insert the RenderBudget instrumentation resource"
+        );
     }
 }
