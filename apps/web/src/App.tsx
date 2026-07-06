@@ -16,6 +16,7 @@ const Armory = lazy(() => import('./routes/Armory.tsx'));
 const CharacterPage = lazy(() => import('./routes/CharacterPage.tsx'));
 const GuildPage = lazy(() => import('./routes/GuildPage.tsx'));
 const AuctionHouse = lazy(() => import('./routes/AuctionHouse.tsx'));
+const CashShop = lazy(() => import('./routes/CashShop.tsx'));
 const WorldFeed = lazy(() => import('./routes/WorldFeed.tsx'));
 
 /**
@@ -40,6 +41,9 @@ export function App(): JSX.Element {
       </Show>
       <Show when={isEnabled('auctionHouse')}>
         <Route path="/auction" component={AuctionHouse} />
+      </Show>
+      <Show when={isEnabled('cashShop')}>
+        <Route path="/shop" component={CashShop} />
       </Show>
       <Show when={isEnabled('worldFeed')}>
         <Route path="/feed" component={WorldFeed} />
