@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "bun test",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "test:e2e:shop": "CASH_SHOP_ENABLED=true playwright test e2e/shop-enabled.e2e.ts"
   },
   "dependencies": {
     "@omm/i18n": "workspace:*",

@@ -32,6 +32,9 @@ export function SiteHeader(): JSX.Element {
         <Show when={isEnabled('auctionHouse')}>
           <A href="/auction">{t('nav.auction')}</A>
         </Show>
+        <Show when={isEnabled('cashShop')}>
+          <A href="/shop">{t('nav.cashShop')}</A>
+        </Show>
         <Show when={isEnabled('worldFeed')}>
           <A href="/feed">{t('nav.feed')}</A>
         </Show>
