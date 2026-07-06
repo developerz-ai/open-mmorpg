@@ -1,3 +1,4 @@
+import { z } from 'zod';
 import { AuthError } from '../errors.ts';
 import type { MockRequest, MockRoute } from './backend.ts';
 import { pattern } from './backend.ts';
@@ -31,8 +32,10 @@ function seedAccount(): Stored {
 }
 
 const SEED_EMAIL = 'aria@realm.test';
+const SEED_ID = 'acc_seed';
 const accounts = new Map<string, Stored>([[SEED_EMAIL, seedAccount()]]);
 let seq = 0;
+let currentAccountId = SEED_ID;
 
 /**
  * Restore the seed account — test-only. Account-management endpoints mutate the
@@ -42,6 +45,7 @@ export function resetAuthMock(): void {
   accounts.clear();
   accounts.set(SEED_EMAIL, seedAccount());
   seq = 0;
+  currentAccountId = SEED_ID;
 }
 
 /** The public account projection — the shape `AccountSchema` parses. */
@@ -53,11 +57,22 @@ function session(a: Stored) {
   return { token: `mock.${a.id}`, account: projection(a) };
 }
 
+const UpdateProfileBody = z.object({
+  displayName: z.string().trim().min(1).optional(),
+  email: z.string().trim().email().optional(),
+});
+
+const ChangePasswordBody = z.object({
+  currentPassword: z.string().min(1),
+  newPassword: z.string().min(8),
+});
+
 /** The mock's notion of the logged-in account (the seed). Throws if absent. */
 function currentAccount(): Stored {
-  const seed = accounts.get(SEED_EMAIL);
-  if (!seed) throw new AuthError('no session', 'invalid_credentials');
-  return seed;
+  for (const acc of accounts.values()) {
+    if (acc.id === currentAccountId) return acc;
+  }
+  throw new AuthError('no session', 'invalid_credentials');
 }
 
 function asInput(body: unknown): { displayName: string; email: string; password: string } {
@@ -119,18 +134,19 @@ export const authRoutes: MockRoute[] = [
     method: 'PUT',
     test: pattern('/account'),
     resolve: ({ body }: MockRequest) => {
-      const b = (body ?? {}) as Partial<{ displayName: string; email: string }>;
+      const b = UpdateProfileBody.parse(body ?? {});
       const acc = currentAccount();
-      if (b.email !== undefined && b.email !== acc.email && accounts.has(b.email)) {
+      const oldEmail = acc.email;
+      if (b.email !== undefined && b.email !== oldEmail && accounts.has(b.email)) {
         throw new AuthError('email taken', 'email_taken');
       }
-      if (typeof b.displayName === 'string' && b.displayName.trim().length > 0) {
-        acc.displayName = b.displayName.trim();
+      if (b.displayName !== undefined) {
+        acc.displayName = b.displayName;
       }
-      if (b.email !== undefined && b.email !== acc.email) {
-        accounts.delete(acc.email);
+      if (b.email !== undefined && b.email !== oldEmail) {
+        accounts.delete(oldEmail);
         acc.email = b.email;
-        accounts.set(acc.email, acc);
+        accounts.set(b.email, acc);
       }
       return projection(acc);
     },
@@ -140,13 +156,18 @@ export const authRoutes: MockRoute[] = [
     method: 'POST',
     test: pattern('/account/password'),
     resolve: ({ body }: MockRequest) => {
-      const b = (body ?? {}) as Partial<{ currentPassword: string; newPassword: string }>;
-      const acc = currentAccount();
-      if (!b.currentPassword || b.currentPassword !== acc.password) {
-        throw new AuthError('wrong current password', 'wrong_password');
+      const result = ChangePasswordBody.safeParse(body ?? {});
+      if (!result.success) {
+        const newPasswordIssue = result.error.issues.find((i) => i.path[0] === 'newPassword');
+        if (newPasswordIssue?.code === 'too_small') {
+          throw new AuthError('password too short', 'password_too_short');
+        }
+        throw new AuthError('invalid request', 'invalid_request');
       }
-      if (!b.newPassword || b.newPassword.length < 8) {
-        throw new AuthError('password too short', 'password_too_short');
+      const b = result.data;
+      const acc = currentAccount();
+      if (b.currentPassword !== acc.password) {
+        throw new AuthError('wrong current password', 'wrong_password');
       }
       acc.password = b.newPassword;
       return { ok: true as const };
