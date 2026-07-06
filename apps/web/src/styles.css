@@ -257,3 +257,55 @@
   font-size: 0.9rem;
   margin-top: 0;
 }
+
+/* Checksum verifier */
+.verifier__actions {
+  margin-top: 1rem;
+}
+.verifier__result {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.verifier__match {
+  font-size: 0.9rem;
+  padding-left: 0.5rem;
+}
+.verifier__help {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgb(var(--color-line));
+}
+.verifier__example {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+  margin-top: 0.5rem;
+}
+.verifier__platform {
+  font-size: 0.85rem;
+  min-width: 6rem;
+}
+.verifier__checksum {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: rgb(var(--color-fg-muted));
+  background: rgb(var(--color-bg-soft));
+  padding: 0.15rem 0.35rem;
+  border-radius: var(--radius-xs);
+}
+.verifier__more {
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+/* Button with spinner */
+.btn-spinner {
+  display: inline-block;
+  vertical-align: middle;
+}
+.btn-text {
+  vertical-align: middle;
+  margin-left: 0.35rem;
+}
