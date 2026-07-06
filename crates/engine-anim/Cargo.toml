@@ -1,0 +1,41 @@
+[package]
+name = "omm-engine-anim"
+description = "Engine animation: skeletal animation, blend/FSM graph, IK, crowd VAT with deterministic evaluation."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+# Headless-safe core: app lifecycle, ECS (messages/systems), and reflection.
+# Animation evaluation (graph blend/additive/mask), IK solvers, VAT frame math
+# are pure, headless logic — no GPU, no window. Distance tiering runs in
+# SimSet::Simulate, deterministic for shared state.
+bevy_app.workspace = true
+bevy_ecs.workspace = true
+bevy_math.workspace = true
+bevy_reflect.workspace = true
+bevy_transform.workspace = true
+# Engine libraries: core plugin registry, scene/prefab spawning.
+omm-engine-core.workspace = true
+# Typed, fail-loud errors for animation-layer operations.
+thiserror.workspace = true
+# Animation playback and clip graph (first-party Bevy).
+bevy_animation = { workspace = true, optional = true }
+# GPU skinning (SkinnedMesh) for skeletal animation.
+bevy_render = { workspace = true, optional = true }
+
+[dev-dependencies]
+omm-engine-core.workspace = true
+bevy_reflect.workspace = true
+
+[features]
+default = []
+# Enables skeletal animation with GPU skinning support. Compiles the skinned
+# mesh binding and SkinnedMesh from bevy_render. Disabled in headless/server
+# builds — pure graph blend/IK/VAT logic stays available.
+render = ["dep:bevy_animation", "dep:bevy_render"]
+
+[lints]
+workspace = true
