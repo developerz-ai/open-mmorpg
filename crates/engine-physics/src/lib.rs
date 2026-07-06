@@ -12,6 +12,10 @@
 //!   [`Collider`] component, plus exact sphere/box and capsule/box penetration.
 //! - [`query`] — [`Ray`] casts against every shape, nearest-hit scene queries,
 //!   and [`line_of_sight`] for targeting/interaction probes.
+//! - [`shapecast`] — swept-sphere ("thick ray") casts for wide LOS, targeting,
+//!   and projectile/interaction clearance, exact against every shape.
+//! - [`scene`] — [`SceneQuery`], the one collider-set façade the client and the
+//!   server world-model both query (ray/sphere cast + thin/thick LOS).
 //! - [`broadphase`] — the [`Broadphase`] resource, which **reuses
 //!   [`omm_world`]'s quadtree** (one index, no drift) to prune the collider set.
 //! - [`slide`] — the pure [`move_and_slide`] solver: slide, step-climb, floor
@@ -21,15 +25,18 @@
 //!
 //! ## What CI verifies vs what it does not
 //! **Verified (headless, every commit):** all shape/penetration math, ray casts
-//! and LOS, broadphase pruning (margin expansion + `y` filtering + stable
-//! ordering), the full move-and-slide behaviour (fall/land, wall slide, step,
-//! snap, determinism), and that every authored type is reflected for the editor.
+//! and LOS, sphere casts (exact vs sphere/capsule/box, incl. rounded-box edge
+//! and corner refinement) and thick LOS, the [`SceneQuery`] façade, broadphase
+//! pruning (margin expansion + `y` filtering + stable ordering), the full
+//! move-and-slide behaviour (fall/land, wall slide, step, snap, determinism),
+//! and that every authored type is reflected for the editor.
 //!
 //! **Not verified here:** continuous collision (fast motion may tunnel thin
 //! geometry — per-tick motion is assumed smaller than collider thickness, and
 //! [`CharacterController::max_fall_speed`] caps the worst case), rotated/scaled
-//! collider transforms, and character-vs-character resolution (the server is
-//! authoritative on contact between players).
+//! collider transforms, character-vs-character resolution (the server is
+//! authoritative on contact between players), and box/capsule *casters* (out of
+//! scope — movement uses [`move_and_slide`], probes use [`sphere_cast`]).
 //!
 //! → `docs/specs/game-engine/physics/README.md`.
 
@@ -38,6 +45,8 @@ pub mod controller;
 mod error;
 pub mod penetration;
 pub mod query;
+pub mod scene;
+pub mod shapecast;
 pub mod shapes;
 pub mod slide;
 
@@ -50,6 +59,8 @@ pub use penetration::{capsule_vs_aabb, closest_point_on_segment, sphere_vs_aabb,
 pub use query::{
     line_of_sight, ray_vs_aabb, ray_vs_capsule, ray_vs_sphere, raycast_nearest, Ray, RayHit,
 };
+pub use scene::SceneQuery;
+pub use shapecast::{sphere_cast, sphere_cast_nearest, thick_line_of_sight};
 pub use shapes::{Aabb3d, Capsule, Collider, Sphere};
 pub use slide::{move_and_slide, SlideParams, SlideResult};
 

@@ -131,7 +131,7 @@ pub fn ray_vs_capsule(ray: &Ray, capsule: &Capsule, max_toi: f32) -> Option<RayH
 }
 
 /// The hit with the smaller time-of-impact (preferring an existing hit on ties).
-fn nearer(best: Option<RayHit>, hit: Option<RayHit>) -> Option<RayHit> {
+pub(crate) fn nearer(best: Option<RayHit>, hit: Option<RayHit>) -> Option<RayHit> {
     match (best, hit) {
         (b, None) => b,
         (None, h) => h,
@@ -185,6 +185,20 @@ impl Collider {
     }
 }
 
+/// Whether a candidate hit at `toi`/`key` beats the current `best` (`(key, toi)`):
+/// a strictly nearer time-of-impact wins, and a tie breaks to the lowest key.
+///
+/// The single ordering policy every nearest scene query shares — ray and shape
+/// casts alike — so a query returns the same hit every run, on client and
+/// re-simulating server.
+#[must_use]
+pub(crate) fn better_keyed_hit(toi: f32, key: u64, best: Option<(u64, f32)>) -> bool {
+    match best {
+        None => true,
+        Some((bk, btoi)) => toi < btoi - EPS || (toi <= btoi + EPS && key < bk),
+    }
+}
+
 /// The nearest collider hit by `ray` within `max_toi`, with its key. Ties on
 /// time-of-impact break by the lowest key for replay-stable output.
 #[must_use]
@@ -196,11 +210,7 @@ pub fn raycast_nearest(
     let mut best: Option<(u64, RayHit)> = None;
     for (key, collider) in colliders {
         if let Some(hit) = collider.raycast(ray, max_toi) {
-            let better = match best {
-                None => true,
-                Some((bk, bh)) => hit.toi < bh.toi - EPS || (hit.toi <= bh.toi + EPS && *key < bk),
-            };
-            if better {
+            if better_keyed_hit(hit.toi, *key, best.map(|(k, h)| (k, h.toi))) {
                 best = Some((*key, hit));
             }
         }
