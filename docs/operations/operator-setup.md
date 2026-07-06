@@ -146,17 +146,14 @@ The portal applies these at boot (`applyBrand()` in `lib/brand.ts`) — componen
 
 ### Supported Locales
 
-The portal ships with catalogs for:
-- `en` — English (default)
-- `de` — German
-- `es` — Spanish
-- `fr` — French
-- `ja` — Japanese
-- `zh` — Chinese (Simplified)
+The portal currently supports:
+- `en` — English (default, only supported locale)
 
-### Adding a New Locale
+**Note:** Additional locales (de/es/fr/ja/zh/ko) are planned but not yet implemented. The i18n infrastructure is in place, but locale catalogs and schema extensions are not yet shipped.
 
-To add a new language (e.g., `ko` for Korean):
+### Adding a New Locale (when infrastructure is complete)
+
+To add a new language (e.g., `ko` for Korean) when the multi-locale support is complete:
 
 1. **Create the catalog** → `packages/i18n/src/locales/ko.ts`
    ```typescript
@@ -170,12 +167,12 @@ To add a new language (e.g., `ko` for Korean):
 
 2. **Register the locale** → Edit `packages/i18n/src/locales.ts`
    ```typescript
-   export const LOCALES = ['en', 'de', 'es', 'fr', 'ja', 'zh', 'ko'] as const;
+   export const LOCALES = ['en', 'ko'] as const;
    ```
 
-3. **Update the schema** → Edit `packages/i18n/src/catalog.ts`
+3. **Update the schema** → Edit `apps/web/src/config.ts`
    ```typescript
-   export type Catalog = typeof en; // Add your new keys if you extend it
+   VITE_LOCALE: z.enum(['en', 'ko']).default('en'),
    ```
 
 4. **Set as default** → `VITE_LOCALE=ko` (or use a locale-detecting route)

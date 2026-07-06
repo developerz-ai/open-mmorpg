@@ -1,7 +1,7 @@
-import { describe, expect, test } from 'vitest';
 import { render, screen } from '@solidjs/testing-library';
-import { FeedItem } from './FeedItem';
+import { describe, expect, test } from 'vitest';
 import type { FeedEntry } from '../lib/feed';
+import { FeedItem } from './FeedItem';
 
 describe('FeedItem component tests', () => {
   const mockEntry: FeedEntry = {
@@ -55,7 +55,9 @@ describe('FeedItem component tests', () => {
       target: 'Ancient Dragon',
       zone: 'Dragonfire Peaks',
     };
-    const { unmount: unmount2 } = render(() => <FeedItem entry={worldBossEntry} now={Date.now()} />);
+    const { unmount: unmount2 } = render(() => (
+      <FeedItem entry={worldBossEntry} now={Date.now()} />
+    ));
     expect(screen.getByText('world_boss_spawn')).toBeInTheDocument();
     unmount2();
 

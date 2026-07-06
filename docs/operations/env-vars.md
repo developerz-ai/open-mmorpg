@@ -248,23 +248,18 @@ VITE_USE_MOCKS=true
 
 Default locale for the site. Determines the initial language catalog.
 
-**Type:** `enum` (`"en"` | `"de"` | `"es"` | `"fr"` | `"ja"` | `"zh"`)
+**Type:** `enum` (`"en"`)
 **Default:** `"en"`
 
 ```bash
-# Japanese realm
-VITE_LOCALE=ja
+# Set locale (currently only English is supported)
+VITE_LOCALE=en
 ```
 
 **Supported locales:**
-- `en` — English
-- `de` — German
-- `es` — Spanish
-- `fr` — French
-- `ja` — Japanese
-- `zh` — Chinese (Simplified)
+- `en` — English (only supported locale currently)
 
-**Note:** Users can change locale via UI (if implemented). This is the default fallback.
+**Note:** Additional locales (de/es/fr/ja/zh) are planned. Set `VITE_LOCALE` to any other value will cause validation to fail at startup.
 
 ---
 
@@ -340,7 +335,7 @@ sha256sum client-win-x64.zip
 
 ## Validation
 
-At build time, all env vars are validated via **Zod** (`apps/web/src/config.ts`):
+At boot/load time, all env vars are validated via **Zod** (`apps/web/src/config.ts`):
 
 ```typescript
 const EnvSchema = z.object({
@@ -349,9 +344,11 @@ const EnvSchema = z.object({
   VITE_BRAND_ACCENT: rgbChannels, // Regex: /^\d{1,3} \d{1,3} \d{1,3}$/
   // ...
 });
+
+export const config: OperatorConfig = parseConfig(import.meta.env);
 ```
 
-A misconfigured env **fails loud** — the build errors or the site loads blank with a console error.
+A misconfigured env **fails loud** — the app loads blank with a clear console error at startup, not at build time.
 
 ---
 
