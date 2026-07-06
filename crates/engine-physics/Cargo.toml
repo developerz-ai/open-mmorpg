@@ -21,6 +21,8 @@ bevy_transform.workspace = true
 omm-engine-core.workspace = true
 # World spatial index: reuse quadtree for broadphase queries.
 omm-world.workspace = true
+# Wire vector type: the quadtree keys on `omm_protocol::Vec3` positions.
+omm-protocol.workspace = true
 # Typed, fail-loud errors for physics-layer operations.
 thiserror.workspace = true
 

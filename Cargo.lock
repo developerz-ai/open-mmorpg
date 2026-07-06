@@ -3444,6 +3444,7 @@ dependencies = [
  "bevy_reflect",
  "bevy_transform",
  "omm-engine-core",
+ "omm-protocol",
  "omm-world",
  "thiserror 2.0.18",
 ]

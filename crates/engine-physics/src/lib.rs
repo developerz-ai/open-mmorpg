@@ -1,89 +1,173 @@
-//! Engine physics: in-house collision, kinematic character controller, line-of-sight queries.
+//! # Engine physics — in-house collision, broadphase, kinematic controller, LOS
 //!
-//! **Headless-first design:** collision shapes, broadphase queries, kinematic controller,
-//! and LOS checks are pure, deterministic logic with no GPU, no window, no external
-//! physics solver. Runs in `SimSet::Simulate`, same timestep as server sim.
+//! A Rust-native physics layer for the game engine, built **headless-first** and
+//! **deterministic** so the same collision math the client uses to predict and
+//! smooth movement can be reused server-side for movement validation and
+//! anti-cheat re-simulation. No GPU, no window, no third-party solver — the
+//! MMORPG's server owns the source of truth, so client/server determinism
+//! matters more than solver fidelity (ADR-0001).
 //!
-//! **Broadphase:** reuses `omm_world`'s quadtree spatial index for interest management.
-//! **Shapes:** AABB, sphere, capsule; composed into scene entities via components.
-//! **Controller:** move-and-slide with auto step-climb and floor-snap; runs as a system.
-//! **Queries:** raycasts and shape casts for targeting/LOS; stable contact ordering.
+//! ## Modules
+//! - [`shapes`] — [`Aabb3d`], [`Sphere`], [`Capsule`] and the reflected
+//!   [`Collider`] component, plus exact sphere/box and capsule/box penetration.
+//! - [`query`] — [`Ray`] casts against every shape, nearest-hit scene queries,
+//!   and [`line_of_sight`] for targeting/interaction probes.
+//! - [`broadphase`] — the [`Broadphase`] resource, which **reuses
+//!   [`omm_world`]'s quadtree** (one index, no drift) to prune the collider set.
+//! - [`slide`] — the pure [`move_and_slide`] solver: slide, step-climb, floor
+//!   snap. Unit-testable with no ECS.
+//! - [`controller`] — the [`CharacterController`] component and the two ECS
+//!   systems, chained in [`SimSet::Simulate`].
 //!
-//! Third-party physics solvers (Rapier, Avian) are deliberately avoided — the MMORPG's
-//! server sim owns the source of truth; client and server determinism matter more than
-//! solver fidelity. See `docs/architecture/decisions/0001-...md`.
+//! ## What CI verifies vs what it does not
+//! **Verified (headless, every commit):** all shape/penetration math, ray casts
+//! and LOS, broadphase pruning (margin expansion + `y` filtering + stable
+//! ordering), the full move-and-slide behaviour (fall/land, wall slide, step,
+//! snap, determinism), and that every authored type is reflected for the editor.
+//!
+//! **Not verified here:** continuous collision (fast motion may tunnel thin
+//! geometry — per-tick motion is assumed smaller than collider thickness, and
+//! [`CharacterController::max_fall_speed`] caps the worst case), rotated/scaled
+//! collider transforms, and character-vs-character resolution (the server is
+//! authoritative on contact between players).
+//!
+//! → `docs/specs/game-engine/physics/README.md`.
 
+pub mod broadphase;
+pub mod controller;
 mod error;
+pub mod penetration;
+pub mod query;
+pub mod shapes;
+pub mod slide;
+
+pub use broadphase::Broadphase;
+pub use controller::{
+    character_controller_system, sync_broadphase, CharacterController, MoveIntent,
+};
 pub use error::PhysicsError;
+pub use penetration::{capsule_vs_aabb, closest_point_on_segment, sphere_vs_aabb, Penetration};
+pub use query::{
+    line_of_sight, ray_vs_aabb, ray_vs_capsule, ray_vs_sphere, raycast_nearest, Ray, RayHit,
+};
+pub use shapes::{Aabb3d, Capsule, Collider, Sphere};
+pub use slide::{move_and_slide, SlideParams, SlideResult};
 
 use bevy_app::{App, Plugin};
 use bevy_ecs::prelude::*;
+use bevy_math::Vec3;
 use bevy_reflect::Reflect;
+use omm_engine_core::SimSet;
 
-/// Physics plugin: registers collision shapes, controller, and query systems.
+/// Physics plugin: registers collision types for reflection, installs the
+/// [`Broadphase`], and runs the controller in [`SimSet::Simulate`].
 ///
-/// Headless-safe: runs in `SimSet::Simulate` without GPU or device code.
-/// All deterministic logic (shapes, broadphase, controller, LOS) is available
-/// in headless builds; no optional features required.
+/// Headless-safe: pure deterministic logic, no GPU or device code. Compose on
+/// top of `omm_engine_core::EnginePlugins`.
+#[derive(Debug, Default, Clone, Copy)]
 pub struct PhysicsPlugin;
 
 impl Plugin for PhysicsPlugin {
-  fn build(&self, app: &mut App) {
-    app
-      // Register core physics components.
-      .register_type::<PhysicsSettings>();
-
-    // TODO(E7): add collision shape components (AABB, sphere, capsule).
-    // TODO(E7): add kinematic controller system (move-and-slide, auto step/snap).
-    // TODO(E7): add broadphase queries (raycast, shapecast).
-    // TODO(E7): add LOS (line-of-sight) checks with stable ordering.
-  }
+    fn build(&self, app: &mut App) {
+        register_physics_types(app);
+        app.init_resource::<PhysicsSettings>();
+        app.init_resource::<Broadphase>();
+        // Broadphase must reflect the latest collider set before the controller
+        // reads it, so the two systems are chained within the deterministic sim set.
+        app.add_systems(
+            bevy_app::FixedUpdate,
+            (
+                controller::sync_broadphase,
+                controller::character_controller_system,
+            )
+                .chain()
+                .in_set(SimSet::Simulate),
+        );
+    }
 }
 
-/// Global physics settings: gravity, timestep, broadphase strategy.
+/// Register every authored physics type with the app's reflection registry, so
+/// the MCP editor and agents can enumerate and author them. An unregistered type
+/// is invisible to tooling, which is a bug.
+fn register_physics_types(app: &mut App) {
+    app.register_type::<PhysicsSettings>()
+        .register_type::<Aabb3d>()
+        .register_type::<Sphere>()
+        .register_type::<Capsule>()
+        .register_type::<Collider>()
+        .register_type::<CharacterController>()
+        .register_type::<MoveIntent>();
+}
+
+/// Global physics settings: gravity and the fixed timestep the controller
+/// integrates over.
 #[derive(Debug, Clone, Copy, Resource, Reflect)]
+#[reflect(Resource)]
 pub struct PhysicsSettings {
-  /// Gravity acceleration (m/s²), typically -9.8 on Y axis.
-  pub gravity: bevy_math::Vec3,
-  /// Fixed timestep (seconds), must match `SimSet` tick.
-  pub timestep: f32,
-  /// Enable kinematic controller auto-climb; step height in world units.
-  pub step_height: f32,
+    /// Gravity acceleration (metres/second²); `-Y` under normal gravity.
+    pub gravity: Vec3,
+    /// Fixed timestep (seconds). Must equal the sim tick, or headless re-simulation
+    /// integrates over a different `dt` than the client — silent desync.
+    pub timestep: f32,
 }
 
 impl Default for PhysicsSettings {
-  fn default() -> Self {
-    Self {
-      gravity: bevy_math::Vec3::new(0.0, -9.8, 0.0),
-      // TICK_DT must match omm_ecs_core: 1/60 Hz = ~0.01667s.
-      // See crates/engine-core/src/lib.rs and crates/ecs-core/src/lib.rs.
-      timestep: 1.0 / 60.0,
-      step_height: 0.3,
+    fn default() -> Self {
+        Self {
+            gravity: Vec3::new(0.0, -9.81, 0.0),
+            // Sourced from the engine's fixed tick (30 Hz) so gravity integrates over
+            // the same `dt` as the shared sim. The `timestep_matches_engine_tick` test
+            // fails loud if these ever drift.
+            timestep: omm_engine_core::TICK_DT as f32,
+        }
     }
-  }
 }
 
 #[cfg(test)]
 mod tests {
-  use super::*;
+    use super::*;
+    use core::any::TypeId;
 
-  #[test]
-  fn physics_settings_default() {
-    let settings = PhysicsSettings::default();
-    assert!(settings.gravity.y < 0.0);
-    assert!(settings.timestep > 0.0);
-    assert!(settings.step_height > 0.0);
-  }
+    #[test]
+    fn physics_settings_default_is_downward_gravity_at_tick_rate() {
+        let settings = PhysicsSettings::default();
+        assert!(settings.gravity.y < 0.0);
+        assert!(settings.timestep > 0.0);
+    }
 
-  #[test]
-  fn physics_plugin_registers_types() {
-    use bevy_ecs::prelude::AppTypeRegistry;
+    /// The physics timestep must equal the engine's fixed tick, or gravity
+    /// integrates over a different `dt` than the shared sim — a silent desync.
+    #[test]
+    fn timestep_matches_engine_tick() {
+        let dt = PhysicsSettings::default().timestep;
+        assert!((f64::from(dt) - omm_engine_core::TICK_DT).abs() < 1e-6);
+    }
 
-    let mut app = App::new();
-    app.add_plugins(PhysicsPlugin);
+    #[test]
+    fn plugin_registers_all_authored_types() {
+        let mut app = App::new();
+        app.add_plugins(PhysicsPlugin);
+        let registry = app.world().resource::<AppTypeRegistry>().read();
+        for type_id in [
+            TypeId::of::<PhysicsSettings>(),
+            TypeId::of::<Aabb3d>(),
+            TypeId::of::<Sphere>(),
+            TypeId::of::<Capsule>(),
+            TypeId::of::<Collider>(),
+            TypeId::of::<CharacterController>(),
+            TypeId::of::<MoveIntent>(),
+        ] {
+            assert!(
+                registry.get(type_id).is_some(),
+                "unregistered physics type {type_id:?}"
+            );
+        }
+    }
 
-    // Verify PhysicsSettings is registered.
-    let registry = app.world().resource::<AppTypeRegistry>().read();
-    assert!(registry.get(std::any::TypeId::of::<PhysicsSettings>()).is_some());
-  }
+    #[test]
+    fn plugin_installs_broadphase_resource() {
+        let mut app = App::new();
+        app.add_plugins(PhysicsPlugin);
+        assert!(app.world().get_resource::<Broadphase>().is_some());
+    }
 }
