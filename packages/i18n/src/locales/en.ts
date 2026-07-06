@@ -149,6 +149,26 @@ export const en: Catalog = {
     bought: 'Purchased {item} for {price} gold.',
     empty: 'No listings match your search.',
     priceHistory: 'Price history (avg buyout)',
+    filter: {
+      category: 'Category',
+      allCategories: 'All categories',
+      priceRange: 'Price range',
+      minPrice: 'Min',
+      maxPrice: 'Max',
+    },
+    sort: {
+      label: 'Sort by',
+      priceAsc: 'Price: low to high',
+      priceDesc: 'Price: high to low',
+      quantity: 'Quantity',
+      timeRemaining: 'Time remaining',
+    },
+    pagination: {
+      prev: 'Previous',
+      next: 'Next',
+      page: 'Page {current} of {total}',
+      showing: 'Showing {start}–{end} of {total}',
+    },
   },
   cashShop: {
     heading: 'Cash shop',
@@ -173,6 +193,21 @@ export const en: Catalog = {
     heading: 'World feed',
     disabled: 'The world feed is off on this realm.',
     empty: 'The world is quiet… for now.',
+    filter: {
+      label: 'Filter by event type',
+      all: 'All events',
+      bossKill: 'Boss kills',
+      worldBossSpawn: 'World boss spawns',
+      factionShift: 'Faction shifts',
+      bountyPosted: 'Bounties',
+      milestone: 'Milestones',
+    },
+    pagination: {
+      prev: 'Previous',
+      next: 'Next',
+      page: 'Page {current} of {total}',
+      showing: 'Showing {start}–{end} of {total}',
+    },
     kind: {
       boss_kill: '{actor} felled {target}.',
       world_boss_spawn: '{target} has awoken in {zone}.',

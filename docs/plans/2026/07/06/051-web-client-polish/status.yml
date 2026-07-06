@@ -1,0 +1,45 @@
+# Track Status
+track: web-client
+wave: "3"
+target: "50-web-client"
+status: in-progress
+
+# PRs
+prs:
+  - id: "051-1"
+    title: "Remaining i18n locales + brand tests"
+    branch: feat/web-i18n-complete-locales
+    status: pending
+  - id: "051-2"
+    title: "Auction house filters, sorting, pagination"
+    branch: feat/auction-house-polish
+    status: pending
+  - id: "051-3"
+    title: "World feed filtering, pagination, event types"
+    branch: feat/world-feed-polish
+    status: pending
+  - id: "051-4"
+    title: "Character & guild pages enhancements"
+    branch: feat/armory-pages-enhancements
+    status: pending
+  - id: "051-5"
+    title: "Accessibility audit + operator docs"
+    branch: feat/web-accessibility-and-docs
+    status: pending
+
+# Definition of Done
+criteria:
+  - description: "All 13 i18n locales present and tested"
+    status: pending
+  - description: "Auction house has filters, sorting, pagination"
+    status: pending
+  - description: "World feed has filtering, pagination, event badges"
+    status: pending
+  - description: "Character/guild pages show achievements, stats"
+    status: pending
+  - description: "Accessibility audit complete with automated tests"
+    status: pending
+  - description: "Operator setup documentation complete"
+    status: pending
+  - description: "bin/check green, all PRs merged"
+    status: pending

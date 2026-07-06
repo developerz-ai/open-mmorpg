@@ -112,6 +112,28 @@
 .toolbar .field {
   min-width: 12rem;
 }
+.filter-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-end;
+}
+.filter-row .field {
+  min-width: 8rem;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 0.75rem 0;
+  border-top: 1px solid rgb(var(--color-line));
+}
+.pagination-info {
+  font-size: 0.9rem;
+  color: rgb(var(--color-fg));
+}
 
 /* Feed */
 .feed-list {
