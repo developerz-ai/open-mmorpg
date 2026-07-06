@@ -21,6 +21,7 @@ members = [
   "crates/engine-anim",
   "crates/engine-audio",
   "crates/engine-physics",
+  "crates/engine-ui",
   "apps/gateway",
   "apps/shard",
   "apps/client",
@@ -56,6 +57,7 @@ omm-engine-render = { path = "crates/engine-render" }
 omm-engine-anim = { path = "crates/engine-anim" }
 omm-engine-audio = { path = "crates/engine-audio" }
 omm-engine-physics = { path = "crates/engine-physics" }
+omm-engine-ui = { path = "crates/engine-ui" }
 # external
 # Bevy — consumed as individual sub-crates (not the umbrella `bevy`) so the
 # engine ships only what it uses and boots headless with no GPU/windowing.
@@ -81,7 +83,12 @@ bevy_color = { version = "0.19", default-features = false, features = ["std"] }
 bevy_material = { version = "0.19", default-features = false }
 bevy_animation = { version = "0.19", default-features = false }
 bevy_audio = { version = "0.19", default-features = false }
+bevy_ui = { version = "0.19", default-features = false }
 zstd = "0.13"
+fluent = "0.16"
+fluent-langneg = "0.13"
+icu_locid = "1"
+icu_provider_blob = { version = "1", default-features = false }
 ron = "0.8"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"

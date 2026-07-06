@@ -1,0 +1,37 @@
+[package]
+name = "omm-engine-ui"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "Open-MMORPG UI engine — bevy_ui substrate + Fluent i18n"
+
+[dependencies]
+omm-ecs-core.workspace = true
+omm-engine-core.workspace = true
+bevy_app.workspace = true
+bevy_ecs.workspace = true
+bevy_reflect.workspace = true
+bevy_asset.workspace = true
+bevy_time.workspace = true
+serde.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+fluent.workspace = true
+fluent-langneg.workspace = true
+icu_locid.workspace = true
+icu_provider_blob.workspace = true
+unic-langid = "0.9"
+
+# Optional: UI rendering (feature-gated, disabled in headless tests)
+bevy_ui = { workspace = true, optional = true }
+bevy_render = { workspace = true, optional = true }
+
+[features]
+default = []
+ui = ["dep:bevy_ui", "dep:bevy_render"]
+
+[dev-dependencies]
+proptest.workspace = true
