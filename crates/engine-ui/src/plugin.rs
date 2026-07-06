@@ -6,28 +6,29 @@ use crate::i18n::I18nPlugin;
 pub struct UiPlugin;
 
 impl bevy_app::Plugin for UiPlugin {
-  fn build(&self, app: &mut bevy_app::App) {
-    // Always include i18n
-    app.add_plugins(I18nPlugin);
+    fn build(&self, app: &mut bevy_app::App) {
+        // Always include i18n
+        app.add_plugins(I18nPlugin);
 
-    // Optional: bevy_ui rendering substrate
-    #[cfg(feature = "ui")]
-    {
-      app.add_plugins(bevy_ui::UiPlugin);
+        // Optional: bevy_ui rendering substrate
+        #[cfg(feature = "ui")]
+        {
+            app.add_plugins(bevy_ui::UiPlugin);
+        }
     }
-  }
 }
 
 #[cfg(test)]
 mod tests {
-  use super::*;
+    use super::*;
+    use crate::I18nBundle;
 
-  #[test]
-  fn test_ui_plugin_builds() {
-    // Verify UiPlugin can be constructed and doesn't panic when added.
-    // The plugin adds i18n infrastructure on top of EnginePlugins.
-    let plugin = UiPlugin;
-    // Can construct the plugin
-    drop(plugin);
-  }
+    #[test]
+    fn ui_plugin_registers_i18n_resource() {
+        // The i18n substrate is always wired, headless or headful.
+        let mut app = bevy_app::App::new();
+        app.add_plugins(bevy_asset::AssetPlugin::default());
+        app.add_plugins(I18nPlugin);
+        assert!(app.world().contains_resource::<I18nBundle>());
+    }
 }

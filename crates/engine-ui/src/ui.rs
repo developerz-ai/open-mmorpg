@@ -10,34 +10,30 @@ use bevy_ecs::component::Component;
 pub struct UiElement;
 
 /// Placeholder for future UI layout/styling helpers.
+#[derive(Default)]
 #[allow(dead_code)]
 pub struct UiBuilder;
 
 impl UiBuilder {
-  pub fn new() -> Self {
-    Self
-  }
-}
-
-impl Default for UiBuilder {
-  fn default() -> Self {
-    Self::new()
-  }
+    /// Construct a new UI builder.
+    #[must_use]
+    pub fn new() -> Self {
+        Self
+    }
 }
 
 #[cfg(test)]
 mod tests {
-  use super::*;
+    use super::*;
 
-  #[test]
-  fn test_ui_element_marker() {
-    let _elem = UiElement;
-    // Component can be instantiated
-  }
+    #[test]
+    fn ui_element_marker_constructs() {
+        let _elem = UiElement;
+    }
 
-  #[test]
-  fn test_ui_builder() {
-    let _builder = UiBuilder::new();
-    let _builder = UiBuilder::default();
-  }
+    #[test]
+    fn ui_builder_constructs() {
+        let _a = UiBuilder::new();
+        let _b = UiBuilder;
+    }
 }

@@ -1,173 +1,195 @@
-/// i18n substrate — Fluent-based localization + asset management.
-/// Supports ICU MessageFormat via Fluent's built-in interpolation.
+//! Bevy glue for the i18n substrate: the `.ftl` asset type, the runtime
+//! [`I18nBundle`] resource (compiled [`Catalog`] + [`LocaleFormatter`]), and the
+//! [`I18nPlugin`]. The translation/formatting logic itself is pure and headless —
+//! see [`crate::catalog`] and [`crate::format`].
+
+use std::collections::HashMap;
+
 use bevy_asset::{Asset, AssetApp, Handle};
 use bevy_ecs::prelude::*;
-use fluent::FluentBundle;
-use std::collections::HashMap;
-use thiserror::Error;
 use tracing::warn;
-use unic_langid::LanguageIdentifier;
 
-#[derive(Error, Debug)]
-pub enum I18nError {
-  #[error("fluent parse failed: {0}")]
-  FluentParse(String),
-  #[error("missing bundle for locale: {0}")]
-  MissingBundle(String),
-  #[error("missing message key: {0}")]
-  MissingKey(String),
-  #[error("io error: {0}")]
-  Io(#[from] std::io::Error),
-}
+use crate::catalog::{Catalog, TransArgs};
+use crate::error::I18nError;
+use crate::format::LocaleFormatter;
 
-/// Fluent source file as an asset.
-/// Stores the raw FTL source; compile on load or on demand.
+/// A Fluent (`.ftl`) source file as a Bevy asset — enables file-watch hot-reload.
 #[derive(Asset, Clone, Default, bevy_reflect::Reflect)]
 pub struct I18nAsset {
-  pub locale: String,
-  pub source: String,
+    /// BCP-47 locale this source is for, e.g. `"en"`, `"fr-CA"`.
+    pub locale: String,
+    /// Raw FTL source text.
+    pub source: String,
 }
 
 impl I18nAsset {
-  /// Create a new i18n asset from locale and Fluent source.
-  pub fn new(locale: impl Into<String>, source: impl Into<String>) -> Self {
-    Self {
-      locale: locale.into(),
-      source: source.into(),
+    /// Construct from a locale tag and FTL source.
+    pub fn new(locale: impl Into<String>, source: impl Into<String>) -> Self {
+        Self {
+            locale: locale.into(),
+            source: source.into(),
+        }
     }
-  }
-
-  /// Parse this asset into a compiled Fluent bundle.
-  pub fn compile(&self) -> Result<FluentBundle<fluent::FluentResource>, I18nError> {
-    let lang_id: LanguageIdentifier = self
-      .locale
-      .parse()
-      .unwrap_or_else(|_| "en".parse().unwrap());
-
-    let mut bundle = FluentBundle::new(vec![lang_id]);
-    bundle
-      .add_resource(fluent::FluentResource::try_new(self.source.clone()).map_err(
-        |e| I18nError::FluentParse(format!("{:?}", e)),
-      )?)
-      .map_err(|e| I18nError::FluentParse(format!("{:?}", e)))?;
-
-    Ok(bundle)
-  }
 }
 
-/// Game-wide i18n state — asset handles per locale.
-/// Use the AssetServer to load I18nAsset handles and register here.
-/// Bundles are compiled on demand from assets.
+/// Runtime i18n state: the active locale, the compiled [`Catalog`], a matching
+/// [`LocaleFormatter`], and `.ftl` asset handles per locale for hot-reload.
 #[derive(Resource)]
 pub struct I18nBundle {
-  pub current_locale: String,
-  /// Locale -> asset handle mapping
-  pub bundles: HashMap<String, Handle<I18nAsset>>,
+    current_locale: String,
+    catalog: Catalog,
+    formatter: LocaleFormatter,
+    handles: HashMap<String, Handle<I18nAsset>>,
 }
 
 impl Default for I18nBundle {
-  fn default() -> Self {
-    Self {
-      current_locale: "en".to_string(),
-      bundles: HashMap::new(),
+    fn default() -> Self {
+        Self {
+            current_locale: "en".to_owned(),
+            catalog: Catalog::default(),
+            formatter: LocaleFormatter::default(),
+            handles: HashMap::new(),
+        }
     }
-  }
 }
 
 impl I18nBundle {
-  pub fn new(locale: String) -> Self {
-    Self {
-      current_locale: locale,
-      bundles: HashMap::new(),
+    /// Build directly from `(locale, ftl)` sources — for tests and bootstrap.
+    /// `default_locale` becomes the active locale and the formatter's locale.
+    pub fn from_sources<'s>(
+        default_locale: &str,
+        sources: impl IntoIterator<Item = (&'s str, &'s str)>,
+    ) -> Result<Self, I18nError> {
+        let catalog = Catalog::from_sources(sources)?;
+        Ok(Self {
+            current_locale: default_locale.to_owned(),
+            formatter: LocaleFormatter::new(default_locale),
+            catalog,
+            handles: HashMap::new(),
+        })
     }
-  }
 
-  /// Register an asset handle for a locale.
-  pub fn register(&mut self, locale: String, handle: Handle<I18nAsset>) {
-    self.bundles.insert(locale, handle);
-  }
-
-  /// Set the current locale. Warns if not registered.
-  pub fn set_locale(&mut self, locale: String) {
-    if self.bundles.contains_key(&locale) {
-      self.current_locale = locale;
-    } else {
-      warn!("Locale '{}' not registered", locale);
+    /// The active locale.
+    pub fn current_locale(&self) -> &str {
+        &self.current_locale
     }
-  }
 
-  /// Get the handle for the current locale (if loaded).
-  pub fn current_handle(&self) -> Option<Handle<I18nAsset>> {
-    self.bundles.get(&self.current_locale).cloned()
-  }
+    /// Shared access to the compiled catalog.
+    pub fn catalog(&self) -> &Catalog {
+        &self.catalog
+    }
+
+    /// Mutable access to the catalog (e.g. to add/replace a bundle on hot-reload).
+    pub fn catalog_mut(&mut self) -> &mut Catalog {
+        &mut self.catalog
+    }
+
+    /// The formatter for the active locale.
+    pub fn formatter(&self) -> &LocaleFormatter {
+        &self.formatter
+    }
+
+    /// Translate `key` in the active locale. Missing → `⟦key⟧` (loud).
+    pub fn t(&self, key: &str, args: &TransArgs) -> String {
+        self.catalog.t(&self.current_locale, key, args)
+    }
+
+    /// Register a `.ftl` asset handle for a locale (hot-reload wiring).
+    pub fn register(&mut self, locale: impl Into<String>, handle: Handle<I18nAsset>) {
+        self.handles.insert(locale.into(), handle);
+    }
+
+    /// The asset handle registered for a locale, if any.
+    pub fn handle(&self, locale: &str) -> Option<&Handle<I18nAsset>> {
+        self.handles.get(locale)
+    }
+
+    /// Switch the active locale. Warns and no-ops if the catalog lacks it (so a
+    /// typo can't silently drop the player into blank strings).
+    pub fn set_locale(&mut self, locale: impl Into<String>) {
+        let locale = locale.into();
+        if self.catalog.supports(&locale) {
+            self.formatter = LocaleFormatter::new(&locale);
+            self.current_locale = locale;
+        } else {
+            warn!(locale = %locale, "i18n: locale not supported by catalog — keeping current");
+        }
+    }
 }
 
-/// bevy_app plugin for i18n setup.
-/// Registers the I18nAsset type and initializes the bundle resource.
+/// Registers the `.ftl` asset type and the default [`I18nBundle`] resource.
+/// Headless-safe: no rendering dependency.
 pub struct I18nPlugin;
 
 impl bevy_app::Plugin for I18nPlugin {
-  fn build(&self, app: &mut bevy_app::App) {
-    app.init_asset::<I18nAsset>();
-    app.init_resource::<I18nBundle>();
-  }
+    fn build(&self, app: &mut bevy_app::App) {
+        app.init_asset::<I18nAsset>();
+        app.init_resource::<I18nBundle>();
+    }
 }
 
 #[cfg(test)]
 mod tests {
-  use super::*;
+    use super::*;
 
-  #[test]
-  fn test_i18n_asset_new() {
-    let source = "greeting = Hello!";
-    let asset = I18nAsset::new("en", source);
-    assert_eq!(asset.locale, "en");
-    assert_eq!(asset.source, source);
-  }
+    const EN: &str = "hello = Hello!\ngreet = Hi, { $name }!";
+    const FR: &str = "hello = Bonjour !";
 
-  #[test]
-  fn test_i18n_asset_compile() {
-    let source = r#"
-greeting = Hello, { $name }!
-farewell = Goodbye, { $name }!
-    "#;
+    fn bundle() -> I18nBundle {
+        I18nBundle::from_sources("en", [("en", EN), ("fr", FR)]).expect("valid ftl")
+    }
 
-    let asset = I18nAsset::new("en", source);
-    let bundle = asset.compile().expect("valid fluent");
-    // Bundle compiles successfully
-    assert!(bundle.locales.iter().any(|l| l.to_string() == "en"));
-  }
+    #[test]
+    fn defaults_to_en_empty_catalog() {
+        let b = I18nBundle::default();
+        assert_eq!(b.current_locale(), "en");
+        assert_eq!(b.formatter().locale(), "en");
+        // Empty catalog → every key is loud-missing, never blank.
+        assert_eq!(b.t("hello", &TransArgs::new()), "⟦hello⟧");
+    }
 
-  #[test]
-  fn test_i18n_asset_compile_error() {
-    let bad_fluent = "this is not valid fluent syntax {";
-    let asset = I18nAsset::new("en", bad_fluent);
-    let result = asset.compile();
-    assert!(result.is_err());
-  }
+    #[test]
+    fn translates_in_current_locale() {
+        let b = bundle();
+        assert_eq!(b.t("hello", &TransArgs::new()), "Hello!");
+        assert_eq!(
+            b.t("greet", &TransArgs::new().set("name", "Ada")),
+            "Hi, Ada!"
+        );
+    }
 
-  #[test]
-  fn test_i18n_bundle_default() {
-    let bundle = I18nBundle::default();
-    assert_eq!(bundle.current_locale, "en");
-    assert!(bundle.bundles.is_empty());
-  }
+    #[test]
+    fn set_locale_switches_catalog_and_formatter() {
+        let mut b = bundle();
+        b.set_locale("fr");
+        assert_eq!(b.current_locale(), "fr");
+        assert_eq!(b.formatter().locale(), "fr");
+        assert_eq!(b.t("hello", &TransArgs::new()), "Bonjour !");
+    }
 
-  #[test]
-  fn test_i18n_bundle_new() {
-    let bundle = I18nBundle::new("fr".to_string());
-    assert_eq!(bundle.current_locale, "fr");
-  }
+    #[test]
+    fn set_locale_unsupported_is_noop_and_warns() {
+        let mut b = bundle();
+        b.set_locale("de");
+        // Unsupported → stays on en; still resolves en strings.
+        assert_eq!(b.current_locale(), "en");
+        assert_eq!(b.t("hello", &TransArgs::new()), "Hello!");
+    }
 
-  #[test]
-  fn test_i18n_bundle_register_and_switch() {
-    // Note: This test uses dummy handles since Handle::weak() is unavailable
-    // In real usage, handles come from AssetServer::load()
-    let mut bundle = I18nBundle::default();
-    assert_eq!(bundle.current_locale, "en");
+    #[test]
+    fn set_locale_accepts_region_via_prefix() {
+        let mut b = bundle();
+        b.set_locale("fr-CA");
+        assert_eq!(b.current_locale(), "fr-CA");
+        // fr-CA has no bundle but falls back to fr.
+        assert_eq!(b.t("hello", &TransArgs::new()), "Bonjour !");
+    }
 
-    bundle.set_locale("fr".to_string());
-    // Warns because "fr" not registered, reverts to previous
-    assert_eq!(bundle.current_locale, "en");
-  }
+    #[test]
+    fn plugin_builds_headless() {
+        let mut app = bevy_app::App::new();
+        app.add_plugins(bevy_asset::AssetPlugin::default());
+        app.add_plugins(I18nPlugin);
+        assert!(app.world().contains_resource::<I18nBundle>());
+    }
 }
