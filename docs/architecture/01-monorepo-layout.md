@@ -7,7 +7,7 @@ One product, one repo. **Cargo workspace** (Rust everywhere) + a `content/` tree
 open-mmorpg/
 ├── Cargo.toml                # workspace root
 ├── CLAUDE.md  AGENTS.md→     # the project brain (symlinked)
-├── bin/                      # setup · dev · check · fmt  (DX trio)
+├── bin/                      # setup · dev · check · fmt · new-module  (DX scripts)
 ├── crates/                   # shared, single-responsibility libraries
 │   ├── protocol/             # wire format + message types (server↔client), serde/bincode
 │   ├── ecs-core/             # shared components + systems (Bevy ECS), no I/O
@@ -17,6 +17,8 @@ open-mmorpg/
 │   ├── cache/                # Dragonfly access — ephemeral/broadcast only
 │   ├── scripting/            # WASM + Lua host, sandbox, mod manifest loader
 │   ├── content-schema/       # typed schema for factions/classes/items/quests (validates content/)
+│   ├── module-api/           # compiled-module hook traits + ModuleHost (10)
+│   ├── modules/              # generated aggregator: force-links every modules/* crate (10)
 │   └── errors/               # shared typed error enums (thiserror)
 ├── apps/                     # deployable binaries
 │   ├── gateway/              # axum: auth, routing, DDoS edge, session tokens
@@ -32,6 +34,8 @@ open-mmorpg/
 │   ├── factions/  classes/  races/  abilities/  quests/  zones/
 │   ├── scripts/              # WASM/Lua behavior scripts
 │   └── manifest.json         # mod/datapack manifest, version-locked to core API
+├── modules/                  # COMPILED modules — fork adds features w/o core edits (10)
+│   └── hello-world/          # proof-of-concept: hooks real server events end to end
 ├── assets/                   # glTF / heightmaps / textures / audio (AI-generated, zstd bundles)
 ├── docker/                   # compose: Yugabyte + Dragonfly + gateway/shard
 └── docs/                     # this + initial-idea; ADRs in docs/architecture/decisions/

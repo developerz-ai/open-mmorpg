@@ -8,6 +8,7 @@ console.log(`
   bin/dev [target]     boot gateway|shard|worldsvc|client|web|all
   bin/check            the gate: fmt + clippy -D warnings + tests (+ web)
   bin/fmt              auto-format (cargo fmt + biome)
+  bin/new-module NAME  scaffold a compiled gameplay module under modules/ (doc 10)
 
   Direct (Bun TS, no shim):
   bun scripts/check.ts --rust-only | --web-only

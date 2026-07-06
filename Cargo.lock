@@ -1978,6 +1978,34 @@ dependencies = [
 ]
 
 [[package]]
+name = "omm-module-api"
+version = "0.0.0"
+dependencies = [
+ "omm-ecs-core",
+ "omm-protocol",
+]
+
+[[package]]
+name = "omm-module-hello-world"
+version = "0.0.0"
+dependencies = [
+ "omm-ecs-core",
+ "omm-module-api",
+ "omm-protocol",
+ "tracing",
+]
+
+[[package]]
+name = "omm-modules"
+version = "0.0.0"
+dependencies = [
+ "omm-ecs-core",
+ "omm-module-api",
+ "omm-module-hello-world",
+ "omm-protocol",
+]
+
+[[package]]
 name = "omm-netcode"
 version = "0.0.0"
 dependencies = [
@@ -2027,6 +2055,8 @@ version = "0.0.0"
 dependencies = [
  "omm-content-schema",
  "omm-ecs-core",
+ "omm-module-api",
+ "omm-modules",
  "omm-netcode",
  "omm-protocol",
  "omm-sim",

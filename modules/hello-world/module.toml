@@ -1,0 +1,12 @@
+# Build-time manifest for a compiled module. Read by bin/new-module and by
+# crates/modules/build.rs (for rerun-on-change); mirrored at runtime by the
+# module's ModuleManifest. See docs/architecture/10-modules.md.
+[module]
+name = "hello-world"
+version = "0.0.0"
+# The omm-module-api hook-API version this module was authored against.
+core-api-version = 1
+description = "Proof-of-concept module: logs on real player-login and tick events."
+# The server hooks this module implements — documentation for operators; the
+# code is the source of truth.
+hooks = ["on_player_login", "on_tick"]

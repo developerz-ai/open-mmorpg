@@ -1,0 +1,28 @@
+[package]
+name = "omm-modules"
+description = "Generated aggregator: force-links every crate under modules/ and builds a populated ModuleHost. Deps below are managed by bin/new-module."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+build = "build.rs"
+
+[lib]
+name = "omm_modules"
+path = "src/lib.rs"
+
+[dependencies]
+omm-module-api.workspace = true
+
+# --- modules (managed by bin/new-module — append one line per module) ---
+omm-module-hello-world = { path = "../../modules/hello-world" }
+
+[dev-dependencies]
+# The end-to-end test builds hook contexts, which carry typed ids. The module
+# crate itself is already a normal dependency (that is what links it in).
+omm-protocol.workspace = true
+omm-ecs-core.workspace = true
+
+[lints]
+workspace = true

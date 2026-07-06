@@ -16,11 +16,16 @@ members = [
   "crates/errors",
   "crates/world",
   "crates/engine-core",
+  "crates/module-api",
+  "crates/modules",
   "apps/gateway",
   "apps/shard",
   "apps/client",
   "apps/mcp",
   "apps/worldsvc",
+  # Compiled gameplay modules — every crate under modules/ is auto-discovered,
+  # compiled, and tested with no edit here. See docs/architecture/10-modules.md.
+  "modules/*",
 ]
 
 [workspace.package]
@@ -46,6 +51,9 @@ omm-content-schema = { path = "crates/content-schema" }
 omm-errors = { path = "crates/errors" }
 omm-world = { path = "crates/world" }
 omm-engine-core = { path = "crates/engine-core" }
+# compiled-module system: the hook API and the generated aggregator.
+omm-module-api = { path = "crates/module-api" }
+omm-modules = { path = "crates/modules" }
 # external
 # Bevy — consumed as individual sub-crates (not the umbrella `bevy`) so the
 # engine ships only what it uses and boots headless with no GPU/windowing.
