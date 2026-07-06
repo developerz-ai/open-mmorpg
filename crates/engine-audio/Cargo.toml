@@ -1,0 +1,38 @@
+[package]
+name = "omm-engine-audio"
+description = "Engine audio: spatial audio, clip playback, volume control, deterministic source management."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+# Headless-safe core: app lifecycle, ECS (messages/systems), and reflection.
+# Audio clip playback, spatial positioning, and source management are data-driven,
+# deterministic operations — no platform audio API calls on the server.
+bevy_app.workspace = true
+bevy_ecs.workspace = true
+bevy_reflect.workspace = true
+bevy_transform.workspace = true
+# Engine libraries: core plugin registry.
+omm-engine-core.workspace = true
+# Typed, fail-loud errors for audio-layer operations.
+thiserror.workspace = true
+# First-party Bevy audio: clip playback, spatial audio, mixer control.
+# Gated by `audio` feature — headless builds run without platform audio drivers.
+bevy_audio = { workspace = true, optional = true }
+
+[dev-dependencies]
+omm-engine-core.workspace = true
+bevy_reflect.workspace = true
+
+[features]
+default = []
+# Enables spatial audio playback: 3D positioning, attenuation, clip scheduling.
+# Compiles audio driver bindings and mixer logic. Disabled in headless/server
+# builds — audio state tracking stays available for editor/replay inspection.
+audio = ["dep:bevy_audio"]
+
+[lints]
+workspace = true
