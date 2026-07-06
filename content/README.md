@@ -18,18 +18,32 @@ content/
 ├── factions/               # One Faction per file
 ├── races/                  # One Race per file
 ├── classes/                # One Class per file
-├── abilities/              # One Ability per file
-├── items/                  # One Item per file, grouped by item_type:
+├── abilities/              # One Ability per file, grouped by who references it:
+│   ├── <class-id>/         #   referenced by that class's abilities[] (arcanist/, occultist/, …)
+│   ├── racial/             #   referenced only by a race's traits[]
+│   └── unassigned/         #   not (yet) referenced by any class or race
+├── items/                  # One Item per file, grouped by item_type then level tier:
 │   ├── weapons/            #   Weapon
 │   ├── armor/              #   Armor
 │   ├── consumables/        #   Consumable
 │   ├── crafting-materials/ #   CraftingMaterial
 │   ├── trinkets/           #   Trinket
 │   ├── quest/              #   Quest
-│   └── misc/               #   Misc
-├── quests/                 # One Quest per file
-├── zones/                  # One Zone per file
-├── spawn-tables/           # One SpawnTable per file
+│   └── misc/               #   Misc  (each type splits into level tiers below)
+│       ├── lvl-01-10/      #     required_level 1–10
+│       ├── lvl-11-20/      #     required_level 11–20
+│       └── lvl-21plus/     #     required_level 21+   (tier dirs created only when populated)
+├── quests/                 # One Quest per file, grouped by level:
+│   ├── lvl-01-10/          #   level 1–10
+│   ├── lvl-11-20/          #   level 11–20
+│   └── lvl-21-30/          #   level 21–30  (created only when populated)
+├── zones/                  # One Zone per file, grouped by min_level:
+│   ├── lvl-01-10/          #   min_level ≤ 10
+│   └── lvl-11-50/          #   min_level > 10
+├── spawn-tables/           # One SpawnTable per file, grouped by referencing zone:
+│   ├── <zone-id>/          #   referenced by that zone's spawn_tables[] (first zone wins)
+│   ├── dungeons/           #   referenced only by a dungeon's trash_spawn_tables[]
+│   └── unzoned/            #   referenced by neither  (created only when populated)
 ├── dungeons/               # One Dungeon per file
 └── economy/                # Economy, split across:
     ├── auction-houses/     #   one AuctionHouse per file
@@ -43,9 +57,13 @@ assets/
 └── audio/                  # Audio (Opus OGG)
 ```
 
-Each domain directory is auto-discovered: drop a new `<id>.json` file in the
-right folder and it loads — no index to edit, no array to append. Files are read
-in sorted-path order, so the assembled manifest is deterministic.
+Each domain directory is **recursively** auto-discovered: `load_domain_dir()`
+globs `**/*.json`, so the subdirectories above are **organizational only** — the
+loader keys every entity by its `id`, never its path. Drop a new `<id>.json`
+anywhere under the right domain folder (or invent your own nesting) and it loads
+— no index to edit, no array to append. Files are read in sorted-path order, so
+the assembled manifest is deterministic. Because grouping is by `id`, moving a
+file between subdirs never changes what loads or how it cross-references.
 
 → docs/architecture/05-ecs-and-scripting.md · docs/initial-idea/06-modding-and-extensibility.md
 

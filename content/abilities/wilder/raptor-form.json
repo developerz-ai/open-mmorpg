@@ -1,0 +1,18 @@
+{
+  "id": "raptor-form",
+  "name": "Raptor Form",
+  "description": "Shift into a swift raptor, gaining increased movement speed for travel.",
+  "max_rank": 1,
+  "cooldown_sec": 1.5,
+  "resource_cost": 10,
+  "cast_time_sec": 1.5,
+  "range_yards": 0.0,
+  "effects": [
+    {
+      "effect": "Buff",
+      "magnitude": 40.0,
+      "scaling": 0.6,
+      "target": "self"
+    }
+  ]
+}

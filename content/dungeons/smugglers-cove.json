@@ -9,7 +9,7 @@
     "smuggler-cove-pirates",
     "smuggler-cove-lookouts",
     "smuggler-cutthroats",
-    "cove-murlocs",
+    "cove-sculkin",
     "parrot-minions"
   ],
   "loot_tables": ["brinebeards-pistol", "captains-coat", "pollys-perch"],

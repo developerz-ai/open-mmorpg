@@ -3,7 +3,7 @@
   "name": "Arcanist",
   "description": "Scholar of raw arcane; Lattice woven into bolts and flame.",
   "role": "dps",
-  "abilities": ["arcane-bolt", "fireball", "frostbolt"],
+  "abilities": ["arcane-bolt", "fireball", "rimebolt"],
   "stat_growth": {
     "strength": 0,
     "dexterity": 0,

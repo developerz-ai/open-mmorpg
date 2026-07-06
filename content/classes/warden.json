@@ -3,7 +3,7 @@
   "name": "Warden",
   "description": "Totemic elementalist who channels the forces through earthen wards.",
   "role": "healer",
-  "abilities": ["healing-surge", "totemic-ward", "earth-shock"],
+  "abilities": ["mending-tide", "totemic-ward", "stoneshock"],
   "stat_growth": {
     "strength": 0,
     "dexterity": 0,
