@@ -4,6 +4,8 @@
 //! These tests exercise only the public crate API (`omm_engine_audio::*`). No
 //! audio device is opened — safe under CI `--all-features`.
 
+#![allow(clippy::unwrap_used, clippy::expect_used)]
+
 use bevy_math::Vec3;
 use omm_engine_audio::{Attenuation, AudioAoi, EmitterInput, Listener, Rolloff};
 use omm_protocol::Vec3 as WorldVec3;
@@ -72,7 +74,10 @@ fn audible_ids_includes_in_range_excludes_out_of_range() {
 
     assert!(ids.contains(&EntityId(1)), "id=1 should be in range");
     assert!(ids.contains(&EntityId(2)), "id=2 should be in range");
-    assert!(!ids.contains(&EntityId(3)), "id=3 should be culled (out of range)");
+    assert!(
+        !ids.contains(&EntityId(3)),
+        "id=3 should be culled (out of range)"
+    );
 }
 
 /// Empty world → empty result.
@@ -81,7 +86,8 @@ fn audible_ids_empty_world() {
     let tree = world();
     let aoi = AudioAoi::new(25.0, 32).expect("valid");
     assert!(
-        aoi.audible_ids(&tree, Vec3::new(10.0, 0.0, 10.0)).is_empty(),
+        aoi.audible_ids(&tree, Vec3::new(10.0, 0.0, 10.0))
+            .is_empty(),
         "no emitters → no ids"
     );
 }
@@ -95,14 +101,20 @@ fn audible_ids_emitter_well_beyond_radius_is_absent() {
 
     // id=1: 2× radius away
     tree.insert(EntityId(1), wpos(50.0, 70.0)); // 20 units; radius=8
-    // id=2: inside
+                                                // id=2: inside
     tree.insert(EntityId(2), wpos(50.0, 54.0)); // 4 units
 
     let aoi = AudioAoi::new(8.0, 32).expect("valid");
     let ids = aoi.audible_ids(&tree, listener_pos);
 
-    assert!(!ids.contains(&EntityId(1)), "id=1 is 20 units out, well beyond radius 8");
-    assert!(ids.contains(&EntityId(2)), "id=2 is 4 units in, within radius 8");
+    assert!(
+        !ids.contains(&EntityId(1)),
+        "id=1 is 20 units out, well beyond radius 8"
+    );
+    assert!(
+        ids.contains(&EntityId(2)),
+        "id=2 is 4 units in, within radius 8"
+    );
 }
 
 // ── Voice selection and budget (`mix`) ───────────────────────────────────────
@@ -132,7 +144,10 @@ fn mix_drops_out_of_range_emitters_and_orders_by_distance() {
     let ids: Vec<u64> = voices.iter().map(|v| v.id.0).collect();
     assert_eq!(ids, vec![3, 7], "out-of-range dropped, nearest first");
     for v in &voices {
-        assert!(v.mix.gain > 0.0, "every retained voice must have positive gain");
+        assert!(
+            v.mix.gain > 0.0,
+            "every retained voice must have positive gain"
+        );
     }
 }
 

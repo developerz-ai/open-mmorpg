@@ -4,6 +4,8 @@
 //! These tests exercise only the public crate API (`omm_engine_audio::*`). No
 //! audio device is opened — safe under CI `--all-features`.
 
+#![allow(clippy::unwrap_used, clippy::expect_used)]
+
 use bevy_math::Vec3;
 use omm_engine_audio::{spatialize, Attenuation, Listener, Rolloff, SpatialMix};
 
@@ -76,7 +78,10 @@ fn attenuation_curves_are_monotonically_decreasing() {
                 g <= prev + TOL,
                 "{rolloff:?}: gain rose at d={d:.3} ({g:.5} > {prev:.5})"
             );
-            assert!((0.0..=1.0).contains(&g), "{rolloff:?}: gain {g} out of 0..1");
+            assert!(
+                (0.0..=1.0).contains(&g),
+                "{rolloff:?}: gain {g} out of 0..1"
+            );
             prev = g;
         }
     }
@@ -89,7 +94,10 @@ fn rolloff_steepness_order_at_midrange() {
     let lin = atten(Rolloff::Linear).gain(d);
     let inv = atten(Rolloff::Inverse).gain(d);
     let sq = atten(Rolloff::InverseSquare).gain(d);
-    assert!(sq < inv, "InverseSquare {sq:.4} should be < Inverse {inv:.4}");
+    assert!(
+        sq < inv,
+        "InverseSquare {sq:.4} should be < Inverse {inv:.4}"
+    );
     assert!(inv < lin, "Inverse {inv:.4} should be < Linear {lin:.4}");
 }
 
@@ -184,10 +192,17 @@ fn pan_is_always_bounded() {
 fn colocated_emitter_is_centred_full_gain() {
     let l = listener();
     let a = atten(Rolloff::Linear);
-    let SpatialMix { gain, pan, distance } = spatialize(&l, Vec3::ZERO, &a);
+    let SpatialMix {
+        gain,
+        pan,
+        distance,
+    } = spatialize(&l, Vec3::ZERO, &a);
     assert!(approx(pan, 0.0), "co-located pan should be 0: {pan}");
     assert!(approx(gain, 1.0), "co-located gain should be 1: {gain}");
-    assert!(approx(distance, 0.0), "co-located distance should be 0: {distance}");
+    assert!(
+        approx(distance, 0.0),
+        "co-located distance should be 0: {distance}"
+    );
 }
 
 /// A non-finite emitter position must produce gain=0 and centred pan.
