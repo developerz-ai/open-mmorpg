@@ -28,10 +28,15 @@ unic-langid = "0.9"
 # Optional: UI rendering (feature-gated, disabled in headless tests)
 bevy_ui = { workspace = true, optional = true }
 bevy_render = { workspace = true, optional = true }
+bevy_color = { workspace = true, optional = true }
 
 [features]
 default = []
-ui = ["dep:bevy_ui", "dep:bevy_render"]
+ui = ["dep:bevy_ui", "dep:bevy_render", "dep:bevy_color"]
 
 [dev-dependencies]
 proptest.workspace = true
+serde_json.workspace = true
+
+[lints]
+workspace = true

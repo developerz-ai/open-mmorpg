@@ -10,10 +10,11 @@ impl bevy_app::Plugin for UiPlugin {
         // Always include i18n
         app.add_plugins(I18nPlugin);
 
-        // Optional: bevy_ui rendering substrate
+        // Optional: bevy_ui rendering substrate + retained HUD widgets.
         #[cfg(feature = "ui")]
         {
             app.add_plugins(bevy_ui::UiPlugin);
+            app.add_plugins(crate::hud::HudPlugin);
         }
     }
 }

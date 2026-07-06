@@ -4079,6 +4079,7 @@ version = "0.0.0"
 dependencies = [
  "bevy_app",
  "bevy_asset",
+ "bevy_color",
  "bevy_ecs",
  "bevy_reflect",
  "bevy_render",
@@ -4092,6 +4093,7 @@ dependencies = [
  "omm-engine-core",
  "proptest",
  "serde",
+ "serde_json",
  "thiserror 2.0.18",
  "tracing",
  "unic-langid",
