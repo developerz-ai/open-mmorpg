@@ -190,6 +190,13 @@ export const en: Catalog = {
       match: '✓ Match — your download is authentic',
       mismatch: '✗ Mismatch — file may be corrupted',
       invalid: 'Invalid checksum format (expected 64 hex characters)',
+      morePlatforms: '+{count} more platforms',
     },
+    osWindows: 'Windows 10+',
+    specsWindows: 'Intel/AMD CPU, 4GB RAM, 500MB disk',
+    osMacos: 'macOS 11+',
+    specsMacos: 'Intel/Apple CPU, 4GB RAM, 500MB disk',
+    osLinux: 'Linux (Ubuntu 20.04+)',
+    specsLinux: 'x64 CPU, 4GB RAM, 500MB disk',
   },
 };

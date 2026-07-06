@@ -6,18 +6,19 @@ import { DownloadVerifier } from '../components/DownloadVerifier.tsx';
 import { getAllDownloads } from '../lib/downloads.ts';
 import { t } from '../lib/i18n.ts';
 
-const REQUIREMENTS = [
-  { os: 'Windows 10+', specs: 'Intel/AMD CPU, 4GB RAM, 500MB disk' },
-  { os: 'macOS 11+', specs: 'Intel/Apple CPU, 4GB RAM, 500MB disk' },
-  { os: 'Linux (Ubuntu 20.04+)', specs: 'x64 CPU, 4GB RAM, 500MB disk' },
-];
-
 /**
  * Downloads page — installer links, system requirements, checksums.
  * Thin: static data rendered through `t()` copy, no backend calls.
  */
 export default function Downloads(): JSX.Element {
   const downloads = getAllDownloads();
+
+  // Call t() inside component render for proper i18n context
+  const REQUIREMENTS = [
+    { os: t('downloads.osWindows'), specs: t('downloads.specsWindows') },
+    { os: t('downloads.osMacos'), specs: t('downloads.specsMacos') },
+    { os: t('downloads.osLinux'), specs: t('downloads.specsLinux') },
+  ];
 
   return (
     <div class="stack">

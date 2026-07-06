@@ -35,6 +35,8 @@ export function ChecksumVerifier(props: ChecksumVerifierProps): JSX.Element {
 
     // Simulate async verification (in real impl, might hash large file)
     setTimeout(() => {
+      // Guard against stale results: input changed mid-flight; discard stale result
+      if (input().trim() !== value) return;
       if (value.toLowerCase() === props.expectedChecksum.toLowerCase()) {
         setStatus('match');
       } else {

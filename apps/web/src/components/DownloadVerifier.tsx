@@ -38,6 +38,11 @@ export function DownloadVerifier(props: DownloadVerifierProps): JSX.Element {
 
     // Simulate async verification (in real impl, might hash large file)
     setTimeout(() => {
+      // Guard against stale results: input changed mid-flight; discard stale result
+      if (input().trim() !== value) {
+        setMatchedDownload(null);
+        return;
+      }
       const match = props.downloads.find((dl) => dl.checksum.toLowerCase() === value.toLowerCase());
 
       if (match) {
@@ -114,7 +119,7 @@ export function DownloadVerifier(props: DownloadVerifierProps): JSX.Element {
         </For>
         {props.downloads.length > 3 && (
           <div class="verifier__more text-fg-muted">
-            +{props.downloads.length - 3} more platforms
+            {t('downloads.verifier.morePlatforms', { count: props.downloads.length - 3 })}
           </div>
         )}
       </div>
