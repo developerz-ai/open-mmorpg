@@ -1,23 +1,21 @@
-//! Typed errors for audio operations.
+//! Typed, fail-loud errors for audio configuration.
 
 use thiserror::Error;
 
-/// Audio operation errors.
-#[derive(Error, Debug, Clone)]
+/// An audio-layer error. Configuration is validated up front so a bad attenuation
+/// curve or listener pose fails at construction rather than emitting NaNs into the
+/// mix.
+#[derive(Error, Debug, Clone, PartialEq, Eq)]
 pub enum AudioError {
-    /// Attempted to play a non-existent audio clip.
-    #[error("audio clip not found: {0}")]
-    ClipNotFound(String),
-
-    /// Audio system not available (feature not enabled or platform limitation).
-    #[error("audio system not available")]
-    NotAvailable,
-
-    /// Invalid audio source configuration.
-    #[error("invalid audio source configuration: {0}")]
+    /// A spatial/AoI parameter was out of range or non-finite.
+    #[error("invalid audio configuration: {0}")]
     InvalidConfig(String),
+}
 
-    /// Audio playback error.
-    #[error("audio playback error: {0}")]
-    PlaybackError(String),
+impl AudioError {
+    /// Build an [`AudioError::InvalidConfig`] from any message.
+    #[must_use]
+    pub fn invalid(msg: impl Into<String>) -> Self {
+        Self::InvalidConfig(msg.into())
+    }
 }
