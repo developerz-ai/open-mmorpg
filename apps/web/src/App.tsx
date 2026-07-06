@@ -11,6 +11,7 @@ import { NotFound } from './routes/NotFound.tsx';
 const Register = lazy(() => import('./routes/Register.tsx'));
 const Login = lazy(() => import('./routes/Login.tsx'));
 const Account = lazy(() => import('./routes/Account.tsx'));
+const Downloads = lazy(() => import('./routes/Downloads.tsx'));
 const Armory = lazy(() => import('./routes/Armory.tsx'));
 const CharacterPage = lazy(() => import('./routes/CharacterPage.tsx'));
 const GuildPage = lazy(() => import('./routes/GuildPage.tsx'));
@@ -30,6 +31,7 @@ export function App(): JSX.Element {
       <Show when={isEnabled('registrationOpen')}>
         <Route path="/register" component={Register} />
       </Show>
+      <Route path="/downloads" component={Downloads} />
       <Route path="/account" component={Account} />
       <Show when={isEnabled('armoryPublic')}>
         <Route path="/armory" component={Armory} />

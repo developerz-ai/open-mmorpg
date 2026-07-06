@@ -25,6 +25,7 @@ export function SiteHeader(): JSX.Element {
         <A href="/" end>
           {t('nav.home')}
         </A>
+        <A href="/downloads">{t('nav.downloads')}</A>
         <Show when={isEnabled('armoryPublic')}>
           <A href="/armory">{t('nav.armory')}</A>
         </Show>
