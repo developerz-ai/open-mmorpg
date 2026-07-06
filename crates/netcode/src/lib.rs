@@ -14,6 +14,12 @@
 //!    acked; a dropped snapshot just deltas against an older baseline (Quake3).
 //! 4. [`quantize`] — mm-quantize positions and pack angles before send.
 //! 5. [`reliability`] — sequence/ack math so reliable channels survive loss.
+//!
+//! Under all of that sits [`transport`]: a runtime-agnostic [`Transport`] trait
+//! and the length-prefixed [`Frame`] header (seq/ack/ack-bits) that carries the
+//! reliability state on the wire. The trait is the seam a loopback (tests) or a
+//! UDP socket (prod) plugs into; the crate itself keeps only the framing so it
+//! stays deterministically testable.
 
 pub mod aoi;
 pub mod delta;
@@ -21,6 +27,7 @@ pub mod priority;
 pub mod quantize;
 pub mod reliability;
 pub mod snapshot;
+pub mod transport;
 
 pub use aoi::filter_by_interest;
 pub use delta::{apply_delta, diff, DeltaFrame};
@@ -28,3 +35,8 @@ pub use priority::{fill_budget, Candidate, Priority};
 pub use quantize::{dequantize_angle, dequantize_pos, quantize_angle, quantize_pos};
 pub use reliability::{seq_greater_than, AckTracker};
 pub use snapshot::{EntitySnapshot, SnapshotFrame};
+pub use transport::{
+    framing::{Frame, FramingError},
+    loopback::{Loopback, LossModel},
+    ConnId, Transport, TransportError,
+};

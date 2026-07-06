@@ -1981,9 +1981,12 @@ dependencies = [
 name = "omm-netcode"
 version = "0.0.0"
 dependencies = [
+ "async-trait",
  "omm-protocol",
  "proptest",
  "serde",
+ "thiserror",
+ "tokio",
 ]
 
 [[package]]
@@ -2041,6 +2044,16 @@ dependencies = [
  "proptest",
  "serde",
  "serde_json",
+]
+
+[[package]]
+name = "omm-transport"
+version = "0.0.0"
+dependencies = [
+ "async-trait",
+ "omm-netcode",
+ "omm-protocol",
+ "tokio",
 ]
 
 [[package]]

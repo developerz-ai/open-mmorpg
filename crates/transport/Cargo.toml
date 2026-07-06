@@ -1,6 +1,6 @@
 [package]
-name = "omm-netcode"
-description = "UDP reliability primitives: sequence math, ack bitfields, interest."
+name = "omm-transport"
+description = "Real socket drivers + connection lifecycle for the netcode Transport seam."
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
@@ -8,14 +8,10 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
+omm-netcode.workspace = true
 omm-protocol.workspace = true
 async-trait.workspace = true
-serde.workspace = true
-thiserror.workspace = true
 tokio.workspace = true
-
-[dev-dependencies]
-proptest.workspace = true
 
 [lints]
 workspace = true

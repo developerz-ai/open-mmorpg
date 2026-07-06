@@ -66,6 +66,14 @@ impl AckTracker {
         self.latest
     }
 
+    /// The 32-bit ack bitfield: bit `n` set == `latest() - 1 - n` was received.
+    /// The framing layer stamps this onto every outgoing [`crate::Frame`] so the
+    /// peer learns which recent packets arrived.
+    #[must_use]
+    pub const fn ack_bits(&self) -> u32 {
+        self.bits
+    }
+
     /// Whether `seq` is within the window and has been received.
     #[must_use]
     pub fn is_acked(&self, seq: u16) -> bool {
@@ -115,5 +123,17 @@ mod tests {
         assert!(!t.is_acked(2));
         t.record(2); // arrives late
         assert!(t.is_acked(2));
+    }
+
+    #[test]
+    fn ack_bits_expose_received_window() {
+        let mut t = AckTracker::new();
+        t.record(10);
+        t.record(11); // 11 is latest; bit 0 == (latest - 1) == 10 received.
+        assert_eq!(t.ack_bits() & 1, 1);
+        t.record(13); // gap at 12; window shifts, 11 now two behind.
+        assert_eq!(t.latest(), 13);
+        assert_eq!(t.ack_bits() & 0b10, 0b10); // bit 1 == 11 received
+        assert_eq!(t.ack_bits() & 0b1, 0); // bit 0 == 12 missing
     }
 }
