@@ -1,5 +1,6 @@
-# Scratch — disposable by definition, never commit
-/tmp/
+# Scratch — disposable by definition, never commit (keep the dir, ignore its contents)
+/tmp/*
+!/tmp/.keep
 
 # Rust
 /target/
