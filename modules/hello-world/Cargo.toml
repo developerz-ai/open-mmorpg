@@ -1,0 +1,24 @@
+[package]
+name = "omm-module-hello-world"
+description = "Proof-of-concept compiled module: hooks the real player-login and tick server events end to end."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[lib]
+name = "omm_module_hello_world"
+path = "src/lib.rs"
+
+[dependencies]
+omm-module-api.workspace = true
+tracing.workspace = true
+
+[dev-dependencies]
+# Constructing hook contexts in tests needs the typed ids they carry.
+omm-protocol.workspace = true
+omm-ecs-core.workspace = true
+
+[lints]
+workspace = true

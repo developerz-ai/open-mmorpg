@@ -1,0 +1,21 @@
+[package]
+name = "omm-module-api"
+description = "Compiled-module hook API: core exposes hook traits, modules implement and are linked in — no core edits. See docs/architecture/10-modules.md."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[lib]
+name = "omm_module_api"
+path = "src/lib.rs"
+
+[dependencies]
+# Pure type crates only — the hook API carries real ids, never raw primitives,
+# yet must stay a leaf a module can depend on without pulling the server in.
+omm-protocol.workspace = true
+omm-ecs-core.workspace = true
+
+[lints]
+workspace = true

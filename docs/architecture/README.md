@@ -20,6 +20,7 @@
 | [07-mcp-companions.md](07-mcp-companions.md) | Player companion MCP server design |
 | [08-security-anticheat.md](08-security-anticheat.md) | Server-authority, DDoS, dupe prevention, sandboxing |
 | [09-operator-web.md](09-operator-web.md) | Base operator website — Bun + SolidJS, dark-only, i18n |
+| [10-modules.md](10-modules.md) | Compiled modules — AzerothCore-style, pure Cargo, fork without merge conflicts |
 
 ## Binding decisions (the ones an agent must not re-litigate)
 1. **Rust everywhere** — server, client (Bevy), tooling, MCP. → [../initial-idea/03-tech-stack.md](../initial-idea/03-tech-stack.md)

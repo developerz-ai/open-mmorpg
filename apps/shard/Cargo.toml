@@ -28,6 +28,10 @@ omm-transport.workspace = true
 omm-world.workspace = true
 omm-content-schema.workspace = true
 omm-protocol.workspace = true
+# Compiled-module system: the hook API (called on core events like the tick) and
+# the generated aggregator that links every crate under modules/ into this binary.
+omm-module-api.workspace = true
+omm-modules.workspace = true
 
 [lints]
 workspace = true

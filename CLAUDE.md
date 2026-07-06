@@ -77,9 +77,10 @@ Local agent tooling is **git-ignored** (per-developer, regenerated — never com
 - **Secrets** — `.env*` are git-ignored; never commit real secrets.
 
 ## Layout (target — see docs/architecture/01-monorepo-layout.md)
-- `crates/*`   Rust libs: `protocol` `ecs-core` `sim` `netcode` `persistence` `cache` `scripting` `content-schema` `errors`
+- `crates/*`   Rust libs: `protocol` `ecs-core` `sim` `netcode` `persistence` `cache` `scripting` `content-schema` `errors` `module-api` `modules`
 - `apps/*`     binaries: `gateway` `shard` `client` `mcp` `worldsvc` · `web` (Bun/Solid)
 - `packages/*` TS shared for web: `i18n` `ui`
+- `modules/*`  COMPILED gameplay modules — fork adds features w/o core edits; `bin/new-module <name>` scaffolds one (→ `docs/architecture/10-modules.md`)
 - `content/*`  data-driven game content (no recompile) + `manifest.json`
 - `assets/*`   glTF / heightmaps / textures / audio (AI-generated, zstd)
 - `docs/*`     `initial-idea/` (spec) · `architecture/` (design + `decisions/` ADRs)
@@ -91,6 +92,7 @@ Local agent tooling is **git-ignored** (per-developer, regenerated — never com
 - Netcode / sharding           → `docs/architecture/03-netcode-and-sharding.md`
 - Anti-dupe / consistency      → `docs/architecture/04-data-and-consistency.md`
 - Modding / ECS / scripting    → `docs/architecture/05-ecs-and-scripting.md`
+- Compiled modules (fork DX)   → `docs/architecture/10-modules.md`
 - Operator website             → `docs/architecture/09-operator-web.md`
 - Org standards                → `../gold-standards-in-ai/docs/`
 

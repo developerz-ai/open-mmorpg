@@ -11,6 +11,7 @@ use std::path::Path;
 use std::time::Instant;
 
 use omm_content_schema::load_manifest_dir;
+use omm_module_api::{ServerHooks, TickCtx};
 use omm_shard::abilities::build_ability_table;
 use omm_shard::tick::FixedTimestep;
 use omm_sim::{InputBatch, World};
@@ -51,6 +52,21 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // of the loop to keep the tick path allocation-free.
     let inputs: InputBatch = Vec::new();
 
+    // Load every compiled-in module under modules/ and hold the host for the
+    // process's life. The core calls one hook surface; the host fans out to each
+    // module. An empty modules/ yields an empty host — a valid no-op. Adding a
+    // module never edits this file (docs/architecture/10-modules.md).
+    let modules = omm_modules::load();
+    for manifest in modules.manifests() {
+        tracing::info!(
+            module = manifest.name,
+            version = manifest.version,
+            api = manifest.core_api_version,
+            "loaded compiled module"
+        );
+    }
+    tracing::info!(count = modules.len(), "compiled modules ready");
+
     let mut timestep = FixedTimestep::new();
     let mut ticker = tokio::time::interval(timestep.period());
     // The accumulator owns catch-up; the pacer must not also burst after a lag
@@ -79,6 +95,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 }
                 for _ in 0..steps.count {
                     world.step(&inputs, &abilities);
+                    // Fire the tick hook after the authoritative step, so modules
+                    // observe the post-step world time. Dispatch is a no-op when
+                    // no module is loaded.
+                    modules.on_tick(&TickCtx::new(world.now(), timestep.period().as_secs_f32()));
                 }
             }
             _ = tokio::signal::ctrl_c() => {
