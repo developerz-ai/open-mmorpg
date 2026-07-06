@@ -32,7 +32,7 @@ function contrastRatio(fg: [number, number, number], bg: [number, number, number
 /** Parse "R G B" string to number array */
 function parseRGB(rgb: string): [number, number, number] {
   const parts = rgb.split(/\s+/).map(Number);
-  if (parts.length !== 3 || parts.some(isNaN)) {
+  if (parts.length !== 3 || parts.some(Number.isNaN)) {
     throw new Error(`Invalid RGB format: ${rgb}`);
   }
   return [parts[0], parts[1], parts[2]];
@@ -63,114 +63,73 @@ const COLORS = {
   'focus-ring': '96 170 240',
 } as const;
 
-type ColorKey = keyof typeof COLORS;
-
 describe('WCAG AA Contrast Verification', () => {
   describe('Dark theme defaults', () => {
     test('normal text on background (fg on bg)', () => {
-      const ratio = contrastRatio(
-        parseRGB(COLORS.fg),
-        parseRGB(COLORS.bg),
-      );
+      const ratio = contrastRatio(parseRGB(COLORS.fg), parseRGB(COLORS.bg));
       expect(ratio).toBeGreaterThanOrEqual(WCAG_AA.NORMAL_TEXT);
     });
 
     test('strong text on background (fg-strong on bg)', () => {
-      const ratio = contrastRatio(
-        parseRGB(COLORS['fg-strong']),
-        parseRGB(COLORS.bg),
-      );
+      const ratio = contrastRatio(parseRGB(COLORS['fg-strong']), parseRGB(COLORS.bg));
       expect(ratio).toBeGreaterThanOrEqual(WCAG_AA.NORMAL_TEXT);
     });
 
     test('muted text on background (fg-muted on bg)', () => {
-      const ratio = contrastRatio(
-        parseRGB(COLORS['fg-muted']),
-        parseRGB(COLORS.bg),
-      );
+      const ratio = contrastRatio(parseRGB(COLORS['fg-muted']), parseRGB(COLORS.bg));
       expect(ratio).toBeGreaterThanOrEqual(WCAG_AA.NORMAL_TEXT);
     });
 
     test('accent on background (accent on bg)', () => {
-      const ratio = contrastRatio(
-        parseRGB(COLORS.accent),
-        parseRGB(COLORS.bg),
-      );
+      const ratio = contrastRatio(parseRGB(COLORS.accent), parseRGB(COLORS.bg));
       expect(ratio).toBeGreaterThanOrEqual(WCAG_AA.NORMAL_TEXT);
     });
 
     test('accent-strong on background (accent-strong on bg)', () => {
-      const ratio = contrastRatio(
-        parseRGB(COLORS['accent-strong']),
-        parseRGB(COLORS.bg),
-      );
+      const ratio = contrastRatio(parseRGB(COLORS['accent-strong']), parseRGB(COLORS.bg));
       expect(ratio).toBeGreaterThanOrEqual(WCAG_AA.NORMAL_TEXT);
     });
 
     test('success on background (success on bg)', () => {
-      const ratio = contrastRatio(
-        parseRGB(COLORS.success),
-        parseRGB(COLORS.bg),
-      );
+      const ratio = contrastRatio(parseRGB(COLORS.success), parseRGB(COLORS.bg));
       expect(ratio).toBeGreaterThanOrEqual(WCAG_AA.UI_COMPONENT);
     });
 
     test('danger on background (danger on bg)', () => {
-      const ratio = contrastRatio(
-        parseRGB(COLORS.danger),
-        parseRGB(COLORS.bg),
-      );
+      const ratio = contrastRatio(parseRGB(COLORS.danger), parseRGB(COLORS.bg));
       expect(ratio).toBeGreaterThanOrEqual(WCAG_AA.UI_COMPONENT);
     });
 
     test('warning on background (warning on bg)', () => {
-      const ratio = contrastRatio(
-        parseRGB(COLORS.warning),
-        parseRGB(COLORS.bg),
-      );
+      const ratio = contrastRatio(parseRGB(COLORS.warning), parseRGB(COLORS.bg));
       expect(ratio).toBeGreaterThanOrEqual(WCAG_AA.UI_COMPONENT);
     });
 
     test('line on background (line on bg)', () => {
-      const ratio = contrastRatio(
-        parseRGB(COLORS.line),
-        parseRGB(COLORS.bg),
-      );
+      const ratio = contrastRatio(parseRGB(COLORS.line), parseRGB(COLORS.bg));
       // Line color is intentionally subtle; high-contrast mode overrides this
       expect(ratio).toBeGreaterThanOrEqual(1.0);
     });
 
     test('text on surface (fg on surface)', () => {
-      const ratio = contrastRatio(
-        parseRGB(COLORS.fg),
-        parseRGB(COLORS.surface),
-      );
+      const ratio = contrastRatio(parseRGB(COLORS.fg), parseRGB(COLORS.surface));
       expect(ratio).toBeGreaterThanOrEqual(WCAG_AA.NORMAL_TEXT);
     });
 
     test('text on surface-hover (fg on surface-hover)', () => {
-      const ratio = contrastRatio(
-        parseRGB(COLORS.fg),
-        parseRGB(COLORS['surface-hover']),
-      );
+      const ratio = contrastRatio(parseRGB(COLORS.fg), parseRGB(COLORS['surface-hover']));
       expect(ratio).toBeGreaterThanOrEqual(WCAG_AA.NORMAL_TEXT);
     });
   });
 
   describe('Focus indicator visibility', () => {
     test('focus-ring on background', () => {
-      const ratio = contrastRatio(
-        parseRGB(COLORS['focus-ring']),
-        parseRGB(COLORS.bg),
-      );
+      const ratio = contrastRatio(parseRGB(COLORS['focus-ring']), parseRGB(COLORS.bg));
       expect(ratio).toBeGreaterThanOrEqual(WCAG_AA.UI_COMPONENT);
     });
 
     test('focus-ring on surface', () => {
-      const ratio = contrastRatio(
-        parseRGB(COLORS['focus-ring']),
-        parseRGB(COLORS.surface),
-      );
+      const ratio = contrastRatio(parseRGB(COLORS['focus-ring']), parseRGB(COLORS.surface));
       expect(ratio).toBeGreaterThanOrEqual(WCAG_AA.UI_COMPONENT);
     });
   });

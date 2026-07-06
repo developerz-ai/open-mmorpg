@@ -183,13 +183,12 @@ export default function CharacterPage(): JSX.Element {
             <Show when={c().stats}>{(stats) => <StatsPanel stats={stats()} />}</Show>
 
             {/* Talents Panel */}
-            <Show
-              when={(() => {
-                const talents = c().talents;
-                return talents != null && talents.length > 0;
-              })()}
-            >
-              <TalentsPanel talents={c().talents!} />
+            <Show when={c().talents}>
+              {(talents) => (
+                <Show when={talents().length > 0}>
+                  <TalentsPanel talents={talents()} />
+                </Show>
+              )}
             </Show>
 
             {/* Gear */}

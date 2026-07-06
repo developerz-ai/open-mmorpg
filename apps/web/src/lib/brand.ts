@@ -6,21 +6,23 @@ import type { OperatorConfig } from '../config.ts';
  */
 function parseRGB(rgb: string): [number, number, number] {
   const parts = rgb.split(/\s+/).map(Number);
-  if (parts.length !== 3 || parts.some((c) => c === undefined || c < 0 || c > 255 || isNaN(c))) {
+  if (
+    parts.length !== 3 ||
+    parts.some((c) => c === undefined || c < 0 || c > 255 || Number.isNaN(c))
+  ) {
     throw new Error(`Invalid RGB format: ${rgb}`);
   }
-  return [parts[0]!, parts[1]!, parts[2]!];
+  return [parts[0] as number, parts[1] as number, parts[2] as number];
 }
 
 /**
  * Calculate relative luminance per WCAG 2.0 spec.
  */
 function relativeLuminance(r: number, g: number, b: number): number {
-  const [rs, gs, bs] = [r, g, b].map((c) => {
-    const s = c / 255;
-    return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
-  }) as [number, number, number];
-  return 0.2126 * rs! + 0.7152 * gs! + 0.0722 * bs!;
+  const rs = ((s: number) => (s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4))(r / 255);
+  const gs = ((s: number) => (s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4))(g / 255);
+  const bs = ((s: number) => (s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4))(b / 255);
+  return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
 }
 
 /**

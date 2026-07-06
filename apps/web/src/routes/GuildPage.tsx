@@ -112,25 +112,31 @@ export default function GuildPage(): JSX.Element {
                 <p class="text-fg-muted">
                   {t('armory.guild.members', { count: fmt.integer(g().memberCount) })}
                 </p>
-                <Show when={g().founded != null}>
-                  <p class="text-fg-muted">
-                    {t('armory.guild.founded')} {fmt.date(new Date(g().founded!))}
-                  </p>
+                <Show when={g().founded}>
+                  {(founded) => (
+                    <p class="text-fg-muted">
+                      {t('armory.guild.founded')} {fmt.date(new Date(founded()))}
+                    </p>
+                  )}
                 </Show>
-                <Show when={g().faction != null}>
-                  <p class="text-fg-muted">
-                    {t('armory.guild.faction')} {g().faction!}
-                  </p>
+                <Show when={g().faction}>
+                  {(faction) => (
+                    <p class="text-fg-muted">
+                      {t('armory.guild.faction')} {faction()}
+                    </p>
+                  )}
                 </Show>
-                <Show when={g().description != null}>
-                  <p class="text-fg-muted">{g().description!}</p>
+                <Show when={g().description}>
+                  {(description) => <p class="text-fg-muted">{description()}</p>}
                 </Show>
-                <Show when={g().achievements != null}>
-                  <p class="actions">
-                    <Badge tone="neutral">
-                      {t('armory.character.achievements')}: {fmt.integer(g().achievements!)}
-                    </Badge>
-                  </p>
+                <Show when={g().achievements}>
+                  {(achievements) => (
+                    <p class="actions">
+                      <Badge tone="neutral">
+                        {t('armory.character.achievements')}: {fmt.integer(achievements())}
+                      </Badge>
+                    </p>
+                  )}
                 </Show>
               </div>
             </Card>
