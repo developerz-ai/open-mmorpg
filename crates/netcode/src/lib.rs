@@ -37,5 +37,6 @@ pub use reliability::{seq_greater_than, AckTracker};
 pub use snapshot::{EntitySnapshot, SnapshotFrame};
 pub use transport::{
     framing::{Frame, FramingError},
+    loopback::{Loopback, LossModel},
     ConnId, Transport, TransportError,
 };

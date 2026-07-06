@@ -9,8 +9,10 @@
 //! without touching a line of gameplay code.
 
 pub mod framing;
+pub mod loopback;
 
 pub use framing::{Frame, FramingError};
+pub use loopback::{Loopback, LossModel};
 
 /// Identifies one logical connection (client↔shard). Minted at accept time; the
 /// server tags per-connection reliability state by it. Never a raw `u64` — the

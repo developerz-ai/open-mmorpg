@@ -1986,6 +1986,7 @@ dependencies = [
  "proptest",
  "serde",
  "thiserror",
+ "tokio",
 ]
 
 [[package]]
