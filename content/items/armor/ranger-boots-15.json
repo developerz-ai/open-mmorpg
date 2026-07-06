@@ -1,0 +1,21 @@
+{
+  "id": "ranger-boots-15",
+  "name": "Expert's Ranger Boots",
+  "description": "Boots that leave no trace.",
+  "item_type": "Armor",
+  "slot": "feet",
+  "required_level": 15,
+  "stats": {
+    "strength": 0,
+    "dexterity": 8,
+    "constitution": 7,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 1150,
+  "icon": "textures/solid-colors/green.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

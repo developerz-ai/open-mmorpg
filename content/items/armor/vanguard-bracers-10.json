@@ -1,0 +1,21 @@
+{
+  "id": "vanguard-bracers-10",
+  "name": "Veteran's Vanguard Bracers",
+  "description": "Masterwork bracers that have deflected countless blows.",
+  "item_type": "Armor",
+  "slot": "wrist",
+  "required_level": 10,
+  "stats": {
+    "strength": 3,
+    "dexterity": 0,
+    "constitution": 3,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 260,
+  "icon": "textures/solid-colors/gray.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

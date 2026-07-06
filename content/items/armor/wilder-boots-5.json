@@ -1,0 +1,21 @@
+{
+  "id": "wilder-boots-5",
+  "name": "Initiate's Wilder Boots",
+  "description": "Boots with metal toe caps.",
+  "item_type": "Armor",
+  "slot": "feet",
+  "required_level": 5,
+  "stats": {
+    "strength": 4,
+    "dexterity": 0,
+    "constitution": 3,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 85,
+  "icon": "textures/solid-colors/brown.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

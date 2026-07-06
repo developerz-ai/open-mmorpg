@@ -1,0 +1,24 @@
+{
+  "id": "stance-of-the-stone",
+  "name": "Stance of the Stone",
+  "description": "Root yourself like stone, gaining increased threat generation and damage reduction.",
+  "max_rank": 1,
+  "cooldown_sec": 2.0,
+  "resource_cost": 18,
+  "cast_time_sec": 1.5,
+  "range_yards": 0.0,
+  "effects": [
+    {
+      "effect": "Buff",
+      "magnitude": 25.0,
+      "scaling": 0.8,
+      "target": "self"
+    },
+    {
+      "effect": "Buff",
+      "magnitude": 15.0,
+      "scaling": 0.5,
+      "target": "self"
+    }
+  ]
+}

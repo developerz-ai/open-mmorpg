@@ -1,0 +1,19 @@
+{
+  "id": "greater-clarity-potion",
+  "name": "Greater Clarity Potion",
+  "description": "A transcendent brew that elevates consciousness to near-perfect clarity.",
+  "item_type": "Consumable",
+  "required_level": 25,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 300,
+  "icon": "textures/solid-colors/blue.png",
+  "max_stack": 10
+}

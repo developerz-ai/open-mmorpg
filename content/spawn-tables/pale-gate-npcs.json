@@ -1,0 +1,18 @@
+{
+  "id": "pale-gate-npcs",
+  "entries": [
+    {
+      "entity_id": "gate-captain-theron",
+      "weight": 100,
+      "max_count": 1,
+      "positions": [[5.0, 0.0, 5.0]]
+    },
+    {
+      "entity_id": "vanguard-trainer-bron",
+      "weight": 100,
+      "max_count": 1,
+      "positions": [[8.0, 0.0, 8.0]]
+    }
+  ],
+  "respawn_sec": 300
+}

@@ -1,0 +1,21 @@
+{
+  "id": "channeler-gauntlets-5",
+  "name": "Initiate's Channeler Gauntlets",
+  "description": "Mail gauntlets that weave rapid battle patterns.",
+  "item_type": "Armor",
+  "slot": "hands",
+  "required_level": 5,
+  "stats": {
+    "strength": 0,
+    "dexterity": 4,
+    "constitution": 3,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 70,
+  "icon": "textures/solid-colors/gray.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

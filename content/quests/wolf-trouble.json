@@ -1,0 +1,30 @@
+{
+  "id": "wolf-trouble",
+  "name": "Wolf Trouble at the Pale Gates",
+  "description": "Wolves harry the outlying steadings. Thin their pack and bring proof.",
+  "level": 2,
+  "prerequisites": ["awakening-in-dawnshore"],
+  "objectives": [
+    {
+      "objective_type": "Kill",
+      "target_id": "dawnshore-wolf",
+      "count": 5,
+      "description": "Slay 5 dawnshore wolves"
+    },
+    {
+      "objective_type": "Gather",
+      "target_id": "wolf-pelt",
+      "count": 5,
+      "description": "Collect 5 wolf pelts"
+    }
+  ],
+  "rewards": {
+    "experience": 250,
+    "gold_copper": 100,
+    "choice_items": ["rusty-shortsword", "apprentice-rod"],
+    "items": []
+  },
+  "giver_id": "warden-surann",
+  "turn_in_id": "warden-surann",
+  "next_quest_id": "path-to-the-crypt"
+}

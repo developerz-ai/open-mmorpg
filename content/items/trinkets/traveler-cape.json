@@ -1,0 +1,21 @@
+{
+  "id": "traveler-cape",
+  "name": "Traveler Cape",
+  "description": "A sturdy cloth cape for long roads.",
+  "item_type": "Trinket",
+  "slot": "back",
+  "required_level": 5,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 3,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 110,
+  "icon": "textures/solid-colors/green.png",
+  "mesh": "meshes/placeholder-plane.gltf",
+  "max_stack": 1
+}

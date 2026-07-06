@@ -1,0 +1,17 @@
+{
+  "id": "hollowveil-barrows",
+  "name": "Hollowveil Barrows",
+  "min_level": 6,
+  "max_level": 12,
+  "safe_locations": [
+    {
+      "id": "barrows-approach",
+      "position": [110.0, 0.0, 80.0],
+      "yaw": 0.0
+    }
+  ],
+  "controlling_factions": [],
+  "spawn_tables": [],
+  "parent_zone_id": "dawnshore",
+  "navmesh": "nav/hollowveil-barrows.nav"
+}

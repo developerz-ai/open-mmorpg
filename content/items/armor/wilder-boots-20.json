@@ -1,0 +1,21 @@
+{
+  "id": "wilder-boots-20",
+  "name": "Beastmaster's Wilder Boots",
+  "description": "Boots that leave tracks of dread.",
+  "item_type": "Armor",
+  "slot": "feet",
+  "required_level": 20,
+  "stats": {
+    "strength": 10,
+    "dexterity": 0,
+    "constitution": 9,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "epic",
+  "value_copper": 3200,
+  "icon": "textures/solid-colors/gold.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

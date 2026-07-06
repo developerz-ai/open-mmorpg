@@ -1,0 +1,6 @@
+{
+  "item_pattern": "crafting-material-*",
+  "tradable": true,
+  "auctionable": true,
+  "mailing_allowed": true
+}

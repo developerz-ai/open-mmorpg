@@ -1,0 +1,21 @@
+{
+  "id": "occultist-leggings-20",
+  "name": "Voidlord's Occultist Leggings",
+  "description": "Leggings infused with the essence of the Hollow.",
+  "item_type": "Armor",
+  "slot": "legs",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 9,
+    "wisdom": 9,
+    "charisma": 0
+  },
+  "quality": "epic",
+  "value_copper": 2900,
+  "icon": "textures/solid-colors/violet.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

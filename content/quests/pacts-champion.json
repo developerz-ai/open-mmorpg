@@ -1,0 +1,36 @@
+{
+  "id": "pacts-champion",
+  "name": "The Pact's Champion",
+  "description": "Face the Concord's elite champion in ritual combat. Prove the Pact's superiority.",
+  "level": 20,
+  "prerequisites": ["enemies-at-gates"],
+  "objectives": [
+    {
+      "objective_type": "Speak",
+      "target_id": "chieftain-thornfang",
+      "count": 1,
+      "description": "Begin the ritual combat"
+    },
+    {
+      "objective_type": "Kill",
+      "target_id": "concord-champion",
+      "count": 1,
+      "description": "Defeat the Concord Champion"
+    },
+    {
+      "objective_type": "Speak",
+      "target_id": "chieftain-thornfang",
+      "count": 1,
+      "description": "Claim your title as Pact Champion"
+    }
+  ],
+  "rewards": {
+    "experience": 5000,
+    "gold_copper": 3000,
+    "choice_items": ["pact-champion-greataxe", "pact-champion-claws"],
+    "items": ["supreme-healing-potion", "mana-potion", "mana-potion", "travelers-ration"]
+  },
+  "giver_id": "chieftain-thornfang",
+  "turn_in_id": "chieftain-thornfang",
+  "next_quest_id": null
+}

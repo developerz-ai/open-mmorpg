@@ -1,0 +1,21 @@
+{
+  "id": "revenant-helm-15",
+  "name": "Death's Revenant Helm",
+  "description": "An epic helm worn by death's own champion.",
+  "item_type": "Armor",
+  "slot": "head",
+  "required_level": 15,
+  "stats": {
+    "strength": 4,
+    "dexterity": 8,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 1310,
+  "icon": "textures/solid-colors/orange.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

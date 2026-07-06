@@ -1,0 +1,21 @@
+{
+  "id": "oracle-shoulderpads-10",
+  "name": "Prophet's Oracle Shoulderpads",
+  "description": "Shoulderpads that bear the weight of prophecy.",
+  "item_type": "Armor",
+  "slot": "shoulder",
+  "required_level": 10,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 3,
+    "intelligence": 5,
+    "wisdom": 5,
+    "charisma": 5
+  },
+  "quality": "rare",
+  "value_copper": 340,
+  "icon": "textures/solid-colors/gold.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

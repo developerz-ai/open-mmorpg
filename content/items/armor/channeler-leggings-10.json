@@ -1,0 +1,21 @@
+{
+  "id": "channeler-leggings-10",
+  "name": "Adept's Channeler Leggings",
+  "description": "Mail leggings that move with supernatural speed.",
+  "item_type": "Armor",
+  "slot": "legs",
+  "required_level": 10,
+  "stats": {
+    "strength": 0,
+    "dexterity": 6,
+    "constitution": 5,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 405,
+  "icon": "textures/solid-colors/gray.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

@@ -1,0 +1,24 @@
+{
+  "id": "bloom-pulse",
+  "name": "Bloom Pulse",
+  "description": "Release a pulse of Bloom energy that mends nearby allies and damages nearby foes.",
+  "max_rank": 1,
+  "cooldown_sec": 10.0,
+  "resource_cost": 22,
+  "cast_time_sec": 0.0,
+  "range_yards": 0.0,
+  "effects": [
+    {
+      "effect": "Heal",
+      "magnitude": 24.0,
+      "scaling": 0.8,
+      "target": "aoe_ally"
+    },
+    {
+      "effect": "Damage",
+      "magnitude": 20.0,
+      "scaling": 0.7,
+      "target": "aoe_enemy"
+    }
+  ]
+}

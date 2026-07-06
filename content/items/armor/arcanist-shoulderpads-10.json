@@ -1,0 +1,21 @@
+{
+  "id": "arcanist-shoulderpads-10",
+  "name": "Adept's Arcanist Shoulderpads",
+  "description": "Shoulderpads that radiate arcane power.",
+  "item_type": "Armor",
+  "slot": "shoulder",
+  "required_level": 10,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 3,
+    "intelligence": 5,
+    "wisdom": 5,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 340,
+  "icon": "textures/solid-colors/purple.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

@@ -1,0 +1,21 @@
+{
+  "id": "vanguard-shoulders-15",
+  "name": "Champion's Vanguard Shoulders",
+  "description": "Epic shoulders that have borne the weight of realms.",
+  "item_type": "Armor",
+  "slot": "shoulder",
+  "required_level": 15,
+  "stats": {
+    "strength": 4,
+    "dexterity": 0,
+    "constitution": 4,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 1050,
+  "icon": "textures/solid-colors/gray.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

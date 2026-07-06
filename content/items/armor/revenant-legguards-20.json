@@ -1,0 +1,21 @@
+{
+  "id": "revenant-legguards-20",
+  "name": "Voidlord's Revenant Legguards",
+  "description": "Legendary legguards that outran the void itself.",
+  "item_type": "Armor",
+  "slot": "legs",
+  "required_level": 20,
+  "stats": {
+    "strength": 5,
+    "dexterity": 5,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "epic",
+  "value_copper": 3280,
+  "icon": "textures/solid-colors/orange.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

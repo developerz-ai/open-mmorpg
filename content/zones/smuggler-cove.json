@@ -1,0 +1,18 @@
+{
+  "id": "smuggler-cove",
+  "name": "Smuggler's Cove",
+  "min_level": 15,
+  "max_level": 20,
+  "safe_locations": [
+    {
+      "id": "cove-entrance",
+      "position": [0.0, 0.0, 0.0],
+      "yaw": 0.0
+    }
+  ],
+  "controlling_factions": [],
+  "spawn_tables": ["smuggler-cove-pirates", "smuggler-cove-lookouts", "smuggler-cove-bosses"],
+  "parent_zone_id": "veridian-coast",
+  "entrance_position": [85.0, 0.0, 120.0],
+  "navmesh": "nav/smuggler-cove.nav"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "brinebeard-cutlass",
+  "name": "Brinebeard's Cutlass",
+  "description": "Captain Brinebeard's rusted but deadly blade.",
+  "item_type": "Weapon",
+  "slot": "mainhand",
+  "required_level": 15,
+  "stats": {
+    "strength": 3,
+    "dexterity": 8,
+    "constitution": 2,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 1500,
+  "icon": "textures/solid-colors/blue.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

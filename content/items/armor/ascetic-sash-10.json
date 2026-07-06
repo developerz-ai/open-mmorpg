@@ -1,0 +1,21 @@
+{
+  "id": "ascetic-sash-10",
+  "name": "Adept's Ascetic Sash",
+  "description": "Sash that channels inner power.",
+  "item_type": "Armor",
+  "slot": "waist",
+  "required_level": 10,
+  "stats": {
+    "strength": 6,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 290,
+  "icon": "textures/solid-colors/orange.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

@@ -1,0 +1,24 @@
+{
+  "id": "serpent-sting",
+  "name": "Serpent Sting",
+  "description": "Apply a venomous sting that deals nature damage over time.",
+  "max_rank": 1,
+  "cooldown_sec": 10.0,
+  "resource_cost": 14,
+  "cast_time_sec": 0.0,
+  "range_yards": 25.0,
+  "effects": [
+    {
+      "effect": "Damage",
+      "magnitude": 6.0,
+      "scaling": 0.4,
+      "target": "enemy"
+    },
+    {
+      "effect": "Damage",
+      "magnitude": 4.0,
+      "scaling": 0.3,
+      "target": "enemy"
+    }
+  ]
+}

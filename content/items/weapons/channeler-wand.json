@@ -1,0 +1,21 @@
+{
+  "id": "channeler-wand",
+  "name": "Channeler Wand",
+  "description": "A wand for weaving raw arcane energy.",
+  "item_type": "Weapon",
+  "slot": "mainhand",
+  "required_level": 1,
+  "stats": {
+    "strength": 0,
+    "dexterity": 1,
+    "constitution": 0,
+    "intelligence": 2,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "common",
+  "value_copper": 25,
+  "icon": "textures/checker-512.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

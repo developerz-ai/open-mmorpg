@@ -1,0 +1,21 @@
+{
+  "id": "occultist-cord-15",
+  "name": "Soulbinder's Occultist Cord",
+  "description": "A cord that pulses with captured life force.",
+  "item_type": "Armor",
+  "slot": "waist",
+  "required_level": 15,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 4,
+    "intelligence": 7,
+    "wisdom": 7,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 870,
+  "icon": "textures/solid-colors/violet.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

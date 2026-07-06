@@ -1,0 +1,16 @@
+{
+  "id": "solhaven",
+  "name": "Solhaven",
+  "min_level": 1,
+  "max_level": 50,
+  "safe_locations": [
+    {
+      "id": "emberdawn-square",
+      "position": [0.0, 0.0, 0.0],
+      "yaw": 0.0
+    }
+  ],
+  "controlling_factions": ["aurelian-concord"],
+  "spawn_tables": ["solhaven-faction-npcs"],
+  "navmesh": "nav/solhaven.nav"
+}

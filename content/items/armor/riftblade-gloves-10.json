@@ -1,0 +1,21 @@
+{
+  "id": "riftblade-gloves-10",
+  "name": "Adept's Riftblade Gloves",
+  "description": "Gloves that tear reality's fabric.",
+  "item_type": "Armor",
+  "slot": "hands",
+  "required_level": 10,
+  "stats": {
+    "strength": 0,
+    "dexterity": 6,
+    "constitution": 5,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 340,
+  "icon": "textures/solid-colors/purple.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

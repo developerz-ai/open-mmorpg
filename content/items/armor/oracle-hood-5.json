@@ -1,0 +1,21 @@
+{
+  "id": "oracle-hood-5",
+  "name": "Seer's Oracle Hood",
+  "description": "An enhanced hood for clearer visions.",
+  "item_type": "Armor",
+  "slot": "head",
+  "required_level": 5,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 2,
+    "intelligence": 3,
+    "wisdom": 4,
+    "charisma": 3
+  },
+  "quality": "uncommon",
+  "value_copper": 85,
+  "icon": "textures/solid-colors/gold.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

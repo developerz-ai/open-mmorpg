@@ -1,0 +1,21 @@
+{
+  "id": "guardsman-shield",
+  "name": "Guardsman Shield",
+  "description": "A sturdy shield bearing the Concord's crest.",
+  "item_type": "Armor",
+  "slot": "offhand",
+  "required_level": 16,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 8,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 600,
+  "icon": "textures/checker-512.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

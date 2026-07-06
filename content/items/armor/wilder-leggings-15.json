@@ -1,0 +1,21 @@
+{
+  "id": "wilder-leggings-15",
+  "name": "Expert's Wilder Leggings",
+  "description": "Leggings that channel wild power.",
+  "item_type": "Armor",
+  "slot": "legs",
+  "required_level": 15,
+  "stats": {
+    "strength": 8,
+    "dexterity": 0,
+    "constitution": 7,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 1250,
+  "icon": "textures/solid-colors/brown.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

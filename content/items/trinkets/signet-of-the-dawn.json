@@ -1,0 +1,21 @@
+{
+  "id": "signet-of-the-dawn",
+  "name": "Signet of the Dawn",
+  "description": "A ring awarded to those who serve the first light.",
+  "item_type": "Trinket",
+  "slot": "ring",
+  "required_level": 5,
+  "stats": {
+    "strength": 0,
+    "dexterity": 2,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 100,
+  "icon": "textures/solid-colors/green.png",
+  "mesh": "meshes/placeholder-torus.gltf",
+  "max_stack": 1
+}

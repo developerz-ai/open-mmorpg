@@ -1,0 +1,24 @@
+{
+  "id": "dimensional-tear",
+  "name": "Dimensional Tear",
+  "description": "Tear through reality to teleport to your target location, leaving rift damage in your wake.",
+  "max_rank": 1,
+  "cooldown_sec": 20.0,
+  "resource_cost": 18,
+  "cast_time_sec": 0.5,
+  "range_yards": 35.0,
+  "effects": [
+    {
+      "effect": "Teleport",
+      "magnitude": 0.0,
+      "scaling": 0.0,
+      "target": "self"
+    },
+    {
+      "effect": "Damage",
+      "magnitude": 14.0,
+      "scaling": 0.8,
+      "target": "aoe_enemy"
+    }
+  ]
+}

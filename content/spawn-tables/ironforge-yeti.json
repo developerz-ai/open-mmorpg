@@ -1,0 +1,25 @@
+{
+  "id": "ironforge-yeti",
+  "entries": [
+    {
+      "entity_id": "frost-yeti",
+      "weight": 100,
+      "max_count": 8,
+      "positions": [
+        [40.0, 25.0, 60.0],
+        [55.0, 28.0, 70.0],
+        [35.0, 22.0, 80.0],
+        [60.0, 30.0, 55.0],
+        [45.0, 26.0, 75.0],
+        [50.0, 27.0, 65.0]
+      ]
+    },
+    {
+      "entity_id": "yeti-elder",
+      "weight": 30,
+      "max_count": 2,
+      "positions": [[48.0, 29.0, 68.0], [52.0, 31.0, 72.0]]
+    }
+  ],
+  "respawn_sec": 180
+}

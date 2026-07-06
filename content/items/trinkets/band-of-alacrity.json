@@ -1,0 +1,21 @@
+{
+  "id": "band-of-alacrity",
+  "name": "Band of Alacrity",
+  "description": "Engraved with symbols of swift motion.",
+  "item_type": "Trinket",
+  "slot": "ring",
+  "required_level": 10,
+  "stats": {
+    "strength": 0,
+    "dexterity": 4,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 420,
+  "icon": "textures/solid-colors/blue.png",
+  "mesh": "meshes/placeholder-torus.gltf",
+  "max_stack": 1
+}

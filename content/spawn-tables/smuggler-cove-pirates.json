@@ -1,0 +1,24 @@
+{
+  "id": "smuggler-cove-pirates",
+  "entries": [
+    {
+      "entity_id": "smuggler-cutthroat",
+      "weight": 100,
+      "max_count": 10,
+      "positions": [
+        [15.0, 0.0, 25.0],
+        [25.0, 0.0, 20.0],
+        [20.0, 0.0, 35.0],
+        [30.0, 0.0, 30.0],
+        [35.0, 0.0, 25.0]
+      ]
+    },
+    {
+      "entity_id": "smuggler-gunner",
+      "weight": 60,
+      "max_count": 6,
+      "positions": [[18.0, 0.0, 28.0], [28.0, 0.0, 22.0], [33.0, 0.0, 27.0]]
+    }
+  ],
+  "respawn_sec": 120
+}

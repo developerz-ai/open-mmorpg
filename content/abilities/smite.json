@@ -1,0 +1,18 @@
+{
+  "id": "smite",
+  "name": "Smite",
+  "description": "Channel dawn into a searing blow against the unholy.",
+  "max_rank": 1,
+  "cooldown_sec": 0.0,
+  "resource_cost": 12,
+  "cast_time_sec": 1.5,
+  "range_yards": 8.0,
+  "effects": [
+    {
+      "effect": "Damage",
+      "magnitude": 14.0,
+      "scaling": 0.9,
+      "target": "enemy"
+    }
+  ]
+}

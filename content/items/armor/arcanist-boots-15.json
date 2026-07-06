@@ -1,0 +1,21 @@
+{
+  "id": "arcanist-boots-15",
+  "name": "Expert's Arcanist Boots",
+  "description": "Boots that allow passage through magical barriers.",
+  "item_type": "Armor",
+  "slot": "feet",
+  "required_level": 15,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 4,
+    "intelligence": 7,
+    "wisdom": 7,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 950,
+  "icon": "textures/solid-colors/purple.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

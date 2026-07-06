@@ -1,0 +1,18 @@
+{
+  "id": "demon-armor",
+  "name": "Demon Armor",
+  "description": "Consume soul shards to imbue yourself with demonic protection, increasing armor for a time.",
+  "max_rank": 1,
+  "cooldown_sec": 30.0,
+  "resource_cost": 2,
+  "cast_time_sec": 1.5,
+  "range_yards": 0.0,
+  "effects": [
+    {
+      "effect": "Buff",
+      "magnitude": 35.0,
+      "scaling": 0.9,
+      "target": "self"
+    }
+  ]
+}

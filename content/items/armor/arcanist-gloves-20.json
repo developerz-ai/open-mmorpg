@@ -1,0 +1,21 @@
+{
+  "id": "arcanist-gloves-20",
+  "name": "Archmage's Arcanist Gloves",
+  "description": "Gloves that can reshape the fabric of magic.",
+  "item_type": "Armor",
+  "slot": "hands",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 9,
+    "wisdom": 9,
+    "charisma": 0
+  },
+  "quality": "epic",
+  "value_copper": 2650,
+  "icon": "textures/solid-colors/purple.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

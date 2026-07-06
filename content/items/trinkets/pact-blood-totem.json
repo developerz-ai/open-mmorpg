@@ -1,0 +1,21 @@
+{
+  "id": "pact-blood-totem",
+  "name": "Pact Blood Totem",
+  "description": "A toem carved from bloodwood, sacred to the Pact.",
+  "item_type": "Trinket",
+  "slot": "trinket",
+  "required_level": 15,
+  "stats": {
+    "strength": 4,
+    "dexterity": 0,
+    "constitution": 6,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 2
+  },
+  "quality": "uncommon",
+  "value_copper": 500,
+  "icon": "textures/solid-colors/red.png",
+  "mesh": "meshes/placeholder-totem.gltf",
+  "max_stack": 1
+}

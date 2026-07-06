@@ -1,0 +1,21 @@
+{
+  "id": "thornfang-vambraces",
+  "name": "Thornfang Vambraces",
+  "description": "Armguards forged by Chieftain Thornfang himself.",
+  "item_type": "Armor",
+  "slot": "wrist",
+  "required_level": 18,
+  "stats": {
+    "strength": 6,
+    "dexterity": 0,
+    "constitution": 10,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 1200,
+  "icon": "textures/solid-colors/red.png",
+  "mesh": "meshes/placeholder-vambraces.gltf",
+  "max_stack": 1
+}

@@ -1,0 +1,21 @@
+{
+  "id": "stormsinger-kilt",
+  "name": "Stormsinger Kilt",
+  "description": "A ceremonial kilt woven by the Matriarch's hands.",
+  "item_type": "Armor",
+  "slot": "legs",
+  "required_level": 17,
+  "stats": {
+    "strength": 0,
+    "dexterity": 4,
+    "constitution": 4,
+    "intelligence": 6,
+    "wisdom": 8,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 800,
+  "icon": "textures/solid-colors/purple.png",
+  "mesh": "meshes/placeholder-kilt.gltf",
+  "max_stack": 1
+}

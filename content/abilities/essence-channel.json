@@ -1,0 +1,24 @@
+{
+  "id": "essence-channel",
+  "name": "Essence Channel",
+  "description": "Channel raw Essence into a focused bolt that mends allies or burns foes.",
+  "max_rank": 1,
+  "cooldown_sec": 0.0,
+  "resource_cost": 10,
+  "cast_time_sec": 1.5,
+  "range_yards": 30.0,
+  "effects": [
+    {
+      "effect": "Heal",
+      "magnitude": 28.0,
+      "scaling": 1.0,
+      "target": "ally"
+    },
+    {
+      "effect": "Damage",
+      "magnitude": 22.0,
+      "scaling": 0.85,
+      "target": "enemy"
+    }
+  ]
+}

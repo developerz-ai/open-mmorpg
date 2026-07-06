@@ -1,0 +1,21 @@
+{
+  "id": "thin-leather-necklace",
+  "name": "Thin Leather Necklace",
+  "description": "A simple cord with a modest charm.",
+  "item_type": "Trinket",
+  "slot": "neck",
+  "required_level": 1,
+  "stats": {
+    "strength": 1,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "common",
+  "value_copper": 8,
+  "icon": "textures/checker-512.png",
+  "mesh": "meshes/placeholder-torus.gltf",
+  "max_stack": 1
+}

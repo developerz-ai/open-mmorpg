@@ -1,0 +1,18 @@
+{
+  "id": "crypt-relic",
+  "name": "Crypt Relic",
+  "description": "A pulsing shard pried from the Hollowveil depths.",
+  "item_type": "Quest",
+  "required_level": 0,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 0,
+  "max_stack": 1
+}

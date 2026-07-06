@@ -1,0 +1,18 @@
+{
+  "id": "army-of-the-dead",
+  "name": "Army of the Dead",
+  "description": "Raise spectral skeletal minions from the earth to fight at your side for a short time.",
+  "max_rank": 1,
+  "cooldown_sec": 180.0,
+  "resource_cost": 50,
+  "cast_time_sec": 2.5,
+  "range_yards": 0.0,
+  "effects": [
+    {
+      "effect": "Summon",
+      "magnitude": 0.0,
+      "scaling": 0.0,
+      "target": "self"
+    }
+  ]
+}

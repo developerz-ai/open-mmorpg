@@ -1,0 +1,30 @@
+{
+  "id": "dawnshore-inn-npcs",
+  "entries": [
+    {
+      "entity_id": "innkeeper-mara",
+      "weight": 100,
+      "max_count": 1,
+      "positions": [[15.0, 0.0, 25.0]]
+    },
+    {
+      "entity_id": "merchant-gildas",
+      "weight": 100,
+      "max_count": 1,
+      "positions": [[12.0, 0.0, 28.0]]
+    },
+    {
+      "entity_id": "arcanist-trainer-elara",
+      "weight": 100,
+      "max_count": 1,
+      "positions": [[18.0, 0.0, 30.0]]
+    },
+    {
+      "entity_id": "shade-trainer-sylas",
+      "weight": 100,
+      "max_count": 1,
+      "positions": [[10.0, 0.0, 32.0]]
+    }
+  ],
+  "respawn_sec": 300
+}

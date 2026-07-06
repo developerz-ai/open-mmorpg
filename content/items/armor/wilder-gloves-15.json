@@ -1,0 +1,21 @@
+{
+  "id": "wilder-gloves-15",
+  "name": "Expert's Wilder Gloves",
+  "description": "Gloves that crush as jaws do.",
+  "item_type": "Armor",
+  "slot": "hands",
+  "required_level": 15,
+  "stats": {
+    "strength": 8,
+    "dexterity": 0,
+    "constitution": 7,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 1050,
+  "icon": "textures/solid-colors/brown.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

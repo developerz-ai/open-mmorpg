@@ -1,0 +1,21 @@
+{
+  "id": "occultist-boots-10",
+  "name": "Pactbinder's Occultist Boots",
+  "description": "Boots that leave no footprints, even in ash.",
+  "item_type": "Armor",
+  "slot": "feet",
+  "required_level": 10,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 3,
+    "intelligence": 5,
+    "wisdom": 5,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 310,
+  "icon": "textures/solid-colors/violet.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

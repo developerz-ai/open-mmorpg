@@ -1,0 +1,24 @@
+{
+  "id": "havoc-surge",
+  "name": "Havoc Surge",
+  "description": "Channel chaotic Havoc into a devastating attack that fractures enemy defenses.",
+  "max_rank": 1,
+  "cooldown_sec": 10.0,
+  "resource_cost": 20,
+  "cast_time_sec": 0.0,
+  "range_yards": 5.0,
+  "effects": [
+    {
+      "effect": "Damage",
+      "magnitude": 18.0,
+      "scaling": 1.3,
+      "target": "enemy"
+    },
+    {
+      "effect": "Debuff",
+      "magnitude": 12.0,
+      "scaling": 0.5,
+      "target": "enemy"
+    }
+  ]
+}

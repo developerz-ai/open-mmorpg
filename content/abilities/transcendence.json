@@ -1,0 +1,24 @@
+{
+  "id": "transcendence",
+  "name": "Transcendence",
+  "description": "Enter a defensive stance, clearing debuffs and reducing damage taken through inner calm.",
+  "max_rank": 1,
+  "cooldown_sec": 45.0,
+  "resource_cost": 22,
+  "cast_time_sec": 0.0,
+  "range_yards": 0.0,
+  "effects": [
+    {
+      "effect": "Buff",
+      "magnitude": 28.0,
+      "scaling": 0.9,
+      "target": "self"
+    },
+    {
+      "effect": "Debuff",
+      "magnitude": 0.0,
+      "scaling": 0.0,
+      "target": "self"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "jab",
+  "name": "Jab",
+  "description": "A quick palm strike that builds Ki through disciplined form.",
+  "max_rank": 1,
+  "cooldown_sec": 0.0,
+  "resource_cost": 6,
+  "cast_time_sec": 0.0,
+  "range_yards": 5.0,
+  "effects": [
+    {
+      "effect": "Damage",
+      "magnitude": 10.0,
+      "scaling": 0.9,
+      "target": "enemy"
+    },
+    {
+      "effect": "Buff",
+      "magnitude": 3.0,
+      "scaling": 0.1,
+      "target": "self"
+    }
+  ]
+}

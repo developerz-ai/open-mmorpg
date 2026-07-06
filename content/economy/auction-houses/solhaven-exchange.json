@@ -1,0 +1,11 @@
+{
+  "id": "solhaven-exchange",
+  "name": "The Solhaven Exchange",
+  "zone_id": "solhaven",
+  "position": [8.0, 0.0, 6.0],
+  "fee_percentage": 0.05,
+  "min_bid_increment": 0.05,
+  "max_listings_per_account": 20,
+  "listing_duration_hours": 48,
+  "deposit_percentage": 0.05
+}

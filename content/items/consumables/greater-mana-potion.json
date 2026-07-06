@@ -1,0 +1,19 @@
+{
+  "id": "greater-mana-potion",
+  "name": "Greater Mana Potion",
+  "description": "A potent elixir that quickly replenishes arcane reserves.",
+  "item_type": "Consumable",
+  "required_level": 25,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 150,
+  "icon": "textures/solid-colors/green.png",
+  "max_stack": 10
+}

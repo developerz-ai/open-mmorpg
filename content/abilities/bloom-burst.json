@@ -1,0 +1,24 @@
+{
+  "id": "bloom-burst",
+  "name": "Bloom Burst",
+  "description": "Release accumulated Bloom energy in a burst that heals nearby allies and damages nearby enemies.",
+  "max_rank": 1,
+  "cooldown_sec": 15.0,
+  "resource_cost": 28,
+  "cast_time_sec": 0.0,
+  "range_yards": 0.0,
+  "effects": [
+    {
+      "effect": "Heal",
+      "magnitude": 28.0,
+      "scaling": 0.9,
+      "target": "aoe_ally"
+    },
+    {
+      "effect": "Damage",
+      "magnitude": 24.0,
+      "scaling": 0.8,
+      "target": "aoe_enemy"
+    }
+  ]
+}

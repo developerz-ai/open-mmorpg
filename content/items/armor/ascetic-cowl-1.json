@@ -1,0 +1,21 @@
+{
+  "id": "ascetic-cowl-1",
+  "name": "Ascetic Cowl",
+  "description": "A simple leather cowl for meditation.",
+  "item_type": "Armor",
+  "slot": "head",
+  "required_level": 1,
+  "stats": {
+    "strength": 2,
+    "dexterity": 0,
+    "constitution": 1,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "common",
+  "value_copper": 8,
+  "icon": "textures/solid-colors/orange.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

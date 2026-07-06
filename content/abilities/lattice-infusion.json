@@ -1,0 +1,24 @@
+{
+  "id": "lattice-infusion",
+  "name": "Lattice Infusion",
+  "description": "Infuse an ally with Lattice energy, increasing their power and hastening their abilities.",
+  "max_rank": 1,
+  "cooldown_sec": 12.0,
+  "resource_cost": 18,
+  "cast_time_sec": 0.0,
+  "range_yards": 25.0,
+  "effects": [
+    {
+      "effect": "Buff",
+      "magnitude": 18.0,
+      "scaling": 0.6,
+      "target": "ally"
+    },
+    {
+      "effect": "Buff",
+      "magnitude": 12.0,
+      "scaling": 0.4,
+      "target": "ally"
+    }
+  ]
+}

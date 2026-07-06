@@ -1,0 +1,21 @@
+{
+  "id": "warden-gauntlets-10",
+  "name": "Adept's Warden Gauntlets",
+  "description": "Mail gauntlets that channel powerful healing flows.",
+  "item_type": "Armor",
+  "slot": "hands",
+  "required_level": 10,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 0,
+    "wisdom": 6,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 315,
+  "icon": "textures/solid-colors/green.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

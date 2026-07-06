@@ -1,0 +1,21 @@
+{
+  "id": "vanguard-helm-20",
+  "name": "Warlord's Vanguard Helm",
+  "description": "A legendary helm that has led armies to victory.",
+  "item_type": "Armor",
+  "slot": "head",
+  "required_level": 20,
+  "stats": {
+    "strength": 10,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "epic",
+  "value_copper": 3660,
+  "icon": "textures/solid-colors/gray.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

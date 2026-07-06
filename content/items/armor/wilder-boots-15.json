@@ -1,0 +1,21 @@
+{
+  "id": "wilder-boots-15",
+  "name": "Expert's Wilder Boots",
+  "description": "Boots that shake the earth.",
+  "item_type": "Armor",
+  "slot": "feet",
+  "required_level": 15,
+  "stats": {
+    "strength": 8,
+    "dexterity": 0,
+    "constitution": 7,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 1150,
+  "icon": "textures/solid-colors/brown.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

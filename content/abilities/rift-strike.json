@@ -1,0 +1,18 @@
+{
+  "id": "rift-strike",
+  "name": "Rift Strike",
+  "description": "A quick strike empowered by the Rift, tearing at the fabric of reality.",
+  "max_rank": 1,
+  "cooldown_sec": 0.0,
+  "resource_cost": 12,
+  "cast_time_sec": 0.0,
+  "range_yards": 5.0,
+  "effects": [
+    {
+      "effect": "Damage",
+      "magnitude": 15.0,
+      "scaling": 1.1,
+      "target": "enemy"
+    }
+  ]
+}

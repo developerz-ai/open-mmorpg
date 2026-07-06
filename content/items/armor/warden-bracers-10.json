@@ -1,0 +1,21 @@
+{
+  "id": "warden-bracers-10",
+  "name": "Adept's Warden Bracers",
+  "description": "Mail bracers inscribed with powerful healing sigils.",
+  "item_type": "Armor",
+  "slot": "wrist",
+  "required_level": 10,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 0,
+    "wisdom": 6,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 270,
+  "icon": "textures/solid-colors/green.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

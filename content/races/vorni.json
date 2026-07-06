@@ -1,0 +1,15 @@
+{
+  "id": "vorni",
+  "name": "Vorni",
+  "description": "Auroch-kin plains-folk, spirit shamans and the Pact's moral center.",
+  "faction_id": "wildreach-pact",
+  "traits": [],
+  "stats": {
+    "strength": 1,
+    "dexterity": 0,
+    "constitution": 2,
+    "intelligence": -1,
+    "wisdom": 1,
+    "charisma": 0
+  }
+}

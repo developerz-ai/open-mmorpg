@@ -1,0 +1,21 @@
+{
+  "id": "dawnshore",
+  "name": "Dawnshore",
+  "min_level": 1,
+  "max_level": 10,
+  "safe_locations": [
+    {
+      "id": "pale-gate",
+      "position": [0.0, 0.0, 0.0],
+      "yaw": 0.0
+    },
+    {
+      "id": "dawnshore-inn",
+      "position": [40.0, 0.0, 12.0],
+      "yaw": 90.0
+    }
+  ],
+  "controlling_factions": ["aurelian-concord", "wildreach-pact"],
+  "spawn_tables": ["dawnshore-wolves", "dawnshore-inn-npcs", "pale-gate-npcs"],
+  "navmesh": "nav/dawnshore.nav"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "rift-shield",
+  "name": "Rift Shield",
+  "description": "Bend reality to form a protective barrier that deflects incoming harm.",
+  "max_rank": 1,
+  "cooldown_sec": 14.0,
+  "resource_cost": 24,
+  "cast_time_sec": 0.5,
+  "range_yards": 0.0,
+  "effects": [
+    {
+      "effect": "Buff",
+      "magnitude": 32.0,
+      "scaling": 1.0,
+      "target": "self"
+    }
+  ]
+}

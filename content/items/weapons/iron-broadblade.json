@@ -1,0 +1,21 @@
+{
+  "id": "iron-broadblade",
+  "name": "Iron Broadblade",
+  "description": "A sturdy broadsword for the seasoned warrior.",
+  "item_type": "Weapon",
+  "slot": "mainhand",
+  "required_level": 5,
+  "stats": {
+    "strength": 4,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 150,
+  "icon": "textures/checker-512.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

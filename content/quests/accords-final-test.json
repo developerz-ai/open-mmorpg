@@ -1,0 +1,36 @@
+{
+  "id": "accords-final-test",
+  "name": "The Accord's Final Test",
+  "description": "Prove your worthiness to join the Concord's elite. Face a champion of the Pact in single combat.",
+  "level": 20,
+  "prerequisites": ["threats-to-order"],
+  "objectives": [
+    {
+      "objective_type": "Speak",
+      "target_id": "high-chancellor-valerius",
+      "count": 1,
+      "description": "Begin your final test"
+    },
+    {
+      "objective_type": "Kill",
+      "target_id": "pact-champion",
+      "count": 1,
+      "description": "Defeat the Pact Champion"
+    },
+    {
+      "objective_type": "Speak",
+      "target_id": "high-chancellor-valerius",
+      "count": 1,
+      "description": "Claim your place among the Concord's finest"
+    }
+  ],
+  "rewards": {
+    "experience": 5000,
+    "gold_copper": 3000,
+    "choice_items": ["concord-champion-blade", "concord-champion-staff"],
+    "items": ["supreme-healing-potion", "mana-potion", "mana-potion", "travelers-ration"]
+  },
+  "giver_id": "high-chancellor-valerius",
+  "turn_in_id": "high-chancellor-valerius",
+  "next_quest_id": null
+}

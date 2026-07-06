@@ -1,0 +1,19 @@
+{
+  "id": "greater-healing-potion",
+  "name": "Greater Healing Potion",
+  "description": "A potent draught that rapidly restores vitality.",
+  "item_type": "Consumable",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 100,
+  "icon": "textures/solid-colors/green.png",
+  "max_stack": 10
+}

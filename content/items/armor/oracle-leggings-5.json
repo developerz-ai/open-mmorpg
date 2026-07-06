@@ -1,0 +1,21 @@
+{
+  "id": "oracle-leggings-5",
+  "name": "Seer's Oracle Leggings",
+  "description": "Leggings for growing oracles.",
+  "item_type": "Armor",
+  "slot": "legs",
+  "required_level": 5,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 2,
+    "intelligence": 3,
+    "wisdom": 3,
+    "charisma": 3
+  },
+  "quality": "uncommon",
+  "value_copper": 75,
+  "icon": "textures/solid-colors/gold.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

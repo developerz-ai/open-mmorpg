@@ -1,0 +1,18 @@
+{
+  "id": "runic-resilience",
+  "name": "Runic Resilience",
+  "description": "Karnat racial: arcane veins harden skin, granting temporary defense.",
+  "max_rank": 1,
+  "cooldown_sec": 60.0,
+  "resource_cost": 0,
+  "cast_time_sec": 0.0,
+  "range_yards": 0.0,
+  "effects": [
+    {
+      "effect": "Buff",
+      "magnitude": 15.0,
+      "scaling": 0.5,
+      "target": "self"
+    }
+  ]
+}

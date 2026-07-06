@@ -1,0 +1,48 @@
+{
+  "id": "honored-traditions",
+  "name": "Honored Traditions",
+  "description": "Elder Matriarch Stormsinger teaches you the ways of the Pact. Honor must be earned.",
+  "level": 17,
+  "prerequisites": ["survival-of-fittest"],
+  "objectives": [
+    {
+      "objective_type": "Speak",
+      "target_id": "elder-matriarch-stormsinger",
+      "count": 1,
+      "description": "Speak with Elder Matriarch Stormsinger"
+    },
+    {
+      "objective_type": "Explore",
+      "target_id": "emberhold",
+      "count": 1,
+      "description": "Visit the sacred fire in Emberhold"
+    },
+    {
+      "objective_type": "Gather",
+      "target_id": "sacred-herbs",
+      "count": 5,
+      "description": "Gather 5 sacred herbs"
+    },
+    {
+      "objective_type": "Deliver",
+      "target_id": "sacred-herbs",
+      "count": 1,
+      "description": "Offer the herbs at the sacred fire"
+    },
+    {
+      "objective_type": "Speak",
+      "target_id": "elder-matriarch-stormsinger",
+      "count": 1,
+      "description": "Receive the Elder's blessing"
+    }
+  ],
+  "rewards": {
+    "experience": 3500,
+    "gold_copper": 1800,
+    "choice_items": ["stormsinger-kilt", "pact-honor-totem"],
+    "items": ["mana-potion", "greater-healing-potion", "travelers-ration"]
+  },
+  "giver_id": "elder-matriarch-stormsinger",
+  "turn_in_id": "elder-matriarch-stormsinger",
+  "next_quest_id": "enemies-at-gates"
+}

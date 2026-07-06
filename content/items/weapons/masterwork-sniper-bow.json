@@ -1,0 +1,21 @@
+{
+  "id": "masterwork-sniper-bow",
+  "name": "Masterwork Sniper Bow",
+  "description": "A precision bow capable of striking targets at extreme ranges.",
+  "item_type": "Weapon",
+  "slot": "mainhand",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 16,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 1900,
+  "icon": "textures/checker-512.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

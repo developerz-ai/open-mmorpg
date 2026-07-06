@@ -1,0 +1,15 @@
+{
+  "id": "karnat",
+  "name": "Karnat",
+  "description": "Runecrafting forge-folk; veins etched with arcane lines that pulse with lattice-work.",
+  "faction_id": "aurelian-concord",
+  "traits": ["runic-resilience"],
+  "stats": {
+    "strength": 1,
+    "dexterity": 0,
+    "constitution": 2,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  }
+}

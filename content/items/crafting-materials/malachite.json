@@ -1,0 +1,18 @@
+{
+  "id": "malachite",
+  "name": "Malachite",
+  "description": "A vibrant green stone with swirling patterns.",
+  "item_type": "CraftingMaterial",
+  "required_level": 0,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "common",
+  "value_copper": 5,
+  "max_stack": 20
+}

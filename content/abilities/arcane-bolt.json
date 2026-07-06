@@ -1,0 +1,18 @@
+{
+  "id": "arcane-bolt",
+  "name": "Arcane Bolt",
+  "description": "A lance of raw Lattice energy hurled at a foe.",
+  "max_rank": 1,
+  "cooldown_sec": 0.0,
+  "resource_cost": 10,
+  "cast_time_sec": 1.2,
+  "range_yards": 35.0,
+  "effects": [
+    {
+      "effect": "Damage",
+      "magnitude": 13.0,
+      "scaling": 0.9,
+      "target": "enemy"
+    }
+  ]
+}

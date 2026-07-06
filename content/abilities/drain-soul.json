@@ -1,0 +1,24 @@
+{
+  "id": "drain-soul",
+  "name": "Drain Soul",
+  "description": "Channel dark energy, damaging your foe and extracting a soul shard on death.",
+  "max_rank": 1,
+  "cooldown_sec": 15.0,
+  "resource_cost": 18,
+  "cast_time_sec": 3.0,
+  "range_yards": 25.0,
+  "effects": [
+    {
+      "effect": "Damage",
+      "magnitude": 28.0,
+      "scaling": 0.85,
+      "target": "enemy"
+    },
+    {
+      "effect": "Buff",
+      "magnitude": 1.0,
+      "scaling": 0.0,
+      "target": "self"
+    }
+  ]
+}

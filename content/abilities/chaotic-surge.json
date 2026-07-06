@@ -1,0 +1,18 @@
+{
+  "id": "chaotic-surge",
+  "name": "Chaotic Surge",
+  "description": "Release accumulated Havoc in a violent explosion, dealing devastating damage to all nearby enemies.",
+  "max_rank": 1,
+  "cooldown_sec": 12.0,
+  "resource_cost": 25,
+  "cast_time_sec": 0.0,
+  "range_yards": 0.0,
+  "effects": [
+    {
+      "effect": "Damage",
+      "magnitude": 32.0,
+      "scaling": 1.4,
+      "target": "aoe_enemy"
+    }
+  ]
+}

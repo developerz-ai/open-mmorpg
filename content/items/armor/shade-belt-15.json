@@ -1,0 +1,21 @@
+{
+  "id": "shade-belt-15",
+  "name": "Expert's Shade Belt",
+  "description": "Belt with stolen masterwork tools.",
+  "item_type": "Armor",
+  "slot": "waist",
+  "required_level": 15,
+  "stats": {
+    "strength": 0,
+    "dexterity": 8,
+    "constitution": 7,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 875,
+  "icon": "textures/solid-colors/gray.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

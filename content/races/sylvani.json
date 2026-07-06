@@ -1,0 +1,15 @@
+{
+  "id": "sylvani",
+  "name": "Sylvani",
+  "description": "Graceful, long-lived ley-attuned folk of the forest-spires.",
+  "faction_id": "aurelian-concord",
+  "traits": [],
+  "stats": {
+    "strength": -1,
+    "dexterity": 1,
+    "constitution": -1,
+    "intelligence": 2,
+    "wisdom": 1,
+    "charisma": 0
+  }
+}

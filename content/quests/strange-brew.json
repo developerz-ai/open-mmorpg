@@ -1,0 +1,30 @@
+{
+  "id": "strange-brew",
+  "name": "Strange Brew",
+  "description": "A courier dropped a peculiar flask near the old bridge. Retrieve it for the innkeeper before something else finds it.",
+  "level": 5,
+  "prerequisites": ["a-warm-meal"],
+  "objectives": [
+    {
+      "objective_type": "Gather",
+      "target_id": "strange-brew",
+      "count": 1,
+      "description": "Retrieve the Strange Brew"
+    },
+    {
+      "objective_type": "Speak",
+      "target_id": "innkeeper-mara",
+      "count": 1,
+      "description": "Deliver to Innkeeper Mara"
+    }
+  ],
+  "rewards": {
+    "experience": 300,
+    "gold_copper": 150,
+    "choice_items": ["guardsman-tunic", "rusty-shortsword"],
+    "items": ["healing-potion"]
+  },
+  "giver_id": "innkeeper-mara",
+  "turn_in_id": "innkeeper-mara",
+  "next_quest_id": "the-traveling-merchant"
+}

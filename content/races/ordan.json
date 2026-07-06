@@ -1,0 +1,15 @@
+{
+  "id": "ordan",
+  "name": "Ordan",
+  "description": "Green-skinned honorbound warriors; the Pact's martial core.",
+  "faction_id": "wildreach-pact",
+  "traits": ["savage-fury"],
+  "stats": {
+    "strength": 2,
+    "dexterity": 0,
+    "constitution": 1,
+    "intelligence": -1,
+    "wisdom": 0,
+    "charisma": 0
+  }
+}

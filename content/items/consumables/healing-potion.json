@@ -1,0 +1,19 @@
+{
+  "id": "healing-potion",
+  "name": "Healing Potion",
+  "description": "A standard mending draught that knits wounds.",
+  "item_type": "Consumable",
+  "required_level": 10,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "common",
+  "value_copper": 25,
+  "icon": "textures/solid-colors/white.png",
+  "max_stack": 10
+}

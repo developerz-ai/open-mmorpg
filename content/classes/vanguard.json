@@ -1,0 +1,17 @@
+{
+  "id": "vanguard",
+  "name": "Vanguard",
+  "description": "Frontline martial soldier; a wall of steel and fury.",
+  "role": "tank",
+  "abilities": ["cleave", "shield-bash", "guardian-strike"],
+  "stat_growth": {
+    "strength": 2,
+    "dexterity": 1,
+    "constitution": 2,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "hp_per_level": 14,
+  "resource_per_level": 5
+}

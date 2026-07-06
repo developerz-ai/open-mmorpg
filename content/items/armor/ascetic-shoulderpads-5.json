@@ -1,0 +1,21 @@
+{
+  "id": "ascetic-shoulderpads-5",
+  "name": "Initiate's Ascetic Shoulderpads",
+  "description": "Shoulderpads for kata practice.",
+  "item_type": "Armor",
+  "slot": "shoulder",
+  "required_level": 5,
+  "stats": {
+    "strength": 4,
+    "dexterity": 0,
+    "constitution": 3,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 85,
+  "icon": "textures/solid-colors/orange.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

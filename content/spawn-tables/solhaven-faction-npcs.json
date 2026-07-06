@@ -1,0 +1,12 @@
+{
+  "id": "solhaven-faction-npcs",
+  "entries": [
+    {
+      "entity_id": "high-chancellor-valerius",
+      "weight": 100,
+      "max_count": 1,
+      "positions": [[0.0, 0.0, 10.0]]
+    }
+  ],
+  "respawn_sec": 300
+}

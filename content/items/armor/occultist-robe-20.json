@@ -1,0 +1,21 @@
+{
+  "id": "occultist-robe-20",
+  "name": "Voidlord's Occultist Robe",
+  "description": "Robes that have sealed pacts with entities beyond naming.",
+  "item_type": "Armor",
+  "slot": "chest",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 6,
+    "intelligence": 10,
+    "wisdom": 11,
+    "charisma": 0
+  },
+  "quality": "epic",
+  "value_copper": 4400,
+  "icon": "textures/solid-colors/violet.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

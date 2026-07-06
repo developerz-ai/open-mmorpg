@@ -1,0 +1,15 @@
+{
+  "id": "sarn",
+  "name": "Sarn",
+  "description": "Dragon-touched warrior-folk; scales and fiery breath mark the ancient pact that still burns.",
+  "faction_id": "wildreach-pact",
+  "traits": ["dragon-breath"],
+  "stats": {
+    "strength": 2,
+    "dexterity": 0,
+    "constitution": 1,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  }
+}

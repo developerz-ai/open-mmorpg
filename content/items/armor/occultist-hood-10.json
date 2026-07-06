@@ -1,0 +1,21 @@
+{
+  "id": "occultist-hood-10",
+  "name": "Pactbinder's Occultist Hood",
+  "description": "A hood attuned to the Hollow.",
+  "item_type": "Armor",
+  "slot": "head",
+  "required_level": 10,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 3,
+    "intelligence": 5,
+    "wisdom": 6,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 380,
+  "icon": "textures/solid-colors/violet.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

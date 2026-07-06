@@ -1,0 +1,18 @@
+{
+  "id": "death-gate",
+  "name": "Death Gate",
+  "description": "Summon a spectral gate that teleports you to a target location, leaving behind a trail of chill.",
+  "max_rank": 1,
+  "cooldown_sec": 25.0,
+  "resource_cost": 20,
+  "cast_time_sec": 1.5,
+  "range_yards": 40.0,
+  "effects": [
+    {
+      "effect": "Teleport",
+      "magnitude": 0.0,
+      "scaling": 0.0,
+      "target": "self"
+    }
+  ]
+}

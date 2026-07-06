@@ -1,0 +1,21 @@
+{
+  "id": "occultist-shoulderpads-1",
+  "name": "Occultist Shoulderpads",
+  "description": "Dark shoulder protection for occultists.",
+  "item_type": "Armor",
+  "slot": "shoulder",
+  "required_level": 1,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 1,
+    "intelligence": 1,
+    "wisdom": 1,
+    "charisma": 0
+  },
+  "quality": "common",
+  "value_copper": 6,
+  "icon": "textures/solid-colors/violet.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

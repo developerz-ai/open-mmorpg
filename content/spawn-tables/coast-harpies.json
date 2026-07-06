@@ -1,0 +1,23 @@
+{
+  "id": "coast-harpies",
+  "entries": [
+    {
+      "entity_id": "coast-harpy",
+      "weight": 70,
+      "max_count": 10,
+      "positions": [
+        [-15.0, 8.0, 20.0],
+        [-25.0, 12.0, 35.0],
+        [-10.0, 10.0, 50.0],
+        [-30.0, 15.0, 25.0]
+      ]
+    },
+    {
+      "entity_id": "harpy-screecher",
+      "weight": 30,
+      "max_count": 4,
+      "positions": [[-20.0, 14.0, 30.0], [-35.0, 18.0, 40.0]]
+    }
+  ],
+  "respawn_sec": 120
+}

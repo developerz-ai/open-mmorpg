@@ -1,0 +1,21 @@
+{
+  "id": "arcanist-staff",
+  "name": "Arcanist Staff",
+  "description": "A staff crowned with a focusing crystal.",
+  "item_type": "Weapon",
+  "slot": "mainhand",
+  "required_level": 1,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 3,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "common",
+  "value_copper": 27,
+  "icon": "textures/checker-512.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

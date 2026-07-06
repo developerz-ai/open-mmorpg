@@ -1,0 +1,21 @@
+{
+  "id": "oracle-robe-15",
+  "name": "Visionary's Oracle Robe",
+  "description": "Robes that exist in multiple timelines simultaneously.",
+  "item_type": "Armor",
+  "slot": "chest",
+  "required_level": 15,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 8,
+    "wisdom": 9,
+    "charisma": 8
+  },
+  "quality": "rare",
+  "value_copper": 1580,
+  "icon": "textures/solid-colors/gold.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

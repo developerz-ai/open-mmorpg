@@ -1,0 +1,21 @@
+{
+  "id": "vanguard-girdle-15",
+  "name": "Champion's Vanguard Girdle",
+  "description": "Epic girdle that held through countless battles.",
+  "item_type": "Armor",
+  "slot": "waist",
+  "required_level": 15,
+  "stats": {
+    "strength": 4,
+    "dexterity": 0,
+    "constitution": 4,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 780,
+  "icon": "textures/solid-colors/gray.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

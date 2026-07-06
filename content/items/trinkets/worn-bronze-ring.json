@@ -1,0 +1,21 @@
+{
+  "id": "worn-bronze-ring",
+  "name": "Worn Bronze Ring",
+  "description": "A bent band of dull metal.",
+  "item_type": "Trinket",
+  "slot": "ring",
+  "required_level": 1,
+  "stats": {
+    "strength": 0,
+    "dexterity": 1,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "common",
+  "value_copper": 6,
+  "icon": "textures/checker-512.png",
+  "mesh": "meshes/placeholder-torus.gltf",
+  "max_stack": 1
+}

@@ -1,0 +1,30 @@
+{
+  "id": "reinforcement-request",
+  "name": "Reinforcement Request",
+  "description": "The Pact threat is growing. Deliver Captain Theron's request for reinforcements to the Solhaven garrison.",
+  "level": 15,
+  "prerequisites": ["the-pact-skirmishers"],
+  "objectives": [
+    {
+      "objective_type": "Deliver",
+      "target_id": "reinforcement-request",
+      "count": 1,
+      "description": "Deliver reinforcement request to Solhaven"
+    },
+    {
+      "objective_type": "Speak",
+      "target_id": "solhaven-commander",
+      "count": 1,
+      "description": "Speak with Solhaven Commander"
+    }
+  ],
+  "rewards": {
+    "experience": 2000,
+    "gold_copper": 1000,
+    "choice_items": ["templar-mace", "hollowveil-mantle"],
+    "items": ["greater-healing-potion", "mana-potion", "travelers-ration"]
+  },
+  "giver_id": "gate-captain-theron",
+  "turn_in_id": "solhaven-commander",
+  "next_quest_id": null
+}

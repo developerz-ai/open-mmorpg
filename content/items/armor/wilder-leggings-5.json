@@ -1,0 +1,21 @@
+{
+  "id": "wilder-leggings-5",
+  "name": "Initiate's Wilder Leggings",
+  "description": "Leggings with thorn resistance.",
+  "item_type": "Armor",
+  "slot": "legs",
+  "required_level": 5,
+  "stats": {
+    "strength": 4,
+    "dexterity": 0,
+    "constitution": 3,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 90,
+  "icon": "textures/solid-colors/brown.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

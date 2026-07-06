@@ -1,0 +1,21 @@
+{
+  "id": "revenant-legguards-15",
+  "name": "Death's Revenant Legguards",
+  "description": "Epic legguards that outran death itself.",
+  "item_type": "Armor",
+  "slot": "legs",
+  "required_level": 15,
+  "stats": {
+    "strength": 4,
+    "dexterity": 4,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 1180,
+  "icon": "textures/solid-colors/orange.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

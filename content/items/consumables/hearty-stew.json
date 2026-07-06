@@ -1,0 +1,14 @@
+{
+  "id": "hearty-stew",
+  "name": "Hearty Stew",
+  "description": "A thick, warming stew that fortifies the body.",
+  "item_type": "Consumable",
+  "consumable_type": null,
+  "required_level": 10,
+  "effects": null,
+  "quality": "uncommon",
+  "value_copper": 50,
+  "icon": "textures/solid-colors/green.png",
+  "mesh": null,
+  "max_stack": 10
+}

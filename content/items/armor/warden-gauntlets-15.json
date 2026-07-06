@@ -1,0 +1,21 @@
+{
+  "id": "warden-gauntlets-15",
+  "name": "Expert's Warden Gauntlets",
+  "description": "Mail gauntlets that weave complex protective patterns.",
+  "item_type": "Armor",
+  "slot": "hands",
+  "required_level": 15,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 7,
+    "intelligence": 0,
+    "wisdom": 8,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 980,
+  "icon": "textures/solid-colors/green.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

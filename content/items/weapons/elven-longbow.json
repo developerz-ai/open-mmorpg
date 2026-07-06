@@ -1,0 +1,21 @@
+{
+  "id": "elven-longbow",
+  "name": "Elven Longbow",
+  "description": "An elegant bow of ancient design with superior range.",
+  "item_type": "Weapon",
+  "slot": "mainhand",
+  "required_level": 15,
+  "stats": {
+    "strength": 0,
+    "dexterity": 12,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 850,
+  "icon": "textures/checker-512.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

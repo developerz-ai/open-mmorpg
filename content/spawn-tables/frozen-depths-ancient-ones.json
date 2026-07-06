@@ -1,0 +1,18 @@
+{
+  "id": "frozen-depths-ancient-ones",
+  "entries": [
+    {
+      "entity_id": "cryo-drake",
+      "weight": 10,
+      "max_count": 1,
+      "positions": [[140.0, -25, 80.0]]
+    },
+    {
+      "entity_id": "permafrost-guardian",
+      "weight": 5,
+      "max_count": 1,
+      "positions": [[155.0, -28, 75.0]]
+    }
+  ],
+  "respawn_sec": 900
+}

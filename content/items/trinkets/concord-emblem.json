@@ -1,0 +1,21 @@
+{
+  "id": "concord-emblem",
+  "name": "Concord Emblem",
+  "description": "An emblem of office within the Aurelian Concord hierarchy.",
+  "item_type": "Trinket",
+  "slot": "trinket",
+  "required_level": 17,
+  "stats": {
+    "strength": 0,
+    "dexterity": 2,
+    "constitution": 4,
+    "intelligence": 2,
+    "wisdom": 0,
+    "charisma": 6
+  },
+  "quality": "uncommon",
+  "value_copper": 750,
+  "icon": "textures/solid-colors/yellow.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

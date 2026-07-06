@@ -1,0 +1,18 @@
+{
+  "id": "explosive-tricks",
+  "name": "Explosive Tricks",
+  "description": "Ashkin racial: fire gadgetry erupts in a cone of flame.",
+  "max_rank": 1,
+  "cooldown_sec": 30.0,
+  "resource_cost": 0,
+  "cast_time_sec": 0.5,
+  "range_yards": 10.0,
+  "effects": [
+    {
+      "effect": "Damage",
+      "magnitude": 18.0,
+      "scaling": 0.7,
+      "target": "enemy"
+    }
+  ]
+}

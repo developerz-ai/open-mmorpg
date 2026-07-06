@@ -1,0 +1,21 @@
+{
+  "id": "arcanist-hood-20",
+  "name": "Archmage's Arcanist Hood",
+  "description": "The pinnacle of arcane headwear, radiating power.",
+  "item_type": "Armor",
+  "slot": "head",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 10,
+    "wisdom": 9,
+    "charisma": 0
+  },
+  "quality": "epic",
+  "value_copper": 3200,
+  "icon": "textures/solid-colors/purple.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

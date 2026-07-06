@@ -1,0 +1,29 @@
+{
+  "id": "frozen-depths",
+  "name": "Frozen Depths",
+  "min_level": 25,
+  "max_level": 30,
+  "parent_zone_id": "ironforge-peaks",
+  "safe_locations": [
+    {
+      "id": "frozen-depths-entrance",
+      "position": [0.0, -5, 0.0],
+      "yaw": 0.0
+    },
+    {
+      "id": "crystal-camp",
+      "position": [120.0, -15, 60.0],
+      "yaw": 90.0
+    }
+  ],
+  "controlling_factions": [],
+  "spawn_tables": [
+    "frozen-depths-ice-worms",
+    "frozen-depths-cave-stalkers",
+    "frozen-depths-ancient-ones",
+    "ironforge-yeti",
+    "peak-ice-elementals",
+    "frost-giants"
+  ],
+  "navmesh": "nav/frozen-depths.nav"
+}

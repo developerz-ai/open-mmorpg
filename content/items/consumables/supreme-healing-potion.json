@@ -1,0 +1,19 @@
+{
+  "id": "supreme-healing-potion",
+  "name": "Supreme Healing Potion",
+  "description": "An extraordinary elixir that mends even grievous injuries.",
+  "item_type": "Consumable",
+  "required_level": 30,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 400,
+  "icon": "textures/solid-colors/blue.png",
+  "max_stack": 10
+}

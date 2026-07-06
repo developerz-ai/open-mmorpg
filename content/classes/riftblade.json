@@ -1,0 +1,17 @@
+{
+  "id": "riftblade",
+  "name": "Riftblade",
+  "description": "Leather-clad tank/DPS hybrid wielding Havoc and the Rift force.",
+  "role": "tank",
+  "abilities": ["rift-strike", "chaotic-surge", "dimensional-tear", "chaos-storm"],
+  "stat_growth": {
+    "strength": 1,
+    "dexterity": 2,
+    "constitution": 0,
+    "intelligence": 1,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "hp_per_level": 10,
+  "resource_per_level": 7
+}

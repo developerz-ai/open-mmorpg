@@ -1,0 +1,21 @@
+{
+  "id": "concord-medallion",
+  "name": "Concord Medallion",
+  "description": "A silver medallion bearing the crest of the Aurelian Concord.",
+  "item_type": "Trinket",
+  "slot": "trinket",
+  "required_level": 15,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 3,
+    "intelligence": 3,
+    "wisdom": 0,
+    "charisma": 5
+  },
+  "quality": "uncommon",
+  "value_copper": 500,
+  "icon": "textures/solid-colors/yellow.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

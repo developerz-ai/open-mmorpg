@@ -1,0 +1,15 @@
+{
+  "id": "ashkin",
+  "name": "Ashkin",
+  "description": "Trickster engineers of the deep wastes; every gear turns twice, and nothing is ever what it seems.",
+  "faction_id": "wildreach-pact",
+  "traits": ["explosive-tricks"],
+  "stats": {
+    "strength": 0,
+    "dexterity": 2,
+    "constitution": 0,
+    "intelligence": 1,
+    "wisdom": 0,
+    "charisma": 0
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "boar-meat",
+  "name": "Boar Meat",
+  "description": "Raw cuts from a dawnshore boar. Properly prepared, it makes a hearty stew.",
+  "item_type": "CraftingMaterial",
+  "required_level": 0,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "common",
+  "value_copper": 4,
+  "max_stack": 20
+}

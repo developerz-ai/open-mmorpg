@@ -1,0 +1,21 @@
+{
+  "id": "oracle-shoulderpads-20",
+  "name": "Fateseer's Oracle Shoulderpads",
+  "description": "Shoulderpads that mark you as master of destiny.",
+  "item_type": "Armor",
+  "slot": "shoulder",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 5,
+    "intelligence": 9,
+    "wisdom": 9,
+    "charisma": 9
+  },
+  "quality": "epic",
+  "value_copper": 2900,
+  "icon": "textures/solid-colors/gold.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

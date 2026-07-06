@@ -1,0 +1,42 @@
+{
+  "id": "diplomatic-mission",
+  "name": "A Diplomatic Mission",
+  "description": "Travel to the Dawnshore frontier and gather intelligence on Pact movements. The Concord must know its enemy.",
+  "level": 16,
+  "prerequisites": ["concord-call"],
+  "objectives": [
+    {
+      "objective_type": "Speak",
+      "target_id": "gate-captain-theron",
+      "count": 1,
+      "description": "Speak with Gate Captain Theron at Pale Gate"
+    },
+    {
+      "objective_type": "Kill",
+      "target_id": "pact-scout",
+      "count": 8,
+      "description": "Eliminate 8 Pact scouts"
+    },
+    {
+      "objective_type": "Gather",
+      "target_id": "scout-intel",
+      "count": 2,
+      "description": "Recover 2 sets of Pact intelligence"
+    },
+    {
+      "objective_type": "Speak",
+      "target_id": "high-chancellor-valerius",
+      "count": 1,
+      "description": "Report to High Chancellor Valerius"
+    }
+  ],
+  "rewards": {
+    "experience": 3000,
+    "gold_copper": 1500,
+    "choice_items": ["concord-emblem", "guardsman-shield"],
+    "items": ["mana-potion", "travelers-ration"]
+  },
+  "giver_id": "high-chancellor-valerius",
+  "turn_in_id": "high-chancellor-valerius",
+  "next_quest_id": "academys-request"
+}

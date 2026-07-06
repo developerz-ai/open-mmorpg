@@ -1,0 +1,24 @@
+{
+  "id": "stance-of-the-fist",
+  "name": "Stance of the Fist",
+  "description": "Strike like fire, increasing attack damage and speed.",
+  "max_rank": 1,
+  "cooldown_sec": 2.0,
+  "resource_cost": 12,
+  "cast_time_sec": 1.5,
+  "range_yards": 0.0,
+  "effects": [
+    {
+      "effect": "Buff",
+      "magnitude": 20.0,
+      "scaling": 0.7,
+      "target": "self"
+    },
+    {
+      "effect": "Buff",
+      "magnitude": 18.0,
+      "scaling": 0.5,
+      "target": "self"
+    }
+  ]
+}

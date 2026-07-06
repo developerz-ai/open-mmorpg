@@ -1,0 +1,24 @@
+{
+  "id": "channeler",
+  "name": "Channeler",
+  "description": "Mid-range empowerment mage who channels Essence and mana through Lattice·Bloom forces, weaving healing and damage in a flow of arcane energy.",
+  "role": "healer",
+  "abilities": [
+    "essence-channel",
+    "lattice-infusion",
+    "bloom-pulse",
+    "empowering-flow",
+    "essence-burst",
+    "mana-shield"
+  ],
+  "stat_growth": {
+    "strength": 0,
+    "dexterity": 1,
+    "constitution": 0,
+    "intelligence": 1,
+    "wisdom": 2,
+    "charisma": 0
+  },
+  "hp_per_level": 9,
+  "resource_per_level": 10
+}

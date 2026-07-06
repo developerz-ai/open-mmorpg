@@ -1,0 +1,18 @@
+{
+  "id": "healing-surge",
+  "name": "Healing Surge",
+  "description": "Totemic waters rise to mend a companion.",
+  "max_rank": 1,
+  "cooldown_sec": 0.0,
+  "resource_cost": 14,
+  "cast_time_sec": 1.8,
+  "range_yards": 30.0,
+  "effects": [
+    {
+      "effect": "Heal",
+      "magnitude": 32.0,
+      "scaling": 1.0,
+      "target": "ally"
+    }
+  ]
+}

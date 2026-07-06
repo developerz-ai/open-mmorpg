@@ -1,0 +1,21 @@
+{
+  "id": "circle-of-the-unbound",
+  "name": "Circle of the Unbound",
+  "description": "A ring that pulses with the rhythm of a beating heart.",
+  "item_type": "Trinket",
+  "slot": "ring",
+  "required_level": 20,
+  "stats": {
+    "strength": 0,
+    "dexterity": 8,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "epic",
+  "value_copper": 2450,
+  "icon": "textures/solid-colors/orange.png",
+  "mesh": "meshes/placeholder-torus.gltf",
+  "max_stack": 1
+}

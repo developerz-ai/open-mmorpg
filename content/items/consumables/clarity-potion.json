@@ -1,0 +1,19 @@
+{
+  "id": "clarity-potion",
+  "name": "Clarity Potion",
+  "description": "A crystalline infusion that sharpens the mind and quickens spellcasting.",
+  "item_type": "Consumable",
+  "required_level": 15,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 75,
+  "icon": "textures/solid-colors/green.png",
+  "max_stack": 10
+}

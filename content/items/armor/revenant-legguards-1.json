@@ -1,0 +1,21 @@
+{
+  "id": "revenant-legguards-1",
+  "name": "Revenant Legguards",
+  "description": "Corrupted legguards for supernatural mobility.",
+  "item_type": "Armor",
+  "slot": "legs",
+  "required_level": 1,
+  "stats": {
+    "strength": 1,
+    "dexterity": 1,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "common",
+  "value_copper": 9,
+  "icon": "textures/solid-colors/orange.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

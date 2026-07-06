@@ -1,0 +1,21 @@
+{
+  "id": "adamantine-chain",
+  "name": "Adamantine Chain",
+  "description": "A necklace of unbreakable metal from the deep delves.",
+  "item_type": "Trinket",
+  "slot": "neck",
+  "required_level": 20,
+  "stats": {
+    "strength": 9,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "epic",
+  "value_copper": 2600,
+  "icon": "textures/solid-colors/orange.png",
+  "mesh": "meshes/placeholder-torus.gltf",
+  "max_stack": 1
+}

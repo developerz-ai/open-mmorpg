@@ -1,0 +1,17 @@
+{
+  "id": "wilder",
+  "name": "Wilder",
+  "description": "Shapeshifting primal who draws power from the Bloom force, shifting between bear, cat, and eagle forms to tank, DPS, or travel.",
+  "role": "tank",
+  "abilities": ["bear-form", "cat-form", "eagle-form", "healing-touch", "natures-swiftness"],
+  "stat_growth": {
+    "strength": 1,
+    "dexterity": 1,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 2,
+    "charisma": 0
+  },
+  "hp_per_level": 11,
+  "resource_per_level": 9
+}

@@ -1,0 +1,18 @@
+{
+  "id": "frost-giants",
+  "entries": [
+    {
+      "entity_id": "frost-giant",
+      "weight": 15,
+      "max_count": 2,
+      "positions": [[180.0, 28.0, 60.0], [195.0, 30.0, 55.0]]
+    },
+    {
+      "entity_id": "frost-giant-champion",
+      "weight": 5,
+      "max_count": 1,
+      "positions": [[188.0, 32.0, 58.0]]
+    }
+  ],
+  "respawn_sec": 600
+}

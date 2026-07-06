@@ -1,0 +1,20 @@
+{
+  "id": "smugglers-cove",
+  "name": "Smuggler's Cove",
+  "min_level": 15,
+  "recommended_level": 18,
+  "max_players": 5,
+  "boss_ids": ["captain-brinebeard", "first-mate-zulra", "parrot-polly"],
+  "trash_spawn_tables": [
+    "smuggler-cove-pirates",
+    "smuggler-cove-lookouts",
+    "smuggler-cutthroats",
+    "cove-murlocs",
+    "parrot-minions"
+  ],
+  "loot_tables": ["brinebeards-pistol", "captains-coat", "pollys-perch"],
+  "time_limit_minutes": 90,
+  "lockout_hours": 24,
+  "entrance_zone_id": "smuggler-cove",
+  "entrance_position": [95.0, 0.0, 135.0]
+}

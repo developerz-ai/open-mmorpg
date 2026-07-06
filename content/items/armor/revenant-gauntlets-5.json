@@ -1,0 +1,21 @@
+{
+  "id": "revenant-gauntlets-5",
+  "name": "Faded's Revenant Gauntlets",
+  "description": "Empowered gauntlets for devastating speed.",
+  "item_type": "Armor",
+  "slot": "hands",
+  "required_level": 5,
+  "stats": {
+    "strength": 2,
+    "dexterity": 2,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "uncommon",
+  "value_copper": 70,
+  "icon": "textures/solid-colors/orange.png",
+  "mesh": "meshes/placeholder-cube.gltf",
+  "max_stack": 1
+}

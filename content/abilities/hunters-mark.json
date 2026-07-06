@@ -1,0 +1,18 @@
+{
+  "id": "hunters-mark",
+  "name": "Hunter's Mark",
+  "description": "Mark a foe, exposing them to extra harm from all.",
+  "max_rank": 1,
+  "cooldown_sec": 10.0,
+  "resource_cost": 6,
+  "cast_time_sec": 0.0,
+  "range_yards": 40.0,
+  "effects": [
+    {
+      "effect": "Debuff",
+      "magnitude": 0.0,
+      "scaling": 0.0,
+      "target": "enemy"
+    }
+  ]
+}

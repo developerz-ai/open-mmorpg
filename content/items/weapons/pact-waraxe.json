@@ -1,0 +1,21 @@
+{
+  "id": "pact-waraxe",
+  "name": "Pact Waraxe",
+  "description": "A brutal waraxe favored by Pact warriors.",
+  "item_type": "Weapon",
+  "slot": "mainhand",
+  "required_level": 18,
+  "stats": {
+    "strength": 16,
+    "dexterity": 2,
+    "constitution": 10,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 1500,
+  "icon": "textures/checker-512.png",
+  "mesh": "meshes/placeholder-axe.gltf",
+  "max_stack": 1
+}

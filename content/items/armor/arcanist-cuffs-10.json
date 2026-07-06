@@ -1,0 +1,21 @@
+{
+  "id": "arcanist-cuffs-10",
+  "name": "Adept's Arcanist Cuffs",
+  "description": "Cuffs that stabilize magical flows.",
+  "item_type": "Armor",
+  "slot": "wrist",
+  "required_level": 10,
+  "stats": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 3,
+    "intelligence": 5,
+    "wisdom": 5,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 280,
+  "icon": "textures/solid-colors/purple.png",
+  "mesh": "meshes/placeholder-sphere.gltf",
+  "max_stack": 1
+}

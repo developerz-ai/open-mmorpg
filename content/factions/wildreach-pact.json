@@ -1,0 +1,11 @@
+{
+  "id": "wildreach-pact",
+  "name": "The Wildreach Pact",
+  "description": "Those who endure. A sworn confederation of the exiled and untamed, bound by survival and honor.",
+  "colors": {
+    "primary": "#9e1b32",
+    "secondary": "#8c6a3e"
+  },
+  "capital": "emberhold",
+  "hostile_to": ["aurelian-concord"]
+}

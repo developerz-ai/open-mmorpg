@@ -1,0 +1,21 @@
+{
+  "id": "templar-greatsword",
+  "name": "Templar Greatsword",
+  "description": "A blessed greatsword wielded by the Concord's templars.",
+  "item_type": "Weapon",
+  "slot": "mainhand",
+  "required_level": 18,
+  "stats": {
+    "strength": 14,
+    "dexterity": 4,
+    "constitution": 6,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+  "quality": "rare",
+  "value_copper": 1500,
+  "icon": "textures/checker-512.png",
+  "mesh": "meshes/placeholder-sword.gltf",
+  "max_stack": 1
+}
