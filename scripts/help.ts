@@ -9,6 +9,11 @@ console.log(`
   bin/check            the gate: fmt + clippy -D warnings + tests (+ web)
   bin/fmt              auto-format (cargo fmt + biome)
 
+  Web-specific:
+  bin/test-web         run web unit tests
+  bin/test-e2e         run web E2E tests (Playwright)
+  bin/check-web        web quality gates: typecheck + lint + unit tests
+
   Direct (Bun TS, no shim):
   bun scripts/check.ts --rust-only | --web-only
   bun scripts/dev.ts web
