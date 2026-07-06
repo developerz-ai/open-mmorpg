@@ -36,6 +36,18 @@ const EnvSchema = z.object({
   VITE_ARMORY_PUBLIC: flag(true),
   VITE_AUCTION_HOUSE: flag(true),
   VITE_WORLD_FEED: flag(true),
+  // Download metadata
+  VITE_DOWNLOAD_VERSION: z.string().optional(),
+  VITE_DOWNLOAD_URL_WINDOWS_X64: z.string().url().optional(),
+  VITE_DOWNLOAD_URL_WINDOWS_ARM64: z.string().url().optional(),
+  VITE_DOWNLOAD_URL_MACOS_X64: z.string().url().optional(),
+  VITE_DOWNLOAD_URL_MACOS_ARM64: z.string().url().optional(),
+  VITE_DOWNLOAD_URL_LINUX_X64: z.string().url().optional(),
+  VITE_DOWNLOAD_CHECKSUM_WINDOWS_X64: z.string().optional(),
+  VITE_DOWNLOAD_CHECKSUM_WINDOWS_ARM64: z.string().optional(),
+  VITE_DOWNLOAD_CHECKSUM_MACOS_X64: z.string().optional(),
+  VITE_DOWNLOAD_CHECKSUM_MACOS_ARM64: z.string().optional(),
+  VITE_DOWNLOAD_CHECKSUM_LINUX_X64: z.string().optional(),
 });
 
 export interface OperatorConfig {
@@ -57,6 +69,23 @@ export interface OperatorConfig {
     armoryPublic: boolean;
     auctionHouse: boolean;
     worldFeed: boolean;
+  };
+  downloads: {
+    version?: string;
+    urls: {
+      windowsX64?: string;
+      windowsArm64?: string;
+      macosX64?: string;
+      macosArm64?: string;
+      linuxX64?: string;
+    };
+    checksums: {
+      windowsX64?: string;
+      windowsArm64?: string;
+      macosX64?: string;
+      macosArm64?: string;
+      linuxX64?: string;
+    };
   };
 }
 
@@ -83,6 +112,23 @@ export function parseConfig(raw: Record<string, unknown>): OperatorConfig {
       armoryPublic: e.VITE_ARMORY_PUBLIC,
       auctionHouse: e.VITE_AUCTION_HOUSE,
       worldFeed: e.VITE_WORLD_FEED,
+    },
+    downloads: {
+      version: e.VITE_DOWNLOAD_VERSION,
+      urls: {
+        windowsX64: e.VITE_DOWNLOAD_URL_WINDOWS_X64,
+        windowsArm64: e.VITE_DOWNLOAD_URL_WINDOWS_ARM64,
+        macosX64: e.VITE_DOWNLOAD_URL_MACOS_X64,
+        macosArm64: e.VITE_DOWNLOAD_URL_MACOS_ARM64,
+        linuxX64: e.VITE_DOWNLOAD_URL_LINUX_X64,
+      },
+      checksums: {
+        windowsX64: e.VITE_DOWNLOAD_CHECKSUM_WINDOWS_X64,
+        windowsArm64: e.VITE_DOWNLOAD_CHECKSUM_WINDOWS_ARM64,
+        macosX64: e.VITE_DOWNLOAD_CHECKSUM_MACOS_X64,
+        macosArm64: e.VITE_DOWNLOAD_CHECKSUM_MACOS_ARM64,
+        linuxX64: e.VITE_DOWNLOAD_CHECKSUM_LINUX_X64,
+      },
     },
   };
 }
