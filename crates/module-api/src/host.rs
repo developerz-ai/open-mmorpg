@@ -11,7 +11,10 @@
 //! unconditionally, and a build with zero modules simply does nothing on every
 //! hook.
 
-use crate::context::{CreatureDeathCtx, LootCtx, PlayerLoginCtx, TickCtx};
+use crate::context::{
+    ChatCtx, CreatureDeathCtx, ItemUseCtx, LevelUpCtx, LootCtx, PlayerLoginCtx, TickCtx,
+    ZoneEnterCtx,
+};
 use crate::hooks::ServerHooks;
 use crate::manifest::ModuleManifest;
 use crate::module::Module;
@@ -94,6 +97,30 @@ impl ServerHooks for ModuleHost {
             module.on_tick(ctx);
         }
     }
+
+    fn on_chat(&self, ctx: &ChatCtx<'_>) {
+        for module in &self.modules {
+            module.on_chat(ctx);
+        }
+    }
+
+    fn on_level_up(&self, ctx: &LevelUpCtx) {
+        for module in &self.modules {
+            module.on_level_up(ctx);
+        }
+    }
+
+    fn on_zone_enter(&self, ctx: &ZoneEnterCtx) {
+        for module in &self.modules {
+            module.on_zone_enter(ctx);
+        }
+    }
+
+    fn on_item_use(&self, ctx: &ItemUseCtx) {
+        for module in &self.modules {
+            module.on_item_use(ctx);
+        }
+    }
 }
 
 #[cfg(test)]
@@ -105,6 +132,7 @@ mod tests {
     use omm_protocol::{AccountId, CharacterId, Tick};
 
     use super::*;
+    use crate::context::Level;
 
     /// A fake module counting the hooks that fired on it.
     #[derive(Default)]
@@ -112,6 +140,7 @@ mod tests {
         name: &'static str,
         logins: AtomicU64,
         ticks: AtomicU64,
+        level_ups: AtomicU64,
     }
 
     impl ServerHooks for Spy {
@@ -120,6 +149,9 @@ mod tests {
         }
         fn on_tick(&self, _ctx: &TickCtx) {
             self.ticks.fetch_add(1, Ordering::Relaxed);
+        }
+        fn on_level_up(&self, _ctx: &LevelUpCtx) {
+            self.level_ups.fetch_add(1, Ordering::Relaxed);
         }
     }
 
@@ -134,6 +166,15 @@ mod tests {
 
     fn login() -> PlayerLoginCtx {
         PlayerLoginCtx::new(AccountId::new(1), CharacterId::new(2), EntityId(3))
+    }
+
+    fn level_up() -> LevelUpCtx {
+        LevelUpCtx::new(
+            EntityId(3),
+            CharacterId::new(2),
+            Level::new(4),
+            Level::new(5),
+        )
     }
 
     #[test]
@@ -164,6 +205,27 @@ mod tests {
         // Both modules saw the one event.
         for m in host.get_all() {
             assert_eq!(m.logins.load(Ordering::Relaxed), 1);
+        }
+    }
+
+    #[test]
+    fn a_new_hook_dispatches_to_every_module() {
+        let mut host = ModuleHost::new();
+        host.register(Box::new(Spy {
+            name: "a",
+            ..Spy::default()
+        }))
+        .register(Box::new(Spy {
+            name: "b",
+            ..Spy::default()
+        }));
+
+        host.on_level_up(&level_up());
+
+        // A hook added after the foundation fans out through the host exactly
+        // like the original ones — every registered module observed the event.
+        for m in host.get_all() {
+            assert_eq!(m.level_ups.load(Ordering::Relaxed), 1);
         }
     }
 

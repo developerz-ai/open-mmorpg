@@ -1996,12 +1996,23 @@ dependencies = [
 ]
 
 [[package]]
+name = "omm-module-milestones"
+version = "0.0.0"
+dependencies = [
+ "omm-ecs-core",
+ "omm-module-api",
+ "omm-protocol",
+ "tracing",
+]
+
+[[package]]
 name = "omm-modules"
 version = "0.0.0"
 dependencies = [
  "omm-ecs-core",
  "omm-module-api",
  "omm-module-hello-world",
+ "omm-module-milestones",
  "omm-protocol",
 ]
 

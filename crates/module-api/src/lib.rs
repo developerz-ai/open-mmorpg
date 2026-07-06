@@ -8,8 +8,10 @@
 //!
 //! The pieces:
 //! - [`ServerHooks`] — the trait the core calls. One default-noop method per
-//!   server event ([`ServerHooks::on_player_login`], [`ServerHooks::on_tick`],
-//!   …). A module overrides only the events it cares about.
+//!   server event ([`ServerHooks::on_player_login`], [`ServerHooks::on_chat`],
+//!   [`ServerHooks::on_level_up`], [`ServerHooks::on_zone_enter`],
+//!   [`ServerHooks::on_item_use`], [`ServerHooks::on_tick`], …). A module
+//!   overrides only the events it cares about.
 //! - The `*Ctx` [`context`] payloads — the immutable event data each hook
 //!   receives, carrying typed ids (never raw `u64`).
 //! - [`Module`] — what a module *is*: its [`ModuleManifest`] identity plus the
@@ -30,7 +32,10 @@ mod macros;
 pub mod manifest;
 pub mod module;
 
-pub use context::{CreatureDeathCtx, LootCtx, PlayerLoginCtx, TickCtx};
+pub use context::{
+    ChatChannel, ChatCtx, CreatureDeathCtx, ItemUseCtx, Level, LevelUpCtx, LootCtx, PlayerLoginCtx,
+    TickCtx, ZoneEnterCtx,
+};
 pub use hooks::ServerHooks;
 pub use host::ModuleHost;
 pub use manifest::{ModuleManifest, CORE_API_VERSION};

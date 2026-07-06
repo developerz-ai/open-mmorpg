@@ -16,6 +16,7 @@ path = "src/lib.rs"
 omm-module-api.workspace = true
 
 # --- modules (managed by bin/new-module — append one line per module) ---
+omm-module-milestones = { path = "../../modules/milestones" }
 omm-module-hello-world = { path = "../../modules/hello-world" }
 
 [dev-dependencies]

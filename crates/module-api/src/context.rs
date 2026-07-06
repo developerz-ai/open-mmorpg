@@ -8,7 +8,7 @@
 //! shapes additive is why every field is public data, not behaviour.
 
 use omm_ecs_core::EntityId;
-use omm_protocol::{AccountId, CharacterId, ItemId, Tick};
+use omm_protocol::{AccountId, CharacterId, ItemDefId, ItemId, Tick, ZoneId};
 
 /// A player just entered the world: the shard verified their session token,
 /// loaded their durable character, and spawned its actor. Fired from the
@@ -99,5 +99,162 @@ impl TickCtx {
     #[must_use]
     pub const fn new(tick: Tick, dt: f32) -> Self {
         Self { tick, dt }
+    }
+}
+
+/// The channel a chat line was sent on — it decides who hears it and lets a
+/// module react per scope (a `Say` ripples only to nearby actors; a `Guild`
+/// line reaches the whole guild; a `Whisper` is one recipient).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum ChatChannel {
+    /// Local, proximity-limited speech.
+    Say,
+    /// Local speech at a wider radius.
+    Yell,
+    /// Everyone in the speaker's current zone.
+    Zone,
+    /// The speaker's party.
+    Party,
+    /// The speaker's guild.
+    Guild,
+    /// A single named recipient.
+    Whisper,
+    /// The cross-world trade channel.
+    Trade,
+}
+
+/// A character level. A newtype over `u16` so a level is never confused with
+/// another count and so ordered comparisons (`from < to`) are typed and clear.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
+pub struct Level(pub u16);
+
+impl Level {
+    /// Wrap a raw level value.
+    #[must_use]
+    pub const fn new(raw: u16) -> Self {
+        Self(raw)
+    }
+
+    /// The underlying raw level.
+    #[must_use]
+    pub const fn get(self) -> u16 {
+        self.0
+    }
+}
+
+/// A chat message was sent. `message` is borrowed from the core's decode buffer
+/// for the duration of the call, so a module reads it without allocating and the
+/// lifetime forbids retaining it past the event — observation only, by design.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct ChatCtx<'a> {
+    /// The entity that sent the message.
+    pub speaker: EntityId,
+    /// The channel it was sent on.
+    pub channel: ChatChannel,
+    /// The message text, borrowed for the call.
+    pub message: &'a str,
+}
+
+impl<'a> ChatCtx<'a> {
+    /// Bundle a chat event.
+    #[must_use]
+    pub const fn new(speaker: EntityId, channel: ChatChannel, message: &'a str) -> Self {
+        Self {
+            speaker,
+            channel,
+            message,
+        }
+    }
+}
+
+/// A character's level changed. `from`/`to` bracket the transition (`to > from`
+/// on a level-up), so a module can award exactly the newly-crossed levels.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct LevelUpCtx {
+    /// The entity whose level changed.
+    pub entity: EntityId,
+    /// The durable character behind it.
+    pub character: CharacterId,
+    /// The level held before this event.
+    pub from: Level,
+    /// The level held after it.
+    pub to: Level,
+}
+
+impl LevelUpCtx {
+    /// Bundle a level-up event.
+    #[must_use]
+    pub const fn new(entity: EntityId, character: CharacterId, from: Level, to: Level) -> Self {
+        Self {
+            entity,
+            character,
+            from,
+            to,
+        }
+    }
+}
+
+/// A character crossed a zone boundary. `from` is `None` on the first zone
+/// entered after login (there is no prior zone) and `Some(prev)` on a transfer.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct ZoneEnterCtx {
+    /// The entity that entered the zone.
+    pub entity: EntityId,
+    /// The durable character behind it.
+    pub character: CharacterId,
+    /// The zone left, or `None` on the first entry after login.
+    pub from: Option<ZoneId>,
+    /// The zone now entered.
+    pub to: ZoneId,
+}
+
+impl ZoneEnterCtx {
+    /// Bundle a zone-enter event.
+    #[must_use]
+    pub const fn new(
+        entity: EntityId,
+        character: CharacterId,
+        from: Option<ZoneId>,
+        to: ZoneId,
+    ) -> Self {
+        Self {
+            entity,
+            character,
+            from,
+            to,
+        }
+    }
+}
+
+/// An item was used (consumed, activated). `def` is the template, so a module
+/// keys behaviour on the *kind* of item; `item` is the concrete instance used;
+/// `target` is the actor it was used on, or `None` for a self/untargeted use.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct ItemUseCtx {
+    /// The entity that used the item.
+    pub user: EntityId,
+    /// The concrete item instance consumed/activated.
+    pub item: ItemId,
+    /// The item template, for keying behaviour by kind.
+    pub def: ItemDefId,
+    /// The actor it was used on, or `None` if self/untargeted.
+    pub target: Option<EntityId>,
+}
+
+impl ItemUseCtx {
+    /// Bundle an item-use event.
+    #[must_use]
+    pub const fn new(
+        user: EntityId,
+        item: ItemId,
+        def: ItemDefId,
+        target: Option<EntityId>,
+    ) -> Self {
+        Self {
+            user,
+            item,
+            def,
+            target,
+        }
     }
 }

@@ -11,7 +11,7 @@ pub mod ids;
 use omm_errors::ClientCode;
 use serde::{Deserialize, Serialize};
 
-pub use ids::{AccountId, CharacterId, ItemId, ShardId, ZoneId};
+pub use ids::{AccountId, CharacterId, ItemDefId, ItemId, ShardId, ZoneId};
 
 /// The monotonic simulation tick. Snapshots and inputs are stamped with it so
 /// the client can interpolate and the server can re-simulate for anti-cheat.

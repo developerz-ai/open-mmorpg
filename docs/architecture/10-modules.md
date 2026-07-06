@@ -60,10 +60,14 @@ The workspace `members = ["modules/*"]` glob means **every** module builds and i
 | `on_player_login` | the authoritative accept handshake spawns a player | **API-complete** — fires where the accept path lands (session-accept slice); dispatch tested via the host today |
 | `on_creature_death` | an actor dies | **API-complete** — awaits a sim death event |
 | `on_loot` | an item is looted | **API-complete** — awaits a sim loot system |
+| `on_chat` | a player sends a chat message | **API-complete** — awaits chat wiring; `worldsvc` social layer is the likely source |
+| `on_level_up` | a player's level advances | **API-complete** — awaits sim XP/level-up system |
+| `on_zone_enter` | a player crosses a zone boundary | **API-complete** — awaits sim zone-transition system |
+| `on_item_use` | a player activates an inventory item | **API-complete** — awaits sim item-use system |
 
 "API-complete" = the hook, its context, and host dispatch are defined and tested; the single core call site is added when the event source exists. Wiring one is a one-line `host.on_x(&ctx)` at the event, never a change to the module system.
 
-The proof-of-concept `modules/hello-world` implements `on_tick` and `on_player_login`, counts each, and logs. The shard's tick loop drives `on_tick` live; `crates/modules/tests/generated_registry.rs` proves the module is discovered, force-linked, and receives events dispatched through the real host.
+The proof-of-concept `modules/hello-world` implements `on_tick` and `on_player_login`, counts each, and logs. The full example `modules/milestones` implements `on_level_up`, `on_zone_enter`, `on_item_use`, `on_chat`, and `on_tick` to unlock and track named milestones end to end; `crates/modules/tests/generated_registry.rs` proves both modules are discovered, force-linked, and receive events dispatched through the real host.
 
 ## Adding a module
 ```
@@ -84,4 +88,4 @@ The pattern generalizes: a trait of default-noop hooks + a generated registry th
 ## Invariants
 - **Deterministic dispatch.** Modules run in sorted-directory order; same events → same sequence on every box.
 - **Non-blocking hooks.** Bodies run on the tick path; a stall or panic there drops every player on the shard. Keep them cheap.
-- **Additive API.** New hooks get default-noop methods; the `core-api-version` bumps only on a breaking change, and because modules compile in-workspace, an incompatible one fails at *compile* time — never the silent stale-plugin failure `.so`s invite.
+- **Additive API.** New hooks get default-noop methods — every existing module continues to compile and behave identically when a hook is added. The `core-api-version` in `module.toml` bumps *only* on a breaking change (signature change, removal, or semantic shift); an additive hook addition never increments it. Because modules compile in-workspace, an incompatible one fails at *compile* time — never the silent stale-plugin failure `.so`s invite.
