@@ -173,3 +173,87 @@
   gap: 1rem;
   max-width: 24rem;
 }
+
+/* Downloads page */
+.downloads__note {
+  margin-bottom: 1rem;
+}
+.downloads__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.downloads__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid rgb(var(--color-line));
+  border-radius: var(--radius-sm);
+}
+@media (min-width: 48rem) {
+  .downloads__item {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.downloads__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.downloads__platform {
+  font-weight: 500;
+}
+.downloads__meta {
+  font-size: 0.9rem;
+}
+.downloads__actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.downloads__checksum {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-size: 0.8rem;
+  color: rgb(var(--color-fg-muted));
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.downloads__checksum:hover {
+  color: rgb(var(--color-fg));
+}
+
+/* Requirements table */
+.requirements__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.requirements__table th,
+.requirements__table td {
+  text-align: left;
+  padding: 0.5rem;
+  border-bottom: 1px solid rgb(var(--color-line));
+}
+.requirements__table th {
+  font-weight: 500;
+}
+
+/* Verification section */
+.verification__code {
+  background: rgb(var(--color-bg-soft));
+  border: 1px solid rgb(var(--color-line));
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  margin: 0.5rem 0;
+}
+.verification__hint {
+  font-size: 0.9rem;
+  margin-top: 0;
+}
