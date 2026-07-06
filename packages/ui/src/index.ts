@@ -13,8 +13,25 @@ export {
   DialogTitle,
   type DialogTitleProps,
 } from './Dialog.tsx';
+export {
+  getFirstFocusable,
+  getFocusableElements,
+  getLastFocusable,
+  useAutoFocus,
+  useFocusReturn,
+  useFocusTrap,
+  useRestoreFocus,
+} from './focus.ts';
 export { Progress, type ProgressProps } from './Progress.tsx';
 export { Select, SelectOption, type SelectOptionProps, type SelectProps } from './Select.tsx';
+export {
+  Skeleton,
+  SkeletonCard,
+  type SkeletonCardProps,
+  type SkeletonProps,
+  SkeletonTable,
+  type SkeletonTableProps,
+} from './Skeleton.tsx';
 export { Spinner, type SpinnerProps, type SpinnerSize } from './Spinner.tsx';
 export { type Column, Table, type TableProps } from './Table.tsx';
 export {

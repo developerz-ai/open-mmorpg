@@ -20,10 +20,16 @@
   transition:
     transform var(--dur-instant) var(--ease-out),
     background var(--dur-fast) var(--ease-out),
-    opacity var(--dur-fast) var(--ease-out);
+    opacity var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out),
+    filter var(--dur-fast) var(--ease-out);
 }
-.omm-btn:active {
-  transform: scale(0.97);
+.omm-btn:hover:not(:disabled) {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+.omm-btn:active:not(:disabled) {
+  transform: scale(0.97) translateY(0);
 }
 .omm-btn:disabled {
   opacity: 0.5;
@@ -48,10 +54,14 @@
 }
 .omm-btn--ghost:hover:not(:disabled) {
   background: rgb(var(--color-surface-hover));
+  border-color: rgb(var(--color-fg-muted) / 0.5);
 }
 .omm-btn--danger {
   background: rgb(var(--color-danger));
   color: rgb(var(--color-bg));
+}
+.omm-btn--danger:hover:not(:disabled) {
+  background: rgb(252 150 150);
 }
 
 /* Card -------------------------------------------------------------------- */
@@ -60,6 +70,16 @@
   border: 1px solid rgb(var(--color-line));
   border-radius: var(--radius-md);
   padding: 1.25rem;
+  transition:
+    border-color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out),
+    transform var(--dur-instant) var(--ease-out);
+}
+.card:hover {
+  border-color: rgb(var(--color-fg-muted) / 0.3);
+}
+.card:active {
+  transform: scale(0.995);
 }
 .card__title {
   margin: 0 0 0.75rem;
@@ -523,4 +543,50 @@
 .omm-toast__close:focus-visible {
   outline: 2px solid rgb(var(--color-focus-ring));
   outline-offset: 1px;
+}
+
+/* Skeleton loading states */
+.omm-skeleton {
+  display: inline-block;
+  background: rgb(var(--color-fg-muted) / 0.1);
+  border-radius: var(--radius-sm);
+  animation: omm-shimmer 1.5s ease-in-out infinite;
+}
+@keyframes omm-shimmer {
+  0%,
+  100% {
+    background: rgb(var(--color-fg-muted) / 0.1);
+  }
+  50% {
+    background: rgb(var(--color-fg-muted) / 0.2);
+  }
+}
+
+.omm-skeleton-table {
+  width: 100%;
+}
+.omm-skeleton-table__header,
+.omm-skeleton-table__row {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid rgb(var(--color-line));
+}
+.omm-skeleton-table__row:last-child {
+  border-bottom: none;
+}
+
+.omm-skeleton-card {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid rgb(var(--color-line));
+  border-radius: var(--radius-md);
+  background: rgb(var(--color-bg-soft));
+}
+.omm-skeleton-card__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }

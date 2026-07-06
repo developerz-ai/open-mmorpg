@@ -1,0 +1,63 @@
+{
+  "name": "Open MMORPG Operator Portal",
+  "short_name": "OMM Operator",
+  "description": "Operator portal for Open MMORPG - manage realms, auctions, and player data",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0f0f",
+  "theme_color": "#00bcd4",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["games", "entertainment"],
+  "shortcuts": [
+    {
+      "name": "Auction House",
+      "short_name": "Auctions",
+      "description": "Browse the auction house",
+      "url": "/auction",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Armory",
+      "short_name": "Armory",
+      "description": "View character and guild data",
+      "url": "/armory",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "World Feed",
+      "short_name": "Feed",
+      "description": "Live world event feed",
+      "url": "/feed",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
