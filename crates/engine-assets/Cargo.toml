@@ -8,17 +8,37 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
+# Headless-safe core: app lifecycle, ECS (messages/systems), and the async asset
+# server. None of these pull a GPU/window — the pipeline plumbing runs in CI.
+bevy_app.workspace = true
+bevy_asset.workspace = true
+bevy_ecs.workspace = true
+# Manifest schema + Zstd bundling land in the next slice (manifest/LOD/streaming);
+# declared here so that slice is a pure code change.
 serde = { workspace = true }
 serde_json.workspace = true
 zstd.workspace = true
-bevy_asset.workspace = true
+# glTF import produces `Mesh`/`StandardMaterial`/`Image` render assets, so the
+# loader is render-gated — headless builds never compile it.
 bevy_gltf = { workspace = true, optional = true }
 bevy_render = { workspace = true, optional = true }
 bevy_pbr = { workspace = true, optional = true }
 
+[dev-dependencies]
+# Tests compose the real headless substrate and mint a throwaway `Asset` type to
+# exercise the hot-reload forwarder.
+omm-engine-core.workspace = true
+bevy_reflect.workspace = true
+
 [features]
 default = []
+# Enables the glTF loader and the render-asset types it emits (native/AAA heads).
 render = ["dep:bevy_gltf", "dep:bevy_render", "dep:bevy_pbr"]
+# Compiles Bevy's file-watcher backend so the runtime watch toggle can actually
+# live-reload. Off by default: keeps headless/server/wasm builds free of the
+# `notify` background threads. Enabling it does not start a watcher — that is the
+# runtime `AssetsPlugin::watch_for_changes` toggle's job.
+watch = ["bevy_asset/file_watcher"]
 
 [lints]
 workspace = true
