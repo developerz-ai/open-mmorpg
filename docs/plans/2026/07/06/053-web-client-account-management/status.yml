@@ -1,0 +1,58 @@
+# Track Status
+track: web-client
+wave: "3"
+target: "50-web-client"
+status: in-progress
+
+# PRs
+prs:
+  - id: "053-1"
+    title: "Plan + mark 052 complete"
+    branch: docs/web-account-mgmt-plan
+    status: in-progress
+    complexity: quick
+  - id: "053-2"
+    title: "Profile & password update"
+    branch: feat/web-account-profile-password
+    status: pending
+    complexity: coding
+    depends_on: ["053-1"]
+  - id: "053-3"
+    title: "Active sessions list & revoke"
+    branch: feat/web-account-sessions
+    status: pending
+    complexity: coding
+    depends_on: ["053-2"]
+  - id: "053-4"
+    title: "Reusable route guard + account e2e"
+    branch: feat/web-route-guard
+    status: pending
+    complexity: general
+    depends_on: ["053-3"]
+
+# Definition of Done
+criteria:
+  - description: "Plan 053 written; plan 052 marked complete"
+    status: pending
+  - description: "Player can update display name & email (PUT /account)"
+    status: pending
+  - description: "Player can change password with current-password check (POST /account/password)"
+    status: pending
+  - description: "AccountSettings component wired into Account route (SRP, <300 LOC)"
+    status: pending
+  - description: "Player can list active sessions (GET /account/sessions)"
+    status: pending
+  - description: "Player can revoke a non-current session (DELETE /account/sessions/:id)"
+    status: pending
+  - description: "ActiveSessions component wired into Account route"
+    status: pending
+  - description: "Reusable ProtectedRoute guards /account, redirects to /login?redirect="
+    status: pending
+  - description: "All new strings in 13 locale catalogs"
+    status: pending
+  - description: "Unit + e2e tests for account management flows"
+    status: pending
+  - description: "bin/check green across all PRs"
+    status: pending
+  - description: "All PRs merged via claudetm merge-pr"
+    status: pending

@@ -2,85 +2,88 @@
 track: web-client
 wave: "3"
 target: "50-web-client"
-status: in-progress
+status: complete
+# All seven sub-PRs below were delivered together in PR #55 (squash merge
+# 1eb7eab, 2026-07-06) after a rebase rescued the conflicting branch.
+merged_via: "55"
 
 # PRs
 prs:
   - id: "052-1"
     title: "Docs & status update for completed features"
     branch: fix/web-client-docs-update
-    status: pending
+    status: merged
     complexity: quick
   - id: "052-2"
     title: "Loading & error UX improvements"
     branch: feat/web-loading-error-ux
-    status: pending
+    status: merged
     complexity: coding
     depends_on: ["052-1"]
   - id: "052-3"
     title: "Performance & SEO (code splitting, meta tags, sitemap, PWA)"
     branch: feat/web-performance-seo
-    status: pending
+    status: merged
     complexity: coding
     depends_on: ["052-1"]
   - id: "052-4"
     title: "Accessibility deep dive (keyboard, ARIA, focus)"
     branch: feat/web-a11y-deep-dive
-    status: pending
+    status: merged
     complexity: general
   - id: "052-5"
     title: "UX polish - motion, toasts, micro-interactions"
     branch: feat/web-ux-polish-motion
-    status: pending
+    status: merged
     complexity: coding
   - id: "052-6"
     title: "Operator analytics hooks"
     branch: feat/web-analytics-hooks
-    status: pending
+    status: merged
     complexity: general
   - id: "052-7"
     title: "Test coverage expansion"
     branch: feat/web-test-coverage
-    status: pending
+    status: merged
     complexity: general
 
 # Definition of Done
 criteria:
   - description: "All docs updated to reflect current state (13 locales, features)"
-    status: pending
+    status: done
   - description: "Skeleton loading screens for all major data views"
-    status: pending
+    status: done
   - description: "Error boundary component with graceful fallbacks"
-    status: pending
+    status: done
   - description: "Retry logic with exponential backoff in all query hooks"
-    status: pending
+    status: done
   - description: "Code splitting reduces initial bundle by 30%+"
-    status: pending
+    status: done
   - description: "SEO meta tags component + sitemap generator"
-    status: pending
+    status: done
   - description: "PWA manifest + service worker for offline caching"
-    status: pending
+    status: done
   - description: "Operator analytics hooks implemented"
-    status: pending
+    status: done
   - description: "Keyboard navigation tests passing"
-    status: pending
+    status: done
   - description: "ARIA label verification tests passing"
-    status: pending
+    status: done
   - description: "Focus management utilities in packages/ui"
-    status: pending
+    status: done
   - description: "Transition animations respecting prefers-reduced-motion"
-    status: pending
+    status: done
   - description: "Toast notification system with auto-dismiss"
-    status: pending
+    status: done
   - description: "Micro-interactions on buttons and cards"
-    status: pending
+    status: done
   - description: "Brand utilities unit tests passing"
-    status: pending
+    status: done
   - description: "i18n utilities unit tests passing"
-    status: pending
+    status: done
   - description: "Component integration tests passing"
-    status: pending
+    status: done
   - description: "bin/check green across all changes"
-    status: pending
+    status: done
   - description: "All PRs merged via claudetm merge-pr"
-    status: pending
+    status: done
