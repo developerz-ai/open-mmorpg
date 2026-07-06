@@ -1,0 +1,34 @@
+[package]
+name = "omm-engine-physics"
+description = "Engine physics: in-house collision, kinematic character controller, line-of-sight queries with deterministic evaluation."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+# Headless-safe core: app lifecycle, ECS (messages/systems), and reflection.
+# Collision shapes (AABB/sphere/capsule), broadphase queries, kinematic controller,
+# and LOS checks are pure, headless logic — no GPU, no physics solver.
+# Runs in SimSet::Simulate, deterministic for shared state.
+bevy_app.workspace = true
+bevy_ecs.workspace = true
+bevy_math.workspace = true
+bevy_reflect.workspace = true
+bevy_transform.workspace = true
+# Engine libraries: core plugin registry.
+omm-engine-core.workspace = true
+# World spatial index: reuse quadtree for broadphase queries.
+omm-world.workspace = true
+# Typed, fail-loud errors for physics-layer operations.
+thiserror.workspace = true
+
+[dev-dependencies]
+omm-engine-core.workspace = true
+
+[features]
+default = []
+
+[lints]
+workspace = true

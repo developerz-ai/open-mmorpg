@@ -3435,6 +3435,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "omm-engine-physics"
+version = "0.0.0"
+dependencies = [
+ "bevy_app",
+ "bevy_ecs",
+ "bevy_math",
+ "bevy_reflect",
+ "bevy_transform",
+ "omm-engine-core",
+ "omm-world",
+ "thiserror 2.0.18",
+]
+
+[[package]]
 name = "omm-engine-render"
 version = "0.0.0"
 dependencies = [
