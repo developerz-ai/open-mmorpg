@@ -26,4 +26,5 @@ export {
   Tabs,
   type TabsProps,
 } from './Tabs.tsx';
+export { Tooltip, type TooltipProps } from './Tooltip.tsx';
 export { TextField, type TextFieldProps } from './TextField.tsx';
