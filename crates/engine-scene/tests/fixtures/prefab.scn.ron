@@ -1,0 +1,19 @@
+// Agent-authored prefab fixture.
+//
+// Two entities:
+//   Entity 0 — Hp (current: 50, max: 100)  +  Tier (value: 3)
+//   Entity 1 — Hp (current: 10, max: 10)   (no Tier)
+//
+// Type paths match types defined in the `scene_roundtrip` integration test
+// binary (test file stem = crate root module name for integration tests).
+// Loading this fixture with an unregistered type for either `Hp` or `Tier`
+// must produce a loud `SceneError::Parse`.
+[
+    [
+        {"scene_roundtrip::Hp": (current: 50, max: 100)},
+        {"scene_roundtrip::Tier": (value: 3)},
+    ],
+    [
+        {"scene_roundtrip::Hp": (current: 10, max: 10)},
+    ],
+]

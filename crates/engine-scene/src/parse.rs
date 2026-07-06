@@ -1,12 +1,13 @@
 //! Text authoring for prefabs — parse RON into a [`Prefab`] through the
-//! reflection registry.
+//! reflection registry, and serialize a [`Prefab`] back to RON.
 //!
 //! A prefab is written as a sequence of entities, each a sequence of components;
 //! every component is a single-entry map keyed by its reflection type path (the
-//! shape [`ReflectDeserializer`] consumes). No per-type serializer is written by
-//! hand: `#[derive(Reflect)]` + a registry entry is the whole contract, which is
-//! exactly why an agent can author a valid prefab and why an invalid one fails
-//! **loud** here rather than silently at spawn (→ scene spec).
+//! shape [`ReflectDeserializer`] consumes and [`ReflectSerializer`] produces). No
+//! per-type serializer is written by hand: `#[derive(Reflect)]` + a registry
+//! entry is the whole contract, which is exactly why an agent can author a valid
+//! prefab and why an invalid one fails **loud** here rather than silently at
+//! spawn (→ scene spec).
 //!
 //! ```ron
 //! [
@@ -19,7 +20,7 @@
 
 use core::fmt;
 
-use bevy_reflect::serde::ReflectDeserializer;
+use bevy_reflect::serde::{ReflectDeserializer, ReflectSerializer};
 use bevy_reflect::TypeRegistry;
 use ron::Options;
 use serde::de::{DeserializeSeed, Deserializer, SeqAccess, Visitor};
@@ -38,6 +39,31 @@ impl Prefab {
         Options::default()
             .from_str_seed(ron, PrefabSeed { registry })
             .map_err(|err| SceneError::Parse(err.to_string()))
+    }
+
+    /// Serialize this prefab back to a RON string using the reflection registry.
+    ///
+    /// The output uses exactly the same `{"TypePath": value}` per-component format
+    /// that [`Self::from_ron`] expects, so
+    /// `Prefab::from_ron(&prefab.to_ron(r)?, r)?` reproduces equivalent component
+    /// values — the round-trip contract.
+    ///
+    /// # Errors
+    /// [`SceneError::Parse`] if any component cannot be serialized (e.g. its
+    /// concrete type is unrepresented in the registry).
+    pub fn to_ron(&self, registry: &TypeRegistry) -> Result<String, SceneError> {
+        let mut entities_ron: Vec<String> = Vec::with_capacity(self.entities().len());
+        for entity in self.entities() {
+            let mut components_ron: Vec<String> = Vec::with_capacity(entity.len());
+            for component in entity.components() {
+                let serializer = ReflectSerializer::new(component.as_ref(), registry);
+                let s = ron::to_string(&serializer)
+                    .map_err(|e| SceneError::Parse(format!("serialize: {e}")))?;
+                components_ron.push(s);
+            }
+            entities_ron.push(format!("[{}]", components_ron.join(",")));
+        }
+        Ok(format!("[{}]", entities_ron.join(",")))
     }
 }
 

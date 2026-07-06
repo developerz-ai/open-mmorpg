@@ -63,7 +63,7 @@ impl EntityBlueprint {
         self.components.is_empty()
     }
 
-    fn components(&self) -> &[Box<dyn PartialReflect>] {
+    pub(crate) fn components(&self) -> &[Box<dyn PartialReflect>] {
         &self.components
     }
 }
