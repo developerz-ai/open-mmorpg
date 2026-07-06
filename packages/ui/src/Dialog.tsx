@@ -1,12 +1,5 @@
 import type { JSX } from 'solid-js';
-import {
-  createContext,
-  createEffect,
-  createSignal,
-  Show,
-  splitProps,
-  useContext,
-} from 'solid-js';
+import { createContext, createEffect, createSignal, Show, splitProps, useContext } from 'solid-js';
 import { cx } from './cx.ts';
 
 interface DialogContextValue {
@@ -119,9 +112,7 @@ export function Dialog(props: DialogProps) {
       if (e.key !== 'Tab') return;
       const focusable = dialog.querySelectorAll<
         HTMLButtonElement | HTMLAnchorElement | HTMLInputElement
-      >(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-      );
+      >('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
       const first = focusable[0] as HTMLElement;
       const last = focusable[focusable.length - 1] as HTMLElement;
 
@@ -160,9 +151,7 @@ export function Dialog(props: DialogProps) {
           aria-describedby={local.descriptionId}
           class="dialog-content"
         >
-          <DialogContext.Provider value={contextValue}>
-            {local.children}
-          </DialogContext.Provider>
+          <DialogContext.Provider value={contextValue}>{local.children}</DialogContext.Provider>
         </div>
       </div>
     </Show>
