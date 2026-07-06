@@ -21,6 +21,7 @@ export const en: Catalog = {
   nav: {
     home: 'Home',
     play: 'Play',
+    downloads: 'Downloads',
     armory: 'Armory',
     auction: 'Auction house',
     feed: 'World feed',
