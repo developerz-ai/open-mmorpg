@@ -86,6 +86,24 @@ impl UdpTransport {
     pub const fn max_datagram(&self) -> usize {
         self.max_datagram
     }
+
+    /// Wrap an **already-bound and connected** `tokio::net::UdpSocket`.
+    ///
+    /// This is the escape hatch for tests (and future server code) that need to
+    /// bind both halves of a loopback pair before either side knows the other's
+    /// port. The caller is responsible for ensuring `socket` is connected;
+    /// datagrams sent before that will hit an OS error.
+    ///
+    /// `max_datagram` is the cap enforced by [`Transport::send`]; pass
+    /// [`DEFAULT_MAX_DATAGRAM`] unless you have a specific MTU reason to differ.
+    #[must_use]
+    pub fn from_connected(conn: ConnId, socket: UdpSocket, max_datagram: usize) -> Self {
+        Self {
+            conn,
+            socket,
+            max_datagram,
+        }
+    }
 }
 
 #[async_trait::async_trait]
