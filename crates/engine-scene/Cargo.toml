@@ -9,10 +9,17 @@ repository.workspace = true
 
 [dependencies]
 bevy_app.workspace = true
+bevy_asset.workspace = true
 bevy_ecs.workspace = true
 bevy_reflect.workspace = true
+bevy_scene.workspace = true
 bevy_transform.workspace = true
 omm-engine-core.workspace = true
+# RON + serde back `Prefab::from_ron`: the text authoring path an agent writes and
+# the engine loads through the reflection registry (never a hand-written per-type
+# serializer). Kept minimal — no derive machinery, just the reflect deserializer.
+ron.workspace = true
+serde.workspace = true
 thiserror.workspace = true
 
 [lints]
