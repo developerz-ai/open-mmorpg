@@ -61,6 +61,9 @@ serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 thiserror = "2"
 tokio = { version = "1", features = ["rt-multi-thread", "macros", "net", "time", "signal", "sync"] }
+# Object-safe async traits with `Send` futures — native `async fn` in trait is
+# not yet dyn-compatible, and the `Transport` seam is held as `dyn`/`Arc`.
+async-trait = "0.1"
 axum = "0.8"
 # Gateway edge crypto/util: signed session tokens (HMAC-SHA256), constant-time
 # MAC comparison, base64url token encoding, random nonces. Light, well-known.

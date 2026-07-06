@@ -9,7 +9,9 @@ repository.workspace = true
 
 [dependencies]
 omm-protocol.workspace = true
+async-trait.workspace = true
 serde.workspace = true
+thiserror.workspace = true
 
 [dev-dependencies]
 proptest.workspace = true

@@ -1981,9 +1981,11 @@ dependencies = [
 name = "omm-netcode"
 version = "0.0.0"
 dependencies = [
+ "async-trait",
  "omm-protocol",
  "proptest",
  "serde",
+ "thiserror",
 ]
 
 [[package]]
