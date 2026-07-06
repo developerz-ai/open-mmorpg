@@ -2,7 +2,7 @@ import type { JSX } from 'solid-js';
 import { createEffect, createMemo, createSignal, onCleanup, Show, splitProps } from 'solid-js';
 import { cx } from './cx.ts';
 
-export interface TooltipProps extends Omit<JSX.HTMLAttributes<HTMLDivElement>, 'title'> {
+export interface TooltipProps extends Omit<JSX.ButtonHTMLAttributes<HTMLButtonElement>, 'title'> {
   /** Tooltip content text. */
   content: string;
   /** Delay before showing on hover (ms). Default: 200. */

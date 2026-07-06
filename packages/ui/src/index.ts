@@ -13,8 +13,9 @@ export {
   DialogTitle,
   type DialogTitleProps,
 } from './Dialog.tsx';
+export { Progress, type ProgressProps } from './Progress.tsx';
 export { Select, SelectOption, type SelectOptionProps, type SelectProps } from './Select.tsx';
-export { Spinner, type SpinnerProps } from './Spinner.tsx';
+export { Spinner, type SpinnerProps, type SpinnerSize } from './Spinner.tsx';
 export { type Column, Table, type TableProps } from './Table.tsx';
 export {
   Tab,
@@ -26,5 +27,5 @@ export {
   Tabs,
   type TabsProps,
 } from './Tabs.tsx';
-export { Tooltip, type TooltipProps } from './Tooltip.tsx';
 export { TextField, type TextFieldProps } from './TextField.tsx';
+export { Tooltip, type TooltipProps } from './Tooltip.tsx';

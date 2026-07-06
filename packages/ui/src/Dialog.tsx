@@ -1,19 +1,6 @@
 import type { JSX } from 'solid-js';
-import { createContext, createEffect, createSignal, Show, splitProps, useContext } from 'solid-js';
+import { createEffect, createSignal, Show, splitProps } from 'solid-js';
 import { cx } from './cx.ts';
-
-interface DialogContextValue {
-  close: () => void;
-  dismissable: () => boolean;
-}
-
-const DialogContext = createContext<DialogContextValue>();
-
-function useDialogContext(): DialogContextValue {
-  const ctx = useContext(DialogContext);
-  if (!ctx) throw new Error('Dialog compound components must be used inside Dialog');
-  return ctx;
-}
 
 export interface DialogProps extends Omit<JSX.HTMLAttributes<HTMLDivElement>, 'isOpen'> {
   /** Whether the dialog is open. */
@@ -53,8 +40,6 @@ export function Dialog(props: DialogProps) {
       local.onClose();
     }
   };
-
-  const contextValue: DialogContextValue = { close, dismissable };
 
   // Handle escape key
   createEffect(() => {
@@ -135,12 +120,21 @@ export function Dialog(props: DialogProps) {
     }
   };
 
+  const handleOverlayKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      close();
+    }
+  };
+
   return (
     <Show when={local.isOpen}>
+      {/* biome-ignore lint/a11y/noStaticElementInteractions: Overlay click-to-close is intentional */}
       <div
         ref={setOverlayRef}
         class={cx('dialog-overlay', local.class)}
         onClick={handleOverlayClick}
+        onKeyDown={handleOverlayKeyDown}
         {...rest}
       >
         <div
@@ -151,7 +145,7 @@ export function Dialog(props: DialogProps) {
           aria-describedby={local.descriptionId}
           class="dialog-content"
         >
-          <DialogContext.Provider value={contextValue}>{local.children}</DialogContext.Provider>
+          {local.children}
         </div>
       </div>
     </Show>
