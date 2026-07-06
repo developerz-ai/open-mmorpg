@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# bin/check-web — run web quality gates (typecheck + lint + test)
+set -euo pipefail
+cd "$(dirname "$0")/.."
+exec bun scripts/check-web.ts "$@"

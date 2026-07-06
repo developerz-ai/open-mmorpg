@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# bin/test-web — run web unit tests via bun test
+set -euo pipefail
+cd "$(dirname "$0")/.."
+exec bun scripts/test-web.ts "$@"

@@ -42,6 +42,21 @@ log.ok('deps installed');
 log.step('Warming the Rust build');
 runInherit(['cargo', 'build', '--workspace']);
 
+log.step('Installing Playwright browsers for E2E tests');
+const playwrightInstall = runInherit([
+  'bun',
+  'run',
+  '--filter',
+  '@omm/web',
+  '--silent',
+  'exec',
+  'playwright',
+  'install',
+  'chromium',
+]);
+if (playwrightInstall === 0) log.ok('Playwright browsers installed');
+else log.warn('Playwright browser install failed — E2E tests may not work');
+
 if (have('docker')) {
   log.step('Starting data stores (Yugabyte + Dragonfly)');
   const code = runInherit([

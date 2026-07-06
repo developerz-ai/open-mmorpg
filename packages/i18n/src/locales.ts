@@ -1,5 +1,19 @@
 /** Locales shipped in the box. Operators extend this by dropping a catalog. */
-export const LOCALES = ['en', 'de', 'es', 'fr', 'ja', 'zh'] as const;
+export const LOCALES = [
+  'en',
+  'de',
+  'es',
+  'fr',
+  'ja',
+  'zh',
+  'ko',
+  'ru',
+  'pt',
+  'it',
+  'pl',
+  'tr',
+  'ar',
+] as const;
 
 /** A supported locale tag. */
 export type Locale = (typeof LOCALES)[number];
