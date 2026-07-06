@@ -1,0 +1,4 @@
+[test]
+# Load test environment variables
+env = ".env.test"
+
