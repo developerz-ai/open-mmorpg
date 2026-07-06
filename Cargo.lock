@@ -3342,12 +3342,14 @@ dependencies = [
  "bevy_asset",
  "bevy_ecs",
  "bevy_gltf",
+ "bevy_math",
  "bevy_pbr",
  "bevy_reflect",
  "bevy_render",
  "omm-engine-core",
  "serde",
  "serde_json",
+ "thiserror 2.0.18",
  "zstd",
 ]
 

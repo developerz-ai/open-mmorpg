@@ -13,11 +13,16 @@ repository.workspace = true
 bevy_app.workspace = true
 bevy_asset.workspace = true
 bevy_ecs.workspace = true
-# Manifest schema + Zstd bundling land in the next slice (manifest/LOD/streaming);
-# declared here so that slice is a pure code change.
+# Manifest schema + Zstd bundling: slot-spec parse/validate, LOD/imposter and
+# camera-position streaming are pure, headless logic — no GPU, no window.
 serde = { workspace = true }
 serde_json.workspace = true
 zstd.workspace = true
+# Typed, fail-loud errors for the pipeline (manifest/LOD/streaming).
+thiserror.workspace = true
+# glam vectors for LOD screen-size math, octahedral-imposter view mapping and
+# camera-position tile selection. Pure math, no render backend.
+bevy_math.workspace = true
 # glTF import produces `Mesh`/`StandardMaterial`/`Image` render assets, so the
 # loader is render-gated — headless builds never compile it.
 bevy_gltf = { workspace = true, optional = true }

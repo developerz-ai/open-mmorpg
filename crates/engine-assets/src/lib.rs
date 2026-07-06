@@ -16,15 +16,36 @@
 //! threads); the watcher backend itself is the opt-in `watch` cargo feature.
 //! glTF import is the `render` cargo feature — it produces `Mesh`/
 //! `StandardMaterial` render assets that only exist in a rendered head.
+//!
+//! # The MMO-scale pipeline logic (pure, headless)
+//! Three modules are plain deterministic logic — no GPU, no ECS, no IO — so a CI
+//! agent validates content and reasons about detail/streaming exactly as the
+//! client does:
+//! - [`manifest`] — parse `manifest.json` and validate each slot spec
+//!   (model + textures + rig) fail-loud, so AI-generated content only has to *fit
+//!   the slot*.
+//! - [`lod`] — pick a mesh tier from on-screen size, drop to an octahedral
+//!   imposter for the far tier, cull the rest.
+//! - [`streaming`] — load/unload world tiles by camera position under a hard
+//!   memory budget, nearest-first.
 
 #![forbid(unsafe_code)]
+
+pub mod error;
+pub mod lod;
+pub mod manifest;
+pub mod streaming;
 
 mod hot_reload;
 
 #[cfg(feature = "render")]
 mod gltf;
 
+pub use error::AssetError;
 pub use hot_reload::{AssetHotReloadAppExt, AssetHotReloaded};
+pub use lod::{ImposterAtlas, ImposterCell, LodChain, LodSelection};
+pub use manifest::{AssetManifest, AssetSlot, SlotCandidate, SlotKind};
+pub use streaming::{StreamingDelta, StreamingGrid, TileCoord};
 
 use bevy_app::{App, Plugin};
 use bevy_asset::AssetPlugin;
