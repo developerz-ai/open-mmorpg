@@ -95,6 +95,9 @@ export const ko: Catalog = {
       rate_limited: '너무 많은 시도입니다. 잠시 기다린 후 다시 시도하세요.',
       twofa_required: '계속하려면 2단계 인증 코드를 입력하세요.',
       email_taken: '이 이메일은 이미 등록되어 있습니다.',
+      wrong_password: '현재 비밀번호가 올바르지 않습니다.',
+      password_too_short: '비밀번호는 최소 8자 이상이어야 합니다.',
+      password_mismatch: '새 비밀번호가 일치하지 않습니다.',
     },
     account: {
       heading: '계정',
@@ -104,6 +107,18 @@ export const ko: Catalog = {
       logout: '로그아웃',
       loggedOut: '로그아웃되었습니다.',
       loginPrompt: '계정을 관리하려면 로그인하세요.',
+      settings: {
+        heading: '계정 설정',
+        profileHeading: '프로필',
+        saveProfile: '프로필 저장',
+        profileSaved: '프로필이 저장되었습니다.',
+        passwordHeading: '비밀번호 변경',
+        currentPassword: '현재 비밀번호',
+        newPassword: '새 비밀번호',
+        confirmPassword: '새 비밀번호 확인',
+        changePassword: '비밀번호 변경',
+        passwordChanged: '비밀번호가 변경되었습니다.',
+      },
     },
   },
   armory: {

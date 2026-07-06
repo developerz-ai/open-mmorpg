@@ -94,6 +94,9 @@ export const ja: Catalog = {
       rate_limited: '試行回数が多すぎます。お待ちいただいてから再試行してください。',
       twofa_required: '続行するには2要素認証コードを入力してください。',
       email_taken: 'このメールアドレスはすでに登録されています。',
+      wrong_password: '現在のパスワードが正しくありません。',
+      password_too_short: 'パスワードは8文字以上でなければなりません。',
+      password_mismatch: '新しいパスワードが一致しません。',
     },
     account: {
       heading: 'アカウント',
@@ -103,6 +106,18 @@ export const ja: Catalog = {
       logout: 'ログアウト',
       loggedOut: 'ログアウトしました。',
       loginPrompt: 'アカウントを管理するにはログインしてください。',
+      settings: {
+        heading: 'アカウント設定',
+        profileHeading: 'プロフィール',
+        saveProfile: 'プロフィールを保存',
+        profileSaved: 'プロフィールを保存しました。',
+        passwordHeading: 'パスワードの変更',
+        currentPassword: '現在のパスワード',
+        newPassword: '新しいパスワード',
+        confirmPassword: '新しいパスワードの確認',
+        changePassword: 'パスワードを変更',
+        passwordChanged: 'パスワードを変更しました。',
+      },
     },
   },
   armory: {

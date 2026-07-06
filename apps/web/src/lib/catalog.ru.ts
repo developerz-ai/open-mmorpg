@@ -94,6 +94,9 @@ export const ru: Catalog = {
       rate_limited: 'Слишком много попыток. Подождите и попробуйте снова.',
       twofa_required: 'Введите код двухфакторной аутентификации для продолжения.',
       email_taken: 'Эта электронная почта уже зарегистрирована.',
+      wrong_password: 'Ваш текущий пароль неверен.',
+      password_too_short: 'Пароль должен содержать не менее 8 символов.',
+      password_mismatch: 'Новые пароли не совпадают.',
     },
     account: {
       heading: 'Аккаунт',
@@ -103,6 +106,18 @@ export const ru: Catalog = {
       logout: 'Выйти',
       loggedOut: 'Вы вышли.',
       loginPrompt: 'Войдите, чтобы управлять аккаунтом.',
+      settings: {
+        heading: 'Настройки аккаунта',
+        profileHeading: 'Профиль',
+        saveProfile: 'Сохранить профиль',
+        profileSaved: 'Профиль сохранён.',
+        passwordHeading: 'Сменить пароль',
+        currentPassword: 'Текущий пароль',
+        newPassword: 'Новый пароль',
+        confirmPassword: 'Подтвердите новый пароль',
+        changePassword: 'Сменить пароль',
+        passwordChanged: 'Пароль изменён.',
+      },
     },
   },
   armory: {

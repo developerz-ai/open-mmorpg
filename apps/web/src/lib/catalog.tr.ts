@@ -94,6 +94,9 @@ export const tr: Catalog = {
       rate_limited: 'Çok fazla deneme. Lütfen bekleyin ve tekrar deneyin.',
       twofa_required: 'Devam etmek için iki faktörlü kodunuzu girin.',
       email_taken: 'Bu e-posta zaten kayıtlı.',
+      wrong_password: 'Mevcut şifreniz yanlış.',
+      password_too_short: 'Şifre en az 8 karakter olmalıdır.',
+      password_mismatch: 'Yeni şifreler eşleşmiyor.',
     },
     account: {
       heading: 'Hesap',
@@ -103,6 +106,18 @@ export const tr: Catalog = {
       logout: 'Çıkış yap',
       loggedOut: 'Çıkış yaptınız.',
       loginPrompt: 'Hesabınızı yönetmek için giriş yapın.',
+      settings: {
+        heading: 'Hesap ayarları',
+        profileHeading: 'Profil',
+        saveProfile: 'Profili kaydet',
+        profileSaved: 'Profil kaydedildi.',
+        passwordHeading: 'Şifreyi değiştir',
+        currentPassword: 'Mevcut şifre',
+        newPassword: 'Yeni şifre',
+        confirmPassword: 'Yeni şifreyi onayla',
+        changePassword: 'Şifreyi değiştir',
+        passwordChanged: 'Şifre değiştirildi.',
+      },
     },
   },
   armory: {

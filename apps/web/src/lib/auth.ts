@@ -61,6 +61,42 @@ export function fetchAccount(): Promise<Account> {
   return request({ backend: 'gateway', path: '/account', schema: AccountSchema, auth: true });
 }
 
+/** Editable profile fields — either, both, or neither may be supplied. */
+export interface UpdateProfileInput {
+  displayName?: string;
+  email?: string;
+}
+
+/** A password change requires the current password; the gateway verifies it. */
+export interface ChangePasswordInput {
+  currentPassword: string;
+  newPassword: string;
+}
+
+/** Update display name and/or email (session-bearing). Returns the projection. */
+export function updateProfile(input: UpdateProfileInput): Promise<Account> {
+  return request({
+    backend: 'gateway',
+    path: '/account',
+    method: 'PUT',
+    body: input,
+    schema: AccountSchema,
+    auth: true,
+  });
+}
+
+/** Change the password — the gateway is the authority; the web holds no hash. */
+export async function changePassword(input: ChangePasswordInput): Promise<void> {
+  await request({
+    backend: 'gateway',
+    path: '/account/password',
+    method: 'POST',
+    body: input,
+    schema: z.object({ ok: z.literal(true) }),
+    auth: true,
+  });
+}
+
 /**
  * The `t()` key for an auth failure — a stable gateway code (`invalid_credentials`)
  * maps to `auth.error.<code>`; anything else falls back to the generic kinds.

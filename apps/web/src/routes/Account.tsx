@@ -2,6 +2,7 @@ import { Alert, Button, Card, Spinner } from '@omm/ui';
 import { A, useNavigate } from '@solidjs/router';
 import type { JSX } from 'solid-js';
 import { Match, Switch } from 'solid-js';
+import { AccountSettings } from '../components/AccountSettings.tsx';
 import { fmt, t } from '../lib/i18n.ts';
 import { sessionToken } from '../lib/session.ts';
 import { useAccount, useLogout } from '../queries/useAuth.ts';
@@ -34,19 +35,22 @@ export default function Account(): JSX.Element {
         </Match>
         <Match when={account.data}>
           {(data) => (
-            <dl class="stack">
-              <div>
-                <dt class="text-fg-muted">{t('auth.account.displayName')}</dt>
-                <dd class="text-fg-strong">{data().displayName}</dd>
-              </div>
-              <div>
-                <dt class="text-fg-muted">{t('auth.account.email')}</dt>
-                <dd>{data().email}</dd>
-              </div>
-              <p class="text-fg-muted">
-                {t('auth.account.memberSince', { date: fmt.date(new Date(data().createdAt)) })}
-              </p>
-            </dl>
+            <>
+              <dl class="stack">
+                <div>
+                  <dt class="text-fg-muted">{t('auth.account.displayName')}</dt>
+                  <dd class="text-fg-strong">{data().displayName}</dd>
+                </div>
+                <div>
+                  <dt class="text-fg-muted">{t('auth.account.email')}</dt>
+                  <dd>{data().email}</dd>
+                </div>
+                <p class="text-fg-muted">
+                  {t('auth.account.memberSince', { date: fmt.date(new Date(data().createdAt)) })}
+                </p>
+              </dl>
+              <AccountSettings account={data()} />
+            </>
           )}
         </Match>
       </Switch>

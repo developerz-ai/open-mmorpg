@@ -95,6 +95,9 @@ export const ar: Catalog = {
       rate_limited: 'محاولات كثيرة جدًا. يرجى الانتظار والمحاولة مرة أخرى.',
       twofa_required: 'أدخل رمز المصادقة الثنائية للمتابعة.',
       email_taken: 'هذا البريد الإلكتروني مسجل بالفعل.',
+      wrong_password: 'كلمة المرور الحالية غير صحيحة.',
+      password_too_short: 'يجب أن تتكون كلمة المرور من 8 أحرف على الأقل.',
+      password_mismatch: 'كلمتا المرور الجديدتان غير متطابقتين.',
     },
     account: {
       heading: 'الحساب',
@@ -104,6 +107,18 @@ export const ar: Catalog = {
       logout: 'تسجيل الخروج',
       loggedOut: 'لقد قمت بتسجيل الخروج.',
       loginPrompt: 'سجل الدخول لإدارة حسابك.',
+      settings: {
+        heading: 'إعدادات الحساب',
+        profileHeading: 'الملف الشخصي',
+        saveProfile: 'حفظ الملف الشخصي',
+        profileSaved: 'تم حفظ الملف الشخصي.',
+        passwordHeading: 'تغيير كلمة المرور',
+        currentPassword: 'كلمة المرور الحالية',
+        newPassword: 'كلمة المرور الجديدة',
+        confirmPassword: 'تأكيد كلمة المرور الجديدة',
+        changePassword: 'تغيير كلمة المرور',
+        passwordChanged: 'تم تغيير كلمة المرور.',
+      },
     },
   },
   armory: {

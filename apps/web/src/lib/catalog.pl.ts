@@ -94,6 +94,9 @@ export const pl: Catalog = {
       rate_limited: 'Zbyt wiele prób. Proszę czekać i spróbować ponownie.',
       twofa_required: 'Wprowadź kod dwuskładnikowy, aby kontynuować.',
       email_taken: 'Ten e-mail jest już zarejestrowany.',
+      wrong_password: 'Twoje obecne hasło jest nieprawidłowe.',
+      password_too_short: 'Hasło musi mieć co najmniej 8 znaków.',
+      password_mismatch: 'Nowe hasła nie są zgodne.',
     },
     account: {
       heading: 'Konto',
@@ -103,6 +106,18 @@ export const pl: Catalog = {
       logout: 'Wyloguj',
       loggedOut: 'Jesteś wylogowany.',
       loginPrompt: 'Zaloguj się, aby zarządzać swoim kontem.',
+      settings: {
+        heading: 'Ustawienia konta',
+        profileHeading: 'Profil',
+        saveProfile: 'Zapisz profil',
+        profileSaved: 'Profil zapisany.',
+        passwordHeading: 'Zmień hasło',
+        currentPassword: 'Obecne hasło',
+        newPassword: 'Nowe hasło',
+        confirmPassword: 'Potwierdź nowe hasło',
+        changePassword: 'Zmień hasło',
+        passwordChanged: 'Hasło zmienione.',
+      },
     },
   },
   armory: {

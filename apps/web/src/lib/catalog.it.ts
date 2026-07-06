@@ -94,6 +94,9 @@ export const it: Catalog = {
       rate_limited: 'Troppi tentativi. Per favore, attendi e riprova.',
       twofa_required: 'Inserisci il codice a due fattori per continuare.',
       email_taken: 'Questa email è già registrata.',
+      wrong_password: 'La password attuale non è corretta.',
+      password_too_short: 'La password deve contenere almeno 8 caratteri.',
+      password_mismatch: 'Le nuove password non corrispondono.',
     },
     account: {
       heading: 'Account',
@@ -103,6 +106,18 @@ export const it: Catalog = {
       logout: 'Esci',
       loggedOut: 'Sei disconnesso.',
       loginPrompt: 'Accedi per gestire il tuo account.',
+      settings: {
+        heading: 'Impostazioni account',
+        profileHeading: 'Profilo',
+        saveProfile: 'Salva profilo',
+        profileSaved: 'Profilo salvato.',
+        passwordHeading: 'Cambia password',
+        currentPassword: 'Password attuale',
+        newPassword: 'Nuova password',
+        confirmPassword: 'Conferma nuova password',
+        changePassword: 'Cambia password',
+        passwordChanged: 'Password modificata.',
+      },
     },
   },
   armory: {
