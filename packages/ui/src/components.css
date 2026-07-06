@@ -397,3 +397,113 @@
     transform: translateY(0);
   }
 }
+
+/* Toast -------------------------------------------------------------------- */
+.omm-toast-container {
+  position: fixed;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 24rem;
+  pointer-events: none;
+}
+.omm-toast-container--top-right {
+  top: 1rem;
+  right: 1rem;
+}
+.omm-toast-container--top-left {
+  top: 1rem;
+  left: 1rem;
+}
+.omm-toast-container--bottom-right {
+  bottom: 1rem;
+  right: 1rem;
+}
+.omm-toast-container--bottom-left {
+  bottom: 1rem;
+  left: 1rem;
+}
+.omm-toast {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  background: rgb(var(--color-surface));
+  border: 1px solid rgb(var(--color-line));
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.4);
+  pointer-events: auto;
+  animation: omm-toast-in var(--dur-fast) var(--ease-out);
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+.omm-toast--exiting {
+  opacity: 0;
+}
+@keyframes omm-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.omm-toast--success {
+  border-left: 3px solid rgb(var(--color-success));
+}
+.omm-toast--error {
+  border-left: 3px solid rgb(var(--color-danger));
+}
+.omm-toast--warning {
+  border-left: 3px solid rgb(var(--color-warning));
+}
+.omm-toast--info {
+  border-left: 3px solid rgb(var(--color-accent));
+}
+.omm-toast__content {
+  flex: 1;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: rgb(var(--color-fg));
+}
+.omm-toast__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+.omm-toast__action {
+  padding: 0.3rem 0.6rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: rgb(var(--color-accent) / 0.15);
+  color: rgb(var(--color-accent-strong));
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out);
+}
+.omm-toast__action:hover {
+  background: rgb(var(--color-accent) / 0.25);
+}
+.omm-toast__close {
+  width: 1.4rem;
+  height: 1.4rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: rgb(var(--color-fg-muted));
+  font: inherit;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.omm-toast__close:hover {
+  color: rgb(var(--color-fg));
+}
