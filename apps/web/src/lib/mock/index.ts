@@ -11,7 +11,15 @@ import { authRoutes } from './auth.ts';
 import { registerRoutes } from './backend.ts';
 import { feedRoutes } from './feed.ts';
 import { realmRoutes } from './realm.ts';
+import { shopRoutes } from './shop.ts';
 
-registerRoutes(...realmRoutes, ...authRoutes, ...armoryRoutes, ...auctionRoutes, ...feedRoutes);
+registerRoutes(
+  ...realmRoutes,
+  ...authRoutes,
+  ...armoryRoutes,
+  ...auctionRoutes,
+  ...feedRoutes,
+  ...shopRoutes,
+);
 
 export { handleMock, MockNotFound } from './backend.ts';

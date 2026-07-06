@@ -31,6 +31,19 @@ export const BuyResultSchema = z.object({
 });
 export type BuyResult = z.infer<typeof BuyResultSchema>;
 
+export const PurchaseHistoryEntrySchema = z.object({
+  id: z.string(),
+  item: z.string(),
+  price: z.number().int().nonnegative(),
+  currency: z.literal('credits'),
+  purchasedAt: z.string(),
+});
+export type PurchaseHistoryEntry = z.infer<typeof PurchaseHistoryEntrySchema>;
+
+export const PurchaseHistorySchema = z.object({
+  entries: z.array(PurchaseHistoryEntrySchema),
+});
+
 /** Fetch shop items, optionally filtered by category (cached read). */
 export async function fetchShopItems(category: string): Promise<ShopItem[]> {
   const path = category ? `/shop/items?category=${encodeURIComponent(category)}` : '/shop/items';
@@ -64,4 +77,15 @@ export function buyShopItem(intent: BuyIntent): Promise<BuyResult> {
     schema: BuyResultSchema,
     auth: true,
   });
+}
+
+/** Fetch purchase history for the authenticated account (requires auth). */
+export async function fetchPurchaseHistory(): Promise<PurchaseHistoryEntry[]> {
+  const { entries } = await request({
+    backend: 'worldsvc',
+    path: '/shop/purchases',
+    schema: PurchaseHistorySchema,
+    auth: true,
+  });
+  return entries;
 }
