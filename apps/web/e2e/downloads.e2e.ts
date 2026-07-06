@@ -56,7 +56,9 @@ test.describe('downloads page', () => {
     await expect(page.locator('body')).not.toContainText('⟦');
   });
 
-  test('checksum verifier shows mismatch for well-formed but non-matching checksum', async ({ page }) => {
+  test('checksum verifier shows mismatch for well-formed but non-matching checksum', async ({
+    page,
+  }) => {
     await page.goto('/downloads');
 
     const checksumInput = page.getByLabel('Enter checksum from your file');
