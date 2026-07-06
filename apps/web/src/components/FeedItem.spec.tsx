@@ -5,13 +5,18 @@ import type { FeedEntry } from '../lib/feed';
 
 describe('FeedItem component tests', () => {
   const mockEntry: FeedEntry = {
+    id: 'boss-1',
     kind: 'boss_kill',
-    at: Date.now() - 120000, // 2 minutes ago
+    at: new Date(Date.now() - 120000).toISOString(), // 2 minutes ago
+    actor: 'player1',
+    target: 'dragon',
   };
 
   const mockEntryWithoutTimestamp: FeedEntry = {
+    id: 'milestone-1',
     kind: 'milestone',
-    at: undefined,
+    at: '',
+    message: 'Server reached 1000 players!',
   };
 
   test('renders feed item with timestamp', () => {
@@ -43,13 +48,25 @@ describe('FeedItem component tests', () => {
     unmount1();
 
     // Test world_boss_spawn
-    const worldBossEntry: FeedEntry = { kind: 'world_boss_spawn', at: Date.now() };
+    const worldBossEntry: FeedEntry = {
+      id: 'world-boss-1',
+      kind: 'world_boss_spawn',
+      at: new Date().toISOString(),
+      target: 'Ancient Dragon',
+      zone: 'Dragonfire Peaks',
+    };
     const { unmount: unmount2 } = render(() => <FeedItem entry={worldBossEntry} now={Date.now()} />);
     expect(screen.getByText('world_boss_spawn')).toBeInTheDocument();
     unmount2();
 
     // Test faction_shift
-    const factionEntry: FeedEntry = { kind: 'faction_shift', at: Date.now() };
+    const factionEntry: FeedEntry = {
+      id: 'faction-1',
+      kind: 'faction_shift',
+      at: new Date().toISOString(),
+      actor: 'Shadow Syndicate',
+      zone: 'Nightfall Valley',
+    };
     render(() => <FeedItem entry={factionEntry} now={Date.now()} />);
     expect(screen.getByText('faction_shift')).toBeInTheDocument();
   });

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# bin/test-e2e — run web E2E tests via Playwright
+set -euo pipefail
+cd "$(dirname "$0")/.."
+exec bun scripts/test-e2e.ts "$@"
