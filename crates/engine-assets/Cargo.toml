@@ -1,0 +1,24 @@
+[package]
+name = "omm-engine-assets"
+description = "Engine asset pipeline: glTF/heightmap/texture/audio loading, manifest schema, Zstd compression."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+serde = { workspace = true }
+serde_json.workspace = true
+zstd.workspace = true
+bevy_asset.workspace = true
+bevy_gltf = { workspace = true, optional = true }
+bevy_render = { workspace = true, optional = true }
+bevy_pbr = { workspace = true, optional = true }
+
+[features]
+default = []
+render = ["dep:bevy_gltf", "dep:bevy_render", "dep:bevy_pbr"]
+
+[lints]
+workspace = true

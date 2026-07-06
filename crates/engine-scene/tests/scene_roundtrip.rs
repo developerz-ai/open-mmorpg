@@ -71,13 +71,27 @@ fn fixture_loads_and_validates() {
 
     assert_eq!(prefab.len(), 2, "fixture must define two entities");
 
-    let spawned = prefab.spawn(app.world_mut()).expect("fixture must spawn cleanly");
+    let spawned = prefab
+        .spawn(app.world_mut())
+        .expect("fixture must spawn cleanly");
     assert_eq!(spawned.len(), 2);
 
     let world = app.world();
-    assert_eq!(world.get::<Hp>(spawned[0]), Some(&Hp { current: 50, max: 100 }));
+    assert_eq!(
+        world.get::<Hp>(spawned[0]),
+        Some(&Hp {
+            current: 50,
+            max: 100
+        })
+    );
     assert_eq!(world.get::<Tier>(spawned[0]), Some(&Tier { value: 3 }));
-    assert_eq!(world.get::<Hp>(spawned[1]), Some(&Hp { current: 10, max: 10 }));
+    assert_eq!(
+        world.get::<Hp>(spawned[1]),
+        Some(&Hp {
+            current: 10,
+            max: 10
+        })
+    );
     // Entity 1 has no Tier — absence is part of the contract.
     assert_eq!(world.get::<Tier>(spawned[1]), None);
 }
@@ -150,9 +164,21 @@ fn serialize_deserialize_roundtrip() {
     let spawned2 = prefab2.spawn(app2.world_mut()).expect("spawn must succeed");
     let world = app2.world();
 
-    assert_eq!(world.get::<Hp>(spawned2[0]), Some(&Hp { current: 50, max: 100 }));
+    assert_eq!(
+        world.get::<Hp>(spawned2[0]),
+        Some(&Hp {
+            current: 50,
+            max: 100
+        })
+    );
     assert_eq!(world.get::<Tier>(spawned2[0]), Some(&Tier { value: 3 }));
-    assert_eq!(world.get::<Hp>(spawned2[1]), Some(&Hp { current: 10, max: 10 }));
+    assert_eq!(
+        world.get::<Hp>(spawned2[1]),
+        Some(&Hp {
+            current: 10,
+            max: 10
+        })
+    );
     assert_eq!(world.get::<Tier>(spawned2[1]), None);
 }
 
