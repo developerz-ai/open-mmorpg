@@ -2047,6 +2047,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "omm-transport"
+version = "0.0.0"
+dependencies = [
+ "async-trait",
+ "omm-netcode",
+ "omm-protocol",
+ "tokio",
+]
+
+[[package]]
 name = "omm-world"
 version = "0.0.0"
 dependencies = [

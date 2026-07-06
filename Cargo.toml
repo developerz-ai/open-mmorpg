@@ -8,6 +8,7 @@ members = [
   "crates/ecs-core",
   "crates/sim",
   "crates/netcode",
+  "crates/transport",
   "crates/persistence",
   "crates/cache",
   "crates/scripting",
@@ -37,6 +38,7 @@ omm-protocol = { path = "crates/protocol" }
 omm-ecs-core = { path = "crates/ecs-core" }
 omm-sim = { path = "crates/sim" }
 omm-netcode = { path = "crates/netcode" }
+omm-transport = { path = "crates/transport" }
 omm-persistence = { path = "crates/persistence" }
 omm-cache = { path = "crates/cache" }
 omm-scripting = { path = "crates/scripting" }
