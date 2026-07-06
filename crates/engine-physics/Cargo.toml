@@ -28,6 +28,7 @@ thiserror.workspace = true
 
 [dev-dependencies]
 omm-engine-core.workspace = true
+proptest.workspace = true
 
 [features]
 default = []
