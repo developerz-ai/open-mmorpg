@@ -6,15 +6,12 @@
 //! is what lets a second shard replay the same inputs for anti-cheat
 //! (docs/architecture/03-netcode-and-sharding.md).
 
-mod tick;
-
 use std::collections::BTreeMap;
 use std::time::Instant;
 
 use omm_ecs_core::{AbilityDef, AbilityId};
+use omm_shard::tick::FixedTimestep;
 use omm_sim::{InputBatch, World};
-
-use crate::tick::FixedTimestep;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {

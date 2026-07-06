@@ -34,10 +34,10 @@ mod tree;
 pub use geometry::Aabb;
 pub use tree::Quadtree;
 
-/// A world entity handle, as seen by the spatial index.
+/// A world entity handle — the shared [`omm_ecs_core::EntityId`], re-exported.
 ///
-/// A lightweight local newtype for now: the index only needs a stable, ordered
-/// key. Query and interest results are sorted by this id for deterministic,
-/// replay-stable output.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
-pub struct EntityId(pub u64);
+/// The spatial index and the simulation name entities by the same server-issued
+/// id, so an entity is never one thing to the quadtree and another to combat —
+/// there is a single id space, not two to drift apart. Query and interest
+/// results are sorted by this id for deterministic, replay-stable output.
+pub use omm_ecs_core::EntityId;

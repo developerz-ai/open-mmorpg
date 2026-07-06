@@ -169,11 +169,14 @@ impl World {
 /// Resolve the target id a client named onto a sim [`EntityId`].
 ///
 /// A client can only *name* a target by the [`CharacterId`] it sees on the wire;
-/// the shard owns the authoritative entity set and its server-issued ids. Until
-/// the session registry lands (client ↔ server-issued entity, a later slice), the
-/// two id spaces are bridged by raw value. This stays server-authoritative: the
-/// resolved id is still validated inside [`World::cast`], so a client naming an
-/// absent or illegal target is rejected, never trusted.
+/// the shard owns the authoritative entity set and its server-issued ids. The
+/// *caster* is already resolved server-side — the shard's session registry binds
+/// each connection to the entity it drives — so the id keying every intent is
+/// never one a client asserted. The *target* wire id is still bridged by raw
+/// value here; resolving it against the shard's live entity set moves to the
+/// input-batch boundary in a later slice. Either way this stays
+/// server-authoritative: the resolved id is validated inside [`World::cast`], so
+/// a client naming an absent or illegal target is rejected, never trusted.
 fn resolve_target(target: Option<CharacterId>) -> Option<EntityId> {
     target.map(|c| EntityId::new(c.raw()))
 }

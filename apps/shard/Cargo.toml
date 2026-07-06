@@ -7,6 +7,10 @@ rust-version.workspace = true
 license.workspace = true
 repository.workspace = true
 
+[lib]
+name = "omm_shard"
+path = "src/lib.rs"
+
 [[bin]]
 name = "omm-shard"
 path = "src/main.rs"
