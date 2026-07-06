@@ -3,7 +3,7 @@
   "name": "Revenant",
   "description": "Plate-clad tank/DPS hybrid wielding runic power and the Hollow force.",
   "role": "tank",
-  "abilities": ["rune-strike", "death-gate", "soul-reaper", "army-of-the-dead"],
+  "abilities": ["rune-strike", "death-gate", "soul-reaper", "grave-legion"],
   "stat_growth": {
     "strength": 2,
     "dexterity": 1,

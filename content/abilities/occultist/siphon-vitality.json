@@ -1,0 +1,24 @@
+{
+  "id": "siphon-vitality",
+  "name": "Siphon Vitality",
+  "description": "Siphon vitality from your foe, mending your own wounds.",
+  "max_rank": 1,
+  "cooldown_sec": 12.0,
+  "resource_cost": 20,
+  "cast_time_sec": 2.8,
+  "range_yards": 25.0,
+  "effects": [
+    {
+      "effect": "Damage",
+      "magnitude": 22.0,
+      "scaling": 0.9,
+      "target": "enemy"
+    },
+    {
+      "effect": "Heal",
+      "magnitude": 18.0,
+      "scaling": 0.7,
+      "target": "self"
+    }
+  ]
+}

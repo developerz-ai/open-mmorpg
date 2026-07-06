@@ -1,0 +1,24 @@
+{
+  "id": "umbral-word",
+  "name": "Umbral Word",
+  "description": "Curse a target with umbral pain that deals damage over time and weakens their resolve.",
+  "max_rank": 1,
+  "cooldown_sec": 8.0,
+  "resource_cost": 16,
+  "cast_time_sec": 1.2,
+  "range_yards": 30.0,
+  "effects": [
+    {
+      "effect": "Damage",
+      "magnitude": 8.0,
+      "scaling": 0.6,
+      "target": "enemy"
+    },
+    {
+      "effect": "Debuff",
+      "magnitude": 10.0,
+      "scaling": 0.4,
+      "target": "enemy"
+    }
+  ]
+}

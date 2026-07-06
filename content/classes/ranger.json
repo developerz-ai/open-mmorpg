@@ -3,7 +3,7 @@
   "name": "Ranger",
   "description": "Marksman and beast-companion, master of the untamed reach.",
   "role": "dps",
-  "abilities": ["quick-shot", "hunters-mark", "serpent-sting"],
+  "abilities": ["quick-shot", "quarry-mark", "serpent-sting"],
   "stat_growth": {
     "strength": 0,
     "dexterity": 3,

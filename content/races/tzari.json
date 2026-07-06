@@ -3,7 +3,7 @@
   "name": "Tza'ri",
   "description": "Desert walkers bound in honor to ancestor-spirits; guidance and insight flow through every bloodline.",
   "faction_id": "wildreach-pact",
-  "traits": ["ancestral-guidance"],
+  "traits": ["forebears-blessing"],
   "stats": {
     "strength": 0,
     "dexterity": 1,

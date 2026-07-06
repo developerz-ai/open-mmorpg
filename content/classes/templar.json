@@ -3,7 +3,7 @@
   "name": "Templar",
   "description": "Armored holy warrior who mends allies and smites the unworthy.",
   "role": "healer",
-  "abilities": ["smite", "divine-aegis", "lay-on-hands"],
+  "abilities": ["smite", "divine-aegis", "hallowed-touch"],
   "stat_growth": {
     "strength": 1,
     "dexterity": 0,
