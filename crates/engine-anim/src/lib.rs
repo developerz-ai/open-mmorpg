@@ -1,90 +1,201 @@
-//! # Engine Animation — skeletal + GPU skinning, blend/FSM graph, IK, crowd VAT
+//! # Engine Animation — data-authored blend graph + distance-tiered LOD
 //!
-//! First-party animation pipeline for the game engine. Provides:
-//! - Bevy's `AnimationPlayer`/`AnimationClip` graph playback (headless-safe)
-//! - Skeletal animation with optional GPU skinning (render feature)
-//! - Distance-tiered LOD: near skeletal → mid reduced → far vertex-animation-texture (VAT)
-//! - Two-bone IK solver (FABRIK, deterministic where shared)
-//! - Blend graph evaluation (weighted/additive/masked, pure math)
+//! First-party animation layer for the game engine. Two pure, headless pieces
+//! plus a feature-gated skinning head:
+//! - [`graph`] — a data-authored [`BlendGraph`](graph::BlendGraph): weighted,
+//!   additive, and masked pose blending, the three primitives every AAA anim
+//!   graph reduces to. Pure math, evaluated identically in CI and on the client.
+//! - [`lod`] — distance-tiered [`AnimTier`](lod::AnimTier) selection: near
+//!   skeletal → mid reduced → far VAT, with the local player pinned to full
+//!   skeletal. Pure, deterministic.
+//! - Under the `render` feature, the [first-party
+//!   `bevy_animation`](https://docs.rs/bevy_animation) plugin drives
+//!   `AnimationPlayer`/`AnimationClip`/`AnimationGraph` playback and the GPU
+//!   `SkinnedMesh` component is registered for reflection. We deliberately use
+//!   the first-party graph, *not* third-party `bevy_animation_graph` (ADR-0001:
+//!   avoid ecosystem crates that may lag Bevy 0.19 and break CI).
 //!
-//! All graph/IK/VAT logic is pure (headless-testable); GPU skinning wiring is
-//! feature-gated. Systems run in `SimSet::Simulate` (FixedUpdate, deterministic).
+//! # Headless-first
+//! Blend evaluation and LOD selection have no GPU, window, or asset dependency —
+//! an agent reasons about motion blending and the crowd LOD ladder in a headless
+//! harness exactly as the client does. The `render` feature only adds the device
+//! skinning wiring on top; `--no-default-features` boots with zero GPU deps.
+//!
+//! # What CI verifies vs what it does not
+//!
+//! **CI verifies (headless, every commit):**
+//! - Weighted/additive/masked blend math: identities, symmetry, endpoints,
+//!   and fail-loud joint-count/weight/index validation.
+//! - Blend-graph evaluation over the flat node arena, including cyclic/over-deep
+//!   and dangling-id rejection.
+//! - LOD tier selection across the distance ladder, the local-player-never-VAT
+//!   rule, NaN handling, and reduced-bone-budget math.
+//! - Reflection registration: every authored animation type is in the app's
+//!   `AppTypeRegistry` so the MCP editor and agents can enumerate them.
+//!
+//! **CI does NOT verify (GPU required, client-track / manual):**
+//! - GPU linear-blend skinning output — vertex deformation needs a device.
+//! - VAT baking / shader playback — the baked-texture path needs a real GPU.
+//! - `bevy_animation` clip sampling on device and root-motion authority (server
+//!   drives authoritative motion; the client animates *to* it).
+//!
+//! # Honest gaps vs Unreal
+//! Bevy core ships no state machines, blend trees, IK, or root motion. This crate
+//! provides the blend primitives and a data-authored graph over them; FSM
+//! transition logic and an IK solver layer on top and are not part of this batch.
+//! Motion is cosmetic on the client — authoritative position comes from the
+//! server; animation interpolates toward it, never asserts it.
+//! → `docs/specs/game-engine/animation/README.md`.
 
 use bevy_app::{App, Plugin};
 use bevy_ecs::prelude::*;
 use bevy_reflect::Reflect;
 
 pub mod error;
+pub mod graph;
+pub mod lod;
+
 pub use error::AnimError;
+pub use graph::{BlendGraph, BlendNode, BoneMask, ClipId, JointId, NodeId, Pose};
+pub use lod::{AnimTier, LodThresholds};
 
 /// Global animation configuration and runtime state.
-#[derive(Resource, Reflect, Debug, Clone, Copy)]
+#[derive(Resource, Reflect, Debug, Clone, Copy, PartialEq)]
+#[reflect(Resource)]
 pub struct AnimationConfig {
-    /// Enable GPU skinning under the render feature (native only).
+    /// Enable GPU skinning under the `render` feature (native heads only).
     pub skinning_enabled: bool,
-    /// Distance threshold (world units) for LOD tier transition to reduced skeletal.
-    pub lod_mid_distance: f32,
-    /// Distance threshold (world units) for LOD tier transition to VAT.
-    pub lod_far_distance: f32,
+    /// Distance thresholds and bone budget driving [`AnimTier`] selection.
+    pub lod: LodThresholds,
 }
 
+// `skinning_enabled` defaults to whether the `render` feature is on, so this is
+// not derivable — under `--no-default-features` the cfg folds to `false` (which
+// *looks* derivable to clippy), but under `render` it is `true`.
+#[allow(clippy::derivable_impls)]
 impl Default for AnimationConfig {
     fn default() -> Self {
         Self {
             skinning_enabled: cfg!(feature = "render"),
-            lod_mid_distance: 30.0,
-            lod_far_distance: 100.0,
+            lod: LodThresholds::default(),
         }
     }
 }
 
-/// Engine animation plugin: bevy_animation playback, blend graph, IK, VAT LOD.
+/// Engine animation plugin: data-authored blend graph, distance-tiered LOD, and
+/// (under `render`) first-party `bevy_animation` playback + GPU skinning.
 ///
-/// Registers animation types and systems. Under the `render` feature, enables
-/// GPU skinning with bevy_render's SkinnedMesh. Pure blend/IK/VAT logic runs
-/// headless in `SimSet::Simulate` (deterministic FixedUpdate).
+/// Headless-safe when the `render` feature is disabled — it only registers the
+/// authored animation types for reflection and inserts [`AnimationConfig`]. The
+/// pure blend/LOD logic is available in every build. Compose on top of
+/// `omm_engine_core::EnginePlugins`.
+#[derive(Debug, Default, Clone, Copy)]
 pub struct AnimationPlugin;
 
 impl Plugin for AnimationPlugin {
     fn build(&self, app: &mut App) {
-        // Headless-safe core: register animation types for reflection.
-        app.register_type::<AnimationConfig>();
-
-        // Insert global config resource (defaults used if not explicitly set).
+        // Headless-safe, always: the authored animation types are reflected so the
+        // inspector / MCP editor / agents can enumerate them in any build, and the
+        // config resource exists to be read (pure data, no GPU).
+        register_anim_types(app);
         app.init_resource::<AnimationConfig>();
+
+        #[cfg(feature = "render")]
+        {
+            // First-party playback: AnimationPlayer/AnimationClip/AnimationGraph
+            // systems + assets. Requires bevy_asset's AssetPlugin upstream (the
+            // rendered client adds it); never instantiated in headless CI, which
+            // runs the `render` feature for compile coverage only.
+            if !app.is_plugin_added::<bevy_animation::AnimationPlugin>() {
+                app.add_plugins(bevy_animation::AnimationPlugin);
+            }
+            // GPU linear-blend skinning component — reflected so tools can author it.
+            app.register_type::<bevy_render::mesh::skinning::SkinnedMesh>();
+        }
     }
+}
+
+/// Register the authored animation types with the app's reflection registry.
+/// Headless-safe — pure reflection, no GPU — so it runs in every build and is
+/// unit-testable without a device. An unregistered type is invisible to agents,
+/// which is a bug.
+fn register_anim_types(app: &mut App) {
+    app.register_type::<AnimationConfig>()
+        .register_type::<AnimTier>()
+        .register_type::<LodThresholds>()
+        .register_type::<ClipId>()
+        .register_type::<JointId>()
+        .register_type::<NodeId>()
+        .register_type::<BoneMask>()
+        .register_type::<BlendNode>()
+        .register_type::<BlendGraph>();
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
-    use omm_engine_core::headless_app;
+    use bevy_ecs::prelude::AppTypeRegistry;
+    use core::any::TypeId;
+    use omm_engine_core::EnginePlugins;
 
     #[test]
-    fn anim_plugin_registers_types() {
-        let mut app = headless_app();
-        app.add_plugins(AnimationPlugin);
+    fn plugin_constructs() {
+        let _plugin = AnimationPlugin;
+    }
 
-        // Verify AnimationConfig resource is inserted.
-        let config = app.world().get_resource::<AnimationConfig>();
-        assert!(config.is_some(), "AnimationConfig not inserted");
+    #[test]
+    fn anim_types_are_registered() {
+        // Exercise the registration path directly rather than adding the full
+        // plugin: under `--all-features` the plugin's `render` branch adds the
+        // first-party bevy_animation plugin, which needs an asset backend the
+        // display-less CI runner does not wire up. Reflection registration is the
+        // headless behavior we assert here.
+        let mut app = App::new();
+        app.add_plugins(EnginePlugins);
+        register_anim_types(&mut app);
 
-        // Verify the config has sensible defaults.
-        let cfg = config.unwrap();
-        assert_eq!(cfg.lod_mid_distance, 30.0);
-        assert_eq!(cfg.lod_far_distance, 100.0);
+        let registry = app.world().resource::<AppTypeRegistry>().read();
+        for type_id in [
+            TypeId::of::<AnimationConfig>(),
+            TypeId::of::<AnimTier>(),
+            TypeId::of::<LodThresholds>(),
+            TypeId::of::<ClipId>(),
+            TypeId::of::<JointId>(),
+            TypeId::of::<NodeId>(),
+            TypeId::of::<BoneMask>(),
+            TypeId::of::<BlendNode>(),
+            TypeId::of::<BlendGraph>(),
+        ] {
+            assert!(
+                registry.get(type_id).is_some(),
+                "an animation type is not registered"
+            );
+        }
     }
 
     #[test]
     fn anim_config_headless_defaults() {
         let config = AnimationConfig::default();
-        assert_eq!(config.lod_mid_distance, 30.0);
-        assert_eq!(config.lod_far_distance, 100.0);
+        assert_eq!(config.lod.mid_distance, 30.0);
+        assert_eq!(config.lod.far_distance, 100.0);
 
         // Headless (no render feature): skinning_enabled == false.
         #[cfg(not(feature = "render"))]
-        {
-            assert!(!config.skinning_enabled);
-        }
+        assert!(!config.skinning_enabled);
+    }
+
+    /// The headless build's plugin wiring: adding [`AnimationPlugin`] with the
+    /// `render` feature off registers the types and inserts [`AnimationConfig`] —
+    /// no GPU, no window. Gated off under `render` so `--all-features` never tries
+    /// to add the device/asset-backed animation plugin on the display-less runner.
+    #[cfg(not(feature = "render"))]
+    #[test]
+    fn headless_plugin_inserts_config() {
+        let mut app = App::new();
+        app.add_plugins(EnginePlugins).add_plugins(AnimationPlugin);
+        assert!(
+            app.world().get_resource::<AnimationConfig>().is_some(),
+            "AnimationPlugin must insert the AnimationConfig resource"
+        );
     }
 }
