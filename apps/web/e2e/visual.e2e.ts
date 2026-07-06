@@ -16,6 +16,8 @@ import { expect, test } from '@playwright/test';
 test.describe('visual regression', () => {
   test('home page - brand, realm status, and navigation', async ({ page }) => {
     await page.goto('/');
+    // Wait for realm status / brand content to render
+    await expect(page.getByRole('navigation')).toBeVisible();
     await expect(page).toHaveScreenshot('home.png', {
       fullPage: true,
       maxDiffPixels: 100,

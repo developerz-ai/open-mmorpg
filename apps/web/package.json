@@ -23,7 +23,7 @@
     "zod": "^3.24.0"
   },
   "devDependencies": {
-    "@playwright/test": "^1.49.0",
+    "@playwright/test": "^1.61.0",
     "@solidjs/testing-library": "^0.8.10",
     "@testing-library/jest-dom": "^6.9.1",
     "@vitest/ui": "^4.1.9",

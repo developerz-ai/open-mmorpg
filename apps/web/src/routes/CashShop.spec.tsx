@@ -1,19 +1,93 @@
-import { describe, expect, test, beforeEach, vi } from 'vitest';
 import { render, screen, waitFor } from '@solidjs/testing-library';
 import { QueryClient, QueryClientProvider } from '@tanstack/solid-query';
 import type { JSX } from 'solid-js';
-import CashShop from './CashShop';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
+import type { BuyIntent, BuyResult, ShopItem } from '../lib/cashShop';
 import * as cashShopQueries from '../queries/useCashShop';
-import type { ShopItem } from '../lib/cashShop';
+import CashShop from './CashShop';
 
 let queryClient: QueryClient;
 
 function wrapper(props: { children: JSX.Element }): JSX.Element {
-  return (
-    <QueryClientProvider client={queryClient}>
-      {props.children}
-    </QueryClientProvider>
+  return <QueryClientProvider client={queryClient}>{props.children}</QueryClientProvider>;
+}
+
+/** Create a typed UseQueryResult mock for shop items. */
+function mockShopItemsResult(
+  overrides: Partial<{
+    data: ShopItem[];
+    isPending: boolean;
+    isError: boolean;
+    error: Error | null;
+  }> = {},
+): { data: ShopItem[] | undefined; isPending: boolean; isError: boolean; error: Error | null } {
+  return {
+    data: undefined,
+    isPending: false,
+    isError: false,
+    error: null,
+    ...overrides,
+  };
+}
+
+/** Create a typed UseQueryResult mock for categories. */
+function mockCategoriesResult(
+  overrides: Partial<{
+    data: string[];
+    isPending: boolean;
+    isError: boolean;
+    error: Error | null;
+  }> = {},
+): { data: string[] | undefined; isPending: boolean; isError: boolean; error: Error | null } {
+  return {
+    data: undefined,
+    isPending: false,
+    isError: false,
+    error: null,
+    ...overrides,
+  };
+}
+
+/** Create a typed UseMutationResult mock for buy shop item. */
+function mockBuyMutationResult(
+  overrides: Partial<{
+    mutate: (intent: BuyIntent) => void;
+    isPending: boolean;
+    isSuccess: boolean;
+    isError: boolean;
+    data: BuyResult | undefined;
+    error: Error | null;
+  }> = {},
+): {
+  mutate: (intent: BuyIntent) => void;
+  isPending: boolean;
+  isSuccess: boolean;
+  isError: boolean;
+  data: BuyResult | undefined;
+  error: Error | null;
+} {
+  return {
+    mutate: vi.fn(),
+    isPending: false,
+    isSuccess: false,
+    isError: false,
+    data: undefined,
+    error: null,
+    ...overrides,
+  };
+}
+
+/** Setup all three hook mocks with optional overrides. */
+function setupMocks(
+  itemsOverrides: Parameters<typeof mockShopItemsResult>[0] = {},
+  categoriesOverrides: Parameters<typeof mockCategoriesResult>[0] = {},
+  buyOverrides: Parameters<typeof mockBuyMutationResult>[0] = {},
+) {
+  vi.spyOn(cashShopQueries, 'useShopItems').mockReturnValue(mockShopItemsResult(itemsOverrides));
+  vi.spyOn(cashShopQueries, 'useShopCategories').mockReturnValue(
+    mockCategoriesResult(categoriesOverrides),
   );
+  vi.spyOn(cashShopQueries, 'useBuyShopItem').mockReturnValue(mockBuyMutationResult(buyOverrides));
 }
 
 const mockShopItems: ShopItem[] = [
@@ -35,31 +109,10 @@ describe('CashShop route component tests', () => {
 
   describe('loading state', () => {
     test('shows spinner when items are loading', () => {
-      // Mock pending state for items
-      vi.spyOn(cashShopQueries, 'useShopItems').mockReturnValue({
-        data: undefined,
-        isPending: true,
-        isError: false,
-        error: null,
-      } as any);
-
-      // Mock categories as loaded
-      vi.spyOn(cashShopQueries, 'useShopCategories').mockReturnValue({
-        data: mockCategories,
-        isPending: false,
-        isError: false,
-        error: null,
-      } as any);
-
-      // Mock buy mutation
-      vi.spyOn(cashShopQueries, 'useBuyShopItem').mockReturnValue({
-        mutate: vi.fn(),
-        isPending: false,
-        isSuccess: false,
-        isError: false,
-        data: undefined,
-        error: null,
-      } as any);
+      setupMocks(
+        { isPending: true }, // items loading
+        { data: mockCategories, isPending: false }, // categories loaded
+      );
 
       render(() => <CashShop />, { wrapper });
 
@@ -68,31 +121,10 @@ describe('CashShop route component tests', () => {
     });
 
     test('shows spinner when categories are loading', () => {
-      // Mock items as loaded
-      vi.spyOn(cashShopQueries, 'useShopItems').mockReturnValue({
-        data: mockShopItems,
-        isPending: false,
-        isError: false,
-        error: null,
-      } as any);
-
-      // Mock pending state for categories
-      vi.spyOn(cashShopQueries, 'useShopCategories').mockReturnValue({
-        data: undefined,
-        isPending: true,
-        isError: false,
-        error: null,
-      } as any);
-
-      // Mock buy mutation
-      vi.spyOn(cashShopQueries, 'useBuyShopItem').mockReturnValue({
-        mutate: vi.fn(),
-        isPending: false,
-        isSuccess: false,
-        isError: false,
-        data: undefined,
-        error: null,
-      } as any);
+      setupMocks(
+        { data: mockShopItems, isPending: false }, // items loaded
+        { isPending: true }, // categories loading
+      );
 
       render(() => <CashShop />, { wrapper });
 
@@ -105,31 +137,10 @@ describe('CashShop route component tests', () => {
     test('shows error when items fail to load', async () => {
       const mockError = new Error('Network error');
 
-      // Mock error state for items
-      vi.spyOn(cashShopQueries, 'useShopItems').mockReturnValue({
-        data: undefined,
-        isPending: false,
-        isError: true,
-        error: mockError,
-      } as any);
-
-      // Mock categories as loaded
-      vi.spyOn(cashShopQueries, 'useShopCategories').mockReturnValue({
-        data: mockCategories,
-        isPending: false,
-        isError: false,
-        error: null,
-      } as any);
-
-      // Mock buy mutation
-      vi.spyOn(cashShopQueries, 'useBuyShopItem').mockReturnValue({
-        mutate: vi.fn(),
-        isPending: false,
-        isSuccess: false,
-        isError: false,
-        data: undefined,
-        error: null,
-      } as any);
+      setupMocks(
+        { isError: true, error: mockError }, // items error
+        { data: mockCategories, isPending: false }, // categories loaded
+      );
 
       render(() => <CashShop />, { wrapper });
 
@@ -141,31 +152,10 @@ describe('CashShop route component tests', () => {
     test('shows items without categories toolbar when categories fail to load', async () => {
       const mockError = new Error('Network error');
 
-      // Mock items as loaded
-      vi.spyOn(cashShopQueries, 'useShopItems').mockReturnValue({
-        data: mockShopItems,
-        isPending: false,
-        isError: false,
-        error: null,
-      } as any);
-
-      // Mock error state for categories
-      vi.spyOn(cashShopQueries, 'useShopCategories').mockReturnValue({
-        data: undefined,
-        isPending: false,
-        isError: true,
-        error: mockError,
-      } as any);
-
-      // Mock buy mutation
-      vi.spyOn(cashShopQueries, 'useBuyShopItem').mockReturnValue({
-        mutate: vi.fn(),
-        isPending: false,
-        isSuccess: false,
-        isError: false,
-        data: undefined,
-        error: null,
-      } as any);
+      setupMocks(
+        { data: mockShopItems, isPending: false }, // items loaded
+        { isError: true, error: mockError }, // categories error
+      );
 
       render(() => <CashShop />, { wrapper });
 
@@ -180,31 +170,10 @@ describe('CashShop route component tests', () => {
 
   describe('data state', () => {
     test('renders cash shop with items and categories', async () => {
-      // Mock items as loaded
-      vi.spyOn(cashShopQueries, 'useShopItems').mockReturnValue({
-        data: mockShopItems,
-        isPending: false,
-        isError: false,
-        error: null,
-      } as any);
-
-      // Mock categories as loaded
-      vi.spyOn(cashShopQueries, 'useShopCategories').mockReturnValue({
-        data: mockCategories,
-        isPending: false,
-        isError: false,
-        error: null,
-      } as any);
-
-      // Mock buy mutation
-      vi.spyOn(cashShopQueries, 'useBuyShopItem').mockReturnValue({
-        mutate: vi.fn(),
-        isPending: false,
-        isSuccess: false,
-        isError: false,
-        data: undefined,
-        error: null,
-      } as any);
+      setupMocks(
+        { data: mockShopItems, isPending: false }, // items loaded
+        { data: mockCategories, isPending: false }, // categories loaded
+      );
 
       render(() => <CashShop />, { wrapper });
 
@@ -225,31 +194,10 @@ describe('CashShop route component tests', () => {
     });
 
     test('shows empty state when no items', async () => {
-      // Mock empty items array
-      vi.spyOn(cashShopQueries, 'useShopItems').mockReturnValue({
-        data: [],
-        isPending: false,
-        isError: false,
-        error: null,
-      } as any);
-
-      // Mock categories as loaded
-      vi.spyOn(cashShopQueries, 'useShopCategories').mockReturnValue({
-        data: mockCategories,
-        isPending: false,
-        isError: false,
-        error: null,
-      } as any);
-
-      // Mock buy mutation
-      vi.spyOn(cashShopQueries, 'useBuyShopItem').mockReturnValue({
-        mutate: vi.fn(),
-        isPending: false,
-        isSuccess: false,
-        isError: false,
-        data: undefined,
-        error: null,
-      } as any);
+      setupMocks(
+        { data: [], isPending: false }, // empty items
+        { data: mockCategories, isPending: false }, // categories loaded
+      );
 
       render(() => <CashShop />, { wrapper });
 
@@ -259,31 +207,11 @@ describe('CashShop route component tests', () => {
     });
 
     test('shows success message after purchase', async () => {
-      // Mock items as loaded
-      vi.spyOn(cashShopQueries, 'useShopItems').mockReturnValue({
-        data: mockShopItems,
-        isPending: false,
-        isError: false,
-        error: null,
-      } as any);
-
-      // Mock categories as loaded
-      vi.spyOn(cashShopQueries, 'useShopCategories').mockReturnValue({
-        data: mockCategories,
-        isPending: false,
-        isError: false,
-        error: null,
-      } as any);
-
-      // Mock successful purchase
-      vi.spyOn(cashShopQueries, 'useBuyShopItem').mockReturnValue({
-        mutate: vi.fn(),
-        isPending: false,
-        isSuccess: true,
-        isError: false,
-        data: { item: 'XP Boost', price: 100 },
-        error: null,
-      } as any);
+      setupMocks(
+        { data: mockShopItems, isPending: false }, // items loaded
+        { data: mockCategories, isPending: false }, // categories loaded
+        { isSuccess: true, data: { item: 'XP Boost', price: 100 } }, // successful purchase
+      );
 
       render(() => <CashShop />, { wrapper });
 
@@ -295,31 +223,11 @@ describe('CashShop route component tests', () => {
     test('shows error message after failed purchase', async () => {
       const mockError = new Error('Insufficient funds');
 
-      // Mock items as loaded
-      vi.spyOn(cashShopQueries, 'useShopItems').mockReturnValue({
-        data: mockShopItems,
-        isPending: false,
-        isError: false,
-        error: null,
-      } as any);
-
-      // Mock categories as loaded
-      vi.spyOn(cashShopQueries, 'useShopCategories').mockReturnValue({
-        data: mockCategories,
-        isPending: false,
-        isError: false,
-        error: null,
-      } as any);
-
-      // Mock failed purchase
-      vi.spyOn(cashShopQueries, 'useBuyShopItem').mockReturnValue({
-        mutate: vi.fn(),
-        isPending: false,
-        isSuccess: false,
-        isError: true,
-        data: undefined,
-        error: mockError,
-      } as any);
+      setupMocks(
+        { data: mockShopItems, isPending: false }, // items loaded
+        { data: mockCategories, isPending: false }, // categories loaded
+        { isError: true, error: mockError }, // failed purchase
+      );
 
       render(() => <CashShop />, { wrapper });
 

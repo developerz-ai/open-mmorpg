@@ -1,18 +1,14 @@
-import { describe, expect, test, beforeEach } from 'vitest';
 import { render, screen } from '@solidjs/testing-library';
 import { QueryClient, QueryClientProvider } from '@tanstack/solid-query';
 import type { JSX } from 'solid-js';
-import { ShopItem } from './ShopItem';
+import { beforeEach, describe, expect, test } from 'vitest';
 import type { ShopItem as ShopItemType } from '../lib/cashShop';
+import { ShopItem } from './ShopItem';
 
 let queryClient: QueryClient;
 
 function wrapper(props: { children: JSX.Element }): JSX.Element {
-  return (
-    <QueryClientProvider client={queryClient}>
-      {props.children}
-    </QueryClientProvider>
-  );
+  return <QueryClientProvider client={queryClient}>{props.children}</QueryClientProvider>;
 }
 
 describe('ShopItem component tests', () => {
@@ -41,16 +37,7 @@ describe('ShopItem component tests', () => {
   });
 
   test('renders item with all fields', () => {
-    render(
-      () => (
-        <ShopItem
-          item={mockItem}
-          isPending={false}
-          onPurchase={() => {}}
-        />
-      ),
-      { wrapper }
-    );
+    render(() => <ShopItem item={mockItem} isPending={false} onPurchase={() => {}} />, { wrapper });
 
     // Check item name
     expect(screen.getByText('Test XP Boost')).toBeInTheDocument();
@@ -67,14 +54,8 @@ describe('ShopItem component tests', () => {
 
   test('renders item without description', () => {
     render(
-      () => (
-        <ShopItem
-          item={mockItemWithoutDescription}
-          isPending={false}
-          onPurchase={() => {}}
-        />
-      ),
-      { wrapper }
+      () => <ShopItem item={mockItemWithoutDescription} isPending={false} onPurchase={() => {}} />,
+      { wrapper },
     );
 
     // Check item name
@@ -86,14 +67,8 @@ describe('ShopItem component tests', () => {
 
   test('shows spinner when pending', () => {
     const { container } = render(
-      () => (
-        <ShopItem
-          item={mockItem}
-          isPending={true}
-          onPurchase={() => {}}
-        />
-      ),
-      { wrapper }
+      () => <ShopItem item={mockItem} isPending={true} onPurchase={() => {}} />,
+      { wrapper },
     );
 
     // Button should be disabled
@@ -117,7 +92,7 @@ describe('ShopItem component tests', () => {
           }}
         />
       ),
-      { wrapper }
+      { wrapper },
     );
 
     const buyButton = screen.getByText('Buy');
@@ -139,7 +114,7 @@ describe('ShopItem component tests', () => {
           }}
         />
       ),
-      { wrapper }
+      { wrapper },
     );
 
     // Find disabled button
