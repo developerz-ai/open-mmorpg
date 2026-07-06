@@ -18,6 +18,9 @@ tracing-subscriber.workspace = true
 omm-ecs-core.workspace = true
 omm-sim.workspace = true
 omm-netcode.workspace = true
+omm-transport.workspace = true
+omm-world.workspace = true
+omm-content-schema.workspace = true
 omm-protocol.workspace = true
 
 [lints]

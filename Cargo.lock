@@ -2025,10 +2025,13 @@ dependencies = [
 name = "omm-shard"
 version = "0.0.0"
 dependencies = [
+ "omm-content-schema",
  "omm-ecs-core",
  "omm-netcode",
  "omm-protocol",
  "omm-sim",
+ "omm-transport",
+ "omm-world",
  "tokio",
  "tracing",
  "tracing-subscriber",
