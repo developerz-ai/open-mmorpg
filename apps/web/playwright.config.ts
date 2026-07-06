@@ -8,6 +8,7 @@ import { defineConfig, devices } from '@playwright/test';
  * → docs/specs/web-client/testing-dx
  */
 const PORT = 4173;
+const cashShopEnabled = process.env.CASH_SHOP_ENABLED === 'true' ? 'VITE_CASH_SHOP=true' : '';
 
 export default defineConfig({
   testDir: './e2e',
@@ -26,7 +27,7 @@ export default defineConfig({
   },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
   webServer: {
-    command: `VITE_USE_MOCKS=true bun run vite --port ${PORT} --strictPort`,
+    command: `VITE_USE_MOCKS=true ${cashShopEnabled} bun run dev --port ${PORT} --strictPort`,
     url: `http://localhost:${PORT}`,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
