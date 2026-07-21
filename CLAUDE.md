@@ -104,4 +104,4 @@ SOLID/SRP. Tests always. Surgical diffs. Original IP only. Ownership → Yugabyt
 
 ## Note
 
-Do not use git worktrees — work directly in this checkout. See `.claude/commands/feature.md` and `.claude/commands/planx.md`.
+Do not use git worktrees — work directly in this checkout. If a task is big enough to need subagents, run them as a team in this same checkout: split the work into disjoint pieces so no two agents touch the same files.
