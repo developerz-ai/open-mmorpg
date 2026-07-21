@@ -101,3 +101,7 @@ Non-trivial work → write a multi-file plan under `docs/plans/<YYYY>/<MM>/<DD>/
 
 ## Rules
 SOLID/SRP. Tests always. Surgical diffs. Original IP only. Ownership → Yugabyte transaction, never cache.
+
+## Note
+
+Do not use git worktrees — work directly in this checkout. See `.claude/commands/feature.md` and `.claude/commands/planx.md`.
