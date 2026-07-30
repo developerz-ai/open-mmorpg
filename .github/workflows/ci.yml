@@ -18,12 +18,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4.3.1
       - uses: dtolnay/rust-toolchain@stable
         with:
           components: rustfmt, clippy
       - uses: Swatinem/rust-cache@v2
-      - uses: taiki-e/install-action@v2.82.0
+      - uses: taiki-e/install-action@v2.82.5
         with:
           tool: nextest
       - name: install bevy dependencies
@@ -57,10 +57,10 @@ jobs:
       # Yugabyte speaks the Postgres wire → dev/CI run on plain Postgres.
       TEST_DATABASE_URL: postgres://omm:omm@localhost:5432/omm_test
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4.3.1
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
-      - uses: taiki-e/install-action@v2.82.0
+      - uses: taiki-e/install-action@v2.82.5
         with:
           tool: nextest
       - name: integration tests (ignored + unit, live DB)
@@ -71,7 +71,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4.3.1
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
