@@ -23,7 +23,7 @@ jobs:
         with:
           components: rustfmt, clippy
       - uses: Swatinem/rust-cache@v2
-      - uses: taiki-e/install-action@v2.82.5
+      - uses: taiki-e/install-action@v2.82.8
         with:
           tool: nextest
       - name: install bevy dependencies
@@ -60,7 +60,7 @@ jobs:
       - uses: actions/checkout@v4.3.1
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
-      - uses: taiki-e/install-action@v2.82.5
+      - uses: taiki-e/install-action@v2.82.8
         with:
           tool: nextest
       - name: integration tests (ignored + unit, live DB)
