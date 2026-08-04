@@ -154,7 +154,13 @@ export default function CharacterPage(): JSX.Element {
         <Spinner label={t('common.loading')} />
       </Match>
       <Match when={query.isError}>
-        <Alert tone="info">{t('armory.notFound')}</Alert>
+        {/* The heading is the page's only h1 on this branch: a character that does not
+         * resolve still has to give the document an outline, or the page starts at h2
+         * and a screen reader lands in a document with no title. */}
+        <div class="stack">
+          <h1 class="text-fg-strong">{t('armory.notFoundHeading')}</h1>
+          <Alert tone="info">{t('armory.notFound')}</Alert>
+        </div>
       </Match>
       <Match when={query.data}>
         {(c) => (

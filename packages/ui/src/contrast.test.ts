@@ -1,3 +1,6 @@
+import { describe, expect, test } from 'bun:test';
+import { readFileSync } from 'node:fs';
+
 /**
  * WCAG AA contrast ratio verification tests.
  *
@@ -45,22 +48,51 @@ const WCAG_AA = {
   UI_COMPONENT: 3.0,
 } as const;
 
-/** Dark theme color tokens (from theme.css) */
+/**
+ * Composite `fg` at `alpha` over `bg` — what the eye actually sees when a colour is
+ * painted at partial opacity. A tinted badge has no opaque background of its own, so
+ * measuring its text against the page background reads a contrast nobody is looking at.
+ */
+function over(
+  fg: [number, number, number],
+  bg: [number, number, number],
+  alpha: number,
+): [number, number, number] {
+  return fg.map((c, i) => Math.round(alpha * c + (1 - alpha) * bg[i])) as [number, number, number];
+}
+
+/**
+ * Tokens are read out of `theme.css` rather than copied here. A hand-kept table passes
+ * happily after someone edits the stylesheet, which is the one failure this file exists
+ * to prevent.
+ */
+const THEME = readFileSync(new URL('./theme.css', import.meta.url), 'utf8');
+const HC_AT = THEME.indexOf('@media (prefers-contrast: more)');
+const DEFAULT_BLOCK = THEME.slice(0, HC_AT);
+const HC_BLOCK = THEME.slice(HC_AT);
+
+function token(name: string, block: string = DEFAULT_BLOCK): string {
+  const found = block.match(new RegExp(`--color-${name}:\\s*([\\d\\s]+?);`));
+  if (!found?.[1]) throw new Error(`--color-${name} is not declared in theme.css`);
+  return found[1].trim();
+}
+
+/** Dark theme color tokens, as theme.css currently declares them. */
 const COLORS = {
-  bg: '18 18 20',
-  'bg-soft': '28 28 32',
-  surface: '34 34 39',
-  'surface-hover': '42 42 48',
-  fg: '228 226 222',
-  'fg-strong': '248 247 245',
-  'fg-muted': '150 146 140',
-  line: '54 54 60',
-  accent: '96 170 240',
-  'accent-strong': '130 190 248',
-  success: '120 200 140',
-  danger: '232 120 120',
-  warning: '226 186 110',
-  'focus-ring': '96 170 240',
+  bg: token('bg'),
+  'bg-soft': token('bg-soft'),
+  surface: token('surface'),
+  'surface-hover': token('surface-hover'),
+  fg: token('fg'),
+  'fg-strong': token('fg-strong'),
+  'fg-muted': token('fg-muted'),
+  line: token('line'),
+  accent: token('accent'),
+  'accent-strong': token('accent-strong'),
+  success: token('success'),
+  danger: token('danger'),
+  warning: token('warning'),
+  'focus-ring': token('focus-ring'),
 } as const;
 
 describe('WCAG AA Contrast Verification', () => {
@@ -122,6 +154,26 @@ describe('WCAG AA Contrast Verification', () => {
     });
   });
 
+  /**
+   * The gap that let a failing badge ship: every test above measures a role colour
+   * against the page background, but `.badge--*` paints that same colour as TEXT on
+   * its own 15% tint. The tint is lighter than the background, so the real ratio is
+   * always lower than the one measured above — `danger` passed the 3:1 check here at
+   * 6.6:1 while the badge a visitor read sat at 4.42:1.
+   */
+  describe('Role colours used as text on their own tint (badges, pills)', () => {
+    const TINT_ALPHA = 0.15;
+    const surface = parseRGB(COLORS.surface);
+
+    for (const role of ['danger', 'success', 'warning'] as const) {
+      test(`${role} badge text on a ${TINT_ALPHA * 100}% ${role} tint`, () => {
+        const colour = parseRGB(COLORS[role]);
+        const ratio = contrastRatio(colour, over(colour, surface, TINT_ALPHA));
+        expect(ratio).toBeGreaterThanOrEqual(WCAG_AA.NORMAL_TEXT);
+      });
+    }
+  });
+
   describe('Focus indicator visibility', () => {
     test('focus-ring on background', () => {
       const ratio = contrastRatio(parseRGB(COLORS['focus-ring']), parseRGB(COLORS.bg));
@@ -136,17 +188,17 @@ describe('WCAG AA Contrast Verification', () => {
 
   describe('High-contrast mode overrides', () => {
     const HIGH_CONTRAST_COLORS = {
-      bg: '0 0 0',
-      'bg-soft': '30 30 30',
-      surface: '45 45 45',
-      'surface-hover': '60 60 60',
-      fg: '255 255 255',
-      'fg-strong': '255 255 255',
-      'fg-muted': '210 210 210',
-      line: '120 120 120',
-      accent: '100 180 255',
-      'accent-strong': '140 200 255',
-      'focus-ring': '255 255 255',
+      bg: token('bg', HC_BLOCK),
+      'bg-soft': token('bg-soft', HC_BLOCK),
+      surface: token('surface', HC_BLOCK),
+      'surface-hover': token('surface-hover', HC_BLOCK),
+      fg: token('fg', HC_BLOCK),
+      'fg-strong': token('fg-strong', HC_BLOCK),
+      'fg-muted': token('fg-muted', HC_BLOCK),
+      line: token('line', HC_BLOCK),
+      accent: token('accent', HC_BLOCK),
+      'accent-strong': token('accent-strong', HC_BLOCK),
+      'focus-ring': token('focus-ring', HC_BLOCK),
     } as const;
 
     test('normal text in high-contrast (fg on bg)', () => {

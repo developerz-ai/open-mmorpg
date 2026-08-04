@@ -134,7 +134,7 @@ export default function WorldFeed(): JSX.Element {
   };
 
   return (
-    <Card title={t('feed.heading')} class="stack">
+    <Card title={t('feed.heading')} headingLevel={1} class="stack">
       {/* Toolbar with filter and auto-refresh toggle */}
       <div class="toolbar">
         <Select

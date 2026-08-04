@@ -20,7 +20,12 @@
   --color-accent: 96 170 240;
   --color-accent-strong: 130 190 248;
   --color-success: 120 200 140;
-  --color-danger: 232 120 120;
+  /* Lifted from 232 120 120: `.badge--danger` paints this colour as TEXT on its own
+   * 15% tint, which composites to rgb(64 47 51) over the surface — 4.42:1, under AA.
+   * Text and tint move together, but the text moves faster, so lifting the one token
+   * fixes it (5.09:1) without a second "danger, but for text" spelling. The solid
+   * `.omm-btn--danger` fill only gains: its label is --color-bg on top. */
+  --color-danger: 247 135 135;
   --color-warning: 226 186 110;
   --color-focus-ring: 96 170 240;
 
