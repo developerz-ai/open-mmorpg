@@ -1,6 +1,6 @@
 import type { JSX } from 'solid-js';
-import { Dynamic } from 'solid-js/web';
 import { Show } from 'solid-js';
+import { Dynamic } from 'solid-js/web';
 import { cx } from './cx.ts';
 
 export interface CardProps {

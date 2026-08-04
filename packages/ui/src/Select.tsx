@@ -152,11 +152,20 @@ export function Select(props: SelectProps) {
   return (
     <div class={cx('field', local.class)} {...rest}>
       {/* `for` only names a LABELABLE element; the trigger below is a div with
-        * role=combobox, so the label never reached it and every Select
-        * announced as an unnamed combobox. `aria-labelledby` is the wiring that
-        * works for a custom control — the visible <label> stays, and clicking
-        * it still focuses the trigger through `for`. */}
-      <label class="field__label" id={labelId()} for={local.id}>
+       * role=combobox, so the label never reached it and every Select
+       * announced as an unnamed combobox. `aria-labelledby` is the wiring that
+       * gives the accessible name — and the onClick focuses the trigger, since
+       * `for` on a non-labelable div can't. */}
+      {/* biome-ignore lint/a11y/useKeyWithClickEvents: a <label> is never in the
+       * tab order, so a keyboard handler here is unreachable — clicking is a
+       * pointer-only affordance mirroring native `<label for>`; keyboard users
+       * focus the combobox directly. */}
+      <label
+        class="field__label"
+        id={labelId()}
+        for={local.id}
+        onClick={() => triggerRef()?.focus()}
+      >
         {local.label}
       </label>
       <div

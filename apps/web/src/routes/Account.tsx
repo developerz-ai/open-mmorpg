@@ -25,7 +25,7 @@ export default function Account(): JSX.Element {
   }
 
   return (
-    <Card title={t('auth.account.heading')} class="stack">
+    <Card title={t('auth.account.heading')} headingLevel={1} class="stack">
       <Switch>
         <Match when={account.isPending}>
           <Spinner label={t('common.loading')} />

@@ -82,6 +82,8 @@ export function SEO(props: SEOProps): JSX.Element {
         const image = meta.ogImage || defaultOgImage();
         if (image) {
           setMeta('og:image', image);
+        } else {
+          removeMeta('og:image');
         }
         // Default to the URL actually being viewed. Requiring every route to
         // pass this is why not one of them had a canonical link — a default the
@@ -89,6 +91,8 @@ export function SEO(props: SEOProps): JSX.Element {
         setLink('canonical', meta.canonical || canonicalForCurrentUrl());
         if (meta.noIndex) {
           setMeta('robots', 'noindex, nofollow');
+        } else {
+          removeMeta('robots');
         }
         setMeta('twitter:card', meta.twitterCard);
         setMeta('twitter:title', meta.ogTitle || fullTitle());
@@ -96,6 +100,8 @@ export function SEO(props: SEOProps): JSX.Element {
         const twImage = meta.ogImage || defaultOgImage();
         if (twImage) {
           setMeta('twitter:image', twImage);
+        } else {
+          removeMeta('twitter:image');
         }
       },
     ),
@@ -132,6 +138,12 @@ function setMeta(key: string, content: string): void {
     document.head.appendChild(meta);
   }
   meta.content = content;
+}
+
+/** Drop a tag the current route doesn't set, so it can't leak into the next route. */
+function removeMeta(key: string): void {
+  const attr = key.startsWith('og:') ? 'property' : 'name';
+  document.querySelector(`meta[${attr}="${key}"]`)?.remove();
 }
 
 function setLink(rel: string, href: string): void {
