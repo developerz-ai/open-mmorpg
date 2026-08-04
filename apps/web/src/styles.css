@@ -536,3 +536,22 @@
   font-size: 0.85rem;
   color: rgb(var(--color-fg-muted));
 }
+
+/* A link sitting inside a sentence has to be distinguishable from the text
+ * around it by something other than colour: colour alone is only allowed at
+ * 3:1 against the surrounding text, and the "Sign in / Register" links in the
+ * auth cards measured well under that (WCAG 1.4.1). Underlining the in-prose
+ * case only — buttons and nav items already read as controls. */
+p a:not(.button):not(.link-button) {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+/* The auction listings table is wider than a phone. It used to push the whole
+ * PAGE sideways, so every other element scrolled with it; now it scrolls inside
+ * its own container. `tabindex` is what makes that scroll reachable without a
+ * pointer — a scroll container that cannot take focus cannot be scrolled by
+ * keyboard (WCAG 2.1.1). */
+.table-scroll {
+  overflow-x: auto;
+}

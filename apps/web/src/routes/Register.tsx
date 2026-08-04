@@ -28,7 +28,7 @@ export default function Register(): JSX.Element {
       when={isEnabled('registrationOpen')}
       fallback={<Alert tone="info">{t('auth.register.closed')}</Alert>}
     >
-      <Card title={t('auth.register.heading')} class="stack">
+      <Card title={t('auth.register.heading')} headingLevel={1} class="stack">
         <form class="auth-form" onSubmit={submit}>
           <Show when={mutation.isError}>
             <Alert tone="error">{t(authMessageKey(mutation.error))}</Alert>

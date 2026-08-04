@@ -57,6 +57,7 @@ export function Select(props: SelectProps) {
     'children',
   ]);
   const errorId = (): string => `${local.id}-error`;
+  const labelId = (): string => `${local.id}-label`;
   const listboxId = (): string => `${local.id}-listbox`;
 
   const [isOpen, setIsOpen] = createSignal(false);
@@ -150,13 +151,28 @@ export function Select(props: SelectProps) {
 
   return (
     <div class={cx('field', local.class)} {...rest}>
-      <label class="field__label" for={local.id}>
+      {/* `for` only names a LABELABLE element; the trigger below is a div with
+       * role=combobox, so the label never reached it and every Select
+       * announced as an unnamed combobox. `aria-labelledby` is the wiring that
+       * gives the accessible name — and the onClick focuses the trigger, since
+       * `for` on a non-labelable div can't. */}
+      {/* biome-ignore lint/a11y/useKeyWithClickEvents: a <label> is never in the
+       * tab order, so a keyboard handler here is unreachable — clicking is a
+       * pointer-only affordance mirroring native `<label for>`; keyboard users
+       * focus the combobox directly. */}
+      <label
+        class="field__label"
+        id={labelId()}
+        for={local.id}
+        onClick={() => triggerRef()?.focus()}
+      >
         {local.label}
       </label>
       <div
         ref={setTriggerRef}
         id={local.id}
         role="combobox"
+        aria-labelledby={labelId()}
         tabIndex={0}
         aria-haspopup="listbox"
         aria-expanded={isOpen() ? 'true' : 'false'}

@@ -22,7 +22,7 @@ export default function Downloads(): JSX.Element {
 
   return (
     <div class="stack">
-      <Card title={t('downloads.heading')}>
+      <Card title={t('downloads.heading')} headingLevel={1}>
         <p class="text-fg-muted">{t('downloads.body')}</p>
       </Card>
 

@@ -15,7 +15,7 @@ export default function Account(): JSX.Element {
 
   if (sessionToken() === null) {
     return (
-      <Card title={t('auth.account.heading')}>
+      <Card title={t('auth.account.heading')} headingLevel={1}>
         <p class="text-fg-muted">{t('auth.account.loginPrompt')}</p>
         <A href="/login">
           <Button variant="primary">{t('nav.login')}</Button>
@@ -25,7 +25,7 @@ export default function Account(): JSX.Element {
   }
 
   return (
-    <Card title={t('auth.account.heading')} class="stack">
+    <Card title={t('auth.account.heading')} headingLevel={1} class="stack">
       <Switch>
         <Match when={account.isPending}>
           <Spinner label={t('common.loading')} />

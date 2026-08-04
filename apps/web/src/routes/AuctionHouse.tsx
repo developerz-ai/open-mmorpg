@@ -141,7 +141,7 @@ export default function AuctionHouse(): JSX.Element {
 
   return (
     <div class="stack">
-      <Card title={t('auction.heading')} class="stack">
+      <Card title={t('auction.heading')} headingLevel={1} class="stack">
         <Show when={buy.isSuccess}>
           <Alert tone="success">
             {t('auction.bought', {

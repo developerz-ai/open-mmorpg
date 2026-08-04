@@ -132,7 +132,11 @@ function setMetaTags(cfg: OperatorConfig): void {
       ogImage.setAttribute('property', 'og:image');
       document.head.appendChild(ogImage);
     }
-    ogImage.content = cfg.brand.logoUrl;
+    // Absolute: a crawler fetches this URL out of context, so a path like
+
+    // `/brand/card.png` resolves against the wrong origin (or not at all).
+
+    ogImage.content = new URL(cfg.brand.logoUrl, window.location.origin).href;
   }
 }
 
