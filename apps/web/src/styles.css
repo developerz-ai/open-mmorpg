@@ -143,11 +143,21 @@
 }
 .feed-item {
   display: flex;
+  /* Wraps because the row is badge + message + time + share, and an event message
+   * has no length ceiling. On a 390px phone the unwrapped row measured 461px, so
+   * the whole page scrolled sideways — every other element moved with it. The
+   * message is the only part allowed to take the slack (`min-width: 0` lets a flex
+   * item shrink below its content width, which the default `auto` forbids). */
+  flex-wrap: wrap;
   gap: 0.75rem;
   align-items: baseline;
   padding: 0.5rem;
   border-radius: var(--radius-sm);
   transition: background var(--dur-fast) var(--ease-out);
+}
+.feed-item__text {
+  flex: 1 1 12rem;
+  min-width: 0;
 }
 .feed-item--new {
   background: rgb(var(--color-accent) / 0.1);

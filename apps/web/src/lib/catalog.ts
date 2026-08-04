@@ -128,6 +128,7 @@ export const en: Catalog = {
     },
   },
   armory: {
+    notFoundHeading: 'Character not found',
     heading: 'Armory',
     searchLabel: 'Character or guild name',
     searchPlaceholder: 'e.g. Aria',
@@ -278,5 +279,9 @@ export const en: Catalog = {
       account: 'Account',
       mounts: 'Mounts',
     },
+  },
+  seo: {
+    defaultDescription:
+      'An open-core MMORPG engine with original IP, MIT-licensed. A living world, a real player economy, and a thin native client.',
   },
 };
