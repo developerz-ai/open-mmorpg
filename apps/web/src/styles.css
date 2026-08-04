@@ -158,6 +158,10 @@
 .feed-item__text {
   flex: 1 1 12rem;
   min-width: 0;
+  /* `min-width: 0` only permits shrinking; it does not break a word. Event messages
+   * interpolate player and guild names, which have no space in them and no length
+   * ceiling, so one long name would push the row back past the viewport. */
+  overflow-wrap: anywhere;
 }
 .feed-item--new {
   background: rgb(var(--color-accent) / 0.1);
