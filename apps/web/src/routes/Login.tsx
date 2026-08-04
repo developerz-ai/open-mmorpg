@@ -22,7 +22,7 @@ export default function Login(): JSX.Element {
   };
 
   return (
-    <Card title={t('auth.login.heading')} class="stack">
+    <Card title={t('auth.login.heading')} headingLevel={1} class="stack">
       <form class="auth-form" onSubmit={submit}>
         <Show when={mutation.isError}>
           <Alert tone="error">{t(authMessageKey(mutation.error))}</Alert>

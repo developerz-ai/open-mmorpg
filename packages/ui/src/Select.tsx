@@ -57,6 +57,7 @@ export function Select(props: SelectProps) {
     'children',
   ]);
   const errorId = (): string => `${local.id}-error`;
+  const labelId = (): string => `${local.id}-label`;
   const listboxId = (): string => `${local.id}-listbox`;
 
   const [isOpen, setIsOpen] = createSignal(false);
@@ -150,13 +151,19 @@ export function Select(props: SelectProps) {
 
   return (
     <div class={cx('field', local.class)} {...rest}>
-      <label class="field__label" for={local.id}>
+      {/* `for` only names a LABELABLE element; the trigger below is a div with
+        * role=combobox, so the label never reached it and every Select
+        * announced as an unnamed combobox. `aria-labelledby` is the wiring that
+        * works for a custom control — the visible <label> stays, and clicking
+        * it still focuses the trigger through `for`. */}
+      <label class="field__label" id={labelId()} for={local.id}>
         {local.label}
       </label>
       <div
         ref={setTriggerRef}
         id={local.id}
         role="combobox"
+        aria-labelledby={labelId()}
         tabIndex={0}
         aria-haspopup="listbox"
         aria-expanded={isOpen() ? 'true' : 'false'}

@@ -15,7 +15,7 @@ export default function Account(): JSX.Element {
 
   if (sessionToken() === null) {
     return (
-      <Card title={t('auth.account.heading')}>
+      <Card title={t('auth.account.heading')} headingLevel={1}>
         <p class="text-fg-muted">{t('auth.account.loginPrompt')}</p>
         <A href="/login">
           <Button variant="primary">{t('nav.login')}</Button>

@@ -14,7 +14,7 @@ export default function Armory(): JSX.Element {
   };
 
   return (
-    <Card title={t('armory.heading')} class="stack">
+    <Card title={t('armory.heading')} headingLevel={1} class="stack">
       <div class="toolbar">
         <TextField
           id="armory-search"
