@@ -23,10 +23,10 @@ updates:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
 
-  # One Bun workspace rooted at "/" (root + apps/web + packages/*). Bun uses the
-  # npm ecosystem; Dependabot reads bun.lock and resolves all workspace members.
-  # Note: after merging an npm PR, run `bun install` if the lockfile drifts.
-  - package-ecosystem: npm
+  # One Bun workspace rooted at "/" (root + apps/web + packages/*). Dependabot's
+  # npm ecosystem cannot update bun.lock and aborts every run; the bun ecosystem
+  # reads and updates bun.lock for all workspace members.
+  - package-ecosystem: bun
     directory: "/"
     schedule:
       interval: weekly
