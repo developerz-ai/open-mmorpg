@@ -45,7 +45,7 @@ This repo is engineered so an AI coding agent ships production-quality work from
 ```
 bin/setup      # fresh clone → ready (deps, build, docker)
 bin/dev        # boot gateway + shard + web
-bin/check      # the gate: fmt + clippy -D warnings + tests (+ web)
+bin/check      # the gate: rust (fmt/clippy/tests --all-features) + content validation + web (lint/typecheck/test/build)
 ```
 
 - **Game server base** — `apps/shard` (headless authoritative zone, deterministic tick loop) behind `apps/gateway` (edge/auth) and `apps/worldsvc` (cross-shard), powered by `crates/{sim,ecs-core,netcode,protocol,persistence,cache}`.

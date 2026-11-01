@@ -7,11 +7,11 @@ Thanks for helping build the best open-core MMORPG engine. This repo is engineer
 ```
 bin/setup            # prereqs → deps → docker (Yugabyte+Dragonfly) → migrate
 bin/dev [target]     # boot gateway/shard/client/web with reload
-bin/check            # the gate: fmt-check + clippy -D warnings + nextest (+ biome/tsc for web)
+bin/check            # the gate: rust (fmt/clippy/tests --all-features) + content validation + web (lint/typecheck/test/build)
 bin/fmt              # cargo fmt + biome --write
 ```
 
-`bin/check` is **the gate** — local, git hook, and CI all run the same command. If it's green, your change is mergeable; if it's red, it isn't.
+`bin/check` is the local gate — it runs the same checks as CI's rust and web jobs, plus content validation. It does not replace GitHub Actions: CI runs its own workflow commands (plus a live-Postgres integration job), so a green local gate is not a CI result. The rule stands: if `bin/check` is red, your change isn't mergeable; if it's green, you're ready for CI and review.
 
 Scripts live in `scripts/*.ts` (Bun TypeScript); the `bin/*` entries are thin shims that call them. Edit the `.ts`, not the shim.
 

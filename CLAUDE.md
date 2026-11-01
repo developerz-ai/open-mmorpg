@@ -61,7 +61,7 @@ This repo follows **developerz-ai gold standards**: `../gold-standards-in-ai/doc
 ```
 bin/setup            # prereqs → deps → docker (Yugabyte+Dragonfly) → migrate
 bin/dev [target]     # boot gateway/shard/client/web with reload
-bin/check            # the gate: fmt-check + clippy -D warnings + nextest (+ biome/tsc for web)
+bin/check            # the gate: rust (fmt/clippy/tests --all-features) + content validation + web (lint/typecheck/test/build)
 bin/fmt              # cargo fmt + biome --write
 
 cargo nextest run                    # Rust tests (fast)
