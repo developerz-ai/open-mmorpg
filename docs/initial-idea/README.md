@@ -2,7 +2,7 @@
 
 > The founding spec. Every decision made before a line of code. An agent reads this to know **what** we're building and **why** before touching **how** ([architecture/](../architecture/README.md)).
 
-**One line:** An open-source, AI-native, next-gen MMORPG — WoW-inspired, fully original IP, built by AI agents, in Rust, with the best-looking graphics and the fastest server. Gamers-first, not extraction-first.
+**One line:** An open-source, AI-native, next-gen MMORPG — WoW-inspired, fully original IP, built by AI agents, in Rust, with engineering goals for the best-looking graphics and the fastest server — goals, not measured results: no published benchmark baseline yet (see the [server](03-tech-stack.md#server) and [client](03-tech-stack.md#client) honesty notes). Gamers-first, not extraction-first.
 
 ## Read in order
 | # | Doc | Covers |

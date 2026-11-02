@@ -20,6 +20,8 @@ The original notes picked Go for "higher first-try LLM correctness." We're choos
 | Scripting (moddable) | **WASM** (sandboxed, language-agnostic) primary; **Lua** (`mlua`) for lightweight content scripts |
 | Errors | **thiserror**, typed, stable client codes |
 
+**Server honesty note:** "Fastest server" is an engineering goal, not a measured result — no benchmark baseline is published yet, so no throughput comparison against other cores is claimed. We push it with the levers this doc already picks: a deterministic sim, UDP netcode and horizontal shards. The [client note](#client) below frames graphics the same way. Revisit-able decision — record any change as an ADR in [../architecture/](../architecture/README.md).
+
 ## Client
 | Concern | Choice |
 |---|---|
