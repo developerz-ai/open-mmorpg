@@ -7,6 +7,11 @@ Daily checkup fired by `schedules: health`: the failures no issue or PR announce
 | `main` is green | `gh run list --workflow ci.yml --branch main --event push --limit 1 --json conclusion,headSha,url`, then `git rev-parse origin/main` | `success` on the `origin/main` tip; a null conclusion or another sha is no verdict |
 | Dependabot is not stuck | `gh pr list --app dependabot --state open --limit 100 --json number,updatedAt,statusCheckRollup` | no PR with failed checks and more than 7 days since `updatedAt` |
 
+## Rows
+
+- `ci-main-green` — `main` is green
+- `dependabot-not-stuck` — Dependabot is not stuck
+
 ## What to file
 
 For each unhealthy signal, one ask, unless an open issue already carries its exact title
