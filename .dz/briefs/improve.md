@@ -16,3 +16,9 @@ policy file are off limits. A red `main` and a stuck Dependabot PR belong to `he
 
 One small PR per improvement, its evidence in the body, `bin/check` green first. Never bump the version or touch release automation here.
 Check no open PR or issue already covers it. If nothing is worth changing, do nothing: no empty PRs, no churn.
+
+## Rows
+
+- `gate-broken-or-flaky` — Anything the gate on fresh `main` found broken or flaky (`bin/check`): the root cause, never a retry or a skip.
+- `open-bugs` — Open bugs (`gh issue list --state open --label bug --json number,title,url`), each starting from a test that fails on `main`.
+- `stale-claims-and-dead-code` — `CLAUDE.md` and README claims that no longer match the code, then dead code.
