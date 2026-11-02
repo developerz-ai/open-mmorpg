@@ -47,7 +47,7 @@ VITE_WORLD_FEED=true                          # Enable world feed
 
 # Development
 VITE_USE_MOCKS=false                          # Use in-memory mock backend (dev only)
-VITE_LOCALE=en                                # Default locale (en | de | es | fr | ja | zh)
+VITE_LOCALE=en                                # Default locale (en | de | es | fr | ja | zh | ko | ru | pt | it | pl | tr | ar)
 
 # Downloads (client download metadata)
 VITE_DOWNLOAD_VERSION="1.0.0"
@@ -164,35 +164,21 @@ The portal currently supports:
 
 All 13 locales have complete catalogs and are fully implemented.
 
-### Adding a New Locale (when infrastructure is complete)
+### Adding a New Locale
 
-To add a new language (e.g., `ko` for Korean) when the multi-locale support is complete:
+The sole production catalogs live in `apps/web/src/lib/`: English in `catalog.ts`, and translations in `catalog.<locale>.ts`. `packages/i18n` provides translation machinery and the locale registry, not production copy.
 
-1. **Create the catalog** → `packages/i18n/src/locales/ko.ts`
-   ```typescript
-   import type { Catalog } from '../catalog.ts';
-   export const ko: Catalog = {
-     common: { loading: '로딩 중…', ... },
-     nav: { home: '홈', ... },
-     // ... rest of the catalog, matching the en.ts structure
-   };
-   ```
+1. **Create the catalog** → Add `apps/web/src/lib/catalog.<locale>.ts`, importing `Catalog` from `@omm/i18n`. Match every key in `catalog.ts` and preserve interpolation placeholders such as `{name}`.
+2. **Register the locale** → Append its tag to `LOCALES` in `packages/i18n/src/locales.ts`, preserving existing locales; update the explicit supported-locale expectations in `packages/i18n/src/locales.test.ts`.
+3. **Update app configuration and runtime** → Add the tag to the `VITE_LOCALE` schema in `apps/web/src/config.ts`, then import and register the catalog in `apps/web/src/lib/i18n.ts`.
+4. **Register production coverage** → Import the catalog and add it to `CATALOGS` in `apps/web/src/lib/catalog.parity.test.ts`. This checks every supported locale for missing/extra keys, placeholder parity, and required world-feed controls independently of English.
+5. **Verify** → Run `bun test packages/i18n/src/locales.test.ts packages/i18n/src/translator.test.ts apps/web/src/lib/catalog.parity.test.ts`, then `bin/check` before deploying. Set `VITE_LOCALE` to the new tag to use it as the deployment default.
 
-2. **Register the locale** → Edit `packages/i18n/src/locales.ts`
-   ```typescript
-   export const LOCALES = ['en', 'ko'] as const;
-   ```
-
-3. **Update the schema** → Edit `apps/web/src/config.ts`
-   ```typescript
-   VITE_LOCALE: z.enum(['en', 'ko']).default('en'),
-   ```
-
-4. **Set as default** → `VITE_LOCALE=ko` (or use a locale-detecting route)
+Package tests use small inline fixtures to verify translation mechanics (nested keys, Unicode, interpolation, loud misses) and all-locale resolution/fallback. Web parity tests exercise the actual shipped catalogs, including representative translated copy; fixtures are not production translation coverage.
 
 ### String Authoring
 
-Every user-facing string lives in the locale catalog (`packages/i18n/src/locales/en.ts`), not in component code. Components call `t('nav.home')` — missing keys render as `⟦nav.home⟧` (loud, never silent).
+Author English strings in `apps/web/src/lib/catalog.ts` and translate the same keys in every `apps/web/src/lib/catalog.<locale>.ts`, never in component code or package catalog copies. Components call `t('nav.home')` — missing keys render exactly as `⟦nav.home⟧`, with no silent English fallback.
 
 Dates, numbers, and money use `Intl` (built-in browser API), not i18n strings:
 

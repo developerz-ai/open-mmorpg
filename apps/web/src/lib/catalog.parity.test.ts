@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'bun:test';
-import { type Catalog, flatten, LOCALES, type Locale } from '@omm/i18n';
+import { type Catalog, createTranslator, flatten, LOCALES, type Locale } from '@omm/i18n';
 import { ar } from './catalog.ar.ts';
 import { de } from './catalog.de.ts';
 import { es } from './catalog.es.ts';
@@ -25,6 +25,26 @@ import { zh } from './catalog.zh.ts';
  */
 const CATALOGS: Record<Locale, Catalog> = { en, de, es, fr, ja, zh, ko, ru, pt, it, pl, tr, ar };
 
+// Independent of English: deleting these controls from every catalog must still fail.
+const REQUIRED_FEED_KEYS = [
+  'feed.filter.label',
+  'feed.filter.all',
+  'feed.filter.bossKill',
+  'feed.filter.worldBossSpawn',
+  'feed.filter.factionShift',
+  'feed.filter.bountyPosted',
+  'feed.filter.milestone',
+  'feed.pagination.page',
+  'feed.pagination.prev',
+  'feed.pagination.next',
+  'feed.pagination.showing',
+  'feed.autoRefresh.on',
+  'feed.autoRefresh.off',
+  'feed.newBadge',
+  'feed.share',
+  'feed.shareEvent',
+] as const;
+
 describe('catalog parity', () => {
   const reference = flatten(en);
   const referenceKeys = Object.keys(reference).sort();
@@ -34,6 +54,21 @@ describe('catalog parity', () => {
   });
 
   for (const locale of LOCALES) {
+    test(`${locale} renders every required feed control, including accessible share copy`, () => {
+      const t = createTranslator(CATALOGS[locale]);
+      for (const key of REQUIRED_FEED_KEYS) {
+        const translated = t(key, { current: 1, total: 2, start: 1, end: 2 });
+        expect(translated.trim().length).toBeGreaterThan(0);
+        expect(translated).not.toMatch(/[⟦⟧]/);
+      }
+    });
+
+    test(`${locale} renders missing keys loudly without English fallback`, () => {
+      expect(createTranslator(CATALOGS[locale])('does.not.exist')).toBe('⟦does.not.exist⟧');
+      const partial = { ...CATALOGS[locale], common: {} };
+      expect(createTranslator(partial)('common.loading')).toBe('⟦common.loading⟧');
+    });
+
     test(`${locale} carries every key English carries`, () => {
       const missing = referenceKeys.filter((key) => !(key in flatten(CATALOGS[locale])));
       expect(missing).toEqual([]);
@@ -58,6 +93,47 @@ describe('catalog parity', () => {
           dropped.push(`${key}: expected {${slots}}, got {${mine}}`);
       }
       expect(dropped).toEqual([]);
+    });
+  }
+});
+
+// Current shipped copy, not duplicate package catalogs or stale translation expectations.
+const COPY_SAMPLES = [
+  ['en', 'Loading…', 'Home', 'Log in', 'Armory', '42 gold', 'Welcome back, Aria.'],
+  [
+    'de',
+    'Laden…',
+    'Startseite',
+    'Anmelden',
+    'Rüstungskammer',
+    '42 Gold',
+    'Willkommen zurück, Aria.',
+  ],
+  [
+    'es',
+    'Cargando…',
+    'Inicio',
+    'Iniciar sesión',
+    'Arsenal',
+    '42 oro',
+    'Bienvenido de vuelta, Aria.',
+  ],
+  ['fr', 'Chargement…', 'Accueil', 'Se connecter', 'Armurerie', '42 or', 'Bon retour, Aria.'],
+  ['ja', '読み込み中…', 'ホーム', 'ログイン', '武器庫', '42ゴールド', 'おかえりなさい、Aria。'],
+  ['zh', '加载中…', '首页', '登录', '军械库', '42 金币', '欢迎回来，Aria。'],
+] as const;
+
+describe('shipped translations', () => {
+  for (const [locale, loading, home, login, armory, gold, welcome] of COPY_SAMPLES) {
+    test(`${locale} translates representative copy and interpolates params`, () => {
+      const t = createTranslator(CATALOGS[locale]);
+      expect(t('common.loading')).toBe(loading);
+      expect(t('nav.home')).toBe(home);
+      expect(t('auth.login.heading')).toBe(login);
+      expect(t('armory.heading')).toBe(armory);
+      expect(t('common.gold', { amount: 42 })).toBe(gold);
+      expect(t('realm.title', { name: 'Aria' })).toBe('Aria');
+      expect(t('auth.login.success', { name: 'Aria' })).toBe(welcome);
     });
   }
 });
