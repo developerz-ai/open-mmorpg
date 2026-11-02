@@ -1,7 +1,7 @@
 # 00 — Project Overview
 
 ## Vision
-WoW-inspired MMORPG, built better, **fully original IP** (no ripped assets, no legal exposure). Open-core, AI-first. Gamers-first, not extraction-first. Best-looking graphics, fastest server, greatest DX for the agents that build it.
+WoW-inspired MMORPG, built better, **fully original IP** (no ripped assets, no legal exposure). Open-core, AI-first. Gamers-first, not extraction-first. Engineering goals — best-looking graphics, fastest server, greatest DX for the agents that build it — not measured results yet: no published benchmark baseline (see the [server](03-tech-stack.md#server) and [client](03-tech-stack.md#client) honesty notes).
 
 ## Core principles
 - **100% original assets** (AI-generated), original names/lore — zero derivative-IP risk.

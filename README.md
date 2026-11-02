@@ -1,6 +1,6 @@
 # 🐉 Open-MMORPG
 
-> **The best open-core MMORPG engine.** WoW-inspired, fully original IP, built by AI agents, in Rust. Fastest server, best-looking graphics, greatest DX for the agents that build it. MIT. Gamers-first, not extraction-first.
+> **The best open-core MMORPG engine.** WoW-inspired, fully original IP, built by AI agents, in Rust. Engineering goals — fastest server, best-looking graphics, greatest DX for the agents that build it — not measured results yet: no published benchmark baseline (see the [server](docs/initial-idea/03-tech-stack.md#server) and [client](docs/initial-idea/03-tech-stack.md#client) honesty notes). MIT. Gamers-first, not extraction-first.
 
 Open-MMORPG is a **next-gen, open-source MMORPG core** — a clean, modern, horizontally-scalable engine plus a playable client and a hostable operator website. It's what AzerothCore/TrinityCore would be if it were built today: **original IP** (zero legal exposure), **data-driven** (operators extend without forking), and **AI-native** (agents write the code; players get AI companions).
 
