@@ -31,9 +31,9 @@ jobs:
       - name: fmt
         run: cargo fmt --all --check
       - name: clippy
-        run: cargo clippy --all-targets --all-features -- -D warnings
+        run: cargo clippy --locked --all-targets --all-features -- -D warnings
       - name: test
-        run: cargo nextest run --workspace --all-features
+        run: cargo nextest run --locked --workspace --all-features
 
   rust-integration:
     name: rust (integration · live Postgres)
@@ -64,7 +64,7 @@ jobs:
         with:
           tool: nextest
       - name: integration tests (ignored + unit, live DB)
-        run: cargo nextest run --workspace --all-features --run-ignored all
+        run: cargo nextest run --locked --workspace --all-features --run-ignored all
 
   web:
     name: web (lint · typecheck · test · build)

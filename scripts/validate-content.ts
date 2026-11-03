@@ -78,7 +78,7 @@ function validateViaRustSchema(): ValidationResult {
   }
 
   try {
-    execSync('cargo test --package omm-content-schema --lib', {
+    execSync('cargo test --locked --package omm-content-schema --lib', {
       stdio: 'pipe',
     });
   } catch (e) {
