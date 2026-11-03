@@ -88,6 +88,8 @@ http-body-util = "0.1"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 proptest = "1"
+# Bench-only (load-bench), inherited as a dev-dependency.
+criterion = "0.5"
 # Durable store: sqlx over the Postgres wire (YugabyteDB in prod, plain Postgres in dev).
 # rustls (no system OpenSSL); runtime queries + compile-time-embedded migrations.
 sqlx = { version = "0.8", default-features = false, features = [
