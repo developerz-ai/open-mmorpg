@@ -13,7 +13,7 @@
 | Styling | **Tailwind + semantic CSS-variable tokens**, dark theme only |
 | Validation | **Zod** at every boundary |
 | i18n | **`t()` from day one**, missing keys render loud (`⟦key⟧`) |
-| Lint/format · Test | **Biome** · `bun test` + `@solidjs/testing-library` + Playwright |
+| Lint/format · Test | **Biome** · `bun test` + Playwright |
 
 It talks to [`apps/gateway`](../../../apps/gateway) (HTTP control plane: realm status, auth) and [`apps/worldsvc`](../../../apps/worldsvc) (cross-shard data: armory, auction house, world feed) over HTTP — read-only public data, authenticated account actions. It never touches shards or the DB directly.
 
@@ -35,7 +35,7 @@ Like the [server](../game-server/README.md#framework-vs-game--build-other-games-
 | [auction-house/](auction-house/README.md) | AH browse/search, price history | Cached reads only — never authoritative |
 | [world-feed/](world-feed/README.md) | Dynamic world-event / social news feed | Surfaces [living-world](../gameplay/world-systems/living-world.md) events |
 | [operator-brand/](operator-brand/README.md) | Brandability, feature flags, multi-tenant config | Fork-and-reskin without code edits |
-| [testing-dx/](testing-dx/README.md) | Testing-library + Playwright, CI, AI-testability | Deterministic dark theme → stable diffs |
+| [testing-dx/](testing-dx/README.md) | `bun test` + Playwright, CI, AI-testability | Deterministic dark theme → stable diffs |
 
 ## Non-negotiable principles (inherited → [CLAUDE.md](../../../CLAUDE.md))
 1. **SRP / thin routes.** One component, one job; files ≤300 LOC; shared UI → `packages/ui`. A route parses params, calls a query, renders — data logic lives in hooks.
