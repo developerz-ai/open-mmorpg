@@ -1,4 +1,4 @@
 [test]
-# Load test environment variables
-env = ".env.test"
+# Share the deterministic mock setup for workspace tests.
+preload = ["../../scripts/test-setup.ts"]
 
