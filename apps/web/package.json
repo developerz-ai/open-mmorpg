@@ -27,7 +27,7 @@
     "@solidjs/testing-library": "^0.8.10",
     "@testing-library/jest-dom": "^6.9.1",
     "@vitest/ui": "^4.1.11",
-    "happy-dom": "^20.14.5",
+    "happy-dom": "^21.0.4",
     "vite": "^6.0.0",
     "vite-plugin-solid": "^2.11.14",
     "vitest": "^4.1.11"
