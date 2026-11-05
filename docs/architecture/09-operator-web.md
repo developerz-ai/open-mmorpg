@@ -59,5 +59,5 @@
 - Feature flags: registration open/closed, cash-shop on/off (operator's choice), armory public/private.
 
 ## Testing
-- `@solidjs/testing-library` + `bun test`; integration against a running gateway in CI.
+- `bun test` (unit + component checks); integration against a running gateway in CI.
 - Keep it **AI-testable** (Playwright) — deterministic dark theme (no toggle) makes screenshot diffs stable.

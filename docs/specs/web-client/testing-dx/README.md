@@ -1,12 +1,12 @@
 # Testing & DX — deterministic, AI-testable
 
-> **`bun test` + `@solidjs/testing-library`** for unit/component, **Playwright** E2E against a running [gateway](../../../../apps/gateway) in CI, **Biome** as the format/lint gate. The [dark-only theme](../design-system/README.md) (no toggle) makes screenshots deterministic → stable visual diffs → an **AI agent can author and verify tests**, which is how this repo is built. → [architecture/09 §Testing](../../../architecture/09-operator-web.md).
+> **`bun test`** for unit/component source-contract checks, **Playwright** E2E against a running [gateway](../../../../apps/gateway) in CI, **Biome** as the format/lint gate. The [dark-only theme](../design-system/README.md) (no toggle) makes screenshots deterministic → stable visual diffs → an **AI agent can author and verify tests**, which is how this repo is built. → [architecture/09 §Testing](../../../architecture/09-operator-web.md).
 
 ## The pyramid
 | Layer | Tooling | Scope |
 |---|---|---|
 | **Unit** | `bun test` | Pure logic: [Zod schemas](../data-layer/README.md), [`interpolate`/`t()`](../i18n/README.md), utils |
-| **Component** | `@solidjs/testing-library` + `bun test` | A component's states — render loading/error/data, assert on [`t()`](../i18n/README.md) output |
+| **Component** | `bun test` | A component's states — assert loading/error/data wire the right [`t()`](../i18n/README.md) keys |
 | **E2E** | Playwright | Real flows against a **running gateway** in CI (register → log in → view armory) |
 | **Visual** | Playwright screenshots | Deterministic diffs — see below |
 
@@ -23,7 +23,7 @@ Pin the other non-determinism sources too: freeze time (`Intl` dates via a fixed
 ## What CI runs
 ```
 biome ci            # format + lint, TS strict — the gate
-bun test            # unit + component (@solidjs/testing-library)
+bun test            # unit + component (source-contract checks)
 playwright test     # E2E + visual, against a running gateway
 ```
 Green CI is the merge bar — same commands local, hook, and CI ([CLAUDE.md](../../../../CLAUDE.md)).
@@ -40,7 +40,7 @@ Everything above compounds for agents: typed boundaries mean a wrong shape **won
 | Human-eyeballed verification | Confidence a change works | **AI-testable** determinism — agent verifies itself |
 
 ## Rules
-- **`bun test` + `@solidjs/testing-library`** for unit/component; **Playwright** E2E against a running gateway.
+- **`bun test`** for unit/component source-contract checks; **Playwright** E2E against a running gateway.
 - **Assert on [`t()`](../i18n/README.md) output** — `⟦key⟧` in a test is a failure.
 - **Determinism is a test requirement** — dark-only theme, frozen time, stubbed queries, fixed viewport.
 - **Biome is the gate** — TS strict, no `any`, no bare literals, no raw hex.
