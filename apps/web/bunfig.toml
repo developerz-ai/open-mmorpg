@@ -1,5 +1,0 @@
-[test]
-# Load test environment variables
-env = ".env.probe"
-preload = ["./probe-preload.ts"]
-

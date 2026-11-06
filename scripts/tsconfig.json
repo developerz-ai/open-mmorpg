@@ -1,9 +1,0 @@
-{
-  "extends": "../tsconfig.base.json",
-  "compilerOptions": {
-    "types": ["bun"],
-    "jsx": "preserve",
-    "noEmit": true
-  },
-  "include": ["."]
-}

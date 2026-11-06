@@ -1,5 +1,0 @@
-# Pin the toolchain so local, hooks, and CI compile identically.
-[toolchain]
-channel = "stable"
-components = ["rustfmt", "clippy"]
-profile = "minimal"
