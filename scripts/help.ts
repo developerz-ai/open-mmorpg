@@ -21,10 +21,10 @@ console.log(`
 
   Under the hood:
   cargo fmt --all --check
-  cargo clippy --all-targets --all-features -- -D warnings
-  cargo nextest run --workspace --all-features (or cargo test --workspace --all-features)
+  cargo clippy --locked --all-targets --all-features -- -D warnings
+  cargo nextest run --locked --workspace --all-features (or cargo test --locked --workspace --all-features)
   bun scripts/validate-content.ts
-  cargo bench --package omm-content-schema --no-run
+  cargo bench --locked --package omm-content-schema --no-run
   bun run lint && bun run typecheck && bun test && bun run --filter @omm/web build
 `);
 log.dim('  Scripts live in scripts/*.ts; reusable logic in scripts/lib/*.ts.');

@@ -27,13 +27,22 @@ export function buildSteps(opts: GateOptions): Step[] {
     { name: 'rust: fmt', cmd: ['cargo', 'fmt', '--all', '--check'] },
     {
       name: 'rust: clippy',
-      cmd: ['cargo', 'clippy', '--all-targets', '--all-features', '--', '-D', 'warnings'],
+      cmd: [
+        'cargo',
+        'clippy',
+        '--locked',
+        '--all-targets',
+        '--all-features',
+        '--',
+        '-D',
+        'warnings',
+      ],
     },
     {
       name: 'rust: test',
       cmd: opts.haveNextest
-        ? ['cargo', 'nextest', 'run', '--workspace', '--all-features']
-        : ['cargo', 'test', '--workspace', '--all-features'],
+        ? ['cargo', 'nextest', 'run', '--locked', '--workspace', '--all-features']
+        : ['cargo', 'test', '--locked', '--workspace', '--all-features'],
     },
   ];
 
@@ -41,7 +50,7 @@ export function buildSteps(opts: GateOptions): Step[] {
     { name: 'content: validate', cmd: ['bun', 'scripts/validate-content.ts'] },
     {
       name: 'content: schema bench compile',
-      cmd: ['cargo', 'bench', '--package', 'omm-content-schema', '--no-run'],
+      cmd: ['cargo', 'bench', '--locked', '--package', 'omm-content-schema', '--no-run'],
     },
   ];
 

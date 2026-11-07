@@ -7,7 +7,7 @@ WORKDIR /build
 COPY . .
 RUN --mount=type=cache,target=/build/target \
     --mount=type=cache,target=/usr/local/cargo/registry \
-    cargo build --release -p "${BIN}" && \
+    cargo build --locked --release -p "${BIN}" && \
     cp "target/release/${BIN}" /usr/local/bin/app
 
 FROM debian:bookworm-slim AS runtime
