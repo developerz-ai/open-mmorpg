@@ -18,12 +18,12 @@
     "@omm/ui": "workspace:*",
     "@solidjs/router": "^0.16.3",
     "@tanstack/solid-query": "^5.104.1",
-    "solid-js": "^1.9.15",
+    "solid-js": "^1.9.17",
     "zod": "^4.6.5"
   },
   "devDependencies": {
-    "@playwright/test": "^1.63.0",
-    "vite": "^6.0.0",
+    "@playwright/test": "^1.64.0",
+    "vite": "^6.4.4",
     "vite-plugin-solid": "^2.11.14"
   }
 }
