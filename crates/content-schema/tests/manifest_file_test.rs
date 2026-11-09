@@ -5,9 +5,10 @@
 //! actual data on disk. If the tree grows invalid or a domain dir goes missing,
 //! this fails, closing the gap where only inline test samples were validated.
 
+use std::collections::HashSet;
 use std::path::PathBuf;
 
-use omm_content_schema::load_manifest_dir;
+use omm_content_schema::{load_manifest_dir, ItemType};
 
 /// Resolve `content/` relative to this crate (workspace root holds it).
 fn content_dir() -> PathBuf {
@@ -17,6 +18,57 @@ fn content_dir() -> PathBuf {
 /// The two canon rival factions (docs/specs/gameplay/factions).
 const CONCORD: &str = "aurelian-concord";
 const PACT: &str = "wildreach-pact";
+
+/// Item ids are the registry key; a duplicate is a silent ambiguity (the
+/// loader and `validate()` do not reject it), so guard it here.
+#[test]
+fn committed_item_ids_are_unique() {
+    let manifest =
+        load_manifest_dir(&content_dir()).expect("content/ must parse and pass validate()");
+    let mut seen = HashSet::new();
+    let mut duplicates: Vec<&str> = manifest
+        .items
+        .iter()
+        .filter(|i| !seen.insert(i.id.as_str()))
+        .map(|i| i.id.as_str())
+        .collect();
+    duplicates.sort_unstable();
+    duplicates.dedup();
+    assert!(
+        duplicates.is_empty(),
+        "duplicate item ids under content/items: {duplicates:?}"
+    );
+
+    // The quest reward must name the lvl-17 weapon tome, unambiguously.
+    let quest = manifest
+        .quests
+        .iter()
+        .find(|q| q.id == "academys-request")
+        .expect("academys-request quest must exist");
+    assert!(!quest.rewards.choice_items.is_empty());
+    for choice in &quest.rewards.choice_items {
+        let matches = manifest.items.iter().filter(|i| i.id == *choice).count();
+        assert_eq!(
+            matches, 1,
+            "academys-request choice item '{choice}' must resolve to exactly one item"
+        );
+    }
+    assert!(
+        quest
+            .rewards
+            .choice_items
+            .iter()
+            .any(|c| c == "concord-arcane-tome"),
+        "academys-request must offer the lvl-17 weapon tome 'concord-arcane-tome'"
+    );
+    let tome = manifest
+        .items
+        .iter()
+        .find(|i| i.id == "concord-arcane-tome")
+        .expect("concord-arcane-tome item must exist");
+    assert_eq!(tome.item_type, ItemType::Weapon);
+    assert_eq!(tome.required_level, 17);
+}
 
 #[test]
 fn committed_manifest_loads_and_validates() {
