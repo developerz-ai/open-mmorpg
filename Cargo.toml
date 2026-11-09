@@ -96,7 +96,7 @@ sqlx = { version = "0.8", default-features = false, features = [
 ] }
 # Sandbox VM for untrusted operator content scripts. Minimal features: a
 # Cranelift-compiled runtime with fuel metering — no WASI, no networking.
-wasmtime = { version = "46", default-features = false, features = [
+wasmtime = { version = "48.0.8", default-features = false, features = [
   "cranelift",
   "runtime",
   "std",
