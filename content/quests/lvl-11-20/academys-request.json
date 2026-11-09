@@ -39,7 +39,7 @@
   "rewards": {
     "experience": 3500,
     "gold_copper": 1800,
-    "choice_items": ["arcane-tome", "concord-emblem"],
+    "choice_items": ["concord-arcane-tome", "concord-emblem"],
     "items": ["greater-healing-potion", "mana-potion", "mana-potion"]
   },
   "giver_id": "arcanist-trainer-elara",
