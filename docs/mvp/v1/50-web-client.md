@@ -20,7 +20,7 @@
 | **W7 · Auction house** | AH browse/search, price history — cached reads only, never authoritative. | [auction-house](../../specs/web-client/auction-house/README.md) | Browse live AH listings from worldsvc. |
 | **W8 · World feed** | Dynamic world-event/social news feed surfacing [living-world](../../specs/gameplay/world-systems/living-world.md) events. | [world-feed](../../specs/web-client/world-feed/README.md) | Slice events appear in the feed. |
 | **W9 · Operator brand** | Realm name, logo, palette (within dark tokens), copy, feature flags — **config, never code edits**; multi-tenant. | [operator-brand](../../specs/web-client/operator-brand/README.md) | A new operator reskins by config; a different game swaps portal surfaces. |
-| **W10 · Testing & DX** | testing-library + Playwright, CI, deterministic dark theme → stable visual diffs; operator setup docs. | [testing-dx](../../specs/web-client/testing-dx/README.md) | `bun run --filter @omm/web test` green; operator can deploy from docs. |
+| **W10 · Testing & DX** | testing-library + Playwright, CI, deterministic dark theme → stable visual diffs; operator setup docs. | [testing-dx](../../specs/web-client/testing-dx/README.md) | Local `bin/check` plus separate `bun run --filter @omm/web test:e2e` and `bun run --filter @omm/web test:e2e:shop` green; operator can deploy from docs. CI browser enforcement remains pending (see below). |
 
 ## Interfaces this track owns / consumes
 - **Owns** `apps/web`, `packages/ui`, `packages/i18n` and the **Zod mirror** of the gateway/worldsvc contracts.
@@ -36,6 +36,10 @@
 
 ## Definition of Done (track)
 A player registers, logs in, downloads the client, and sees their slice character's armory, live AH listings, and world feed — dark, i18n'd, Zod-validated, brandable by config, `bun test` + Playwright green — talking only to gateway/worldsvc.
+
+This is the **live-integration target**, not a claim about current test coverage. Today's [Playwright config](../../../apps/web/playwright.config.ts) serves the app with `VITE_USE_MOCKS=true`; browser success does not prove integration with live gateway/worldsvc services. The default and shop-enabled [browser scripts](../../../apps/web/package.json) must be run separately; `bun run --filter @omm/web test` runs only Bun tests.
+
+The local `bin/check` web lane ([`gate.ts`](../../../scripts/lib/gate.ts)) runs lint, typecheck, Bun tests and build, without browsers. The current [CI web job](../../../.github/workflows/ci.yml) runs those four checks after dependency installation but no Playwright; adding CI browser execution is still pending. A local green gate is neither browser proof nor a GitHub Actions result. See [testing & DX](../../specs/web-client/testing-dx/README.md) for separate browser verification.
 
 ## Links
 [web-client specs](../../specs/web-client/README.md) · [09 operator-web](../../architecture/09-operator-web.md) · [server](30-game-server.md) · [`webclient` subagent](../../../.claude/agents/webclient.md)

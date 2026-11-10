@@ -7,7 +7,7 @@
 |---|---|---|
 | **Unit** | `bun test` | Pure logic: [Zod schemas](../data-layer/README.md), [`interpolate`/`t()`](../i18n/README.md), utils |
 | **Component** | `bun test` | A component's states — assert loading/error/data wire the right [`t()`](../i18n/README.md) keys |
-| **E2E** | Playwright | Real flows against the **in-memory mock backend** (register → log in → view armory) — local only until CI enforcement is authorized |
+| **E2E** | Playwright | Browser flows against the **in-memory mock backend** (register → log in → view armory), not proof of live gateway/worldsvc integration — no current CI execution |
 | **Visual** | Playwright screenshots | Deterministic diffs — see below |
 
 Component tests target the [three-state pattern](../app-shell/README.md): mock the [query hook](../data-layer/README.md), assert each of pending / error / data renders the right `t()` key. A missing string shows `⟦key⟧` — a **failing** assertion, so [i18n gaps fail tests](../i18n/README.md), loudly.
@@ -21,23 +21,25 @@ Pin the other non-determinism sources too: freeze time (`Intl` dates via a fixed
 **Biome** is format + lint, non-negotiable in CI. No `any` (TS strict), no bare literals where [`t()`](../i18n/README.md) belongs, no raw hex where [tokens](../design-system/README.md) belong — caught mechanically, not in review.
 
 ## What CI runs
+After dependency installation, the current [web job](../../../../.github/workflows/ci.yml) runs these commands from the repository root:
+
 ```
-bun run lint                                 # Biome — format + lint, TS strict: the gate
+bun run lint                                 # Biome — format + lint
 bun run typecheck                            # tsc --noEmit
 bun test                                     # unit + component (source-contract checks)
 bun run --filter @omm/web build               # production build
 ```
 The [web job](../../../../.github/workflows/ci.yml) runs `ubuntu-latest` with a **10-minute** job timeout, no step timeouts, no `if`, and fail-fast with the default shell. [The guard](../../../../scripts/lib/e2e-ci.test.ts) pins what a silent mutation could break — the runner, an unconditional job that propagates failure, the 10-minute job timeout held above the sum of any step timeouts, each of the four commands exactly once in that order (unconditional, fail-fast, default shell), and no `--update-snapshots` flag — but it does **not** pin the absence of step timeouts: only their total is bounded by the job timeout. **Playwright is not in CI**: the E2E and visual suites are CI-ready — config, scripts, nine specs, eight baselines and the guard all exist — but no CI job executes a browser.
 
-The browser steps were refused: a platform PR cannot add `run:` steps to a workflow. The merge gate's refusal, verbatim:
+CI browser execution remains a **pending workflow change**, not a shipped capability. The workflow is the source of truth; the guard's comments describe a prior external-policy refusal, not a repository-enforced restriction or evidence of a browser run.
 
-> new run: step (3 more than the base) — outside the declared transforms (T1 pin, T2 narrow, T3 template) — a platform PR may only pin a workflow action to a sha or narrow its permissions
-
-**Authorized-PR recipe** — what an authorized workflow change adds to the web job, in order, with the guard's job contract re-extended in the same PR (including re-pinning the guard's expected job timeout): raise the job's `timeout-minutes` from 10 to **25** — the step timeouts below sum to 20, so the current 10 both has Actions kill the job mid-run and fails the guard's job-timeout-above-step-sum check — then `bunx playwright install --with-deps chromium` (`timeout-minutes: 5`), `bun run --filter @omm/web test:e2e` (`timeout-minutes: 10`), `bun run --filter @omm/web test:e2e:shop` (`timeout-minutes: 5`), and `actions/upload-artifact@v4` with `name: playwright-artifacts`, `if: failure()`, `path: apps/web/test-results`, `if-no-files-found: ignore` — failure screenshots and first-retry traces under that stable artifact name; an install failure may leave none, and ignoring missing files must not hide the original failure.
+**Proposed authorized-PR recipe — not shipped:** add browser steps to the web job, in order, with the guard's job contract re-extended in the same PR (including re-pinning the guard's expected job timeout). Raise the job's `timeout-minutes` from 10 to **25** — the proposed step timeouts sum to 20, exceeding the current job budget and failing the guard's job-timeout-above-step-sum check — then add `bunx playwright install --with-deps chromium` (`timeout-minutes: 5`), `bun run --filter @omm/web test:e2e` (`timeout-minutes: 10`), `bun run --filter @omm/web test:e2e:shop` (`timeout-minutes: 5`), and `actions/upload-artifact@v4` with `name: playwright-artifacts`, `if: failure()`, `path: apps/web/test-results`, `if-no-files-found: ignore`. This would upload failure screenshots and first-retry traces under that stable artifact name; an install failure may leave none, and ignoring missing files must not hide the original failure. Neither these steps nor the artifact upload exist in the current web job; validate them in Actions before claiming post-landing coverage.
 
 **CI baselines are read-only.** `updateSnapshots: 'none'` under `CI` rejects missing or mismatched baselines instead of regenerating them. The workflow never passes an update flag. Local Playwright snapshot-update defaults remain unchanged; intentional baseline changes must be reviewed, not generated by CI.
 
-Green CI is the merge bar. Lint, typecheck, unit tests and the build are the same commands local, hook, and CI ([CLAUDE.md](../../../../CLAUDE.md)); the **local gate excludes browser installation and execution — and so does CI today**. Its source-contract tests guard wiring, not browser behavior: local green is neither browser proof nor evidence of a GitHub Actions run.
+Green CI is required for merging. The local [`bin/check`](../../../../bin/check) web lane in [`scripts/lib/gate.ts`](../../../../scripts/lib/gate.ts) runs the same four commands shown above; the full local gate also includes Rust and content checks. **No committed Git hook setup invokes the gate.** The local gate excludes browser installation and execution — and so does CI today. The [source-contract guard](../../../../scripts/lib/e2e-ci.test.ts) checks wiring, not browser behavior: local green is neither browser proof nor evidence of a GitHub Actions run.
+
+The [web package scripts](../../../../apps/web/package.json) keep the runners separate: `bun run --filter @omm/web test` invokes only `bun test`, not lint, typecheck, build or Playwright. `test:e2e` invokes `playwright test`; `test:e2e:shop` enables and selects the shop suite. The [Playwright config](../../../../apps/web/playwright.config.ts) uses `.e2e.ts` filenames so Bun does not discover browser specs, caps Chromium at two workers, and starts Vite with `VITE_USE_MOCKS=true`.
 
 Locally, [`bin/setup`](../../../../bin/setup) installs Chromium. [`bin/test-e2e`](../../../../bin/test-e2e) runs the default script only; it does **not** enable cash-shop tests. Run both modes explicitly from the repository root for full browser coverage (with Chromium and OS dependencies installed):
 
@@ -78,7 +80,7 @@ Everything above compounds for agents: typed boundaries mean a wrong shape **won
 - **Assert on [`t()`](../i18n/README.md) output** — `⟦key⟧` in a test is a failure.
 - **Determinism is a test requirement** — dark-only theme, frozen time, stubbed queries, fixed viewport.
 - **Biome is the gate** — TS strict, no `any`, no bare literals, no raw hex.
-- **Same commands local / hook / CI** — the web job's four base commands are identical everywhere; browser suites run locally only (CI-ready, not CI-enforced). [`bin/test-e2e`](../../../../bin/test-e2e) runs only the default suite; use `bun run --filter @omm/web test:e2e:shop` for shop-enabled coverage. Green CI is the merge bar.
+- **Keep gate and browser proof separate** — the local web lane and current CI web job run lint, typecheck, Bun tests and build; neither runs Playwright, and no committed Git hook setup invokes the gate. `bun run --filter @omm/web test` is Bun-only. [`bin/test-e2e`](../../../../bin/test-e2e) runs only `test:e2e`; also run `bun run --filter @omm/web test:e2e:shop` for shop-enabled coverage. Green CI is required for merging; a local run is not a CI result.
 
 ## Links
 [app-shell](../app-shell/README.md) · [design-system](../design-system/README.md) · [i18n](../i18n/README.md) · [data-layer](../data-layer/README.md) · [index](../README.md) · [architecture/09](../../../architecture/09-operator-web.md) · [game-server](../../game-server/README.md) · [mock backend](../../../../apps/web/src/lib/mock) · [CLAUDE.md](../../../../CLAUDE.md)
