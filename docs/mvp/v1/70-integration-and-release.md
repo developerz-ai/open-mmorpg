@@ -9,7 +9,7 @@ Every track's Definition of Done: [DB](10-database.md), [Engine](20-game-engine.
 | Batch | Scope | Definition of Done |
 |---|---|---|
 | **R1 · Vertical slice wiring** | Boot the whole stack (`bin/dev`): Yugabyte + Dragonfly + gateway + 2 shards + worldsvc + client + web + slice content. | One command brings up a playable realm locally. |
-| **R2 · Headless E2E** | The [agent-drive harness](40-game-client.md#c9--agent-drive-harness) plays the slice: create char → move → fight → loot → AH → relog, asserting authoritative state at each step. | Deterministic E2E test green in CI, no GPU. |
+| **R2 · Headless E2E** | The [agent-drive harness](40-game-client.md#pr-batches-100-prs) plays the slice: create char → move → fight → loot → AH → relog, asserting authoritative state at each step. | Deterministic E2E test green in CI, no GPU. |
 | **R3 · Scale & handoff proof** | Two shards autoscale under load; a player crosses a zone boundary seamlessly; no dupes under concurrent economy load. | Load test passes; handoff + anti-dupe asserted. |
 | **R4 · Web ↔ game proof** | The E2E character appears on the [armory](50-web-client.md); its AH listing is browsable; slice events hit the world feed. | Cross-plane test: game state → worldsvc → web, verified. |
 | **R5 · Security pass** | [Security review](../../specs/game-server/security/README.md): forged intents/movement rejected, rate limits hold, no secrets leaked, sandbox contains a hostile script. | Adversarial tests pass; `/security-review` clean on the diff. |
