@@ -23,7 +23,7 @@
 ## SOLID / SRP (hard rule)
 - **One component, one job.** Files ≤300 LOC. Lift shared UI to `packages/ui`.
 - **Thin routes** — a route parses params, calls a service/query, renders. Data-fetch logic lives in query hooks, not components.
-- **No hardcoded strings** — everything through `t()` ([i18n](#i18n) below).
+- **No hardcoded strings** — everything through `t()` ([i18n](#i18n-from-day-one) below).
 - **Server state only via TanStack Query** — never hand-rolled fetch caches.
 - Custom typed errors, not bare throws. Zod-validate every API response.
 
