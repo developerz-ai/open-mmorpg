@@ -135,7 +135,7 @@ impl World {
         self.step_with(inputs, abilities, |_| {});
     }
 
-    /// [`World::step`] with `on_system` called just before each system runs, so a
+    /// [`World::step`] with `on_system` called by each dispatched system arm, so a
     /// test can record the executed sequence and compare it to [`System::ORDER`].
     fn step_with(
         &mut self,
@@ -144,13 +144,27 @@ impl World {
         mut on_system: impl FnMut(System),
     ) {
         for system in System::ORDER {
-            on_system(system);
             match system {
-                System::IngestIntents => self.ingest_intents(inputs),
-                System::Movement => integrate_all(self),
-                System::ResolveCasts => self.resolve_casts(inputs, abilities),
-                System::TickAuras => self.tick_auras(self.now),
-                System::Prune => self.prune_dead(),
+                System::IngestIntents => {
+                    on_system(System::IngestIntents);
+                    self.ingest_intents(inputs);
+                }
+                System::Movement => {
+                    on_system(System::Movement);
+                    integrate_all(self);
+                }
+                System::ResolveCasts => {
+                    on_system(System::ResolveCasts);
+                    self.resolve_casts(inputs, abilities);
+                }
+                System::TickAuras => {
+                    on_system(System::TickAuras);
+                    self.tick_auras(self.now);
+                }
+                System::Prune => {
+                    on_system(System::Prune);
+                    self.prune_dead();
+                }
             }
         }
         self.now = self.now.next();
@@ -410,6 +424,11 @@ mod tests {
             |system| executed.push(system),
         );
         assert_eq!(executed, System::ORDER.to_vec());
+        assert_eq!(
+            w.get(id).unwrap().pos,
+            Position(at(TICK_DT, 0.0)),
+            "the dispatched Movement arm must run after the dispatched IngestIntents arm"
+        );
         assert_eq!(w.now(), Tick(1));
     }
 
