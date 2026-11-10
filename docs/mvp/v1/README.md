@@ -64,6 +64,6 @@ This plan is built to be executed by an **AI army** — a fleet of Claude agents
 7. **Horizontal from day 1** — autoscaled shards, no realm caps, no queues.
 
 ## Scope discipline — what v1.0.0 is NOT
-Level cap for the slice is small (not the [full 1→300 arc](../../specs/gameplay/progression/ages.md)); one zone, one dungeon, one raid-lite; no housing, no professions depth, no era-server tooling, no full talent trees. Those are **v1.x content on the finished foundation** — logged in [70](70-integration-and-release.md#post-v1-backlog), not built now. **We build primitives once; we build content forever.**
+Level cap for the slice is small (not the [full 1→300 arc](../../specs/gameplay/progression/ages.md)); one zone, one dungeon, one raid-lite; no housing, no professions depth, no era-server tooling, no full talent trees. Those are **v1.x content on the finished foundation** — logged in [70](70-integration-and-release.md#post-v1-backlog-explicitly-not-in-v100), not built now. **We build primitives once; we build content forever.**
 
 > Each track doc ≤ ~2 screens: the big idea, the PR batches, the interfaces it owns, the Definition of Done, and links. Grows past that → split it. Same SRP rule as the code.
