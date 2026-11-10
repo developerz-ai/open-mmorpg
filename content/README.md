@@ -1,9 +1,9 @@
 # content/ — the data-driven game layer
 
 **Core is compiled (`crates/`); content is data (here).** Factions, classes,
-races, abilities, quests and zones are files, not code. Change one and the game
-changes with **no `cargo build`**. If altering a faction needs a recompile, the
-split is wrong.
+races, abilities, quests and zones are files, not code. Editing definitions
+within the supported schema needs **no `cargo build`**. If altering a faction
+needs a recompile, the split is wrong.
 
 This is how operators get the full thing to customize — add maps, retune rules,
 ship a total-conversion datapack — while our compiled core stays strong. The
@@ -11,6 +11,11 @@ bundle root is [`manifest.json`](manifest.json) (datapack metadata only); every
 entity lives as its own small file under a per-domain directory. The
 `omm-content-schema` crate assembles the tree via `load_manifest_dir()` and
 validates it against the core content API version.
+
+The shard currently loads and validates this datapack at boot and builds its
+runtime ability table from it. Loading a definition does not mean every domain
+is integrated into gameplay; universal runtime integration and datapack
+hot-reload are not implied. Restart the shard to pick up ability-data edits.
 
 ```
 content/
@@ -51,19 +56,23 @@ content/
     └── starting.json       #   starting_gold_copper
 
 assets/
-├── manifest.json           # Asset manifest
-├── meshes/                 # 3D models (glTF)
-├── textures/               # Textures (PNG/KTX2)
-└── audio/                  # Audio (Opus OGG)
+├── README.md               # Current inventory and planned asset workflow
+└── manifest.json           # Placeholder names only; payload files are absent
 ```
 
-Each domain directory is **recursively** auto-discovered: `load_domain_dir()`
-globs `**/*.json`, so the subdirectories above are **organizational only** — the
-loader keys every entity by its `id`, never its path. Drop a new `<id>.json`
+Asset directories, generation and hot-swapping are plans, not shipped payloads
+or workflows; see [assets/README.md](../assets/README.md).
+
+Each entity domain directory is **recursively** auto-discovered:
+`load_domain_dir()` reads all nested `.json` files, so the grouping
+subdirectories above are **organizational only** — JSON `id` fields are the
+keys for references, never filenames. Drop a new `<id>.json`
 anywhere under the right domain folder (or invent your own nesting) and it loads
 — no index to edit, no array to append. Files are read in sorted-path order, so
-the assembled manifest is deterministic. Because grouping is by `id`, moving a
-file between subdirs never changes what loads or how it cross-references.
+the assembled manifest is deterministic. Moving a file within its domain can
+change assembly order, but not its ID or cross-references. Economy uses fixed
+roots: `economy/auction-houses/` and `economy/trading-rules/` are recursive;
+starting gold is read specifically from `economy/starting.json`.
 
 → docs/architecture/05-ecs-and-scripting.md · docs/initial-idea/06-modding-and-extensibility.md
 
@@ -72,7 +81,7 @@ file between subdirs never changes what loads or how it cross-references.
 ### File Naming
 - Use kebab-case: `aurelian-concord.json`, `sunken-crypts.json`
 - One definition per file
-- IDs must match filename (without extension)
+- Match the filename to the JSON `id` (without extension) as an authoring convention; the loader does not enforce this match
 
 ### ID Stability
 - IDs are stable references across the entire content system
@@ -99,16 +108,16 @@ file between subdirs never changes what loads or how it cross-references.
 Before committing content changes, verify:
 
 - [ ] New entities are dropped as `<id>.json` in the right domain directory
-- [ ] All IDs are unique and match their filenames
+- [ ] IDs are unique within their domain; filenames match IDs by authoring convention
 - [ ] All cross-references resolve (no dangling IDs)
 - [ ] `cargo nextest run` passes (content-schema tests)
-- [ ] `bin/check` passes (full CI gate)
+- [ ] `bin/check` passes (full local gate, not the complete CI workflow)
 
 ## Common Pitfalls
 
-1. **Wrong directory**: A file placed outside its domain directory (or nested wrongly under `items/` / `economy/`) won't be discovered and is silently ignored.
+1. **Wrong domain root**: Files outside the recognized domain roots are not loaded. Nesting anywhere under `items/` or another entity domain is supported; files there are parsed as that domain's type, not silently ignored. Economy requires the specific roots described above.
 2. **Dangling cross-reference**: Referencing an ID that doesn't exist causes validation to fail.
-3. **ID mismatch**: Filename must match the ID inside the file (or the file won't be found).
+3. **Filename mistaken for an ID**: Lookup and cross-references use the JSON `id`. A mismatched filename still loads, but violates the authoring convention and can confuse readers.
 4. **Missing array defaults**: Forgetting `#[serde(default)]` on optional fields causes parse errors.
 
 ## Example: Adding a New Race
@@ -143,6 +152,6 @@ Before committing content changes, verify:
 # Run content-schema tests
 cargo nextest run
 
-# Run full check
+# Run the full local gate (CI has separate workflow steps)
 bin/check
 ```
