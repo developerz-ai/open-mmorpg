@@ -28,12 +28,9 @@ This document describes the completed implementation of the data-driven content 
 
 ### 2. Protocol ID Types (PR1)
 - Added newtypes to `crates/protocol/src/ids.rs`:
-  - `RaceId`
-  - `ClassId`
-  - `AbilityId`
   - `ItemDefId`
-  - `QuestId`
   - `ZoneId`
+- Note: `RaceId`, `ClassId`, `AbilityId` and `QuestId` were added here originally but later removed as unused. `AbilityId` now lives only in `ecs-core` as a `u32`.
 
 ### 3. Content Directory Structure (PR2)
 - Created subdirectories under `content/`:
