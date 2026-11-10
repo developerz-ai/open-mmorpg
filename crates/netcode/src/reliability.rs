@@ -4,7 +4,8 @@
 //! reliability layer on top: wrapping 16-bit sequence numbers and a 32-entry ack
 //! bitfield. This module is **pure math** — no sockets — so every edge case
 //! (wrap-around, gaps, duplicates) is unit-tested deterministically. The socket
-//! wiring lives in `apps/shard` / `apps/gateway`.
+//! layer that carries these seq/ack frames is `crates/transport` (`omm-transport`,
+//! `UdpTransport` in `udp.rs`); the reliability math stays here.
 
 /// Half the sequence space; the threshold for "newer than" comparisons.
 const HALF: u16 = 1 << 15;
