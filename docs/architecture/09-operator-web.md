@@ -59,5 +59,7 @@
 - Feature flags: registration open/closed, cash-shop on/off (operator's choice), armory public/private.
 
 ## Testing
-- `bun test` (unit + component checks); integration against a running gateway in CI.
+- Local gate: `bin/check` runs the web lane defined in [`scripts/lib/gate.ts`](../../scripts/lib/gate.ts) — lint, typecheck, Bun tests and build — without browser installation or execution. `bun run --filter @omm/web test` runs only Bun tests, not the full gate or Playwright.
+- The current [CI web job](../../.github/workflows/ci.yml) runs those four checks after dependency installation; it does **not** run Playwright. CI browser coverage remains pending; local success is not evidence of a GitHub Actions run.
+- Browser verification is separate: `bun run --filter @omm/web test:e2e` and `bun run --filter @omm/web test:e2e:shop` ([scripts](../../apps/web/package.json)). Both use `VITE_USE_MOCKS=true` in the [Playwright config](../../apps/web/playwright.config.ts), not a live gateway/worldsvc. See [testing & DX](../specs/web-client/testing-dx/README.md) for prerequisites and read-only baseline verification.
 - Keep it **AI-testable** (Playwright) — deterministic dark theme (no toggle) makes screenshot diffs stable.
