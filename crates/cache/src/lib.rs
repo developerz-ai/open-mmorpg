@@ -1,5 +1,6 @@
-//! Dragonfly-backed ephemeral state: presence, positions-in-flight, chat fan-out,
-//! rate-limit counters — anything that is safe to lose on restart.
+//! In-memory ephemeral key/value and presence state, safe to lose on restart.
+//! [`MemoryCache`] is the sole shipped implementation. The Dragonfly backend is
+//! not yet implemented (planned: [D6](../../../docs/mvp/v1/10-database.md#pr-batches-100-prs)).
 //!
 //! # The anti-dupe boundary
 //!
@@ -13,8 +14,8 @@
 use omm_protocol::CharacterId;
 use std::collections::HashMap;
 
-/// Ephemeral key/value + presence store. The trait is what the shard depends on;
-/// the Dragonfly client is one implementation, [`MemoryCache`] is another (tests).
+/// Ephemeral key/value + presence store with no ownership-write API.
+/// [`MemoryCache`] is the sole shipped implementation.
 pub trait EphemeralStore {
     /// Set an ephemeral string value. Loss on restart is acceptable by design.
     fn set(&mut self, key: &str, value: &str);
