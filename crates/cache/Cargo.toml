@@ -1,6 +1,6 @@
 [package]
 name = "omm-cache"
-description = "Dragonfly access — ephemeral/broadcast state only. Cannot write ownership."
+description = "In-memory ephemeral key/value and presence store with no ownership-write API."
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
