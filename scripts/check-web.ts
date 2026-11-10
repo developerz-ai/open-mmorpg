@@ -1,10 +1,11 @@
 #!/usr/bin/env bun
 /**
  * bin/check-web — run all web quality gates.
- * Typecheck → Biome check → Unit tests.
+ * Typecheck → Biome check → Unit tests (apps/web + packages/ui + packages/i18n).
  */
 import { runInherit } from './lib/cmd.ts';
 import { log } from './lib/log.ts';
+import { WEB_TEST_CMD } from './lib/web-tests.ts';
 
 interface Step {
   name: string;
@@ -14,7 +15,7 @@ interface Step {
 const steps: Step[] = [
   { name: 'web: typecheck', cmd: ['bun', 'run', '--filter', '@omm/web', 'typecheck'] },
   { name: 'web: lint', cmd: ['bun', 'run', 'lint'] },
-  { name: 'web: test', cmd: ['bun', 'run', '--filter', '@omm/web', 'test'] },
+  { name: 'web: test', cmd: WEB_TEST_CMD },
 ];
 
 let failed = 0;
