@@ -6,7 +6,7 @@ The operator portal (`apps/web`) is a **single codebase, many branded deployment
 
 ## Quick Start
 
-1. **Clone & install** → `bin/setup` (handles Bun deps, builds packages)
+1. **Clone & install** → `bin/setup` (checks prerequisites, installs Bun dependencies, warms the Rust build, optionally starts Yugabyte + Dragonfly via Docker, and installs Playwright browsers; does not run migrations)
 2. **Configure** → Copy `.env.development` to `.env.production.local` and set your values
 3. **Build** → `bun run --filter @omm/web build`
 4. **Deploy** → Serve `apps/web/dist/` with any static host (Nginx, Cloudflare, Netlify, etc.)
@@ -222,9 +222,11 @@ This routes the API client to in-memory mocks (`apps/web/src/lib/mock-api/`) —
 - [ ] Test with `VITE_USE_MOCKS=false` (against a real backend)
 - [ ] Verify branding (logo, accent color, tagline)
 - [ ] Test feature flags (registration, cash shop, etc.)
-- [ ] Run `bin/check` (lint, typecheck, tests pass)
+- [ ] Run `bin/check` (Rust fmt/clippy/all-feature tests, content validation and content-schema benchmark compilation, web lint/typecheck/Bun tests/build)
 - [ ] Build production bundle: `bun run --filter @omm/web build`
 - [ ] Check `apps/web/dist/` size and contents
+
+`bin/check` is the local gate; schema benchmarks are compiled, not executed, and Playwright browser tests are not included. CI runs its own workflow commands and additionally runs live-Postgres integration tests. A green local gate is not proof that CI passed.
 
 ### Runtime Checks
 

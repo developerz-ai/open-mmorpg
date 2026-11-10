@@ -5,13 +5,15 @@ Thanks for helping build the best open-core MMORPG engine. This repo is engineer
 ## Get started
 
 ```
-bin/setup            # prereqs → deps → docker (Yugabyte+Dragonfly) → migrate
-bin/dev [target]     # boot gateway/shard/client/web with reload
-bin/check            # the gate: rust (fmt/clippy/tests --all-features) + content validation + web (lint/typecheck/test/build)
+bin/setup            # check prereqs → Bun deps → Rust build → optional Docker → Playwright browsers
+bin/dev [target]     # default/all: gateway + shard + web
+bin/check            # Rust fmt/clippy/all-feature tests + content validation/schema bench compile + web lint/typecheck/Bun tests/build
 bin/fmt              # cargo fmt + biome --write
 ```
 
-`bin/check` is the local gate — it runs the same checks as CI's rust and web jobs, plus content validation. It does not replace GitHub Actions: CI runs its own workflow commands (plus a live-Postgres integration job), so a green local gate is not a CI result. The rule stands: if `bin/check` is red, your change isn't mergeable; if it's green, you're ready for CI and review.
+`bin/setup` attempts to start Yugabyte + Dragonfly when Docker is available; it does not run migrations. `bin/dev` accepts `gateway`, `shard`, `worldsvc`, `client`, `web`, or `all`. Rust targets use `cargo run`, without automatic reload; the web target uses its dev server.
+
+`bin/check` is the local gate — it runs the same checks as CI's rust and web jobs, plus content validation and content-schema benchmark compilation (not benchmark execution). It does not run Playwright browser tests or install Git hooks. It does not replace GitHub Actions: CI runs its own workflow commands (plus a live-Postgres integration job), so a green local gate is not a CI result. The rule stands: if `bin/check` is red, your change isn't mergeable; if it's green, you're ready for CI and review.
 
 Scripts live in `scripts/*.ts` (Bun TypeScript); the `bin/*` entries are thin shims that call them. Edit the `.ts`, not the shim.
 

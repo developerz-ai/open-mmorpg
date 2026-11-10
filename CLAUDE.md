@@ -14,7 +14,7 @@ The best **open-core MMORPG engine** · Rust (server + client) · Bun/SolidJS op
 This repo follows **developerz-ai gold standards**: `../gold-standards-in-ai/docs/`. Defaults from there apply unless a doc here overrides. Highest-value: `00-philosophy.md`, `stack/rust-apis.md`, `architecture/solid-srp.md`, `writing-for-agents/`.
 
 ## Binding decisions (do NOT re-litigate)
-1. **Rust everywhere** — server, client (Bevy), tooling, MCP. Exception: `apps/web` is Bun+SolidJS (standard web product). → `docs/initial-idea/03-tech-stack.md`
+1. **Rust everywhere** — server, client (Bevy target), tooling, MCP. The current `apps/client` is a headless prediction demo; the headful Bevy/wgpu client is not yet implemented (planned: C5/C8) → [client batches](docs/mvp/v1/40-game-client.md#pr-batches-100-prs). `engine-core` already uses Bevy app/ECS/reflection/time subcrates. Exception: `apps/web` is Bun+SolidJS (standard web product). → `docs/initial-idea/03-tech-stack.md`
 2. **Server-authoritative, always.** Client sends intent, never state.
 3. **Ownership writes → YugabyteDB directly, in a transaction.** Never via cache/bus. #1 anti-dupe rule. → `docs/architecture/04-data-and-consistency.md`
 4. **Content is data, core is compiled.** Factions/classes/quests change with no recompile. → `docs/architecture/05-ecs-and-scripting.md`
@@ -24,11 +24,11 @@ This repo follows **developerz-ai gold standards**: `../gold-standards-in-ai/doc
 
 ## Architecture
 - **Core is compiled (`crates/`), content is data (`content/`).** If changing a faction needs `cargo build`, the split is wrong.
-- **`persistence` is the only crate that writes ownership.** `cache` (Dragonfly) has no ownership-write API — the dupe path must not compile.
+- **`persistence` is the only crate that writes ownership.** `cache` currently provides `MemoryCache`, with no ownership-write API — the dupe path must not compile. The Dragonfly cache backend is not yet implemented (planned: D6) → [database batches](docs/mvp/v1/10-database.md#pr-batches-100-prs).
 - **`sim` is deterministic** — same inputs → same state (replay, anti-cheat re-sim).
-- **`ecs-core` + `content-schema` are pure** — types + logic, no I/O.
+- **`ecs-core` is pure** — types + logic, no I/O. `content-schema` has pure types/validation and byte-based manifest parsing, but its split-tree loader performs filesystem I/O to load and validate the committed datapack.
 - Wire types live in `crates/protocol` — single source of truth server↔client.
-- Topology: edge → `gateway` → `shard`(s) → cross-shard bus + `worldsvc`; state in Yugabyte (durable) + Dragonfly (ephemeral). → `docs/architecture/02-server-topology.md`
+- Target topology: edge → `gateway` → `shard`(s) → cross-shard bus + `worldsvc`; state in Yugabyte (durable) + Dragonfly (ephemeral). The cache implementation is currently `MemoryCache`; the Dragonfly cache backend is not yet implemented (planned: D6) → [database batches](docs/mvp/v1/10-database.md#pr-batches-100-prs). Docker already provisions Dragonfly. → `docs/architecture/02-server-topology.md`
 
 ## Coding Rules
 ### Think before coding
@@ -57,11 +57,11 @@ This repo follows **developerz-ai gold standards**: `../gold-standards-in-ai/doc
 - → `docs/architecture/09-operator-web.md`
 
 ## Commands
-> Pre-scaffold — these are the target trio (create with the monorepo scaffold). Keep local, hook, and CI on the same commands.
+The `bin/*` shims invoke the Bun TypeScript scripts in `scripts/`.
 ```
-bin/setup            # prereqs → deps → docker (Yugabyte+Dragonfly) → migrate
-bin/dev [target]     # boot gateway/shard/client/web with reload
-bin/check            # the gate: rust (fmt/clippy/tests --all-features) + content validation + web (lint/typecheck/test/build)
+bin/setup            # check prereqs → Bun deps → Rust build → optional Docker → Playwright browsers
+bin/dev [target]     # default/all: gateway + shard + web
+bin/check            # Rust fmt/clippy/all-feature tests + content validation/schema bench compile + web lint/typecheck/Bun tests/build
 bin/fmt              # cargo fmt + biome --write
 
 cargo nextest run                    # Rust tests (fast)
@@ -69,20 +69,24 @@ cargo clippy --all-targets -D warnings
 bun run --filter @omm/web test       # web tests
 ```
 
+`bin/setup` attempts to start Yugabyte + Dragonfly when Docker is available; it does not run migrations. `bin/dev` accepts `gateway`, `shard`, `worldsvc`, `client`, `web`, or `all`. Rust targets use `cargo run`, without automatic reload; the web target uses its dev server.
+
+`bin/check` is the local gate: Rust fmt, all-feature clippy/tests, content validation and content-schema benchmark compilation (not execution), plus web lint/typecheck/Bun tests/build. It does not run Playwright browser tests, and no committed Git hook setup invokes it. CI runs its own workflow commands and additionally runs live-Postgres integration tests; a green local gate is not proof that CI passed.
+
 ## Clone setup (AI agents — read on a fresh checkout)
 Local agent tooling is **git-ignored** (per-developer, regenerated — never committed). After `git clone`, bootstrap it yourself; a fresh tree won't have it:
 - **`.codegraph/`** — CodeGraph symbol index. Absent → grep/Read still work, but `codegraph_explore` / `codegraph explore "…"` won't. Rebuild: `codegraph init` at the repo root (picked up live, no restart). Prefer it over grep once present (→ global CLAUDE.md § CodeGraph).
 - **`.claude-task-master/`** — Task-master local state. Regenerated by the tool; nothing to restore.
-- **App deps + services** — run `bin/setup` (prereqs → Rust/Bun deps → Docker Yugabyte+Dragonfly → migrate). Then `bin/check` must pass before you touch code.
+- **App deps + services** — run `bin/setup` (checks prerequisites → installs Bun deps → warms the Rust build → optionally starts Docker Yugabyte+Dragonfly → installs Playwright browsers; no migrations). Then `bin/check` must pass before you touch code.
 - **Secrets** — `.env*` are git-ignored; never commit real secrets.
 
 ## Layout (target — see docs/architecture/01-monorepo-layout.md)
-- `crates/*`   Rust libs: `protocol` `ecs-core` `sim` `netcode` `persistence` `cache` `scripting` `content-schema` `errors` `module-api` `modules`
-- `apps/*`     binaries: `gateway` `shard` `client` `mcp` `worldsvc` · `web` (Bun/Solid)
+- `crates/*`   14 Rust libs: `protocol` `ecs-core` `sim` `netcode` `transport` `persistence` `cache` `scripting` `content-schema` `errors` `world` `engine-core` `module-api` `modules`
+- `apps/*`     five Rust binaries: `gateway` `shard` `client` (headless prediction demo) `mcp` `worldsvc` · separate `web` (Bun/Solid)
 - `packages/*` TS shared for web: `i18n` `ui`
 - `modules/*`  COMPILED gameplay modules — fork adds features w/o core edits; `bin/new-module <name>` scaffolds one (→ `docs/architecture/10-modules.md`)
 - `content/*`  data-driven game content (no recompile) + `manifest.json`
-- `assets/*`   glTF / heightmaps / textures / audio (AI-generated, zstd)
+- `assets/*`   only `README.md` and `manifest.json` ship; referenced placeholder payloads are absent. glTF / heightmaps / textures / audio directories, AI generation, zstd delivery and hot-swapping are planned, not shipped.
 - `docs/*`     `initial-idea/` (spec) · `architecture/` (design + `decisions/` ADRs)
 
 ## Where to look (load on demand)
