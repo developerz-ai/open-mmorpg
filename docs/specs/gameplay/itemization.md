@@ -3,7 +3,7 @@
 > Gear is the currency of accomplishment. Blizzard debased it two ways — obsoleting raid epics in an hour ([pillars](00-design-pillars.md) #2) and turning best-in-slot into a slot-machine you can never finish ([pillars](00-design-pillars.md) #13). We restore both: a **30-level relevance window** and **deterministic, finishable loot**. → [economy](../game-server/economy/README.md) for the transactional plumbing.
 
 ## The item model
-- **Item level (iLvl)** is the single power scalar; slot budgets distribute it across [stats](#stats). Deterministic, legible, sim-able.
+- **Item level (iLvl)** is the single power scalar; slot budgets distribute it across [stats](#stats-legible-wrath-clean). Deterministic, legible, sim-able.
 - **Newtyped** end to end (`ItemId`, `ItemLevel`) — no raw primitives ([CLAUDE.md](../../../CLAUDE.md)).
 - **Definitions are [data](../game-server/content-scripting/README.md)** — new items ship without a recompile.
 - **Ownership lives only in a [persistence](../game-server/persistence/README.md) transaction** — the anti-dupe rule; loot/craft/trade are transactional & idempotent ([economy](../game-server/economy/README.md)).
