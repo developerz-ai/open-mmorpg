@@ -24,6 +24,8 @@
 | **S11 · `apps/worldsvc`** | Cross-shard services: chat, guild, auction house, world feed — the read/social plane the web consumes. | [02](../../architecture/02-server-topology.md) | Web armory/AH/feed read from worldsvc projections. |
 | **S12 · Security & authority** | Movement validation, rate limits, input validation, re-sim anti-cheat. **Client never trusted.** | [security](../../specs/game-server/security/README.md) · [08](../../architecture/08-security-anticheat.md) | Forged movement/intents rejected; re-sim catches divergence. |
 
+**Persisted replay format:** S12 owns `InputLog`'s persisted serde JSON form; its shape remains unversioned until that batch.
+
 ## Interfaces this track owns
 - **`crates/sim`** — the deterministic simulation, **shared verbatim with [client](40-game-client.md)** for prediction.
 - **Gateway/worldsvc HTTP contracts** — the server↔[web](50-web-client.md) contract (realm status, armory, AH, feed).
