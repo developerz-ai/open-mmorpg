@@ -10,7 +10,7 @@
 ## Anti-dupe (the type-level guarantee)
 - Ownership changes → **one Yugabyte transaction**, atomic, idempotent, never via cache/bus ([persistence](../persistence/README.md)).
 - The [`cache`](../../../../crates/cache/src/lib.rs) crate has **no API** that can express an ownership write — the dupe path won't compile.
-- `proptest` invariants run continuously: inventory conservation, double-entry ledger sums to zero ([economy](../economy/README.md)).
+- Invariants to `proptest` (planned: [db-track D5/D7](../../../mvp/v1/10-database.md)): inventory conservation, double-entry ledger sums to zero ([economy](../economy/README.md)).
 
 ## Distilled from the references
 | Source | Lesson | Our verdict |
