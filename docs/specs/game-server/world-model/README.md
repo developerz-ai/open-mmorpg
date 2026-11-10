@@ -1,12 +1,14 @@
 # World Model
 
-> One spatial index serves three jobs: **interest management** (who sees whom), **streaming** (what the client loads), and **shard boundaries** (who a shard owns). → [architecture/06](../../../architecture/06-world-and-assets.md)
+> **Target design:** one spatial index serves three jobs: **interest management** (who sees whom), **streaming** (what the client loads), and **shard boundaries** (who a shard owns). → [architecture/06](../../../architecture/06-world-and-assets.md)
 
-## What it does
+## What it does (target design)
 Partitions each zone by a **quadtree** over world XY. Entities live in leaf cells; the tree drives area-of-interest, tile streaming, pathfinding tiles, and where one shard's authority ends and the next begins ([sharding](../sharding/README.md)).
 
+The quadtree-driven per-player interest loop and single-spatial-authority integration in the shard are **not yet implemented (planned: [S6](../../../mvp/v1/30-game-server.md#pr-batches-100-prs))**. The interim [interest-set filter](../../../../crates/netcode/src/aoi.rs) keeps snapshots whose IDs belong to a supplied `BTreeSet`; it does not compute proximity and is not a spatial index.
+
 ## Interest management (AoI)
-- Each player subscribes to its cell + neighbours within a **view radius**; the replication system emits a per-player entity set each tick, fed to the [netcode](../netcode/README.md) delta encoder.
+- **Target loop — not yet implemented (planned: [S6](../../../mvp/v1/30-game-server.md#pr-batches-100-prs)):** each player subscribes to its cell + neighbours within a **view radius**; the replication system emits a per-player entity set each tick, fed to the [netcode](../netcode/README.md) delta encoder.
 - Spatial hashing / quadtree lookup is **~30× faster** than all-pairs distance checks and makes bandwidth **O(nearby)**, not O(world) — the reason a shard can hold thousands online while each client sees a few hundred.
 - **Relevance + priority:** near/combat entities update every tick; distant/idle ones throttle to fit the per-client byte budget (self > combat > near > far).
 
@@ -15,9 +17,9 @@ Partitions each zone by a **quadtree** over world XY. Entities live in leaf cell
 - Navmesh tiled to match the quadtree so a shard loads only its tiles.
 - Line-of-sight / height / cover from collision geometry (the role WoW-emu **VMaps** play) derived from the same open source meshes — no client extraction step.
 
-## Streaming
+## Streaming (target design)
 - Tiles = glTF meshes + heightmap chunks; client streams by camera position → **no loading screens** ([world-and-assets](../../../architecture/06-world-and-assets.md)).
-- Server uses the identical partition for AoI and shard/zone boundaries — one mental model, client and server.
+- Target: server uses the identical partition for AoI and shard/zone boundaries — one mental model, client and server. This shared spatial-authority integration is **not yet implemented (planned: [S6](../../../mvp/v1/30-game-server.md#pr-batches-100-prs))**.
 
 ## Distilled from the references
 | Source | Lesson | Our verdict |
@@ -28,7 +30,7 @@ Partitions each zone by a **quadtree** over world XY. Entities live in leaf cell
 | Overwatch/Mirror spatial hashing | ~30× over distance checks; grid for uniform density, quadtree for clumpy. | **Adopt** quadtree (player density is clumpy — cities, world bosses). |
 
 ## Rules
-- The quadtree is the **single** spatial authority — interest, streaming, and shard boundaries all read it. Don't fork a second index.
+- **Target rule — not yet implemented (planned: [S6](../../../mvp/v1/30-game-server.md#pr-batches-100-prs)):** the quadtree is the **single** spatial authority — interest, streaming, and shard boundaries all read it. Don't fork a second index.
 - AoI cell size ≈ view radius; cell boundaries are the natural shard-handoff seam ([sharding](../sharding/README.md)).
 - Navmesh is baked, versioned, and shipped with content — never generated per-tick.
 
