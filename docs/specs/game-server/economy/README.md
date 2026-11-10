@@ -24,7 +24,7 @@ Runs cross-player value exchange. All state-of-record is durable ([persistence](
 | TrinityCore AH/mail/trade on MySQL with in-memory authority + async character saves | Non-atomic multi-step economy ops + the gap between memory and periodic DB save = the classic dupe vector. Global services assume single-process shared memory (a stated blocker to distribution). | **Replace** with single-transaction atomic moves committed before ack, and put global services in `worldsvc` over a cross-shard bus so distribution isn't blocked. |
 | GTA session merge/split dupe-guard (Take-Two patent) | Even Rockstar's seamless-world tech centers guarding against object duplication on session merge. | Our merge/split can't mint value: IDs reconcile, but value only moves via a Yugabyte txn ([sharding](../sharding/README.md)). |
 
-## Invariants (`proptest`, enforced continuously)
+## Invariants to `proptest` (planned: [db-track D5/D7](../../../mvp/v1/10-database.md))
 - **Inventory conservation** — total item count invariant across any trade/mail/craft.
 - **Currency ledger sums to zero** — double-entry; every credit has a matching debit.
 - **No unsourced spawn** — no op yields more than it consumed unless it's an explicit, sourced spawn (loot table, quest reward).
