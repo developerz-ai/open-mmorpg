@@ -167,7 +167,7 @@ impl ServerHooks for Milestones {
     }
 
     fn on_tick(&self, ctx: &TickCtx) {
-        if ctx.tick.0 % HEARTBEAT_TICKS == 0 {
+        if ctx.tick.0.is_multiple_of(HEARTBEAT_TICKS) {
             tracing::trace!(
                 target: "module::milestones",
                 tick = ctx.tick.0,
