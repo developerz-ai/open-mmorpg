@@ -14,6 +14,7 @@
 use crate::combat::Actor;
 use crate::hash::WorldHash;
 use crate::movement::{apply_move, integrate_all};
+use crate::schedule::System;
 use omm_ecs_core::{AbilityDef, AbilityId, EntityId};
 use omm_protocol::{CharacterId, Intent, Tick};
 use std::collections::BTreeMap;
@@ -111,16 +112,18 @@ impl World {
 }
 
 /// The deterministic tick schedule — the systems of [`crate::schedule::System`],
-/// run in [`ORDER`](crate::schedule::System::ORDER). This block is the executable
-/// form of that determinism contract.
+/// run in [`ORDER`](crate::schedule::System::ORDER). [`World::step`] iterates
+/// that constant and dispatches each [`System`] through an exhaustive `match`,
+/// so the order is data, not a hand-written call sequence, and a new variant
+/// does not compile until it is wired to a system here.
 impl World {
     /// Advance the world exactly one fixed tick under `inputs`.
     ///
-    /// Runs the fixed schedule — ingest intents, move, resolve casts, tick auras,
-    /// prune the dead — then stamps the next tick. `abilities` is the content
-    /// ability table (definitions are data; the engine only resolves them). The
-    /// same `inputs` and `abilities` always produce the same resulting state:
-    /// that is what replay and anti-cheat re-simulation rely on.
+    /// Runs every [`System`] in [`System::ORDER`] — ingest intents, move, resolve
+    /// casts, tick auras, prune the dead — then stamps the next tick. `abilities`
+    /// is the content ability table (definitions are data; the engine only
+    /// resolves them). The same `inputs` and `abilities` always produce the same
+    /// resulting state: that is what replay and anti-cheat re-simulation rely on.
     ///
     /// A rejected cast is not an error here — it is an ordinary outcome the
     /// caller reports to the client; the tick advances regardless, never panics.
@@ -129,16 +132,33 @@ impl World {
         inputs: &[(EntityId, Intent)],
         abilities: &BTreeMap<AbilityId, AbilityDef>,
     ) {
-        self.movement(inputs); // IngestIntents + Movement
-        self.resolve_casts(inputs, abilities); // ResolveCasts
-        self.tick_auras(self.now); // TickAuras
-        self.prune_dead(); // Prune
+        self.step_with(inputs, abilities, |_| {});
+    }
+
+    /// [`World::step`] with `on_system` called just before each system runs, so a
+    /// test can record the executed sequence and compare it to [`System::ORDER`].
+    fn step_with(
+        &mut self,
+        inputs: &[(EntityId, Intent)],
+        abilities: &BTreeMap<AbilityId, AbilityDef>,
+        mut on_system: impl FnMut(System),
+    ) {
+        for system in System::ORDER {
+            on_system(system);
+            match system {
+                System::IngestIntents => self.ingest_intents(inputs),
+                System::Movement => integrate_all(self),
+                System::ResolveCasts => self.resolve_casts(inputs, abilities),
+                System::TickAuras => self.tick_auras(self.now),
+                System::Prune => self.prune_dead(),
+            }
+        }
         self.now = self.now.next();
     }
 
-    /// `Move` intents set each actor's velocity, then every actor integrates one
-    /// fixed tick. A `Move` naming an absent entity is a no-op.
-    fn movement(&mut self, inputs: &[(EntityId, Intent)]) {
+    /// `Move` intents set each actor's velocity; integration happens in the
+    /// following [`System::Movement`]. A `Move` naming an absent entity is a no-op.
+    fn ingest_intents(&mut self, inputs: &[(EntityId, Intent)]) {
         for (id, intent) in inputs {
             if let Intent::Move { dir } = intent {
                 if let Some(actor) = self.actors.get_mut(id) {
@@ -146,7 +166,6 @@ impl World {
                 }
             }
         }
-        integrate_all(self);
     }
 
     /// `UseAbility` intents resolve through [`World::cast`]. The ability id is
@@ -378,6 +397,20 @@ mod tests {
         // Target is at zero health → prune_dead removed it.
         assert!(w.get(target).is_none());
         assert_eq!(w.len(), 1);
+    }
+
+    #[test]
+    fn step_runs_systems_in_schedule_order() {
+        let mut w = World::new();
+        let id = w.spawn(actor());
+        let mut executed = Vec::new();
+        w.step_with(
+            &[(id, Intent::Move { dir: at(1.0, 0.0) })],
+            &BTreeMap::new(),
+            |system| executed.push(system),
+        );
+        assert_eq!(executed, System::ORDER.to_vec());
+        assert_eq!(w.now(), Tick(1));
     }
 
     // ── World::state_hash ─────────────────────────────────────────────────────

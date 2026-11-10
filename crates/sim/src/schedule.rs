@@ -10,8 +10,10 @@
 //!
 //! 1. **Fixed system order.** Every tick runs [`System::ORDER`] — the same
 //!    systems in the same sequence. Reordering them changes outcomes, so the
-//!    order lives in one named constant guarded by a test, not implicit in the
-//!    body of [`World::step`].
+//!    order lives in one named constant, pinned by a test. [`World::step`]
+//!    iterates it and dispatches each [`System`] through an exhaustive `match`,
+//!    so a new variant is a compile error until wired; a `world.rs` test
+//!    records the executed systems and asserts they equal [`System::ORDER`].
 //! 2. **Deterministic iteration.** Every system walks the world in server-issued
 //!    [`EntityId`] order (the world's `BTreeMap`), so no result depends on a hash
 //!    seed or insertion order.
@@ -22,10 +24,10 @@
 //!
 //! `IngestIntents → Movement → ResolveCasts → TickAuras → Prune`
 //!
-//! - **IngestIntents** routes the id-sorted input batch: each entity's single
-//!   intent is dispatched to the system that applies it.
-//! - **Movement** turns `Move` intents into velocity and integrates every actor
-//!   one fixed tick, server-authoritative — the client asks, the server places.
+//! - **IngestIntents** applies the id-sorted input batch's `Move` intents to
+//!   actor velocity (absent entities are skipped); nothing moves yet.
+//! - **Movement** integrates every actor one fixed tick from the velocity
+//!   ingest set, server-authoritative — the client asks, the server places.
 //! - **ResolveCasts** resolves `UseAbility` intents through the data-driven cast
 //!   pipeline against the freshly-integrated world, so range and target checks
 //!   see this tick's committed positions.
@@ -41,16 +43,18 @@
 /// One system in the fixed tick [`ORDER`](System::ORDER). Variants are declared
 /// in execution order; see the [module docs](self) for the determinism contract.
 ///
-/// The enum is the machine-readable form of that contract: [`World::step`] runs
-/// exactly these systems in exactly this sequence, and a test pins the order so a
-/// careless reordering fails the build rather than silently breaking replay.
+/// The enum is the machine-readable form of that contract: [`World::step`]
+/// iterates [`System::ORDER`] and dispatches each variant through an exhaustive
+/// `match`, so a new system cannot be added without wiring it. Tests pin the
+/// order and the executed sequence so a careless reordering fails the build
+/// rather than silently breaking replay.
 ///
 /// [`World::step`]: crate::World::step
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub enum System {
-    /// Route the id-sorted input batch to the systems that apply each intent.
+    /// Apply the id-sorted batch's `Move` intents to actor velocity.
     IngestIntents,
-    /// `Move` intents → velocity, then integrate every actor one fixed tick.
+    /// Integrate every actor one fixed tick from its velocity.
     Movement,
     /// `UseAbility` intents → the deterministic `cast` pipeline.
     ResolveCasts,
@@ -62,8 +66,8 @@ pub enum System {
 
 impl System {
     /// The fixed per-tick execution order — the heart of the determinism
-    /// contract. [`World::step`](crate::World::step) runs exactly these, in
-    /// exactly this sequence, every tick.
+    /// contract. [`World::step`](crate::World::step) iterates this constant, so
+    /// it runs exactly these, in exactly this sequence, every tick.
     pub const ORDER: [System; 5] = [
         System::IngestIntents,
         System::Movement,
