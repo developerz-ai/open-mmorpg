@@ -1,8 +1,15 @@
 #!/usr/bin/env bun
 /**
  * bin/check — the local gate. Mirrors the ci.yml rust/web jobs and
- * content-validation.yml. The ci.yml rust-integration job (live database) is
+ * content-validation.yml; the web job is the base four (lint, typecheck,
+ * bun test, build). The ci.yml rust-integration job (live database) is
  * CI-only and deliberately not part of this gate.
+ *
+ * E2E is CI-ready but NOT CI-enforced: the web job has no Playwright steps
+ * (a platform PR cannot add run: steps). Run the browser suites locally —
+ * bin/test-e2e (default mode) plus bun run --filter @omm/web test:e2e:shop
+ * (cash-shop enabled); bin/setup installs Chromium. CI enforcement awaits
+ * an authorized workflow change.
  *
  * Local green is NOT evidence of a GitHub Actions run — CI is the source of
  * truth for merge status.
@@ -26,4 +33,4 @@ if (failed > 0) {
   process.exit(1);
 }
 log.ok(`all ${total} checks passed`);
-log.dim('Local green is not evidence of a GitHub Actions run — CI is the source of truth.');
+log.dim('Local green excludes browsers and is not GitHub CI proof — CI is the source of truth.');
