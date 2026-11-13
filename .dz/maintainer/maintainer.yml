@@ -36,6 +36,7 @@ pr:
   required_checks:
     - "rust (fmt · clippy · test)"
     - "web (lint · typecheck · test · build)"
+    - "rust (integration · live Postgres)"
   auto_merge: true
   # An outside contributor's pull request and a member's wait for a member.
   auto_merge_scope: own_and_dependency_bots
