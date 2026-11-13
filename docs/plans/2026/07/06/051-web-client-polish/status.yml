@@ -25,7 +25,12 @@ prs:
   - id: "051-5"
     title: "Accessibility audit + operator docs"
     branch: feat/web-accessibility-and-docs
-    status: pending
+    status: superseded
+    superseded_by: "052-4"
+    notes: >-
+      ../052-web-client-production-ready/status.yml records 052-4 as merged
+      via PR #55. See pr-05.md for the archived, non-operative original scope
+      and current disposition; this is not evidence of a completed browser audit.
 
 # Definition of Done
 criteria:
@@ -38,8 +43,24 @@ criteria:
   - description: "Character/guild pages show achievements, stats"
     status: pending
   - description: "Accessibility audit complete with automated tests"
-    status: pending
+    status: superseded
+    superseded_by: "052-4"
+    notes: >-
+      Original criterion archived, not fulfilled as a browser audit.
+      See ../052-web-client-production-ready/status.yml for 052-4's merged record.
+      Current coverage is source-level ARIA/keyboard/focus checks in
+      packages/ui/src/a11y.test.tsx and token-contrast tests in
+      packages/ui/src/contrast.test.ts, not browser auditing or WCAG certification.
+      The proposed axe installation/testing integration and route audit were not
+      delivered as an audit and are not required by this superseded batch;
+      bin/check runs neither axe route scans nor Playwright.
   - description: "Operator setup documentation complete"
-    status: pending
+    status: superseded
+    superseded_by: "052-4"
+    notes: >-
+      Retired with 051-5; see ../052-web-client-production-ready/status.yml.
+      Current operator guidance is docs/operations/operator-setup.md, covering
+      setup, configuration, branding, deployment and localization; the original
+      docs/operator/* targets are archived proposals, not pending deliverables.
   - description: "bin/check green, all PRs merged"
     status: pending

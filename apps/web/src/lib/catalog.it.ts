@@ -146,7 +146,7 @@ export const it: Catalog = {
       event: 'Evento',
       level: 'Livello {level} {race} {class}',
       guild: 'Gilda',
-      achievements: 'Achievement',
+      achievements: 'Imprese',
       itemLevel: 'Livello oggetto {value}',
       itemLevelCol: 'Liv',
       gear: 'Equipaggiamento',

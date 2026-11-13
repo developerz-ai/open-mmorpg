@@ -1,6 +1,6 @@
 [package]
 name = "omm-scripting"
-description = "Sandboxed script host (WASM/Lua) + mod loading for untrusted operator content."
+description = "Fuel-metered Wasmtime/WASM sandbox with a capability API for untrusted operator scripts."
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true

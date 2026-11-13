@@ -15,7 +15,10 @@ export default defineConfig({
   // `.e2e.ts` (not `.test`/`.spec`) so `bun test` never picks these up.
   testMatch: '**/*.e2e.ts',
   fullyParallel: true,
+  workers: 2,
   forbidOnly: !!process.env.CI,
+  // CI compares committed baselines; even a missing baseline must fail, not be created.
+  updateSnapshots: process.env.CI ? 'none' : undefined,
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? 'line' : 'list',
   use: {
@@ -24,6 +27,8 @@ export default defineConfig({
     viewport: { width: 1280, height: 800 },
     reducedMotion: 'reduce',
     trace: 'on-first-retry',
+    // A failing spec leaves a PNG in `test-results/` for the CI artifact upload.
+    screenshot: 'only-on-failure',
   },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
   webServer: {

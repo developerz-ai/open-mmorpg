@@ -9,25 +9,27 @@ These are the types and scripts that appear in every other track's `use` stateme
 [01 monorepo-layout](../../architecture/01-monorepo-layout.md) · [03 tech-stack](../../initial-idea/03-tech-stack.md) · [protocol spec](../../specs/game-server/netcode/README.md) · gold standards `stack/rust-apis.md`, `architecture/solid-srp.md`.
 
 ## PR batches (~100 PRs)
+These batches describe roadmap scope and acceptance goals, not a claim that every goal ships today. Current implementation notes are called out where the original target differs.
+
 | Batch | Scope | Definition of Done |
 |---|---|---|
 | **F1 · Workspace** | Root `Cargo.toml` workspace, all 9 crate + 6 app skeletons compile as empty libs/bins; `rust-toolchain.toml`; `.gitignore`. | `cargo build` green, zero warnings. |
 | **F2 · `errors`** | [`crates/errors`](../../../crates/errors): `thiserror` enums, stable client-facing codes, no leaked internals. One error type per domain boundary. | Every other crate depends on this for its `Result`. |
 | **F3 · Newtypes** | `AccountId`, `CharacterId`, `ItemId`, `ShardId`, `ZoneId`, `EntityId`, `Tick` — in [`protocol`](../../../crates/protocol) or a `types` module. `serde`, `Display`, `From` guarded. | No raw `u64` crosses a public API in any track. |
-| **F4 · `protocol`** | [`crates/protocol`](../../../crates/protocol): `Intent` (client→server), `Snapshot`/`Delta` (server→client), framing, versioned. `bincode`/`serde`. **Single source of truth server↔client.** | Serializes round-trip in tests; [30](30-game-server.md) & [40](40-game-client.md) both build against it. |
+| **F4 · `protocol`** | [`crates/protocol`](../../../crates/protocol): shared **serde message types**, the single source of truth server↔client. Current round-trip tests use JSON; custom binary framing lives in `netcode`, not a shipped `bincode` codec in `protocol`. | Versioned `Intent`/`Snapshot`/`Delta` contracts and round-trip coverage; [30](30-game-server.md) & [40](40-game-client.md) both build against them. |
 | **F5 · `content-schema` shell** | [`crates/content-schema`](../../../crates/content-schema): `CONTENT_API_VERSION`, the top-level `Manifest`/`Datapack` types, a `validate()` entry point that fails loud. | [60](60-content-and-assets.md) can add typed defs; boot-time validation compiles. |
-| **F6 · `ecs-core` shell** | [`crates/ecs-core`](../../../crates/ecs-core): Bevy ECS re-export, the shared component set skeleton, **pure — no I/O**. | [20](20-game-engine.md)/[30](30-game-server.md) share components; dep graph acyclic. |
-| **F7 · DX trio + CI** | `bin/setup`, `bin/dev`, `bin/check`, `bin/fmt`; GitHub Actions running the *same* `bin/check`; Docker compose for Yugabyte + Dragonfly. | `bin/check` = fmt-check + clippy `-D warnings` + nextest, green on the skeleton. |
+| **F6 · `ecs-core` shell** | [`crates/ecs-core`](../../../crates/ecs-core): shared **plain-struct components and pure systems — no I/O**, not a Bevy ECS re-export. Bevy app/ECS/reflection/time are used separately by `engine-core`. | [20](20-game-engine.md)/[30](30-game-server.md) share components; dep graph acyclic. |
+| **F7 · DX trio + CI** | `bin/setup`, `bin/dev`, `bin/check`, `bin/fmt`; Docker compose for Yugabyte + Dragonfly. Current GitHub Actions runs separate Rust/web commands plus a live-Postgres integration job, not `bin/check`. | Local `bin/check` green: Rust fmt + all-feature clippy/tests, content validation + schema benchmark compilation, web lint/typecheck/Bun tests/build. CI's separate jobs must also pass. |
 | **F8 · Docs seed** | `README.md` at repo root pointing at this plan; `CONTRIBUTING`/agent-onboarding note; the [doc conventions](01-workflow-and-parallelization.md#documentation) that every later PR follows. | A fresh agent can clone → `bin/setup` → `bin/check` → pick a track. |
 
 ## Interfaces this track owns (the contracts everyone imports)
 - **`crates/protocol`** — wire types. Changing these is a cross-track event; version it ([netcode](../../specs/game-server/netcode/README.md)).
 - **`crates/errors`** — the shared `Error`/`Result` vocabulary.
 - **`crates/content-schema`** — `CONTENT_API_VERSION` + manifest types ([content-scripting](../../specs/game-server/content-scripting/README.md)).
-- **`bin/check`** — the one gate. Local hook, and CI run the identical command.
+- **`bin/check`** — the local Rust/content/web gate ([step definitions](../../../scripts/lib/gate.ts)); Rust tests use nextest when available, otherwise `cargo test`. It compiles content-schema benchmarks but does not execute them or run Playwright. No committed local hook invokes it. [CI](../../../.github/workflows/ci.yml) runs separate commands and additionally exercises live-Postgres integration tests; a green local gate does not establish a green CI run.
 
 ## Rules
-- **`ecs-core` + `content-schema` stay pure** (types + logic, no I/O) — enforced by having no `tokio`/`sqlx` in their `Cargo.toml`.
+- **`ecs-core` stays pure** (types + logic, no I/O). `content-schema` types, validation and byte-based `load_manifest` are pure; its `load_manifest_dir` split-tree loader performs filesystem I/O. Absence of `tokio`/`sqlx` dependencies does not enforce absence of I/O.
 - **No `unwrap`/`expect`** outside `main`/tests, from PR #1. The clippy config forbids it.
 - **Newtypes over primitives** land in F3 so no track ever ships a raw-`u64` API to rip out later.
 - **This track finishes before Wave 1 opens.** Its interfaces may still *evolve*, but they must *exist and compile*.

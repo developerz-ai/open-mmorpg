@@ -6,6 +6,7 @@
 import { have, run, runInherit } from './lib/cmd.ts';
 import { log } from './lib/log.ts';
 import { fromRoot } from './lib/paths.ts';
+import { installPlaywrightBrowsers } from './lib/playwright-browsers.ts';
 
 log.step('Checking prerequisites');
 for (const bin of ['cargo', 'bun']) {
@@ -42,21 +43,6 @@ log.ok('deps installed');
 log.step('Warming the Rust build');
 runInherit(['cargo', 'build', '--workspace']);
 
-log.step('Installing Playwright browsers for E2E tests');
-const playwrightInstall = runInherit([
-  'bun',
-  'run',
-  '--filter',
-  '@omm/web',
-  '--silent',
-  'exec',
-  'playwright',
-  'install',
-  'chromium',
-]);
-if (playwrightInstall === 0) log.ok('Playwright browsers installed');
-else log.warn('Playwright browser install failed — E2E tests may not work');
-
 if (have('docker')) {
   log.step('Starting data stores (Yugabyte + Dragonfly)');
   const code = runInherit([
@@ -72,5 +58,10 @@ if (have('docker')) {
 } else {
   log.warn('docker not found — skipping data stores');
 }
+
+log.step('Installing Playwright browsers for E2E tests');
+const browserInstall = installPlaywrightBrowsers(runInherit);
+if (browserInstall !== 0) process.exit(browserInstall);
+log.ok('Playwright browsers installed');
 
 log.ok('Setup complete. Next: bin/dev');

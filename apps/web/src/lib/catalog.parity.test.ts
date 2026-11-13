@@ -124,6 +124,13 @@ const COPY_SAMPLES = [
 ] as const;
 
 describe('shipped translations', () => {
+  test('it translates achievement labels consistently', () => {
+    const t = createTranslator(it);
+    expect(t('armory.character.achievements')).toBe('Imprese');
+    expect(t('armory.character.achievementsList')).toBe('Imprese');
+    expect(t('armory.character.achievement')).toBe('Impresa');
+  });
+
   for (const [locale, loading, home, login, armory, gold, welcome] of COPY_SAMPLES) {
     test(`${locale} translates representative copy and interpolates params`, () => {
       const t = createTranslator(CATALOGS[locale]);

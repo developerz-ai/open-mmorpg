@@ -1,9 +1,12 @@
 //! Netcode: move authoritative state to many nearby clients at the tick rate,
 //! within a bandwidth budget, over a lossy link, without ever trusting the client.
 //!
-//! This crate is **pure** — no sockets. The socket/transport wiring lives in
-//! `apps/shard` / `apps/gateway`; here we keep the algorithms that must be
-//! exhaustively, deterministically tested (docs/specs/game-server/netcode).
+//! This crate is **pure** — no sockets. The socket layer lives in
+//! `crates/transport` (`omm-transport`): its `UdpTransport` is the UDP driver and
+//! its `Connection` owns the connection lifecycle. Netcode owns the algorithms
+//! that must be exhaustively, deterministically tested
+//! (docs/specs/game-server/netcode), plus the [`Transport`] trait and [`Frame`]
+//! framing that `omm-transport` implements and carries.
 //!
 //! The pipeline, in the order a shard applies it each tick:
 //! 1. [`aoi`] — filter the world to a client's area of interest, so bandwidth is
