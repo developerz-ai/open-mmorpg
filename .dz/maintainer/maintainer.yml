@@ -24,6 +24,8 @@ triage:
     - "Realm caps or login queues"
     - "A light theme or a theme toggle in the operator web"
     - "Outside human contributors' changes to CI, release or publish automation (.github/): members maintain that pipeline"
+    - "Filings (including surveys) whose only fix is CI/release/publish automation under .github/ are not agent-actionable; hand to a human repository maintainer who owns the fix, not the fleet."
+    - "Agent tasks from such filings must be scoped to a genuine fix outside .github/; otherwise retain human ownership."
 
 handoff:
   mode: fleet
