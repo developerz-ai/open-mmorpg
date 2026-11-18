@@ -11,7 +11,7 @@ RUN bun install --frozen-lockfile
 COPY . .
 RUN bun run --filter @omm/web build
 
-FROM nginx:1.27-alpine AS runtime
+FROM nginx:1.30.7-alpine AS runtime
 COPY docker/web.nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /build/apps/web/dist /usr/share/nginx/html
 EXPOSE 80
