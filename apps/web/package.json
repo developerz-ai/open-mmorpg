@@ -17,7 +17,7 @@
     "@omm/i18n": "workspace:*",
     "@omm/ui": "workspace:*",
     "@solidjs/router": "^0.16.3",
-    "@tanstack/solid-query": "^5.104.5",
+    "@tanstack/solid-query": "^5.105.0",
     "solid-js": "^1.9.17",
     "zod": "^4.6.7"
   },
