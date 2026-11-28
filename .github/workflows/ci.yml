@@ -6,8 +6,8 @@ on:
   pull_request:
 
 concurrency:
-  group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  group: ci-${{ github.event_name == 'pull_request' && github.ref || github.sha }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:
   contents: read
@@ -63,8 +63,9 @@ jobs:
       - uses: taiki-e/install-action@v2.87.30
         with:
           tool: nextest
-      - name: integration tests (ignored + unit, live DB)
-        run: cargo nextest run --locked --workspace --all-features --run-ignored all
+      # Only the DB-backed tests: the unit tests already ran in the `rust` job.
+      - name: integration tests (ignored only, live DB)
+        run: cargo nextest run --locked --workspace --all-features --run-ignored only
 
   web:
     name: web (lint · typecheck · test · build)
