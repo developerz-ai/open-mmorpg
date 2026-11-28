@@ -58,13 +58,9 @@ escalate:
   ask_before_acting: []
 
 schedules:
-  # Weekly (owner, 2026-11-06: routine maintenance weekly, CVE daily). Security has its own lanes.
-  - name: health
-    days: [mon]
-    hours_utc: [7]
-    brief_file: .dz/schedules/health.md
   - name: improve
     days: [mon]
+    weeks_of_month: [1]
     hours_utc: [8]
     brief_file: .dz/schedules/improve.md
 
@@ -76,8 +72,15 @@ schedules:
 branches:
   close_inactive_after_days: 60
 
-# scout: the platform's daily survey of this repo files only what is already BROKEN
-# (red CI, failing tests, a security advisory, a broken build or link) — never an
-# improvement idea. `full` lets it file ideas too; `off` stops the survey.
+# scout: the survey is off here (idea / undeployed repo, census 2026-11-28: ~14M tokens per survey run).
+# `broken_only` files only what is already broken; `full` also files ideas.
 scout:
-  survey: broken_only
+  survey: "off"  # quoted: YAML 1.1 parsers read a bare off as false
+
+# devops: advisory watch off (idea / undeployed repo: nothing ships to users). `advisories` turns it on.
+devops:
+  watch: "off"  # quoted: YAML 1.1 parsers read a bare off as false
+
+# care: docs_drift off (census 2026-11-28: 47 tasks, 8 docs-only merges, 33 failed). flaky_tests keeps its default.
+care:
+  docs_drift: "off"
