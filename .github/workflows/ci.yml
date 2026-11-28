@@ -13,7 +13,30 @@ permissions:
   contents: read
 
 jobs:
+  # Docs-only PRs (`docs/`, `*.md`) skip the three jobs below. A skipped job reports success, so the
+  # required `rust` and `web` checks still resolve. Everything else, and every `main` push, runs.
+  changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      code: ${{ steps.diff.outputs.code }}
+    steps:
+      - uses: actions/checkout@v4.4.0
+        with:
+          fetch-depth: 2
+      - id: diff
+        run: |
+          code=true
+          if [ "$GITHUB_EVENT_NAME" = pull_request ] \
+              && changed=$(git diff --name-only HEAD^1 HEAD) && [ -n "$changed" ] \
+              && ! grep -qvE '^docs/|\.md$' <<<"$changed"; then
+            code=false
+          fi
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+
   rust:
+    needs: changes
+    if: needs.changes.outputs.code == 'true'
     name: rust (fmt · clippy · test)
     runs-on: ubuntu-latest
     timeout-minutes: 45
@@ -36,6 +59,8 @@ jobs:
         run: cargo nextest run --locked --workspace --all-features
 
   rust-integration:
+    needs: changes
+    if: needs.changes.outputs.code == 'true'
     name: rust (integration · live Postgres)
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -68,6 +93,8 @@ jobs:
         run: cargo nextest run --locked --workspace --all-features --run-ignored only
 
   web:
+    needs: changes
+    if: needs.changes.outputs.code == 'true'
     name: web (lint · typecheck · test · build)
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -75,7 +102,7 @@ jobs:
       - uses: actions/checkout@v4.4.0
       - uses: oven-sh/setup-bun@v2
         with:
-          bun-version: latest
+          bun-version-file: .bun-version
       - run: bun install --frozen-lockfile
       - name: lint (biome)
         run: bun run lint
