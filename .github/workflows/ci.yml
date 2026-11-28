@@ -93,8 +93,6 @@ jobs:
         run: cargo nextest run --locked --workspace --all-features --run-ignored only
 
   web:
-    needs: changes
-    if: needs.changes.outputs.code == 'true'
     name: web (lint · typecheck · test · build)
     runs-on: ubuntu-latest
     timeout-minutes: 10
